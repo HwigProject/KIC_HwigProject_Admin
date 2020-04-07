@@ -2,6 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
 <mapper namespace="com.hwig.mappers.faqMapper">
 	
 	<!-- 자주묻는질문 목록 -->
@@ -37,4 +38,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="faq_id_d" parameterType="com.hwig.admin.faq.FaqVO">
 		update faq set faq_id = faq_id - 1 where faq_id > #{faq_id}
 	</update>
+=======
+<mapper namespace="com.hwig.admin.mappers.faqMapper">
+
+>>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
 </mapper>

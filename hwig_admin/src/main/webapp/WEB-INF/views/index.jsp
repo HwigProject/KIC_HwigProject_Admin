@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <html>
@@ -249,3 +250,10 @@
 
 </body>
 </html>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/include/headnav.jsp" %>
+
+<%@ include file="/WEB-INF/views/include/footnav.jsp" %>
+>>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58

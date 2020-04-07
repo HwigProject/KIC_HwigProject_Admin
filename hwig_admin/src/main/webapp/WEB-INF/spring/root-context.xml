@@ -47,7 +47,11 @@
 	
 	<!-- uploadpath -->
 	<bean id="savePath" class="java.lang.String">
+<<<<<<< HEAD
 		<constructor-arg value="C:/Users/LimJiNa/Desktop/Hwig/hwig/src/main/webapp"></constructor-arg>
+=======
+		<constructor-arg value="C:/Users/LimJiNa/Desktop/hwigproject_admin/hwig_admin/src/main/webapp"></constructor-arg>
+>>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
 	</bean>
 	
 	<bean id="sellerAttachPath" class="java.lang.String">
