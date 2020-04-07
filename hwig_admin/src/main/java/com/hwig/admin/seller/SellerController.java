@@ -111,7 +111,7 @@ public class SellerController {
 	}
 
 	@RequestMapping(value = "/registerForm", method = RequestMethod.GET)
-	public void registerGET() {
+	public void registerPageGET() {
 
 	}
 
