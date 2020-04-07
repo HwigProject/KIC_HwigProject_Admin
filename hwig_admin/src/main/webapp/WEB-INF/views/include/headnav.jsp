@@ -175,18 +175,18 @@
                         </a>
                         <ul class="nav-sub">
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
-                                     상품 등록
+                                <a href="/product/prd_add" title="Data Tables">
+                                     	상품 등록
                                 </a>
                             </li>
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
-                                     승인 예정
+                                <a href="/product/prd_waitlist" title="Data Tables">
+                                     	승인 예정
                                 </a>
                             </li>
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
-                                     승인 완료
+                                <a href="/product/prd_list" title="Data Tables">
+                                     	승인 완료
                                 </a>
                             </li>
                         </ul>
