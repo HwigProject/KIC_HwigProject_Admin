@@ -5,8 +5,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.hwig.admin.mappers.memberMapper">
 
 	<insert id="memberInsert">
-		insert into tbl_member (mem_id, mem_pw, mem_tel, mem_name, mem_zipcode, mem_addr, mem_email, mem_regdate, mem_grade, mem_reverse)
-			values (#{mem_id}, #{mem_pw}, #{mem_tel}, #{mem_name}, #{mem_zipcode}, #{mem_addr}, #{mem_email}, sysdate, #{mem_grade}, #{mem_reverse})
+		insert into tbl_member (mem_id, mem_pw, mem_tel, mem_name, mem_zipcode, mem_addr, mem_email, mem_regdate)
+			values (#{mem_id}, #{mem_pw}, #{mem_tel}, #{mem_name}, #{mem_zipcode}, #{mem_addr}, #{mem_email}, sysdate)
 	</insert>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'id'.toString()">
+				and mem_id like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'name'.toString()">
+				and mem_name like '%' || #{keyword} || '%'
+			</if>
+		</if>
+	</sql>
+	
+	<select id="memberAllSelect" resultType="MemberVO">
+		select * from (
+			select rownum, mem_id, mem_pw, mem_tel, mem_name, mem_zipcode, mem_addr,
+			mem_email, to_char(mem_regdate,'YYYY-MM-DD')as mem_regdate, mem_grade, mem_reverse,
+				row_number() over(order by rownum desc) as rnum from tbl_member where 1=1
+		
+		<include  refid="search"></include>
+		
+			) mb where rnum between #{pageStart} and #{pageEnd}
+	</select>
+	
+	<select id="memberAllCount" resultType="int">
+		select count(mem_id) from tbl_member where 1=1
+		<include  refid="search"></include>
+	</select>
+	
+	<select id="memberSelect" resultType="MemberVO">
+		select * from tbl_member where mem_id = #{mem_id}
+		<if test="mem_pw != null and mem_pw != ''">
+			and mem_pw = #{mem_pw}
+		</if>
+	</select>
 
 </mapper>

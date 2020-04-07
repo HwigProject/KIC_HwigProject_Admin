@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/headnav.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!--main content start-->
 <section class="main-content-wrapper">
@@ -61,6 +62,7 @@
 									</tr>
 								</thead>
 								<tbody>
+									<c:if test="${fn:length(list) > 0}">
 									<c:forEach items="${list}" var="sellerVo">
 										<tr onclick="location.href='/seller/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&sel_id=${sellerVo.sel_id}'" style="cursor:pointer">
 											<td>${sellerVo.sel_id}</td>
@@ -71,6 +73,12 @@
 											<td>${sellerVo.sel_tel}</td>
 										</tr>
 									</c:forEach>
+									</c:if>
+									<c:if test="${fn:length(list) < 1}">
+										<tr>
+											<td colspan="6">검색 결과가 없습니다</td>
+										</tr>
+									</c:if>
 								</tbody>
 							</table>
 						</div>

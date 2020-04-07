@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/headnav.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!--main content start-->
 <section class="main-content-wrapper">
@@ -30,10 +31,10 @@
 												----</option>
 											<option value="id"
 												<c:out value="${cri.searchType eq 'id' ? 'selected' : ' ' }" />>
-												사업자등록번호</option>
-											<option value="cname"
-												<c:out value="${cri.searchType eq 'cname' ? 'selected' : ' ' }" />>
-												상호명</option>
+												아이디</option>
+											<option value="name"
+												<c:out value="${cri.searchType eq 'name' ? 'selected' : ' ' }" />>
+												이름</option>
 									</select>
 									</label>
 								</div>
@@ -44,7 +45,6 @@
 										<input type="search" class="form-control input-sm" aria-controls="example" id="keyword" value="${cri.keyword}">
 									</label>
 									<button type="button" class="btn btn-success" id="searchBtn">검색</button>
-									<button type="button" class="btn btn-info" id="registerBtn">등록</button>
 								</div>
 							</div>
 						</div>
@@ -61,16 +61,23 @@
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${list}" var="sellerVo">
-										<tr onclick="location.href='/seller/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&sel_id=${sellerVo.sel_id}'" style="cursor:pointer">
-											<td>${sellerVo.sel_id}</td>
-											<td>${sellerVo.sel_pw}</td>
-											<td>${sellerVo.sel_cname}</td>
-											<td>${sellerVo.sel_name}</td>
-											<td class="text-left">${sellerVo.sel_addr}</td>
-											<td>${sellerVo.sel_tel}</td>
+								<c:if test="${fn:length(list) > 0}">
+									<c:forEach items="${list}" var="memberVo">
+										<tr onclick="location.href='/member/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&mem_id=${memberVo.mem_id}'" style="cursor:pointer">
+											<td>${memberVo.mem_id}</td>
+											<td>${memberVo.mem_name}</td>
+											<td>${memberVo.mem_email}</td>
+											<td>${memberVo.mem_regdate}</td>
+											<td class="text-left">${memberVo.mem_grade}</td>
+											<td>${memberVo.mem_reverse}</td>
 										</tr>
 									</c:forEach>
+									</c:if>
+									<c:if test="${fn:length(list) < 1}">
+										<tr>
+											<td colspan="6">검색 결과가 없습니다</td>
+										</tr>
+									</c:if>
 								</tbody>
 							</table>
 						</div>
@@ -119,20 +126,6 @@
             if (key.keyCode == 13) {
 				search();
             }
-        });
-		
-		$("#registerBtn").on("click", function(){
-			self.location = "registerForm";
 		});
 	});
-	
-	var result = '${msg}';
-	
-	if(result == 'success') {
-		alert("처리가 완료되었습니다.");
-	} /* else {
-		alert("처리가 실패되었습니다.");
-	} */
-	
-	
 </script>

@@ -3,6 +3,8 @@ package com.hwig.admin.member;
 import java.util.Date;
 
 public class MemberVO {
+
+	private int rownum;
 	private String mem_id;
 	private String mem_pw;
 	private String mem_tel;
@@ -10,9 +12,17 @@ public class MemberVO {
 	private String mem_zipcode;
 	private String mem_addr;
 	private String mem_email;
-	private Date mem_regdate;
+	private String mem_regdate;
 	private String mem_grade;
 	private int mem_reverse;
+
+	public int getRownum() {
+		return rownum;
+	}
+
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
 
 	public String getMem_id() {
 		return mem_id;
@@ -70,11 +80,11 @@ public class MemberVO {
 		this.mem_email = mem_email;
 	}
 
-	public Date getMem_regdate() {
+	public String getMem_regdate() {
 		return mem_regdate;
 	}
 
-	public void setMem_regdate(Date mem_regdate) {
+	public void setMem_regdate(String mem_regdate) {
 		this.mem_regdate = mem_regdate;
 	}
 
@@ -96,9 +106,24 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "MemberVO [mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_tel=" + mem_tel + ", mem_name=" + mem_name
-				+ ", mem_zipcode=" + mem_zipcode + ", mem_addr=" + mem_addr + ", mem_email=" + mem_email
-				+ ", mem_regdate=" + mem_regdate + ", mem_grade=" + mem_grade + ", mem_reverse=" + mem_reverse + "]";
+		return "MemberVO [rownum=" + rownum + ", mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_tel=" + mem_tel
+				+ ", mem_name=" + mem_name + ", mem_zipcode=" + mem_zipcode + ", mem_addr=" + mem_addr + ", mem_email="
+				+ mem_email + ", mem_regdate=" + mem_regdate + ", mem_grade=" + mem_grade + ", mem_reverse="
+				+ mem_reverse + "]";
+	}
+	
+	public void empty() {
+		rownum = 0;
+		mem_id = "";
+		mem_pw = "";
+		mem_tel = "";
+		mem_name = "";
+		mem_zipcode = "";
+		mem_addr = "";
+		mem_email = "";
+		mem_regdate = "";
+		mem_grade = "";
+		mem_reverse = 0;
 	}
 
 }

@@ -217,7 +217,7 @@
                         </a>
                         <ul class="nav-sub">
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
+                                <a href="/member/list" title="Data Tables">
                                      회원 관리
                                 </a>
                             </li>
