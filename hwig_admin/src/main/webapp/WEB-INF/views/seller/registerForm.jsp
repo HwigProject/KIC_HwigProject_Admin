@@ -24,8 +24,13 @@
                     <div class="panel-body">
                         <form role="form" method="post" action="register" enctype="multipart/form-data" id="registerForm">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">사업자등록번호</label>
-                                <input type="number" class="form-control" id="sel_id" name="sel_id" maxlength="20">
+                            	<div>
+                                	<label for="exampleInputEmail1">사업자등록번호</label>
+                                </div>
+                                <div class="col-md-9" style="padding-left: 0">
+                                	<input type="number" class="form-control" id="sel_id" name="sel_id" maxlength="20">
+                                </div>
+                                <button type="button" class="btn btn-primary" id="idCheckBtn">중복체크</button>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">비밀번호</label>
@@ -154,6 +159,11 @@
 				return false;
 			}
 			
+			if(isChecked == false){
+				alert("사업자등록번호를 중복체크해주세요");
+				return false;
+			}
+			
 			if($.trim($("#sel_pw").val()) == ""){
 				alert("비밀번호를 입력해주세요");
 				return false;
@@ -186,5 +196,28 @@
 			
 			$("#registerForm").submit();
 		});
+		
+		var isChecked = false;
+		$("#idCheckBtn").click(function(){
+			$.ajax({
+				url:"/seller/one/" + $("#sel_id").val(),
+				dataType:"json",
+				contentType:"application/json; charset=utf-8",
+				type:"get",
+				success:function(result){
+					console.log(result);
+					if(result.sel_id == ""){
+						isChecked = true;
+						alert("등록할 수 있는 사업자등록번호입니다");
+					} else {
+						alert("이미 등록된 사업자등록번호입니다");
+					}
+				}
+			});
+		});
+		
+		$("#sel_id").change(function(){
+			isChecked = false;
+		})
 	});
 </script>

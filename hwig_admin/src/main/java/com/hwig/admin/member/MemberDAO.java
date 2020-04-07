@@ -4,4 +4,6 @@ public interface MemberDAO {
 
 	public int insert(MemberVO memberVo);
 	
+	
+	
 }

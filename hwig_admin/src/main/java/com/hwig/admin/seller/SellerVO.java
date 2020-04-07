@@ -94,5 +94,17 @@ public class SellerVO {
 				+ ", sel_name=" + sel_name + ", sel_addr=" + sel_addr + ", sel_tel=" + sel_tel + ", sel_img=" + sel_img
 				+ ", origin_img=" + origin_img + "]";
 	}
+	
+	public void empty() {
+		rownum = 0;
+		sel_id = "";
+		sel_pw = "";
+		sel_cname = "";
+		sel_name = "";
+		sel_addr = "";
+		sel_tel = "";
+		sel_img = "";
+		origin_img = "";
+	}
 
 }
