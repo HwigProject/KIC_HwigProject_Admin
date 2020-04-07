@@ -99,8 +99,7 @@
                             </div>
                             
                             <div class="form-group">
-                                <label for="exampleInputPassword1">주소</label><br>
-                                <!-- <input type="text" class="form-control" id="sel_addr" name="sel_addr"> -->
+                                <label for="exampleInputPassword1">사업장 소재지</label><br>
                                 <input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control" name="selAddr">
 								<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary" ><br>
 								<input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control" name="selAddr">
@@ -122,7 +121,7 @@
                        
                        		<button type="submit" class="btn btn-primary btn-block">등록</button>
                        		<input type="hidden" name="origin_img" value="${data.sel_img}">
-                       		<input type="text" name="sel_addr" value="" id="sel_addr">
+                       		<input type="hidden" name="sel_addr" value="" id="sel_addr">
                         </form>
 
                     </div>
