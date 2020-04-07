@@ -13,8 +13,15 @@ public class ProductServiceImpl implements ProductService{
 	private ProductDAO dao;
 
 	@Override
+	public int add(ProductVO vo) throws Exception {
+		return dao.add(vo);
+	}
+	
+	@Override
 	public List<ProductVO> waitList() throws Exception {
 		
 		return dao.waitList();
 	}
+
+	
 }

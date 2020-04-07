@@ -27,12 +27,6 @@
 					<div class="panel-body">
 						<form role="form" method="post" class="form-horizontal form-border" id="form">
 							<div class="form-group">
-								<label class="col-sm-3 control-label" for="prd_id">상품 번호</label>
-								<div class="col-sm-6">
-									<input type="number" class="form-control" id="prd_id" name="prd_id" required="" placeholder="Required input"/>
-								</div>
-							</div>
-							<div class="form-group">
 								<label class="col-sm-3 control-label" for="category_id">카테고리 id</label>
 								<div class="col-sm-6">
 									<input type="number" class="form-control" id="category_id" name="category_id" required="" placeholder="Required input"/>
@@ -118,7 +112,7 @@
 							</div>
 							<div class="form-group">
 								<div class="col-sm-offset-3 col-sm-6">	
-									<button type="button" id="btn_input" class="btn btn-primary">등록</button>
+									<button type="submit" id="btn_input" class="btn btn-primary">등록</button>
 								</div>
 	                        </div>
 						</form>
