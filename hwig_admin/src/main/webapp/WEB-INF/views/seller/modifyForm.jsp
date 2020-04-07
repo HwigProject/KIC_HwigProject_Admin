@@ -4,6 +4,81 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!--main content start-->
+        <section class="container animated fadeInUp">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div id="login-wrapper">
+                    <header>
+                        <div class="brand">
+                            <a href="index.html" class="logo">
+                                <i class="icon-layers"></i>
+                                <span>판매자 수정</span></a>
+                        </div>
+                    </header>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                          <h3 class="panel-title">     
+                           
+                        </h3>  
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" method="post" action="modify" enctype="multipart/form-data" id="modifyForm">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">사업자등록번호</label>
+                                <input type="number" class="form-control" id="sel_id" value="${data.sel_id}" readonly="readonly" name="sel_id" maxlength="20">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">비밀번호</label>
+                                <input type="password" class="form-control" id="sel_pw" value="${data.sel_pw}" name="sel_pw" maxlength="20">
+                            </div>
+                             <div class="form-group">
+                                <label for="exampleInputPassword1">상호명</label>
+                                <input type="text" class="form-control" id="sel_cname" value="${data.sel_cname}" name="sel_cname" readonly="readonly" maxlength="200">
+                            </div>
+                              <div class="form-group">
+                                <label for="exampleInputPassword1">대표자명</label>
+                                <input type="text" class="form-control" id="sel_name" value="${data.sel_name}" name="sel_name" maxlength="20">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">사업장 소재지</label>
+                                <input type="text" class="form-control" value="${data.sel_addr}" readonly="readonly">
+                                <input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control">
+								<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary" ><br>
+								<input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control">
+								<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" class="form-control">
+								<input type="text" id="sample4_detailAddress" placeholder="상세주소" class="form-control" maxlength="400">
+								<input type="text" id="sample4_extraAddress" placeholder="참고항목" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">전화번호</label>
+                                <input type="number" class="form-control" id="sel_tel" value="${data.sel_tel}" name="sel_tel" maxlength="20">
+                            </div>
+                            <div class="form-group">
+								<label for="exampleInputFile">사업자등록증 사본</label>
+								<img src="${data.sel_img}" id="attach_img" width="300px" height="400px">
+								<input type="file" id="sel_img" name="attach_img" accept=".gif, .jpg, .png">
+ 							</div>
+                       
+							<div class="col-md-6">
+                       		<button type="button" class="btn btn-primary btn-block" id="modifyBtn">수정</button>
+                       		</div>
+                       		<div class="col-md-6">
+                       		<button type="button" class="btn btn-primary btn-block" id="listBtn">목록</button>
+                       		</div>
+                       		<input type="hidden" name="origin_img" value="${data.sel_img}">
+                       		<input type="hidden" name="sel_addr" value="" id="sel_addr">
+                        </form>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+        <!--main content end-->
+
+<%@ include file="/WEB-INF/views/include/footnav.jsp" %>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
@@ -42,99 +117,79 @@
                 } else {
                     document.getElementById("sample4_extraAddress").value = '';
                 }
-
-                var guideTextBox = document.getElementById("guide");
-                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
-                if(data.autoRoadAddress) {
-                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
-                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
-                    guideTextBox.style.display = 'block';
-
-                } else if(data.autoJibunAddress) {
-                    var expJibunAddr = data.autoJibunAddress;
-                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
-                    guideTextBox.style.display = 'block';
-                } else {
-                    guideTextBox.innerHTML = '';
-                    guideTextBox.style.display = 'none';
-                }
             }
         }).open();
     }
-</script>
-        <section class="container animated fadeInUp">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div id="login-wrapper">
-                    <header>
-                        <div class="brand">
-                            <a href="index.html" class="logo">
-                                <i class="icon-layers"></i>
-                                <span>판매자 수정</span></a>
-                        </div>
-                    </header>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                          <h3 class="panel-title">     
-                           
-                        </h3>  
-                    </div>
-                    <div class="panel-body">
-                        <form role="form" method="post" action="modify" enctype="multipart/form-data">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">사업자등록번호</label>
-                                <input type="text" class="form-control" id="sel_id" value="${data.sel_id}" readonly="readonly" name="sel_id">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">비밀번호</label>
-                                <input type="password" class="form-control" id="sel_pw" value="${data.sel_pw}" name="sel_pw">
-                            </div>
-                             <div class="form-group">
-                                <label for="exampleInputPassword1">상호명</label>
-                                <input type="text" class="form-control" id="sel_cname" value="${data.sel_cname}" name="sel_cname" readonly="readonly">
-                            </div>
-                              <div class="form-group">
-                                <label for="exampleInputPassword1">대표자명</label>
-                                <input type="text" class="form-control" id="sel_name" value="${data.sel_name}" name="sel_name">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">사업장 소재지</label>
-                                <input type="text" class="form-control" id="sel_addr" value="${data.sel_addr}" name="sel_addr" readonly="readonly">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">전화번호</label>
-                                <input type="text" class="form-control" id="sel_tel" value="${data.sel_tel}" name="sel_tel">
-                            </div>
-                            <div class="form-group">
-								<label for="exampleInputFile">파일</label>
-								<img src="${data.sel_img}" id="attach_img">
-								<input type="file" id="sel_img" name="attach_img">
- 							</div>
-                       
-                       		<button type="submit" class="btn btn-primary btn-block">수정</button>
-                       		<input type="hidden" name="origin_img" value="${data.sel_img}">
-                       		<input type="hidden" name="sel_addr" value="" id="sel_addr">
-                        </form>
-
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-
-    </section>
-        <!--main content end-->
-
-<%@ include file="/WEB-INF/views/include/footnav.jsp" %>
-<script>
-
-	$("#sel_img").change(function() {
-		if (this.files && this.files[0]) {
-			var reader = new FileReader;
-			reader.onload = function(data) {
-				$("#attach_img").attr("src", data.target.result).width(500);
+    
+	$(document).ready(function() {
+		$("#sel_img").change(function() {
+			var extend = $("#sel_img").val().substring($("#sel_img").val().lastIndexOf(".")+1);
+			
+			if(extend != "gif" && extend != "png" && extend != "jpg"){
+				 $("#sel_img").val("");
+				 alert("이미지 파일은 확장자 gif, png, jpg만 가능합니다");
+				return false;
 			}
-			reader.readAsDataURL(this.files[0]);
-		}
+			
+			if (this.files && this.files[0]) {
+				var reader = new FileReader;
+				reader.onload = function(data) {
+					$("#attach_img").attr("src", data.target.result);
+					$("#attach_img").show();
+				}
+				reader.readAsDataURL(this.files[0]);
+			}
+		});
+		
+		$("#modifyBtn").click(function(){
+			var sel_addr = "(" + $("#sample4_postcode").val() + ") "
+										+ $("#sample4_roadAddress").val() + ", "
+										+ $("#sample4_detailAddress").val()
+										+ $("#sample4_extraAddress").val();
+			
+			$("#sel_addr").val(sel_addr);
+			console.log(sel_addr);
+			
+			if($.trim($("#sel_id").val()) == ""){
+				alert("사업자번호를 입력해주세요");
+				return false;
+			}
+			
+			if($.trim($("#sel_pw").val()) == ""){
+				alert("비밀번호를 입력해주세요");
+				return false;
+			}
+			
+			if($.trim($("#sel_cname").val()) == ""){
+				alert("상호명를 입력해주세요");
+				return false;
+			}
+			
+			if($.trim($("#sel_name").val()) == ""){
+				alert("대표자명를 입력해주세요");
+				return false;
+			}
+			
+			if($.trim($("#sel_addr").val()) == ""){
+				alert("사업장 소재지를 입력해주세요");
+				return false;
+			}
+			
+			if($.trim($("#sel_tel").val()) == ""){
+				alert("전화번호를 입력해주세요");
+				return false;
+			}
+			
+			if($.trim($("#sel_img").val()) == "" && $.trim($("#attach_img").attr("src")) == ""){
+				alert("사업자등록증 사본을 업로드해주세요");
+				return false;
+			}
+			
+			$("#modifyForm").submit();
+		});
+		
+		$("#listBtn").click(function(){
+			self.location = "list?page=${page}&perPageNum=${perPageNum}&searchType=${searchType}&keyword=${keyword}";
+		});
 	});
 </script>

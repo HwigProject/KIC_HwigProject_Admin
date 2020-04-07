@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="sellerUpdate">
-		update tbl_seller set sel_pw = #{sel_pw}, sel_cname = #{sel_cname}, sel_name = #{sel_name}, sel_addr = #{sel_addr}, sel_tel = #{sel_tel}, sel_img = #{sel_img}
+		update tbl_seller set sel_pw = #{sel_pw}, sel_name = #{sel_name}, sel_addr = #{sel_addr}, sel_tel = #{sel_tel}, sel_img = #{sel_img}
 			where sel_id = #{sel_id}
 	</update>
 	

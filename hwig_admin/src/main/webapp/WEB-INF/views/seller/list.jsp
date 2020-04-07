@@ -40,65 +40,59 @@
 							</div>
 							<div class="col-xs-4">
 								<div id="example_filter" class="dataTables_filter">
-									<label id="listLabel"><input type="search"
-										class="form-control input-sm" aria-controls="example"
-										id="keyword" value="${cri.keyword}"></label>
+									<label id="listLabel">
+										<input type="search" class="form-control input-sm" aria-controls="example" id="keyword" value="${cri.keyword}">
+									</label>
 									<button type="button" class="btn btn-success" id="searchBtn">검색</button>
 									<button type="button" class="btn btn-info" id="registerBtn">등록</button>
 								</div>
 							</div>
 						</div>
 						<div class="table-responsive">
-							<table class="table table-bordered table-striped">
+							<table class="table table-bordered table-striped text-center">
 								<thead>
 									<tr>
-										<th>사업자번호</th>
-										<th>비밀번호</th>
-										<th>상호명</th>
-										<th>대표자명</th>
-										<th>주소</th>
-										<th>전화번호</th>
-										<th></th>
+										<th class="text-center">사업자번호</th>
+										<th class="text-center">비밀번호</th>
+										<th class="text-center">상호명</th>
+										<th class="text-center">대표자명</th>
+										<th class="text-center">주소</th>
+										<th class="text-center">전화번호</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${list}" var="sellerVo">
-										<tr>
+										<tr onclick="location.href='/seller/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&sel_id=${sellerVo.sel_id}'" style="cursor:pointer">
 											<td>${sellerVo.sel_id}</td>
 											<td>${sellerVo.sel_pw}</td>
 											<td>${sellerVo.sel_cname}</td>
 											<td>${sellerVo.sel_name}</td>
-											<td>${sellerVo.sel_addr}</td>
+											<td class="text-left">${sellerVo.sel_addr}</td>
 											<td>${sellerVo.sel_tel}</td>
-
-											<td>
-												<button type="button" class="btn btn-success"onclick="location.href='/seller/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&sel_id=${sellerVo.sel_id}'">수정</button>
-											</td>
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
 						</div>
-						<div class="text-center">
-							<ul class="pagination">
-								<c:if test="${pageMaker.prev}">
-									<li><a
-										href="list${pageMaker.makeSearch(pageMaker.startPage-1)}">&laquo;</a></li>
-								</c:if>
-
-								<c:forEach begin="${pageMaker.startPage}"
-									end="${pageMaker.endPage}" var="idx">
-									<li
-										<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
-										<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-									</li>
-								</c:forEach>
-
-								<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-									<li><a
-										href="list${pageMaker.makeSearch(pageMaker.endPage+1)}">&raquo;</a></li>
-								</c:if>
-							</ul>
+						<div class="col-xs-12">
+							<div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+								<ul class="pagination">
+									<c:if test="${pageMaker.prev}">
+										<li><a href="list${pageMaker.makeSearch(pageMaker.startPage-1)}">&laquo;</a></li>
+									</c:if>
+	
+									<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+										<li
+											<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
+											<a href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+										</li>
+									</c:forEach>
+	
+									<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+										<li><a href="list${pageMaker.makeSearch(pageMaker.endPage+1)}">&raquo;</a></li>
+									</c:if>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -120,6 +114,12 @@
 		}
 		
 		$("#searchBtn").on("click", search);
+		
+		$("#keyword").keydown(function(key) {
+            if (key.keyCode == 13) {
+				search();
+            }
+        });
 		
 		$("#registerBtn").on("click", function(){
 			self.location = "registerForm";

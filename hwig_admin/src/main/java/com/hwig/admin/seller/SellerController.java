@@ -53,6 +53,10 @@ public class SellerController {
 	@RequestMapping(value = "/modifyForm", method = RequestMethod.GET)
 	public void modifyPageGET(String sel_id, @ModelAttribute("cri") SearchCriteria cri, Model model) {
 		model.addAttribute("data", sellerService.listOne(sel_id));
+		model.addAttribute("page", cri.getPage());
+		model.addAttribute("perPageNum", cri.getPerPageNum());
+		model.addAttribute("searchType", cri.getSearchType());
+		model.addAttribute("keyword", cri.getKeyword());
 	}
 
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
