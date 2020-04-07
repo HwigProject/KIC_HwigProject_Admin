@@ -25,9 +25,9 @@ public class NoticeDAOImpl implements NoticeDAO{
 	
 	//공지사항 등록
 	@Override
-	public void notice_write(NoticeVO notice) throws Exception {
+	public int notice_write(NoticeVO notice) throws Exception {
 		
-		sql.insert(namespace + ".notice_write", notice);
+		return sql.insert(namespace + ".notice_write", notice);
 	}
 	
 	//공지사항 조회
@@ -37,25 +37,35 @@ public class NoticeDAOImpl implements NoticeDAO{
 		return sql.selectOne(namespace + ".notice_view", notice_id);
 	}
 	
+	//공지사항 조회수 증가
+	/*
+	 * @Override public int notice_hit_up(int notice_id) throws Exception {
+	 * 
+	 * return sql.update(namespace + ".notice_hit_up", notice_id); }
+	 */
+	
 	//공지사항 수정
 	@Override
-	public void notice_modify(NoticeVO notice) throws Exception {
-		// TODO Auto-generated method stub
+	public int notice_modify(NoticeVO notice) throws Exception {
 		
+		return sql.update(namespace + ".notice_modify", notice);
 	}
 	
 	//공지사항 삭제
 	@Override
-	public void notice_delete(int notice_id) throws Exception {
-		// TODO Auto-generated method stub
+	public int notice_delete(int notice_id) throws Exception {
+		
+		return sql.delete(namespace + ".notice_delete", notice_id);
 		
 	}
 	
 	//공지사항 삭제시 번호 땡김
 	@Override
 	public void notice_id_d(NoticeVO notice) throws Exception {
-		// TODO Auto-generated method stub
 		
+		sql.update(namespace + ".notice_id_d", notice);
 	}
+
+	
 
 }

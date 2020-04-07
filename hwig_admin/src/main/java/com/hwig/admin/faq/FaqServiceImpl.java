@@ -21,9 +21,9 @@ public class FaqServiceImpl implements FaqService{
 	
 	//자주묻는질문 등록
 	@Override
-	public void faq_write(FaqVO faq) throws Exception {
+	public int faq_write(FaqVO faq) throws Exception {
 		
-		dao.faq_write(faq);
+		return dao.faq_write(faq);
 	}
 	
 	//자주묻는질문 조회
@@ -35,16 +35,16 @@ public class FaqServiceImpl implements FaqService{
 	
 	//자주묻는질문 수정
 	@Override
-	public void faq_modify(FaqVO faq) throws Exception {
+	public int faq_modify(FaqVO faq) throws Exception {
 		
-		dao.faq_modify(faq);
+		return dao.faq_modify(faq);
 	}
 	
 	//자주묻는질문 삭제
 	@Override
-	public void faq_delete(int faq_id) throws Exception {
+	public int faq_delete(int faq_id) throws Exception {
 		
-		dao.faq_delete(faq_id);
+		return dao.faq_delete(faq_id);
 	}
 	
 	//게시글 삭제시 번호 한칸씩 땡겨옴

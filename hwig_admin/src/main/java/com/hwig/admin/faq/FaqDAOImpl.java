@@ -25,9 +25,9 @@ public class FaqDAOImpl implements FaqDAO {
 	
 	//자주묻는질문 등록
 	@Override
-	public void faq_write(FaqVO faq) throws Exception {
+	public int faq_write(FaqVO faq) throws Exception {
 		
-		sql.insert(namespace + ".faq_write", faq);
+		return sql.insert(namespace + ".faq_write", faq);
 	}
 	
 	//자주묻는질문 조회
@@ -39,16 +39,16 @@ public class FaqDAOImpl implements FaqDAO {
 	
 	//자주묻는질문 수정
 	@Override
-	public void faq_modify(FaqVO faq) throws Exception {
+	public int faq_modify(FaqVO faq) throws Exception {
 		
-		sql.update(namespace + ".faq_modify", faq);
+		return sql.update(namespace + ".faq_modify", faq);
 	}
 	
 	//자주묻는질문 삭제
 	@Override
-	public void faq_delete(int faq_id) throws Exception {
+	public int faq_delete(int faq_id) throws Exception {
 		
-		sql.delete(namespace + ".faq_delete", faq_id);
+		return sql.delete(namespace + ".faq_delete", faq_id);
 	}
 
 	//게시글 삭제시 번호 하나씩 떙김

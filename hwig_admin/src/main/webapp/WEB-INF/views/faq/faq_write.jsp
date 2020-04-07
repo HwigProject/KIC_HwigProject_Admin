@@ -81,13 +81,13 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">본문</label>
                                         <div class="col-sm-6">
-                                            <textarea cols="10" name="faq_content" class="form-control"></textarea>
+                                            <textarea style="resize:none; height:500px;" name="faq_content" class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-6 pull-right">
                                             <input type="submit" value="등록" class="btn btn-info"/>
-                   							<input type="reset" value="초기화" class="btn btn-warning"/>
+                   							<input type="reset" value="초기화" class="btn btn-success"/>
                     						<input type="button" value="글 목록으로... " class="btn btn-danger" onclick="javascript:history.back()"/>
                                         </div>
                                     </div>                                        

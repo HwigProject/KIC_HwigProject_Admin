@@ -6,6 +6,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>자주묻는질문</title>
+<script>
+    var result = "${msg}";
+    if(result == "success"){
+        alert("완료되었습니다.");
+    }
+</script>
 </head>
 <body>
 	<%@ include file="../include/headnav.jsp" %>
@@ -53,7 +59,7 @@
 												<td>${fList.faq_category}</td>
 												<td><a href="faq_view?faq_id=${fList.faq_id}">${fList.faq_subject}</a></td>
 												<td>
-													<button type="button" onclick="location.href='/faq/faq_modify?faq_id=${fList.faq_id}'" class="btn btn-warning">수정</button>
+													<button type="button" onclick="location.href='/faq/faq_modify?faq_id=${fList.faq_id}'" class="btn btn-success">수정</button>
                                 					<button type="button" onclick="location.href='/faq/faq_delete?faq_id=${fList.faq_id}'" class="btn btn-danger">삭제</button>
                                 				</td>
 											</tr>

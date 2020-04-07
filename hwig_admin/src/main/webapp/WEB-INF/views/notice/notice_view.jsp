@@ -44,8 +44,8 @@
 	                                                <p>${notice_view.notice_content}</p>
 	                                            </div>            
 	                                            <button class="btn btn-danger pull-right" onclick="location.href='/notice/notice_delete?notice_id=${notice_view.notice_id}'">삭제</button>
-	                                            <button class="btn btn-warning pull-right" onclick="location.href='/notice/notice_modify?notice_id=${notice_view.notice_id}'">수정</button>	
-	                                            <a href="javascript:history.back()" class="btn btn-info pull-right">목록</a>	                                                           
+	                                            <button class="btn btn-success pull-right" onclick="location.href='/notice/notice_modify?notice_id=${notice_view.notice_id}'">수정</button>	
+	                                            <a href="javascript:location.href=document.referrer" class="btn btn-info pull-right">목록</a>	                                                           
 	                                        </div>
 	                                    </div>
 	                                </div>

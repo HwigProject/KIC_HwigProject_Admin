@@ -7,6 +7,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>공지사항</title>
+<script>
+	var result = "${msg}";
+	if(result == "success"){
+		alert("완료되었습니다.");
+	}
+</script>
 </head>
 <body>
 	<%@ include file="../include/headnav.jsp" %>
@@ -56,7 +62,7 @@
 												<td>${nList.notice_regdate}</td>
 												<td>${nList.notice_hit}</td>
 												<td>
-													<button type="button" onclick="location.href='/notice/notice_modify?notice_id=${nList.notice_id}'" class="btn btn-warning">수정</button>
+													<button type="button" onclick="location.href='/notice/notice_modify?notice_id=${nList.notice_id}'" class="btn btn-success">수정</button>
                                 					<button type="button" onclick="location.href='/notice/notice_delete?notice_id=${nList.notice_id}'" class="btn btn-danger">삭제</button>
                                 				</td>
 											</tr>

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>공지사항 등록</title>
+<title>공지사항 수정</title>
 </head>
 <body>
 	<%@ include file="../include/headnav.jsp" %>
@@ -15,7 +15,7 @@
                     <div class="col-md-12">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h3 class="panel-title">공지사항 등록</h3>
+                                <h3 class="panel-title">공지사항 수정</h3>
                                 <div class="actions pull-right">
                                     <i class="fa fa-expand"></i>
                                     <i class="fa fa-chevron-down"></i>
@@ -24,23 +24,22 @@
                             </div>
 
                             <div class="panel-body">
-                                <form method="post" class="form-horizontal form-border">         
+                                <form method="post" class="form-horizontal form-border">            
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">제목</label>
                                         <div class="col-sm-6">
-                                            <input type="text" name="notice_subject" class="form-control" placeholder="제목을 입력하세요. ">
+                                            <input type="text" name="notice_subject" class="form-control" placeholder="제목을 입력하세요. " value="${notice_view.notice_subject}">
                                         </div>
-                                    </div>                                    
+                                    </div>                             
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">본문</label>
                                         <div class="col-sm-6">
-                                            <textarea styles="height:500px; resize:none;" name="notice_content" class="form-control"></textarea>
+                                            <textarea styles="height:500px; resize:none;" name="notice_content" class="form-control">${notice_view.notice_content}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-4 pull-right">
-                                            <input type="submit" value="등록" class="btn btn-info"/>
-                   							<input type="reset" value="초기화" class="btn btn-success"/>
+                                            <input type="submit" value="수정" class="btn btn-success"/>
                     						<input type="button" value="글 목록으로... " class="btn btn-danger" onclick="javascript:history.back()"/>
                                         </div>
                                     </div>                                        
