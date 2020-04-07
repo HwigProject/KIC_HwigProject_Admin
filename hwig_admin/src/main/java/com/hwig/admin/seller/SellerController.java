@@ -1,0 +1,116 @@
+package com.hwig.admin.seller;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.util.UUID;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.hwig.admin.common.PageMaker;
+import com.hwig.admin.common.SearchCriteria;
+
+@Controller
+@RequestMapping("/seller/*")
+public class SellerController {
+
+	@Resource(name = "savePath")
+	private String savePath;
+
+	@Resource(name = "sellerAttachPath")
+	private String sellerAttachPath;
+
+	@Autowired
+	private SellerService sellerService;
+
+	private static final Logger logger = LoggerFactory.getLogger(SellerController.class);
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) {
+		logger.info(cri.toString());
+
+		model.addAttribute("list", sellerService.listAll(cri));
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(sellerService.listAllCount(cri));
+
+		model.addAttribute("pageMaker", pageMaker);
+	}
+
+	@RequestMapping(value = "/modifyForm", method = RequestMethod.GET)
+	public void modifyPageGET(String sel_id, @ModelAttribute("cri") SearchCriteria cri, Model model) {
+		model.addAttribute("data", sellerService.listOne(sel_id));
+	}
+
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modifyPOST(SellerVO sellerVo, MultipartFile attach_img, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr, HttpSession session) {
+		logger.info(sellerVo.toString());
+		
+		if (attach_img != null && !attach_img.getOriginalFilename().equals("")) {
+			// 파일명 생성
+			UUID uid = UUID.randomUUID();
+			String fileName = uid.toString() + "_" + attach_img.getOriginalFilename();
+			logger.info(savePath + sellerVo.getOrigin_img());
+			new File(savePath + sellerVo.getOrigin_img()).delete();
+
+			// 파일을 서버에 저장
+			try {
+				FileOutputStream fos = new FileOutputStream(
+						savePath  + sellerAttachPath + "/" + fileName);
+				logger.info("파일 서버에 저장하는 부분 => " + savePath  + sellerAttachPath + "/"
+						+ fileName);
+				InputStream is = attach_img.getInputStream();
+
+				int readCount = 0;
+				byte[] buffer = new byte[1024];
+
+				while ((readCount = is.read(buffer)) != -1) {
+					fos.write(buffer, 0, readCount);
+				}
+				fos.close();
+				String path = session.getServletContext().getRealPath("/");
+			    System.out.println("■path:::"+path);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			// 저장된 파일정보 셋팅
+			sellerVo.setSel_img(sellerAttachPath + "/" + fileName);
+		} else {
+			sellerVo.setSel_img(sellerVo.getOrigin_img());
+		}
+
+		// 파일 정보 포함해서 DB에 저장
+		int result = sellerService.modify(sellerVo);
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+
+		if(result == 1) {
+			rttr.addFlashAttribute("msg", "success");
+		} else {
+			rttr.addFlashAttribute("msg", "fail");
+		}
+
+		logger.info(rttr.toString());
+
+		return "redirect:/seller/list";
+	}
+	
+	
+
+}
