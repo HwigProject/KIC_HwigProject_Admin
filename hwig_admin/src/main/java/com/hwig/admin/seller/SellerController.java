@@ -56,9 +56,10 @@ public class SellerController {
 	}
 
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modifyPOST(SellerVO sellerVo, MultipartFile attach_img, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr, HttpSession session) {
+	public String modifyPOST(SellerVO sellerVo, MultipartFile attach_img, @ModelAttribute("cri") SearchCriteria cri,
+			RedirectAttributes rttr, HttpSession session) {
 		logger.info(sellerVo.toString());
-		
+
 		if (attach_img != null && !attach_img.getOriginalFilename().equals("")) {
 			// 파일명 생성
 			UUID uid = UUID.randomUUID();
@@ -68,10 +69,8 @@ public class SellerController {
 
 			// 파일을 서버에 저장
 			try {
-				FileOutputStream fos = new FileOutputStream(
-						savePath  + sellerAttachPath + "/" + fileName);
-				logger.info("파일 서버에 저장하는 부분 => " + savePath  + sellerAttachPath + "/"
-						+ fileName);
+				FileOutputStream fos = new FileOutputStream(savePath + sellerAttachPath + "/" + fileName);
+				logger.info("파일 서버에 저장하는 부분 => " + savePath + sellerAttachPath + "/" + fileName);
 				InputStream is = attach_img.getInputStream();
 
 				int readCount = 0;
@@ -82,7 +81,7 @@ public class SellerController {
 				}
 				fos.close();
 				String path = session.getServletContext().getRealPath("/");
-			    System.out.println("■path:::"+path);
+				System.out.println("■path:::" + path);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -94,13 +93,13 @@ public class SellerController {
 
 		// 파일 정보 포함해서 DB에 저장
 		int result = sellerService.modify(sellerVo);
-		
+
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
 		rttr.addAttribute("searchType", cri.getSearchType());
 		rttr.addAttribute("keyword", cri.getKeyword());
 
-		if(result == 1) {
+		if (result == 1) {
 			rttr.addFlashAttribute("msg", "success");
 		} else {
 			rttr.addFlashAttribute("msg", "fail");
@@ -110,7 +109,48 @@ public class SellerController {
 
 		return "redirect:/seller/list";
 	}
-	
-	
+
+	@RequestMapping(value = "/registerForm", method = RequestMethod.GET)
+	public void registerGET() {
+
+	}
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String registerPOST(SellerVO sellerVo, MultipartFile attach_img, RedirectAttributes rttr) {
+		if (attach_img != null && !attach_img.getOriginalFilename().equals("")) {
+			// 파일명 생성
+			UUID uid = UUID.randomUUID();
+			String fileName = uid.toString() + "_" + attach_img.getOriginalFilename();
+			logger.info(savePath + sellerVo.getOrigin_img());
+
+			// 파일을 서버에 저장
+			try {
+				FileOutputStream fos = new FileOutputStream(savePath + sellerAttachPath + "/" + fileName);
+				logger.info("파일 서버에 저장하는 부분 => " + savePath + sellerAttachPath + "/" + fileName);
+				InputStream is = attach_img.getInputStream();
+
+				int readCount = 0;
+				byte[] buffer = new byte[1024];
+
+				while ((readCount = is.read(buffer)) != -1) {
+					fos.write(buffer, 0, readCount);
+				}
+				fos.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			// 저장된 파일정보 셋팅
+			sellerVo.setSel_img(sellerAttachPath + "/" + fileName);
+		}
+
+		// 파일 정보 포함해서 DB에 저장
+		int result = sellerService.register(sellerVo);
+
+		if (result == 1) {
+			rttr.addFlashAttribute("msg", "success");
+		}
+
+		return "redirect:/seller/list";
+	}
 
 }

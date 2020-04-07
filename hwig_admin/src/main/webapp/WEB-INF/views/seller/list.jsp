@@ -72,7 +72,7 @@
 											<td>${sellerVo.sel_tel}</td>
 
 											<td>
-												<button type="button" class="btn btn-warning"onclick="location.href='/seller/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&sel_id=${sellerVo.sel_id}'">수정</button>
+												<button type="button" class="btn btn-success"onclick="location.href='/seller/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&sel_id=${sellerVo.sel_id}'">수정</button>
 											</td>
 										</tr>
 									</c:forEach>
@@ -122,7 +122,7 @@
 		$("#searchBtn").on("click", search);
 		
 		$("#registerBtn").on("click", function(){
-			self.location = "register";
+			self.location = "registerForm";
 		});
 	});
 	
