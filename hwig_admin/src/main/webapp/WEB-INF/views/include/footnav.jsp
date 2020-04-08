@@ -183,6 +183,9 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
 <!-- Switch -->
 <script src="../resources/assets/plugins/switchery/switchery.min.js"></script>
+
+<script src="../resources/assets/plugins/dataTables/js/jquery.dataTables.js"></script>
+<script src="../resources/assets/plugins/dataTables/js/dataTables.bootstrap.js"></script>
 <!--Load these page level functions-->
 <script>
 $(document).ready(function() {
@@ -191,6 +194,10 @@ $(document).ready(function() {
     app.weather();
     app.spinStart();
     app.spinStop();
+});
+
+$(document).ready(function() {
+    $('#example').dataTable();
 });
 </script>
 </body>

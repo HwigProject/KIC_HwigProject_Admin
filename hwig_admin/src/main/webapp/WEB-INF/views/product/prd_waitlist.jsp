@@ -26,9 +26,9 @@
 	                    </div>
 					</div>
 					<div class="panel-body">
-						<table id="productlist" class="table table-striped table-bordered" cellspacing="0" width="100%">
-							<thead>
-								<tr>
+						<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
 									<th>상품번호</th>
 									<th>카테고리</th>
 									<th>판매자id</th>
@@ -37,31 +37,34 @@
 									<th>한줄설명</th>
 									<th>수정삭제</th>
 								</tr>
-							</thead>
-							
-							<tbody>
-							<!-- 목록 -->
-								<c:forEach items="${waitList}" var="waitList">
-									<tr>
-										<td>${waitList.prd_id}</td>
-										<td>${waitList.category_id}</td>
-										<td>${waitList.sel_id}</td>
-										<td>${waitList.prd_name}</td>
-										<td>${waitList.prd_price}</td>
-										<td>${waitList.prd_comment}</td>
-										<td>
-											<button type="button" class="btn btn-success btn-sm">등록</button>
-											<button type="button" class="btn btn-danger btn-sm btn_del">삭제</button>
-										</td>
-									</tr>
-								</c:forEach>
-							<!-- 목록 -->
-							</tbody>
-						</table>
+                                    </thead>
+                                    <tbody>
+	                                    <c:forEach items="${waitList}" var="waitList">
+										<tr>
+											<td>${waitList.prd_id}</td>
+											<td>${waitList.category_id}</td>
+											<td>${waitList.sel_id}</td>
+											<td>${waitList.prd_name}</td>
+											<td>${waitList.prd_price}</td>
+											<td>${waitList.prd_comment}</td>
+											<td>
+												<button type="button" class="btn btn-success btn-sm">등록</button>
+												<button type="button" class="btn btn-danger btn-sm btn_del">삭제</button>
+											</td>
+										</tr>
+									</c:forEach>
+                                </tbody>
+                        </table>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 </section>
+<script>
+	$('.btn_del').click(function(){
+		var prd_id = $(this).parent().parent().children().eq(0).text();
+		alert($(this).parent().parent().children().eq(0).text());
+	})
+</script>
 <%@ include file="/WEB-INF/views/include/footnav.jsp" %>

@@ -8,4 +8,6 @@ public interface ProductService {
 	public int add(ProductVO vo) throws Exception;
 	//상품 승인 예정 목록 조회
 	public List<ProductVO> waitList() throws Exception;
+	
+	public int delete(int prd_id) throws Exception;
 }

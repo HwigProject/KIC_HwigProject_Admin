@@ -21,4 +21,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="list" resultType="com.hwig.admin.product.ProductVO">
 		select prd_id, category_id, sel_id, prd_name, prd_price, prd_comment from tbl_prd order by prd_id desc
 	</select>
+	
+	<!-- 등록 예정 상품 삭제 -->
+	<delete id="delete">
+		delete from tbl_prd_b where prd_id = #{prd_id}
+	</delete>
 </mapper>

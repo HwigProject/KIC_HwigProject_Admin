@@ -8,4 +8,7 @@ public interface ProductDAO {
 	public int add(ProductVO vo) throws Exception;
 	//등록 예정 리스트 조회
 	public List<ProductVO> waitList() throws Exception;
+	
+	//예정 상품 삭제
+	public int delete(int prd_id) throws Exception;
 }

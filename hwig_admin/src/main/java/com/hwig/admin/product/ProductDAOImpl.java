@@ -30,6 +30,11 @@ public class ProductDAOImpl implements ProductDAO{
 		return sql.selectList(namespace + ".waitList");
 	}
 
+	@Override
+	public int delete(int prd_id) throws Exception {
+		return sql.delete(namespace + ".delete", prd_id);
+	}
+
 	
 	
 	

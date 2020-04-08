@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -93,6 +94,20 @@ public class ProductController {
 		model.addAttribute("waitList", waitList);
 		
 		return waitList;
+	}
+	
+	@RequestMapping(value="prd_delete", method=RequestMethod.GET)
+	public String getDelete(@RequestParam("prd_id") int prd_id,RedirectAttributes rttr) throws Exception {
+		
+		int result = service.delete(prd_id);
+		if(result == 1) {
+			rttr.addFlashAttribute("msg", "success");
+		}
+		else {
+			rttr.addFlashAttribute("msg", "fail");
+		}
+		
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/prd_waitlist_seller", method=RequestMethod.GET)

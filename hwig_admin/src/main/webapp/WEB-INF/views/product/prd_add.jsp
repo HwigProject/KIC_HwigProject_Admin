@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/headnav.jsp" %>
-<!-- 제이쿼리 -->
-<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <section class="main-content-wrapper">
         <div class="pageheader">
               <h1>상품 등록 페이지</h1>
@@ -31,12 +29,20 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="category_id">카테고리 id</label>
 								<div class="col-sm-6">
-									<!-- <select class="form-control" name="category_select" id="category_id">
-										<option value="100" selected>기본채소</option>
-										<option value="101">기본채소1</option>
-										<option value="102">기본채소2</option>
-									</select> -->
-									<input type="number" class="form-control" id="category_id" name="category_id" required="" />
+									<select class="form-control" name="category_select" id="category_select">
+										<option value="100">기본채소</option>
+										<option value="101">쌈, 샐러드, 간편채소</option>
+										<option value="102">브로콜리, 특수채소</option>
+										<option value="103">콩나물, 버섯류</option>
+									</select>
+									<input type="hidden" id="category_id" name="category_id" value="100" />
+									<script>
+										$("#category_select").click(function(){
+											var s_value= $("#category_select option:selected").attr('value');
+											var s_int_value = parseInt(s_value);
+											$("#category_id").val(s_int_value);
+										})
+									</script>
 								</div>
 							</div>
 							<div class="form-group">
@@ -136,7 +142,18 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="prd_wrap">포장타입</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" id="prd_wrap" name="prd_wrap" required="" placeholder="Required input"/>
+									<select class="form-control" name="prd_wrap_select" id="prd_wrap_select">
+										<option value="박스(BOX)">박스(BOX)</option>
+										<option value="스티로폼">스티로폼</option>
+										<option value="비닐">비닐</option>
+									</select>
+									<input type="hidden" id="prd_wrap" name="prd_wrap" value="100" />
+									<script>
+										$("#prd_wrap_select").click(function(){
+											var info_value= $("#prd_wrap_select option:selected").attr('value');
+											$("#prd_wrap").val(info_value);
+										})
+									</script>
 								</div>
 							</div>
 							<div class="form-group">

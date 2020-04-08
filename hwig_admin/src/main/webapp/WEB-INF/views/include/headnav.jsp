@@ -31,8 +31,6 @@
     <link rel="stylesheet" href="../resources/assets/plugins/daterangepicker/daterangepicker-bs3.css">
     <!-- Calendar demo -->
     <link rel="stylesheet" href="../resources/assets/css/clndr.css">
-    <!-- Switchery -->
-    <link rel="stylesheet" href="../resources/assets/plugins/switchery/switchery.min.css">
     <!-- Custom styles for this theme -->
     <link rel="stylesheet" href="../resources/assets/css/main.css">
     <!-- Feature detection -->
@@ -42,6 +40,8 @@
     <script src="assets/js/vendor/html5shiv.js"></script>
     <script src="assets/js/vendor/respond.min.js"></script>
     <![endif]-->
+	<!-- 제이쿼리 -->
+	<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 </head>
 
 <body>

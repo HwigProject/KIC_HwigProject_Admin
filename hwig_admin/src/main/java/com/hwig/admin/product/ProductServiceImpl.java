@@ -23,5 +23,10 @@ public class ProductServiceImpl implements ProductService{
 		return dao.waitList();
 	}
 
+	@Override
+	public int delete(int prd_id) throws Exception {
+		return dao.delete(prd_id);
+	}
+
 	
 }
