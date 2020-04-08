@@ -29,13 +29,21 @@ public class ProductDAOImpl implements ProductDAO{
 	public List<ProductVO> waitList() throws Exception {
 		return sql.selectList(namespace + ".waitList");
 	}
+	
+	//등록 완료 목록 조회
+	@Override
+	public List<ProductVO> list() throws Exception {
+		return sql.selectList(namespace + ".list");
+	}
 
 	@Override
 	public int delete(int prd_id) throws Exception {
 		return sql.delete(namespace + ".delete", prd_id);
 	}
 
-	
-	
+	@Override
+	public int addList(int prd_id) throws Exception {
+		return sql.insert(namespace + ".addList", prd_id);
+	}
 	
 }

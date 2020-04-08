@@ -32,9 +32,8 @@
 									<th>카테고리</th>
 									<th>판매자id</th>
 									<th>상품명</th>
-									<th>썸네일</th>
-									<th>한줄설명</th>
 									<th>원가</th>
+									<th>한줄설명</th>
 									<th>수정삭제</th>
 								</tr>
 							</thead>
@@ -43,13 +42,12 @@
 							<!-- 목록 -->
 								<c:forEach items="${list}" var="list">
 									<tr>
-										<td id="list_prd_id">${prd_id}</td>
-										<td >${list.category_id}</td>
+										<td>${list.prd_id}</td>
+										<td>${list.category_id}</td>
 										<td>${list.sel_id}</td>
 										<td>${list.prd_name}</td>
-										<td>${list.prd_thumb}</td>
-										<td>${list.prd_comment}</td>
 										<td>${list.prd_price}</td>
+										<td>${list.prd_comment}</td>
 										<td>
 											<button type="button" class="btn btn-warning btn-sm">수정</button>
 											<button type="button" class="btn btn-danger btn-sm btn_del">삭제</button>

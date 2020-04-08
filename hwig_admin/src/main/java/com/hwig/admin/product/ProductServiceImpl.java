@@ -22,11 +22,24 @@ public class ProductServiceImpl implements ProductService{
 		
 		return dao.waitList();
 	}
-
+	
+	//등록 완료 목록 조회
+	@Override
+	public List<ProductVO> list() throws Exception {
+		return dao.list();
+	}
+	
 	@Override
 	public int delete(int prd_id) throws Exception {
 		return dao.delete(prd_id);
 	}
+
+	@Override
+	public int addList(int prd_id) throws Exception {
+		return dao.addList(prd_id);
+	}
+
+	
 
 	
 }

@@ -33,11 +33,13 @@ public class ProductController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
+	//상품 등록 - get
 	@RequestMapping(value = "/prd_add", method=RequestMethod.GET)
 	public void getAdd() throws Exception {
 		
 	}
 	
+	//상품 등록 - post
 	@RequestMapping(value = "/prd_add", method=RequestMethod.POST)
 	public String postAdd(ProductVO vo, RedirectAttributes rttr, MultipartFile[] file) throws Exception {
 		
@@ -77,7 +79,7 @@ public class ProductController {
 		}
 		
 		int result = service.add(vo);
-		if(result == 1) {
+		if(result == 1) { //등록 완료 메세지
 			rttr.addFlashAttribute("msg", "success");
 		}
 		else {
@@ -87,6 +89,7 @@ public class ProductController {
 		return "redirect:/product/prd_waitlist_seller";
 	}
 	
+	//상품 등록 예정 목록
 	@RequestMapping(value = "/prd_waitlist", method=RequestMethod.GET)
 	public List<ProductVO> getWaitList(Model model) throws Exception {
 		
@@ -96,20 +99,32 @@ public class ProductController {
 		return waitList;
 	}
 	
-	@RequestMapping(value="prd_delete", method=RequestMethod.GET)
+	//상품 등록 완료 목록
+		@RequestMapping(value = "/prd_list", method=RequestMethod.GET)
+		public List<ProductVO> getList(Model model) throws Exception {
+			
+			List<ProductVO> list = service.list();
+			model.addAttribute("list", list);
+			
+			return list;
+		}
+	
+	//상품 삭제 - get
+	@RequestMapping(value="/prd_delete", method=RequestMethod.GET)
 	public String getDelete(@RequestParam("prd_id") int prd_id,RedirectAttributes rttr) throws Exception {
 		
 		int result = service.delete(prd_id);
-		if(result == 1) {
+		if(result == 1) { //삭제 완료 메세지
 			rttr.addFlashAttribute("msg", "success");
 		}
 		else {
 			rttr.addFlashAttribute("msg", "fail");
 		}
 		
-		return "redirect:/";
+		return "redirect:/product/prd_waitlist";
 	}
 	
+	//판매자가 보는 등록 예정 목록
 	@RequestMapping(value = "/prd_waitlist_seller", method=RequestMethod.GET)
 	public List<ProductVO> getWaitListSeller(Model model) throws Exception {
 		
@@ -119,8 +134,16 @@ public class ProductController {
 		return waitList;
 	}
 	
-	@RequestMapping(value = "/prd_list", method=RequestMethod.GET)
-	public void getList() throws Exception {
+	@RequestMapping(value="/prd_add_list", method=RequestMethod.GET)
+	public String getListAdd(@RequestParam("prd_id") int prd_id, RedirectAttributes rttr) throws Exception {
 		
+		int result = service.addList(prd_id);
+		if(result == 1) { //삭제 완료 메세지
+			rttr.addFlashAttribute("msg", "success");
+		}
+		else {
+			rttr.addFlashAttribute("msg", "fail");
+		}
+		return "redirect:/product/prd_waitlist";
 	}
 }
