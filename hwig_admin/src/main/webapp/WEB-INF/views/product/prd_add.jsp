@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/headnav.jsp" %>
+<!-- 제이쿼리 -->
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <section class="main-content-wrapper">
         <div class="pageheader">
               <h1>상품 등록 페이지</h1>
@@ -25,11 +27,16 @@
 	                    </div>
 					</div>
 					<div class="panel-body">
-						<form role="form" method="post" class="form-horizontal form-border" id="form">
+						<form role="form" method="post" class="form-horizontal form-border" encType="multipart/form-data" id="form">
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="category_id">카테고리 id</label>
 								<div class="col-sm-6">
-									<input type="number" class="form-control" id="category_id" name="category_id" required="" placeholder="Required input"/>
+									<!-- <select class="form-control" name="category_select" id="category_id">
+										<option value="100" selected>기본채소</option>
+										<option value="101">기본채소1</option>
+										<option value="102">기본채소2</option>
+									</select> -->
+									<input type="number" class="form-control" id="category_id" name="category_id" required="" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -53,8 +60,22 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="prd_thumb">썸네일</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" id="prd_thumb" name="prd_thumb" required="" placeholder="Required input"/>
+									<input type="file" id="prd_thumb" class="prd_thumb" name="file" required=""/>
+									<div class="select_thumb">
+										<img src=""/>
+									</div>
 								</div>
+								<script>
+									$('.prd_thumb').change(function(){
+										if(this.files && this.files[0]) {
+											var reader = new FileReader;
+											reader.onload = function(data) {
+												$(".select_thumb img").attr("src", data.target.result).width(500);
+											}
+											reader.readAsDataURL(this.files[0]);
+										}
+									});
+								</script>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="prd_comment">한줄설명</label>
@@ -65,8 +86,22 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="prd_img">이미지</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" id="prd_img" name="prd_img" required="" placeholder="Required input"/>
+									<input type="file" id="prd_img" class="prd_img" name="file" required=""/>
+									<div class="select_img">
+										<img src=""/>
+									</div>
 								</div>
+								<script>
+									$('.prd_img').change(function(){
+										if(this.files && this.files[0]) {
+											var reader = new FileReader;
+											reader.onload = function(data) {
+												$(".select_img img").attr("src", data.target.result).width(500);
+											}
+											reader.readAsDataURL(this.files[0]);
+										}
+									});
+								</script>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="prd_stock">재고</label>
