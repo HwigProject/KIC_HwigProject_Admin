@@ -39,6 +39,13 @@ public class ProductServiceImpl implements ProductService{
 		return dao.addList(prd_id);
 	}
 
+	//등록 완료 상품 삭제
+	@Override
+	public int deletelist(int prd_id) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.deletelist(prd_id);
+	}
+
 	
 
 	

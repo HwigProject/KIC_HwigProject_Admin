@@ -16,6 +16,9 @@ public interface ProductDAO {
 	//예정 상품 삭제
 	public int delete(int prd_id) throws Exception;
 	
+	//등록 완료 상품 삭제
+	public int deletelist(int prd_id) throws Exception;
+	
 	//등록 예정 상품을 등록 완료 리스트로 넘김
 	public int addList(int prd_id) throws Exception;
 }

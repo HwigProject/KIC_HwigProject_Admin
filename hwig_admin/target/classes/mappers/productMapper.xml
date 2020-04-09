@@ -27,6 +27,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from tbl_prd_b where prd_id = #{prd_id}
 	</delete>
 	
+	<!-- 등록 완료 상품 삭제 -->
+	<delete id="deletelist">
+		delete from tbl_prd where prd_id = #{prd_id}
+	</delete>
+	
 	<!-- 등록 예정 리스트의 상품을 등록상품으로 옮기기 -->
 	<insert id="addList">
 		insert into tbl_prd

@@ -109,7 +109,7 @@ public class ProductController {
 			return list;
 		}
 	
-	//상품 삭제 - get
+	//등록 예정 목록 상품 삭제 - get
 	@RequestMapping(value="/prd_delete", method=RequestMethod.GET)
 	public String getDelete(@RequestParam("prd_id") int prd_id,RedirectAttributes rttr) throws Exception {
 		
@@ -124,6 +124,22 @@ public class ProductController {
 		return "redirect:/product/prd_waitlist";
 	}
 	
+	//등록 완료 상품 삭제 - get
+	@RequestMapping(value="/prd_deletelist", method=RequestMethod.GET)
+	public String getDeleteList(@RequestParam("prd_id") int prd_id,RedirectAttributes rttr) throws Exception {
+			
+		int result = service.deletelist(prd_id);
+		if(result == 1) { //삭제 완료 메세지
+			rttr.addFlashAttribute("msg", "success");
+		}
+		else {
+			rttr.addFlashAttribute("msg", "fail");
+		}
+			
+		return "redirect:/product/prd_list";
+	}
+		
+	
 	//판매자가 보는 등록 예정 목록
 	@RequestMapping(value = "/prd_waitlist_seller", method=RequestMethod.GET)
 	public List<ProductVO> getWaitListSeller(Model model) throws Exception {
@@ -134,10 +150,12 @@ public class ProductController {
 		return waitList;
 	}
 	
+	//등록
 	@RequestMapping(value="/prd_add_list", method=RequestMethod.GET)
 	public String getListAdd(@RequestParam("prd_id") int prd_id, RedirectAttributes rttr) throws Exception {
 		
 		int result = service.addList(prd_id);
+		service.delete(prd_id);//등록 후 tbl_prd_b에서 삭제
 		if(result == 1) { //삭제 완료 메세지
 			rttr.addFlashAttribute("msg", "success");
 		}
