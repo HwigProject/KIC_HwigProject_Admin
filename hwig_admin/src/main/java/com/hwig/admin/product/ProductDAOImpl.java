@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.hwig.admin.common.SearchCriteria;
+
 @Repository
 public class ProductDAOImpl implements ProductDAO{
 
@@ -24,16 +26,22 @@ public class ProductDAOImpl implements ProductDAO{
 		return sql.insert(namespace + ".add", vo);
 	}
 	
+	//리스트 갯수 세기
+	@Override
+	public int selectAllCount(SearchCriteria cri) {
+		return sql.selectOne(namespace + ".allCount", cri);
+	}
+	
 	//상품 승인 예정 목록 조회
 	@Override
-	public List<ProductVO> waitList() throws Exception {
-		return sql.selectList(namespace + ".waitList");
+	public List<ProductVO> waitList(SearchCriteria cri) throws Exception {
+		return sql.selectList(namespace + ".waitList", cri);
 	}
 	
 	//등록 완료 목록 조회
 	@Override
-	public List<ProductVO> list() throws Exception {
-		return sql.selectList(namespace + ".list");
+	public List<ProductVO> list(SearchCriteria cri) throws Exception {
+		return sql.selectList(namespace + ".list", cri);
 	}
 
 	@Override

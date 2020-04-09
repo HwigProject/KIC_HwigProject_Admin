@@ -6,6 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Repository;
 
+import com.hwig.admin.common.SearchCriteria;
+
 @Repository
 public class ProductServiceImpl implements ProductService{
 
@@ -17,16 +19,22 @@ public class ProductServiceImpl implements ProductService{
 		return dao.add(vo);
 	}
 	
+	//리스트 갯수 세기
 	@Override
-	public List<ProductVO> waitList() throws Exception {
+	public int listAllCount(SearchCriteria cri) {
+		return dao.selectAllCount(cri);
+	}
+	
+	@Override
+	public List<ProductVO> waitList(SearchCriteria cri) throws Exception {
 		
-		return dao.waitList();
+		return dao.waitList(cri);
 	}
 	
 	//등록 완료 목록 조회
 	@Override
-	public List<ProductVO> list() throws Exception {
-		return dao.list();
+	public List<ProductVO> list(SearchCriteria cri) throws Exception {
+		return dao.list(cri);
 	}
 	
 	@Override
@@ -45,8 +53,5 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		return dao.deletelist(prd_id);
 	}
-
-	
-
 	
 }

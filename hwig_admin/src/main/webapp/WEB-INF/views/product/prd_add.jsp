@@ -122,12 +122,6 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label" for="prd_sale">할인율</label>
-								<div class="col-sm-6">
-									<input type="number" class="form-control" id="prd_sale" name="prd_sale" required="" placeholder="Required input"/>
-								</div>
-							</div>
-							<div class="form-group">
 								<label class="col-sm-3 control-label" for="prd_kg">중량/용량</label>
 								<div class="col-sm-6">
 									<input type="text" class="form-control" id="prd_kg" name="prd_kg" required="" placeholder="Required input"/>

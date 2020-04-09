@@ -26,6 +26,32 @@
 	                    </div>
 					</div>
 					<div class="panel-body">
+					<div class="row">
+							<div class="col-xs-8">
+								<div class="dataTables_length" id="example_length">
+									<label>검색 <select name="searchType" id="searchType">
+											<option value=""
+												<c:out value="${cri.searchType == null ? 'selected' : ' '}" />>
+												----</option>
+											<option value="id"
+												<c:out value="${cri.searchType eq 'id' ? 'selected' : ' ' }" />>
+												상품id</option>
+											<option value="pname"
+												<c:out value="${cri.searchType eq 'pname' ? 'selected' : ' ' }" />>
+												상품명</option>
+									</select>
+									</label>
+								</div>
+							</div>
+							<div class="col-xs-4">
+								<div id="example_filter" class="dataTables_filter">
+									<label id="listLabel">
+										<input type="search" class="form-control input-sm" aria-controls="example" id="keyword" value="${cri.keyword}">
+									</label>
+									<button type="button" class="btn btn-success" id="searchBtn">검색</button>
+								</div>
+							</div>
+						</div>
 						<table id="productlist" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
@@ -58,6 +84,26 @@
 							<!-- 목록 -->
 							</tbody>
 						</table>
+						<div class="col-xs-12">
+							<div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+								<ul class="pagination">
+									<c:if test="${pageMaker.prev}">
+										<li><a href="prd_waitlist${pageMaker.makeSearch(pageMaker.startPage-1)}">&laquo;</a></li>
+									</c:if>
+	
+									<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+										<li
+											<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
+											<a href="prd_waitlist${pageMaker.makeSearch(idx)}">${idx}</a>
+										</li>
+									</c:forEach>
+	
+									<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+										<li><a href="prd_waitlist${pageMaker.makeSearch(pageMaker.endPage+1)}">&raquo;</a></li>
+									</c:if>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -65,6 +111,24 @@
 	</section>
 </section>
 <script>
+$(document).ready(function() {
+	function search(){
+		self.location = "prd_waitlist"
+			+ '${pageMaker.makeQuery(1)}'
+			+ "&searchType="
+			+ $("#searchType option:selected").val()
+			+ "&keyword=" + encodeURIComponent($('#keyword').val());
+	}
+	
+	$("#searchBtn").on("click", search);
+	
+	$("#keyword").keydown(function(key) {
+        if (key.keyCode == 13) {
+			search();
+        }
+    });
+});
+
 	var result = "${msg}";
 	if(result == "success") {
 		alert("완료되었습니다.")

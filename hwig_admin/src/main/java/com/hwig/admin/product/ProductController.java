@@ -12,11 +12,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.hwig.admin.common.PageMaker;
+import com.hwig.admin.common.SearchCriteria;
 
 @Controller
 @RequestMapping("/product/*")
@@ -91,20 +95,32 @@ public class ProductController {
 	
 	//상품 등록 예정 목록
 	@RequestMapping(value = "/prd_waitlist", method=RequestMethod.GET)
-	public List<ProductVO> getWaitList(Model model) throws Exception {
+	public List<ProductVO> getWaitList(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 		
-		List<ProductVO> waitList = service.waitList();
+		List<ProductVO> waitList = service.waitList(cri);
 		model.addAttribute("waitList", waitList);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.listAllCount(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
 		
 		return waitList;
 	}
 	
 	//상품 등록 완료 목록
 		@RequestMapping(value = "/prd_list", method=RequestMethod.GET)
-		public List<ProductVO> getList(Model model) throws Exception {
+		public List<ProductVO> getList(@ModelAttribute("cri") SearchCriteria cri,Model model) throws Exception {
 			
-			List<ProductVO> list = service.list();
+			List<ProductVO> list = service.list(cri);
 			model.addAttribute("list", list);
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(service.listAllCount(cri));
+			
+			model.addAttribute("pageMaker", pageMaker);
 			
 			return list;
 		}
@@ -138,17 +154,22 @@ public class ProductController {
 			
 		return "redirect:/product/prd_list";
 	}
-		
 	
-	//판매자가 보는 등록 예정 목록
-	@RequestMapping(value = "/prd_waitlist_seller", method=RequestMethod.GET)
-	public List<ProductVO> getWaitListSeller(Model model) throws Exception {
-		
-		List<ProductVO> waitList = service.waitList();
-		model.addAttribute("waitList", waitList);
-		
-		return waitList;
-	}
+	//상품 등록 예정 목록
+		@RequestMapping(value = "/prd_waitlist_seller", method=RequestMethod.GET)
+		public List<ProductVO> getWaitListSeller(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+			
+			List<ProductVO> waitList = service.waitList(cri);
+			model.addAttribute("waitList", waitList);
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(service.listAllCount(cri));
+			
+			model.addAttribute("pageMaker", pageMaker);
+			
+			return waitList;
+		}
 	
 	//등록
 	@RequestMapping(value="/prd_add_list", method=RequestMethod.GET)
