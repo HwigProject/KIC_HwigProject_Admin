@@ -13,21 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>NeuBoard</title>
     <meta name="description" content="">
-<<<<<<< HEAD
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <!-- Favicon -->
-=======
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<style>
-	#listLabel {
-		float: left;
-	}
-	#example_filter {
-		float: right;
-	}
-</style>
-<!-- Favicon -->
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
     <link rel="shortcut icon" href="../resources/assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../resources/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -50,6 +37,7 @@
     <link rel="stylesheet" href="../resources/assets/css/main.css">
     <!-- Feature detection -->
     <script src="../resources/assets/js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="assets/js/vendor/html5shiv.js"></script>
@@ -62,13 +50,9 @@
         <header id="header">
             <!--logo start-->
             <div class="brand">
-                <a href="index.html" class="logo">
+                <a href="/" class="logo">
                     <i class="icon-layers"></i>
-<<<<<<< HEAD
                     <span>Hwig</span> Admin</a>
-=======
-                    <span>NEU</span>BOARD</a>
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
             </div>
             <!--logo end-->
             <ul class="nav navbar-nav navbar-left">
@@ -83,13 +67,9 @@
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="meta">
                             <span class="avatar">
-                                <img src="../resources/assets/img/profile.jpg" class="img-circle" alt="">
+                                <img src="../resources/assets/img/hwig_logo.png" class="img-circle" alt="">
                             </span>
-<<<<<<< HEAD
                         <span class="text">Admin</span>
-=======
-                        <span class="text">Mike Adams</span>
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
                         <span class="caret"></span>
                         </span>
                     </a>
@@ -145,17 +125,12 @@
         <aside class="sidebar sidebar-left">
             <div class="sidebar-profile">
                 <div class="avatar">
-                    <img class="img-circle profile-image" src="../resources/assets/img/profile.jpg" alt="profile">
+                    <img class="img-circle profile-image" src="../resources/assets/img/hwig_logo.png" alt="profile">
                     <i class="on border-dark animated bounceIn"></i>
                 </div>
                 <div class="profile-body dropdown">
-<<<<<<< HEAD
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>Admin <span class="caret"></span></h4></a>
                     <small class="title">Hwig Admin</small>
-=======
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>Mike Adams <span class="caret"></span></h4></a>
-                    <small class="title">Front-end Developer</small>
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
                     <ul class="dropdown-menu animated fadeInRight" role="menu">
                         <li class="profile-progress">
                             <h5>
@@ -240,11 +215,7 @@
                                 </a>
                             </li>
                             <li>
-<<<<<<< HEAD
                                 <a href="tables-data-tables.html" title="Data Tables">
-=======
-                                <a href="/seller/list" title="Data Tables">
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
                                      판매자 관리
                                 </a>
                             </li>
@@ -256,39 +227,22 @@
                         </a>
                         <ul class="nav-sub">
                             <li>
-<<<<<<< HEAD
                                 <a href="/notice/nlist" title="Data Tables">
-=======
-                                <a href="tables-data-tables.html" title="Data Tables">
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
                                      공지사항
                                 </a>
                             </li>
                             <li>
-<<<<<<< HEAD
                                 <a href="/event/elist" title="Data Tables">
-=======
-                                <a href="tables-data-tables.html" title="Data Tables">
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
                                      이벤트
                                 </a>
                             </li>
                             <li>
-<<<<<<< HEAD
                                 <a href="/faq/flist" title="Data Tables">
                                      자주묻는질문
                                 </a>
                             </li>
                             <li>
                                 <a href="/qna/qlist" title="Data Tables">
-=======
-                                <a href="tables-data-tables.html" title="Data Tables">
-                                     Q&A
-                                </a>
-                            </li>
-                            <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
                                      1:1 문의
                                 </a>
                             </li>

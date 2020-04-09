@@ -31,16 +31,15 @@
 	                                    <div class="col-md-12">
 	                                        <div class="panel view-mail-body">
 	                                            <div class="panel-body">
-	                                                <p>${event_view.event_content}</p>
+	                                                <p>${event_view.event_content}</p>	                                        
 	                                            </div>
 	                                            <div class="panel-body">
 	                                                <p>본문 이미지</p>
 	                                                <img src="${event_view.event_content_img}"/>
-	                                            </div>
-	                                            <div class="panel-body">
 	                                                <p>배너 이미지</p>
 	                                                <img src="${event_view.event_banner_img}"/>
 	                                            </div>
+	                                            
 	                                            <div class="panel-body">
 	                                                <p>사각 이미지</p>
 	                                                <img src="${event_view.event_square_img}"/>

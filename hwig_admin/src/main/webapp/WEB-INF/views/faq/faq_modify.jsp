@@ -37,6 +37,32 @@
 		}
 		return true;
 	}
+	
+	function check_upload(){
+		upForm = document.f_uploadForm;
+		var selec = upForm.category.selectedIndex;
+		
+		if(upForm.faq_subject.value==""){
+			alert("제목을 입력해주세요.");
+			return upForm.faq_subject.focus();
+		} 
+		if(upForm.faq_content.value==""){
+			alert("본문을 입력해주세요.");
+			return upForm.faq_content.focus();
+		}
+		if(selec==0){
+			alert("카테고리를 설정해주세요.")
+			return upForm.faq_category.focus();
+		}
+		
+		
+		if(confirm("수정 하시겠습니까?")){
+			upForm.submit();
+		}else{
+			return;
+		}
+	}
+	
 </script>
 </head>
 <body>
@@ -56,7 +82,7 @@
                             </div>
 
                             <div class="panel-body">
-                                <form method="post" class="form-horizontal form-border">
+                                <form method="post" name="f_uploadForm" class="form-horizontal form-border">
                						<input type="hidden" name="faq_category" value="${faq_view.faq_category}">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">제목</label>
@@ -81,13 +107,13 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">본문</label>
                                         <div class="col-sm-6">
-                                            <textarea styles="height:500px; resize:none;" name="faq_content" class="form-control">${faq_view.faq_content}</textarea>
+                                            <textarea style="resize:none; height:500px;" name="faq_content" class="form-control">${faq_view.faq_content}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-6 pull-right">
-                                            <input type="submit" value="수정" class="btn btn-success"/>
-                    						<input type="button" value="글 목록으로... " class="btn btn-danger" onclick="javascript:history.back()"/>
+                                            <input type="button" value="수정" class="btn btn-success" onclick="check_upload()"/>
+                    						<input type="button" value="목록" class="btn btn-danger" onclick="javascript:location.href='/faq/faq_modify?faq_id=${fList.faq_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'"/>
                                         </div>
                                     </div>                                        
                                 </form>

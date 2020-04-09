@@ -2,10 +2,13 @@ package com.hwig.admin.notice;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class NoticeVO {
 	private int notice_id;
 	private String notice_subject;
 	private String notice_content;
+	@JsonFormat(pattern = "yy-MM-dd")
 	private Date notice_regdate;
 	private int notice_hit;
 

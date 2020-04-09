@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>자주묻는질문 등록</title>
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 <script>
 	function select_category(frm){
 		
@@ -37,7 +37,72 @@
 		}
 		return true;
 	}
+	
+	function check_upload(){
+		upForm = document.f_uploadForm;
+		var selec = upForm.category.selectedIndex;
+		
+		if(upForm.faq_subject.value==""){
+			alert("제목을 입력해주세요.");
+			return upForm.faq_subject.focus();
+		} 
+		if(upForm.faq_content.value==""){
+			alert("본문을 입력해주세요.");
+			return upForm.faq_content.focus();
+		}
+		if(selec==0){
+			alert("카테고리를 설정해주세요.")
+			return upForm.faq_category.focus();
+		}
+		
+		
+		if(confirm("등록 하시겠습니까?")){
+			upForm.submit();
+		}else{
+			return;
+		}
+	}
 </script>
+
+<script>
+	var txt = "";
+	var hdtx = "";
+	var bdtx = "";
+	var titx = "";
+	var data = new Array();
+	data[0] = "${macro.macro_head}";
+	data[1] = "${macro.macro_content}";
+	data[2] = "${macro.macro_tail}";
+		
+	$(function(){
+		$('#hd').click(function(){
+			$('#hdt').text(data[0]);
+			hdtx = $('#hdt').text();
+			
+		})
+
+		 $('#bd').click(function(){
+			$('#bdt').text(data[1]);
+			bdtx = $('#bdt').text();
+
+		})
+
+		$('#ti').click(function(){
+			$('#tit').text(data[2]);
+			titx = $('#tit').text();
+
+		}) 
+
+		$('#mix').click(function(){
+			txt = hdtx + '<p><p>' + bdtx + '<p><p>' + titx;
+			result = txt.replace(/(<p>|<p\/>|<p \/>)/g, '\r\n');
+			$('#faq_content').html(result);
+			$('#ppp').html(result);
+		})
+
+	})
+</script>
+
 </head>
 <body>
 	<%@ include file="../include/headnav.jsp" %>
@@ -56,7 +121,7 @@
                             </div>
 
                             <div class="panel-body">
-                                <form method="post" class="form-horizontal form-border">
+                                <form method="post" name="f_uploadForm" class="form-horizontal form-border">                                
                						<input type="hidden" name="faq_category">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">제목</label>
@@ -80,15 +145,23 @@
        								</div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">본문</label>
+                                        <!-- <button type="button" id="hd">머리말</button>  <textarea id="hdt"></textarea> <p>
+	
+										<button type="button" id="bd">본문</button>   <textarea id="bdt"></textarea> <p>
+									
+										<button type="button" id="ti">꼬리말</button>  <textarea id="tit"></textarea> <p>
+									
+										<button type="button" id="mix">합체!</button>
+										<p id="ppp"><p> -->
                                         <div class="col-sm-6">
-                                            <textarea style="resize:none; height:500px;" name="faq_content" class="form-control"></textarea>
+                                            <textarea style="resize:none; height:500px;" id="faq_content" name="faq_content" class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-sm-6 pull-right">
-                                            <input type="submit" value="등록" class="btn btn-info"/>
+                                        <div class="col-sm-4 pull-right">
+                                            <input type="button" value="등록" class="btn btn-info" onclick="check_upload()"/>
                    							<input type="reset" value="초기화" class="btn btn-success"/>
-                    						<input type="button" value="글 목록으로... " class="btn btn-danger" onclick="javascript:history.back()"/>
+                    						<input type="button" value="목록 " class="btn btn-danger" onclick="javascript:location.href=document.referrer"/>
                                         </div>
                                     </div>                                        
                                 </form>

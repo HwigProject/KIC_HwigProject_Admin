@@ -74,5 +74,10 @@
             </section>
         </section>
 	<%@ include file="../include/footnav.jsp" %>
+		<script>
+		$(document).ready(function() {
+	    $('#example').dataTable();
+		});
+	</script>
 </body>
 </html>

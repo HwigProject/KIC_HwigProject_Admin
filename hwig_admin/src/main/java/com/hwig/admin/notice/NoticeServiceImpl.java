@@ -6,17 +6,26 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.hwig.admin.common.SearchCriteria;
+
 @Service
 public class NoticeServiceImpl implements NoticeService{
 	
 	@Inject
 	NoticeDAO dao;
-	
+
 	//공지사항 목록
 	@Override
-	public List<NoticeVO> nList() throws Exception {
+	public List<NoticeVO> nList(SearchCriteria cri) throws Exception {
+			
+		return dao.nList(cri);
+	}
+	
+	//전체 개수 세기
+	@Override
+	public int listCount(SearchCriteria cri) throws Exception {
 		
-		return dao.nList();
+		return dao.listCount(cri);
 	}
 	
 	//공지사항 등록
@@ -60,7 +69,4 @@ public class NoticeServiceImpl implements NoticeService{
 		
 		dao.notice_id_d(notice);
 	}
-
-	
-
 }

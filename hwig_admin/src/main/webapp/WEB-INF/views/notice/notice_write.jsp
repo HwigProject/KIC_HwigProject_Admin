@@ -6,6 +6,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>공지사항 등록</title>
+<script>
+function check_upload(){
+	upForm = document.n_uploadForm;
+	
+	if(upForm.notice_subject.value==""){
+		alert("제목을 입력해주세요.");
+		return upForm.notice_subject.focus();
+	} 
+	if(upForm.notice_content.value==""){
+		alert("본문을 입력해주세요.");
+		return upForm.notice_content.focus();
+	}
+
+	if(confirm("등록 하시겠습니까?")){
+		upForm.submit();
+	}else{
+		return;
+	}
+}
+</script>
 </head>
 <body>
 	<%@ include file="../include/headnav.jsp" %>
@@ -24,7 +44,7 @@
                             </div>
 
                             <div class="panel-body">
-                                <form method="post" class="form-horizontal form-border">         
+                                <form method="post" name="n_uploadForm" class="form-horizontal form-border">         
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">제목</label>
                                         <div class="col-sm-6">
@@ -39,9 +59,9 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-4 pull-right">
-                                            <input type="submit" value="등록" class="btn btn-info"/>
+                                            <input type="button" value="등록" class="btn btn-info" onclick="check_upload()"/>
                    							<input type="reset" value="초기화" class="btn btn-success"/>
-                    						<input type="button" value="글 목록으로... " class="btn btn-danger" onclick="javascript:history.back()"/>
+                    						<input type="button" value="목록 " class="btn btn-danger" onclick="javascript:location.href=document.referrer"/>
                                         </div>
                                     </div>                                        
                                 </form>

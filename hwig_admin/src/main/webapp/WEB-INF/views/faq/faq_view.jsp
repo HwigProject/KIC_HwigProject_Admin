@@ -38,9 +38,9 @@
 	                                            <div class="panel-body">
 	                                                <p>${faq_view.faq_content}</p>
 	                                            </div>            
-	                                            <button class="btn btn-danger pull-right" onclick="location.href='/faq/faq_delete?faq_id=${faq_view.faq_id}'">삭제</button>
-	                                            <button class="btn btn-success pull-right" onclick="location.href='/faq/faq_modify?faq_id=${faq_view.faq_id}'">수정</button>	
-	                                            <a href="javascript:history.back()" class="btn btn-info pull-right">목록</a>	                                                           
+	                                            <button class="btn btn-danger pull-right" onclick="location.href='/faq/faq_delete?faq_id=${faq_view.faq_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'">삭제</button>
+	                                            <button class="btn btn-success pull-right" onclick="location.href='/faq/faq_modify?faq_id=${faq_view.faq_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'">수정</button>	
+	                                            <a href="flist?&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}" class="btn btn-info pull-right">목록</a>	                                                           
 	                                        </div>
 	                                    </div>
 	                                </div>

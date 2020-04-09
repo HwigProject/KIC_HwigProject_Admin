@@ -177,43 +177,28 @@
 <!-- Vector Map  -->
 <script src="../resources/assets/plugins/jvectormap/js/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="../resources/assets/plugins/jvectormap/js/jquery-jvectormap-world-mill-en.js"></script>
-<<<<<<< HEAD
 <!-- Gauge  -->
 <script src="../resources/assets/plugins/gauge/gauge.min.js"></script>
 <script src="../resources/assets/plugins/gauge/gauge-demo.js"></script>
-=======
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
 <!-- Calendar  -->
 <script src="../resources/assets/plugins/calendar/clndr.js"></script>
 <script src="../resources/assets/plugins/calendar/clndr-demo.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
 <!-- Switch -->
 <script src="../resources/assets/plugins/switchery/switchery.min.js"></script>
-<<<<<<< HEAD
 <!--Page Leve JS -->
 <script src="../resources/assets/plugins/dataTables/js/jquery.dataTables.js"></script>
 <script src="../resources/assets/plugins/dataTables/js/dataTables.bootstrap.js"></script>
-=======
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
 <!--Load these page level functions-->
 <script>
 $(document).ready(function() {
     app.dateRangePicker();
-<<<<<<< HEAD
     app.chartJs();
-=======
-    //app.chartJs();
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
     app.weather();
     app.spinStart();
     app.spinStop();
 });
-<<<<<<< HEAD
-$(document).ready(function() {
-    $('#example').dataTable();
-});
-=======
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
+
 </script>
 </body>
 

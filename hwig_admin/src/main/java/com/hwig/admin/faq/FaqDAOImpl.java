@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.hwig.admin.common.SearchCriteria;
+
 @Repository
 public class FaqDAOImpl implements FaqDAO {
 	
@@ -18,9 +20,16 @@ public class FaqDAOImpl implements FaqDAO {
 
 	//자주묻는질문 목록
 	@Override
-	public List<FaqVO> fList() throws Exception {
+	public List<FaqVO> fList(SearchCriteria cri) throws Exception {
 		
-		return sql.selectList(namespace + ".fList");
+		return sql.selectList(namespace + ".fList", cri);
+	}
+	
+	//전체개수 카운트
+	@Override
+	public int listCount(SearchCriteria cri) throws Exception {
+		
+		return sql.selectOne(namespace + ".listCount", cri);
 	}
 	
 	//자주묻는질문 등록
@@ -57,7 +66,6 @@ public class FaqDAOImpl implements FaqDAO {
 		
 		sql.update(namespace + ".faq_id_d", faq);	
 	}
-	
-	
+
 	
 }

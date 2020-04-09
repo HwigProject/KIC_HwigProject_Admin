@@ -6,6 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.hwig.admin.common.SearchCriteria;
+
 @Service
 public class FaqServiceImpl implements FaqService{
 	
@@ -14,9 +16,16 @@ public class FaqServiceImpl implements FaqService{
 	
 	//자주묻는질문 목록
 	@Override
-	public List<FaqVO> fList() throws Exception {
+	public List<FaqVO> fList(SearchCriteria cri) throws Exception {
 		
-		return dao.fList();
+		return dao.fList(cri);
+	}
+	
+	//전체 개수 카운트
+	@Override
+	public int listCount(SearchCriteria cri) throws Exception {
+		
+		return dao.listCount(cri);
 	}
 	
 	//자주묻는질문 등록
@@ -53,10 +62,6 @@ public class FaqServiceImpl implements FaqService{
 		
 		dao.faq_id_d(faq);
 	}
-	
-	
-	
-	
-	
 
+	
 }

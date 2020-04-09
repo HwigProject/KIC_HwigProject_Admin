@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.hwig.admin.common.SearchCriteria;
+
 @Repository
 public class NoticeDAOImpl implements NoticeDAO{
 	
@@ -18,9 +20,16 @@ public class NoticeDAOImpl implements NoticeDAO{
 	
 	//공지사항 목록
 	@Override
-	public List<NoticeVO> nList() throws Exception {
+	public List<NoticeVO> nList(SearchCriteria cri) throws Exception {
 		
-		return sql.selectList(namespace + ".nList");
+		return sql.selectList(namespace + ".nList", cri);
+	}
+	
+	//전체 개수 세기
+	@Override
+	public int listCount(SearchCriteria cri) throws Exception {
+		
+		return sql.selectOne(namespace + ".listCount", cri);
 	}
 	
 	//공지사항 등록
@@ -65,7 +74,4 @@ public class NoticeDAOImpl implements NoticeDAO{
 		
 		sql.update(namespace + ".notice_id_d", notice);
 	}
-
-	
-
 }
