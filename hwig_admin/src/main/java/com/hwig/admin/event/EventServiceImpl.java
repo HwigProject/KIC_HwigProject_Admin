@@ -38,14 +38,14 @@ public class EventServiceImpl implements EventService{
 
 	@Override
 	public int event_delete(int event_id) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.event_delete(event_id);
 	}
 
 	@Override
 	public void event_id_d(EventVO event) throws Exception {
-		// TODO Auto-generated method stub
 		
+		dao.event_id_d(event);
 	}
 
 }

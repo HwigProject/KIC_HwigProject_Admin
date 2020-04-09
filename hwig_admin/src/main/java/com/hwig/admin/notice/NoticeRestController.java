@@ -16,6 +16,7 @@ public class NoticeRestController {
 	@Inject
 	NoticeService nService;
 	
+	
 	/*
 	 * @CrossOrigin
 	 * 

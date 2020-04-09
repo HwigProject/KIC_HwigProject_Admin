@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwig.mappers.replyMapper">
+
+	<!-- 답글 조회 -->
+	<select id="reply_view" resultType="com.hwig.admin.reply.ReplyVO">
+		select reply_content, reply_regdate
+		from tbl_reply
+		where qna_id = #{qna_id}
+	</select>
+	
+	<!-- 답글 작성 -->
+	<insert id="reply_write">
+		insert into tbl_reply(qna_id, reply_id, reply_content)
+		values(#{qna_id}, seq_reply.nextval, #{reply_content})
+	</insert>
+	
+	<!-- 답글 매크로  -->
+	<select id="macro_view" resultType="com.hwig.admin.reply.MacroVO">
+		select * from tbl_macro where qna_category = #{qna_category}
+	</select>
+</mapper>

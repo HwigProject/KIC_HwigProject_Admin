@@ -31,4 +31,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			event_list_img = #{event_list_img}
 		where event_id = #{event_id}
 	</update>
+	
+	<!-- 이벤트 삭제 -->
+	<delete id="event_delete" parameterType="int">
+		delete from tbl_event where event_id = #{event_id}
+	</delete>
+	
+	<!-- 이벤트 삭제시 id 번호 하나씩 땡김 -->
+	<update id="event_id_d" parameterType="com.hwig.admin.event.EventVO">
+		update tbl_event set event_id = event_id - 1 where event_id > #{event_id}
+	</update>
 </mapper>

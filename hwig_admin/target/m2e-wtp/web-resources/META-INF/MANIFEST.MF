@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: dnjst
-=======
-Built-By: LimJiNa
->>>>>>> 8957a4d0694275f6aaa4769edced0e67b1fd8a58
 Build-Jdk: 1.8.0_241
 Created-By: Maven Integration for Eclipse
 

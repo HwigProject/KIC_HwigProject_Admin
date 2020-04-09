@@ -1,5 +1,6 @@
 package com.hwig.admin.event;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.UUID;
@@ -7,8 +8,11 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -45,7 +49,7 @@ public class EventController {
 	
 	//이벤트 등록
 	@RequestMapping(value = "/event_write", method = RequestMethod.POST)
-	public String postEvent_write(EventVO event, MultipartFile[] file, RedirectAttributes rttr) throws Exception{
+	public String postEvent_write(EventVO event, MultipartFile[] file, RedirectAttributes rttr, HttpSession session) throws Exception{
 		
 		int count = 0;
 		
@@ -66,6 +70,9 @@ public class EventController {
 					fos.write(buffer, 0, readCount);
 				}
 				fos.close();
+				
+				String path = session.getServletContext().getRealPath("/");
+				System.out.println("■path:::"+path);
 				
 				if(count==0) {
 					event.setEvent_content_img(attachPath + "/" + fileName);
@@ -110,21 +117,40 @@ public class EventController {
 	
 	//이벤트 수정폼
 	@RequestMapping(value = "/event_modify")
-	public void getEvent_modify(@RequestParam("event_id") int event_id, Model model) throws Exception{
+	public void getEvent_modify(@RequestParam("event_id") int event_id, Model model ) throws Exception{
 		
 		EventVO event = eService.event_view(event_id);
 		
 		model.addAttribute("event_view", event);
 	}
 	
+	//이벤트 수정
 	@RequestMapping(value = "/event_modify", method = RequestMethod.POST)
-	public String postEvent_modify(EventVO event, RedirectAttributes rttr, MultipartFile[] file, HttpServletRequest req) throws Exception{
+	public String postEvent_modify(EventVO event, RedirectAttributes rttr, MultipartFile[] file, HttpServletRequest req, HttpSession session) throws Exception{
 		
 		int count = 0;
 		
 		for(MultipartFile files : file)
 		{
 			if(files.getOriginalFilename() != null && !files.getOriginalFilename().equals("")) {
+				//기존 파일 삭제
+				if(count==0) {
+					new File(savePath + req.getParameter("event_content_img")).delete();
+					System.out.println("기존 본문 이미지 삭제");
+				}
+				else if(count==1) {
+					new File(savePath + req.getParameter("event_banner_img")).delete();
+					System.out.println("기존 배너 이미지 삭제");
+				}
+				else if(count==2) {
+					new File(savePath + req.getParameter("event_square_img")).delete();
+					System.out.println("기존 사각 이미지 삭제");
+				}
+				else if(count==3) {
+					new File(savePath + req.getParameter("event_list_img")).delete();
+					System.out.println("기존 목록 이미지 삭제");
+				}
+				
 				//파일명 생성
 				UUID uid = UUID.randomUUID();
 				String fileName = uid.toString() + "_" + files.getOriginalFilename();
@@ -139,7 +165,8 @@ public class EventController {
 					fos.write(buffer, 0, readCount);
 				}
 				fos.close();
-				
+				String path = session.getServletContext().getRealPath("/");
+				System.out.println("■path:::"+path);
 				if(count==0) {
 					event.setEvent_content_img(attachPath + "/" + fileName);
 					System.out.println("본문 이미지 수정"+event.getEvent_content_img()+" "+count);
@@ -156,9 +183,7 @@ public class EventController {
 					event.setEvent_list_img(attachPath + "/" + fileName);
 					System.out.println("리스트 이미지 수정"+event.getEvent_list_img()+" "+count);
 				}
-				count++;
 			} else {
-				
 				if(count==0) {
 					event.setEvent_content_img(req.getParameter("event_content_img"));
 					System.out.println("본문 이미지 그대로");
@@ -176,6 +201,7 @@ public class EventController {
 					System.out.println("리스트 이미지 수정");
 				}
 			}
+			count++;
 		}
 		int result = eService.event_modify(event);
 		
@@ -186,6 +212,47 @@ public class EventController {
 	         rttr.addFlashAttribute("msg", "fail");
 	      }
 
+		return "redirect:/event/elist";
+	}
+	
+	//이벤트 삭제
+	@Transactional(isolation = Isolation.READ_COMMITTED)
+	@RequestMapping(value = "/event_delete", method = RequestMethod.GET)
+	public String event_delete(EventVO event, int event_id, RedirectAttributes rttr, HttpServletRequest req) throws Exception
+	{
+		int count = 0;
+		
+		//기존 이미지 삭제
+		for(int i=0; i<4; i++) {
+			
+			if(count==0) {
+				new File(savePath + req.getParameter("event_content_img")).delete();
+				System.out.println("경로에 있는 본문 이미지 삭제");
+			}
+			else if(count==1) {
+				new File(savePath + req.getParameter("event_banner_img")).delete();
+				System.out.println("경로에 있는 배너 이미지 삭제");
+			}
+			else if(count==2) {
+				new File(savePath + req.getParameter("event_square_img")).delete();
+				System.out.println("경로에 있는 사각 이미지 삭제");
+			}
+			else if(count==3) {
+				new File(savePath + req.getParameter("event_list_img")).delete();
+				System.out.println("경로에 있는 목록 이미지 삭제");
+			}
+		}
+		
+		int result = eService.event_delete(event_id);
+		eService.event_id_d(event);
+
+		if(result == 1)
+		{
+			rttr.addFlashAttribute("msg", "success");
+		} else {
+			rttr.addFlashAttribute("msg", "fail");
+		}
+		
 		return "redirect:/event/elist";
 	}
 }
