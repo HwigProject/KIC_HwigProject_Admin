@@ -15,5 +15,15 @@ public interface MemberService {
 	public MemberVO findOne(String mem_id);
 	
 	public MemberVO login(String mem_id, String mem_pw);
+	
+	public int emailCheck(EmailCheckVO emailCheckVo);
+	
+	public int idCheck(IdCheckVO idCheckVo);
+	
+	public boolean isRightUesrCheck(String mem_id, String mem_pw);
+	
+	public int modify(UpdateMemberVO updateMemberVo);
+	
+	public int remove(String mem_id);
 
 }

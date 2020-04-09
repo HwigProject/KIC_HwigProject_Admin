@@ -44,4 +44,35 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.select(memberVo);
 	}
 
+	@Override
+	public int emailCheck(EmailCheckVO emailCheckVo) {
+		return memberDao.emailCheck(emailCheckVo);
+	}
+
+	@Override
+	public int idCheck(IdCheckVO idCheckVo) {
+		return memberDao.idCheck(idCheckVo);
+	}
+
+	/**
+	 * 리턴값이 ture면 해당회원, false면 회원정보 일치 실패
+	 */
+	@Override
+	public boolean isRightUesrCheck(String mem_id, String mem_pw) {
+		MemberVO memberVo = new MemberVO();
+		memberVo.setMem_id(mem_id);
+		memberVo.setMem_pw(mem_pw);
+		return memberDao.isRightUserCheck(memberVo);
+	}
+
+	@Override
+	public int modify(UpdateMemberVO updateMemberVo) {
+		return memberDao.update(updateMemberVo);
+	}
+
+	@Override
+	public int remove(String mem_id) {
+		return memberDao.delete(mem_id);
+	}
+
 }

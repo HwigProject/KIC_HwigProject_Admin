@@ -1,7 +1,5 @@
 package com.hwig.admin.member;
 
-import java.util.Date;
-
 public class MemberVO {
 
 	private int rownum;
@@ -111,7 +109,7 @@ public class MemberVO {
 				+ mem_email + ", mem_regdate=" + mem_regdate + ", mem_grade=" + mem_grade + ", mem_reverse="
 				+ mem_reverse + "]";
 	}
-	
+
 	public void empty() {
 		rownum = 0;
 		mem_id = "";

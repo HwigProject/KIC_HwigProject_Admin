@@ -110,7 +110,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="#" id="logoutBtn">
                                 <span class="icon"><i class="fa fa-sign-out"></i>
                                 </span>Logout</a>
                         </li>

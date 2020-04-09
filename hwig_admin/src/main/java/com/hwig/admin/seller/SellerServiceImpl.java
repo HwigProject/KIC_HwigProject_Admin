@@ -2,6 +2,8 @@ package com.hwig.admin.seller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,20 +21,12 @@ public class SellerServiceImpl implements SellerService {
 	}
 
 	@Override
-	public SellerVO listOne(String sel_id) {
+	public SellerVO findOneById(String sel_id) {
 		SellerVO sellerVo = new SellerVO();
 		sellerVo.setSel_id(sel_id);
 		return sellerDao.select(sellerVo);
 	}
-
-	@Override
-	public SellerVO login(String sel_id, String sel_pw) {
-		SellerVO sellerVo = new SellerVO();
-		sellerVo.setSel_id(sel_id);
-		sellerVo.setSel_pw(sel_pw);
-		return sellerDao.select(sellerVo);
-	}
-
+	
 	@Override
 	public int modify(SellerVO sellerVo) {
 		return sellerDao.update(sellerVo);
@@ -47,5 +41,7 @@ public class SellerServiceImpl implements SellerService {
 	public int listAllCount(SearchCriteria cri) {
 		return sellerDao.selectAllCount(cri);
 	}
+
+	
 
 }

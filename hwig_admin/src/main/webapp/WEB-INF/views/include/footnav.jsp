@@ -161,6 +161,8 @@
 <script src="../resources/assets/js/vendor/jquery-1.11.1.min.js"></script>
 <script src="../resources/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="../resources/assets/plugins/navgoco/jquery.navgoco.min.js"></script>
+<script src="../resources/assets/plugins/icheck/js/icheck.min.js"></script>
+<script src="../resources/assets/plugins/switchery/switchery.min.js"></script>
 <script src="../resources/assets/plugins/pace/pace.min.js"></script>
 <script src="../resources/assets/plugins/fullscreen/jquery.fullscreen-min.js"></script>
 <script src="../resources/assets/js/src/app.js"></script>
@@ -191,6 +193,10 @@ $(document).ready(function() {
     app.weather();
     app.spinStart();
     app.spinStop();
+    
+    $("#logoutBtn").click(function(){
+    	self.location = "logout";
+    });
 });
 </script>
 </body>

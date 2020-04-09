@@ -68,7 +68,7 @@
 											<td>${memberVo.mem_name}</td>
 											<td>${memberVo.mem_email}</td>
 											<td>${memberVo.mem_regdate}</td>
-											<td class="text-left">${memberVo.mem_grade}</td>
+											<td>${memberVo.mem_grade}</td>
 											<td>${memberVo.mem_reverse}</td>
 										</tr>
 									</c:forEach>

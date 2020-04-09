@@ -14,4 +14,13 @@ public interface MemberDAO {
 	
 	public MemberVO select(MemberVO memberVo);
 	
+	public int emailCheck(EmailCheckVO emailCheckVo);
+	
+	public int idCheck(IdCheckVO idCheckVo);
+	
+	public boolean isRightUserCheck(MemberVO memberVo);
+	
+	public int update(UpdateMemberVO updateMemberVo);
+	
+	public int delete(String mem_id);
 }

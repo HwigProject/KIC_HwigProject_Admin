@@ -1,0 +1,43 @@
+package com.hwig.admin.login;
+
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.hwig.admin.seller.LoginDTO;
+
+@Controller
+public class LoginController {
+
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+
+	@Autowired
+	private LoginService loginService;
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginPagePOST(LoginDTO loginDto, HttpSession session, RedirectAttributes rttr) {
+		logger.info(loginDto.toString());
+		boolean result = loginService.login(session, loginDto);
+
+		if (result) {
+			return "redirect:/main";
+		} else {
+			rttr.addFlashAttribute("msg", "fail");
+			return "redirect:/";
+		}
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) {
+		loginService.logout(session);
+
+		return "redirect:/";
+	}
+
+}

@@ -12,9 +12,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="sellerSelect" resultType="SellerVO">
 		select * from tbl_seller where sel_id = #{sel_id}
-		<if test="sel_pw != null and sel_pw != ''">
+		<!-- <if test="sel_pw != null and sel_pw != ''">
 			and sel_pw = #{sel_pw}
-		</if>
+		</if> -->
 	</select>
 	
 	<update id="sellerUpdate">

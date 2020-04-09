@@ -2,15 +2,15 @@ package com.hwig.admin.seller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.hwig.admin.common.SearchCriteria;
 
 public interface SellerService {
 
 	public int register(SellerVO sellerVo);
 	
-	public SellerVO listOne(String sel_id);
-	
-	public SellerVO login(String sel_id, String sel_pw);
+	public SellerVO findOneById(String sel_id);
 	
 	public int modify(SellerVO sellerVo);
 	

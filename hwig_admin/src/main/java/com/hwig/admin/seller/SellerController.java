@@ -11,6 +11,9 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -54,7 +57,7 @@ public class SellerController {
 
 	@RequestMapping(value = "/modifyForm", method = RequestMethod.GET)
 	public void modifyPageGET(String sel_id, @ModelAttribute("cri") SearchCriteria cri, Model model) {
-		model.addAttribute("data", sellerService.listOne(sel_id));
+		model.addAttribute("data", sellerService.findOneById(sel_id));
 		model.addAttribute("page", cri.getPage());
 		model.addAttribute("perPageNum", cri.getPerPageNum());
 		model.addAttribute("searchType", cri.getSearchType());
@@ -62,7 +65,7 @@ public class SellerController {
 	}
 
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modifyPOST(SellerVO sellerVo, MultipartFile attach_img, @ModelAttribute("cri") SearchCriteria cri,
+	public String modifyPagePOST(SellerVO sellerVo, MultipartFile attach_img, @ModelAttribute("cri") SearchCriteria cri,
 			RedirectAttributes rttr, HttpSession session) {
 		logger.info(sellerVo.toString());
 
@@ -122,7 +125,7 @@ public class SellerController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registerPOST(SellerVO sellerVo, MultipartFile attach_img, RedirectAttributes rttr) {
+	public String registerPagePOST(SellerVO sellerVo, MultipartFile attach_img, RedirectAttributes rttr) {
 		if (attach_img != null && !attach_img.getOriginalFilename().equals("")) {
 			// 파일명 생성
 			UUID uid = UUID.randomUUID();
@@ -149,7 +152,12 @@ public class SellerController {
 			sellerVo.setSel_img(sellerAttachPath + "/" + fileName);
 		}
 
-		// 파일 정보 포함해서 DB에 저장
+		// 비밀번호 암호화 작업
+		String inputPass = sellerVo.getSel_pw();
+		PasswordEncoder passEncoder = new BCryptPasswordEncoder();
+		String pass = passEncoder.encode(inputPass);
+		sellerVo.setSel_pw(pass);
+
 		int result = sellerService.register(sellerVo);
 
 		if (result == 1) {
@@ -162,14 +170,14 @@ public class SellerController {
 	@ResponseBody
 	@RequestMapping(value = "/one/{sel_id}", method = RequestMethod.GET)
 	public SellerVO one(@PathVariable("sel_id") String sel_id) {
-		SellerVO sellerVo = sellerService.listOne(sel_id);
-		
-		if(sellerVo == null) {
+		SellerVO sellerVo = sellerService.findOneById(sel_id);
+
+		if (sellerVo == null) {
 			SellerVO emptyVo = new SellerVO();
 			emptyVo.empty();
 			return emptyVo;
 		}
-		
+
 		return sellerVo;
 	}
 

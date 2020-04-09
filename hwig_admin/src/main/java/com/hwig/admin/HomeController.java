@@ -36,4 +36,9 @@ public class HomeController {
 		return "index";
 	}
 	
+	@RequestMapping("/main")
+	public void main() {
+		
+	}
+	
 }
