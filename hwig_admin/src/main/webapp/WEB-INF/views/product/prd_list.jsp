@@ -61,24 +61,19 @@
 									<th>상품명</th>
 									<th>원가</th>
 									<th>한줄설명</th>
-									<th>수정삭제</th>
 								</tr>
 							</thead>
 							
 							<tbody>
 							<!-- 목록 -->
 								<c:forEach items="${list}" var="list">
-									<tr>
+									<tr class="lists">
 										<td>${list.prd_id}</td>
 										<td>${list.category_id}</td>
 										<td>${list.sel_id}</td>
 										<td>${list.prd_name}</td>
 										<td>${list.prd_price}</td>
 										<td>${list.prd_comment}</td>
-										<td>
-											<button type="button" class="btn btn-warning btn-sm btn_mod">수정</button>
-											<button type="button" class="btn btn-danger btn-sm btn_del">삭제</button>
-										</td>
 									</tr>
 								</c:forEach>
 							<!-- 목록 -->
@@ -129,26 +124,18 @@ $(document).ready(function() {
     });
 });
 
-	$('.btn_mod').click(function(){
-		var ids = $(this).parent().parent().children().eq(0).text(); //prd_id를 얻어온다
-		var url = '/product/prd_modify?prd_id='+ids;
-		$(location).attr('href', url); //수정 페이지로 이동
-	});
-	
-	$('.btn_del').click(function(){
-		var ids = $(this).parent().parent().children().eq(0).text(); //prd_id를 얻어온다
-		var url = '/product/prd_deletelist?prd_id='+ids;
-
-		var result = confirm(ids + "번 상품을 삭제하시겠습니까?"); //상품 삭제 확인 알림
-		
-		if(result){ //확인을 눌렀을 경우
-			$(location).attr('href', url); //삭제를 해 준다
+	$('.lists').bind({
+		click: function() {
+			var ids = $(this).children().eq(0).text();
+			var url="/product/prd_read?prd_id=" + ids;
+			$(location).attr('href', url); //조회 페이지로 이동
+		},
+		mouseover: function(){
+			$(this).css('background-color', 'lightgray').css('cursor', 'pointer');
+		},
+		mouseout: function(){
+			$(this).css('background-color', '');
 		}
 	});
-	
-	var result = "${msg}";
-	if(result == "success") { //완료 사실을 알려준다
-		alert("완료되었습니다.")
-	}
 </script>
 <%@ include file="/WEB-INF/views/include/footnav.jsp" %>

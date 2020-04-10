@@ -74,7 +74,7 @@
 											<td>${waitList.prd_price}</td>
 											<td>${waitList.prd_comment}</td>
 											<td>
-												<button type="button" class="btn btn-success btn-sm btn_add">등록</button>
+												<button type="button" class="btn btn-success btn-sm btn_add">승인</button>
 												<button type="button" class="btn btn-danger btn-sm btn_del">삭제</button>
 											</td>
 										</tr>

@@ -249,4 +249,12 @@ public class ProductController {
 		
 		return "redirect:/product/prd_list";
 	}
+	
+	//글 조회 - get
+	@RequestMapping(value="/prd_read", method=RequestMethod.GET)
+	public void getRead(@RequestParam("prd_id") int prd_id, Model model) throws Exception {
+		ProductVO vo = service.read(prd_id);
+		model.addAttribute("product", vo);
+	}
+	
 }
