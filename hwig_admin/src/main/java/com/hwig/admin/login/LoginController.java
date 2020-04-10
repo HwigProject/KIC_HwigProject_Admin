@@ -15,6 +15,11 @@ public class LoginController {
 
 	@Autowired
 	private LoginService loginService;
+	
+	@RequestMapping("/loginForm")
+	public void loginForm() {
+		
+	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginPagePOST(LoginDTO loginDto, RedirectAttributes rttr) {
@@ -25,7 +30,7 @@ public class LoginController {
 			return "redirect:/main";
 		} else {
 			rttr.addFlashAttribute("msg", "fail");
-			return "redirect:/";
+			return "redirect:/loginForm";
 		}
 	}
 
@@ -33,7 +38,7 @@ public class LoginController {
 	public String logout() {
 		loginService.logout();
 
-		return "redirect:/";
+		return "redirect:/loginForm";
 	}
 
 }

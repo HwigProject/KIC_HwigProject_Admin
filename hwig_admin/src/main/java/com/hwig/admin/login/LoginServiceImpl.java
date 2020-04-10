@@ -32,6 +32,7 @@ public class LoginServiceImpl implements LoginService {
 			} else {
 				session.setAttribute("user", adminVo);
 				session.setAttribute("user_type", loginDto.getUser_type());
+				session.setAttribute("user_name", adminVo.getAdmin_name());
 			}
 		} else {
 			SellerVO sellerVo = sellerService.findOneById(loginDto.getUser_id());
@@ -40,6 +41,7 @@ public class LoginServiceImpl implements LoginService {
 			} else {
 				session.setAttribute("user", sellerVo);
 				session.setAttribute("user_type", loginDto.getUser_type());
+				session.setAttribute("user_name", sellerVo.getSel_cname());
 			}
 		}
 

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -76,7 +77,7 @@
                             <span class="avatar">
                                 <img src="../resources/assets/img/KakaoTalk_20200312_101505181.png" class="img-circle" alt="">
                             </span>
-                        <span class="text">Mike Adams</span>
+                        <span class="text">${sessionScope.user_name}</span>
                         <span class="caret"></span>
                         </span>
                     </a>
@@ -136,7 +137,7 @@
                     <i class="on border-dark animated bounceIn"></i>
                 </div>
                 <div class="profile-body dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>Mike Adams <span class="caret"></span></h4></a>
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><h4>${sessionScope.user_name}<span class="caret"></span></h4></a>
                     <small class="title">Front-end Developer</small>
                     <ul class="dropdown-menu animated fadeInRight" role="menu">
                         <li class="profile-progress">
@@ -182,21 +183,25 @@
                             <i class="fa  fa-fw fa-gift"></i> 상품관리
                         </a>
                         <ul class="nav-sub">
+                        
+                        <c:if test="${sessionScope.user_type eq 'seller'}">
+                        
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
-                                     상품 등록
-                                </a>
+                                <a href="tables-data-tables.html" title="Data Tables">상품 등록</a>
+                            </li>
+						
+						</c:if>
+						<c:if test="${sessionScope.user_type eq 'admin'}">
+                            
+                            <li>
+                                <a href="tables-data-tables.html" title="Data Tables">승인 예정</a>
                             </li>
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
-                                     승인 예정
-                                </a>
+                                <a href="tables-data-tables.html" title="Data Tables">승인 완료</a>
                             </li>
-                            <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
-                                     승인 완료
-                                </a>
-                            </li>
+                            
+						</c:if>
+                            
                         </ul>
                     </li>
                     <li class="nav-dropdown">
@@ -205,26 +210,23 @@
                         </a>
                         <ul class="nav-sub">
                             <li>
-                                <a href="/order/list" title="Data Tables">
-                                     주문 내역
-                                </a>
+                                <a href="/order/list" title="Data Tables">주문 내역</a>
                             </li>
                         </ul>
                     </li>
+                    
+                    <c:if test="${sessionScope.user_type eq 'admin'}">
+                    
                     <li class="nav-dropdown">
                         <a href="#" title="Tables">
                             <i class="fa  fa-fw fa-user"></i> 고객관리
                         </a>
                         <ul class="nav-sub">
                             <li>
-                                <a href="/member/list" title="Data Tables">
-                                     회원 관리
-                                </a>
+                                <a href="/member/list" title="Data Tables">회원 관리</a>
                             </li>
                             <li>
-                                <a href="/seller/list" title="Data Tables">
-                                     판매자 관리
-                                </a>
+                                <a href="/seller/list" title="Data Tables">판매자 관리</a>
                             </li>
                         </ul>
                     </li>
@@ -234,27 +236,23 @@
                         </a>
                         <ul class="nav-sub">
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
-                                     공지사항
-                                </a>
+                                <a href="tables-data-tables.html" title="Data Tables">공지사항</a>
                             </li>
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
-                                     이벤트
-                                </a>
+                                <a href="tables-data-tables.html" title="Data Tables">이벤트</a>
                             </li>
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
-                                     Q&A
-                                </a>
+                                <a href="tables-data-tables.html" title="Data Tables">Q&A</a>
                             </li>
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
-                                     1:1 문의
-                                </a>
+                                <a href="tables-data-tables.html" title="Data Tables">1:1 문의</a>
                             </li>
                         </ul>
                     </li>
+                    
+                    </c:if>
+                    <c:if test="${sessionScope.user_type eq 'seller'}" />
+                    
                 </ul>
             </nav>
         </aside>
