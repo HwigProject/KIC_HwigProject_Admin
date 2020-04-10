@@ -56,7 +56,7 @@
                         <div class="brand">
                             <a href="index.html" class="logo">
                                 <i class="icon-layers"></i>
-                                <span>HWIG 판매자</span></a>
+                                <span>HWIG 로그인</span></a>
                         </div>
                     </header>
                     <div class="panel panel-primary">
@@ -72,7 +72,7 @@
                                         <label style="text-align: left;">관리자</label>
                                         <input type="radio" id="seller" name="loginType" value="seller">
                                         <label style="text-align: left;">판매자</label>
-                                        <input type="hidden" value="" id="userType" name="userType" />
+                                        <input type="hidden" value="" id="user_type" name="user_type" />
                                     </div>
                             </div>
                             	<hr />
@@ -145,13 +145,13 @@ $(document).ready(function() {
 		if($("input:radio[name='loginType']:checked").val() == "admin"){
 			$("#sel_id").empty();
 			$("#admin_id").text("관리자번호");
-			$("#userType").val("admin");
-			console.log($("#userType").val());
+			$("#user_type").val("admin");
+			console.log($("#user_type").val());
 		} else {
 			$("#admin_id").empty();
 			$("#sel_id").text("사업자등록번호");
-			$("#userType").val("seller");
-			console.log($("#userType").val());
+			$("#user_type").val("seller");
+			console.log($("#user_type").val());
 		}
 	});
 	
@@ -163,7 +163,7 @@ $(document).ready(function() {
 	$("#admin").attr('checked', true);
 	$("#sel_id").empty();
 	$("#admin_id").text("관리자번호");
-	$("#userType").val("admin");
+	$("#user_type").val("admin");
 	
 	var result = '${msg}';
 	if(result == 'fail') {

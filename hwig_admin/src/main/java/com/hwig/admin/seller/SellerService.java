@@ -2,8 +2,6 @@ package com.hwig.admin.seller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import com.hwig.admin.common.SearchCriteria;
 
 public interface SellerService {

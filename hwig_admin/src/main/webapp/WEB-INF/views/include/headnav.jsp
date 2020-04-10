@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>NeuBoard</title>
+    <title>Hwig</title>
     <meta name="description" content="">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<style>
@@ -74,7 +74,7 @@
                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
                         <span class="meta">
                             <span class="avatar">
-                                <img src="../resources/assets/img/profile.jpg" class="img-circle" alt="">
+                                <img src="../resources/assets/img/KakaoTalk_20200312_101505181.png" class="img-circle" alt="">
                             </span>
                         <span class="text">Mike Adams</span>
                         <span class="caret"></span>
@@ -112,7 +112,7 @@
                         <li>
                             <a href="#" id="logoutBtn">
                                 <span class="icon"><i class="fa fa-sign-out"></i>
-                                </span>Logout</a>
+                                </span>로그아웃</a>
                         </li>
                     </ul>
                 </li>
@@ -132,7 +132,7 @@
         <aside class="sidebar sidebar-left">
             <div class="sidebar-profile">
                 <div class="avatar">
-                    <img class="img-circle profile-image" src="../resources/assets/img/profile.jpg" alt="profile">
+                    <img class="img-circle profile-image" src="../resources/assets/img/KakaoTalk_20200312_101505181.png" alt="profile">
                     <i class="on border-dark animated bounceIn"></i>
                 </div>
                 <div class="profile-body dropdown">
@@ -205,7 +205,7 @@
                         </a>
                         <ul class="nav-sub">
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">
+                                <a href="/order/list" title="Data Tables">
                                      주문 내역
                                 </a>
                             </li>

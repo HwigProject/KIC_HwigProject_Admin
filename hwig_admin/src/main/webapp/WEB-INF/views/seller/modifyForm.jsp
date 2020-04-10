@@ -59,11 +59,9 @@
 								<input type="file" id="sel_img" name="attach_img" accept=".gif, .jpg, .png">
  							</div>
                        
-							<div class="col-md-6">
-                       		<button type="button" class="btn btn-primary btn-block" id="modifyBtn">수정</button>
-                       		</div>
-                       		<div class="col-md-6">
-                       		<button type="button" class="btn btn-primary btn-block" id="listBtn">목록</button>
+							<div align="right">
+                       		<button type="button" class="btn btn-primary" id="modifyBtn">수정</button>
+                       		<button type="button" class="btn btn-danger" id="listBtn">목록</button>
                        		</div>
                        		<input type="hidden" name="origin_img" value="${data.sel_img}">
                        		<input type="hidden" name="sel_addr" value="" id="sel_addr">

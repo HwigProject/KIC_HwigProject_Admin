@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.hwig.admin.AdminService;
 import com.hwig.admin.AdminVO;
-import com.hwig.admin.seller.LoginDTO;
 import com.hwig.admin.seller.SellerService;
 import com.hwig.admin.seller.SellerVO;
 
@@ -20,16 +19,19 @@ public class LoginServiceImpl implements LoginService {
 
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private HttpSession session;
 
 	@Override
-	public boolean login(HttpSession session, LoginDTO loginDto) {
-		if (loginDto.getUserType().equals("admin")) {
+	public boolean login(LoginDTO loginDto) {
+		if (loginDto.getUser_type().equals("admin")) {
 			AdminVO adminVo = adminService.login(loginDto.getUser_id(), loginDto.getUser_pw());
 			if (adminVo == null) {
 				return false;
 			} else {
 				session.setAttribute("user", adminVo);
-				session.setAttribute("userType", loginDto.getUserType());
+				session.setAttribute("user_type", loginDto.getUser_type());
 			}
 		} else {
 			SellerVO sellerVo = sellerService.findOneById(loginDto.getUser_id());
@@ -37,7 +39,7 @@ public class LoginServiceImpl implements LoginService {
 				return false;
 			} else {
 				session.setAttribute("user", sellerVo);
-				session.setAttribute("userType", loginDto.getUserType());
+				session.setAttribute("user_type", loginDto.getUser_type());
 			}
 		}
 
@@ -45,7 +47,7 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public void logout(HttpSession session) {
+	public void logout() {
 		session.invalidate();
 	}
 

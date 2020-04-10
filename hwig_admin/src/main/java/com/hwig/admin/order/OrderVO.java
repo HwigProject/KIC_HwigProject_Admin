@@ -2,9 +2,9 @@ package com.hwig.admin.order;
 
 public class OrderVO {
 
+	private int rownem;
 	private int order_id;
 	private String mem_id;
-	private String order_date;
 	private String order_status; // 이건 DB에서
 	private int order_reverse;
 	private int order_paymoney;
@@ -12,6 +12,14 @@ public class OrderVO {
 	private String order_paydate;
 	private String order_request;
 	private int order_count;
+
+	public int getRownem() {
+		return rownem;
+	}
+
+	public void setRownem(int rownem) {
+		this.rownem = rownem;
+	}
 
 	public int getOrder_id() {
 		return order_id;
@@ -27,14 +35,6 @@ public class OrderVO {
 
 	public void setMem_id(String mem_id) {
 		this.mem_id = mem_id;
-	}
-
-	public String getOrder_date() {
-		return order_date;
-	}
-
-	public void setOrder_date(String order_date) {
-		this.order_date = order_date;
 	}
 
 	public String getOrder_status() {
@@ -95,7 +95,7 @@ public class OrderVO {
 
 	@Override
 	public String toString() {
-		return "OrderVO [order_id=" + order_id + ", mem_id=" + mem_id + ", order_date=" + order_date + ", order_status="
+		return "OrderVO [rownem=" + rownem + ", order_id=" + order_id + ", mem_id=" + mem_id + ", order_status="
 				+ order_status + ", order_reverse=" + order_reverse + ", order_paymoney=" + order_paymoney
 				+ ", order_payway=" + order_payway + ", order_paydate=" + order_paydate + ", order_request="
 				+ order_request + ", order_count=" + order_count + "]";

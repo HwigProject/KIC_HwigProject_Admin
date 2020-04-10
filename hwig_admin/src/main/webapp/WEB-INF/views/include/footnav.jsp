@@ -195,7 +195,7 @@ $(document).ready(function() {
     app.spinStop();
     
     $("#logoutBtn").click(function(){
-    	self.location = "logout";
+    	self.location = "../logout";
     });
 });
 </script>

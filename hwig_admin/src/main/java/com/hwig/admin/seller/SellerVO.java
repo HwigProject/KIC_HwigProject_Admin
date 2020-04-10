@@ -1,9 +1,5 @@
 package com.hwig.admin.seller;
 
-import java.util.List;
-
-import org.springframework.web.multipart.MultipartFile;
-
 public class SellerVO {
 
 	private int rownum;

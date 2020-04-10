@@ -7,7 +7,7 @@
 <!--main content start-->
 <section class="main-content-wrapper">
 	<div class="pageheader">
-		<h1>고객 관리</h1>
+		<h1>주문 관리</h1>
 	</div>
 	<section id="main-content" class="animated fadeInUp">
 		<div class="row">
@@ -15,7 +15,7 @@
 
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">판매자 관리</h3>
+						<h3 class="panel-title">주문 내역</h3>
 						<div class="actions pull-right">
 							<i class="fa fa-expand"></i> <i class="fa fa-chevron-down"></i> <i
 								class="fa fa-times"></i>
@@ -29,12 +29,12 @@
 											<option value=""
 												<c:out value="${cri.searchType == null ? 'selected' : ' '}" />>
 												----</option>
-											<option value="id"
-												<c:out value="${cri.searchType eq 'id' ? 'selected' : ' ' }" />>
-												사업자등록번호</option>
-											<option value="cname"
-												<c:out value="${cri.searchType eq 'cname' ? 'selected' : ' ' }" />>
-												상호명</option>
+											<option value="orderid"
+												<c:out value="${cri.searchType eq 'orderid' ? 'selected' : ' ' }" />>
+												주문번호</option>
+											<option value="memid"
+												<c:out value="${cri.searchType eq 'memid' ? 'selected' : ' ' }" />>
+												회원아이디</option>
 									</select>
 									</label>
 								</div>
@@ -53,22 +53,22 @@
 							<table class="table table-bordered table-striped text-center">
 								<thead>
 									<tr>
-										<th class="text-center">사업자번호</th>
-										<th class="text-center">상호명</th>
-										<th class="text-center">대표자명</th>
-										<th class="text-center">주소</th>
-										<th class="text-center">전화번호</th>
+										<th class="text-center">주문번호</th>
+										<th class="text-center">회원아이디</th>
+										<th class="text-center">적립금</th>
+										<th class="text-center">결제금액</th>
+										<th class="text-center">결제날짜</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:if test="${fn:length(list) > 0}">
-									<c:forEach items="${list}" var="sellerVo">
-										<tr onclick="location.href='/seller/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&sel_id=${sellerVo.sel_id}'" style="cursor:pointer">
-											<td>${sellerVo.sel_id}</td>
-											<td>${sellerVo.sel_cname}</td>
-											<td>${sellerVo.sel_name}</td>
-											<td class="text-left">${sellerVo.sel_addr}</td>
-											<td>${sellerVo.sel_tel}</td>
+									<c:forEach items="${list}" var="orderVo">
+										<tr onclick="location.href='/order/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&order_id=${orderVo.order_id}'" style="cursor:pointer">
+											<td>${orderVo.order_id}</td>
+											<td>${orderVo.mem_id}</td>
+											<td>${orderVo.order_reverse}</td>
+											<td>${orderVo.order_paymoney}</td>
+											<td>${orderVo.order_paydate}</td>
 										</tr>
 									</c:forEach>
 									</c:if>

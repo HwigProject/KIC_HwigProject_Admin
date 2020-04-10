@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hwig.admin.common.SearchCriteria;
-import com.hwig.admin.seller.SellerVO;
 
 @Service
 public class MemberServiceImpl implements MemberService {
