@@ -59,5 +59,16 @@ public class ProductDAOImpl implements ProductDAO{
 	public int deletelist(int prd_id) throws Exception {
 		return sql.delete(namespace + ".deletelist", prd_id);
 	}
+
+	//상품 조회
+	@Override
+	public ProductVO read(int prd_id) throws Exception {
+		return sql.selectOne(namespace + ".read", prd_id);
+	}
+
+	@Override
+	public int update(ProductVO vo) throws Exception {
+		return sql.update(namespace + ".update", vo);
+	}
 	
 }

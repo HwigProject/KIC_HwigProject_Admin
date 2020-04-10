@@ -26,4 +26,11 @@ public interface ProductDAO {
 	
 	//등록 예정 상품을 등록 완료 리스트로 넘김
 	public int addList(int prd_id) throws Exception;
+	
+	//상품 조회
+	public ProductVO read(int prd_id) throws Exception;
+	
+	//상품 수정
+	public int update(ProductVO vo) throws Exception;
+
 }

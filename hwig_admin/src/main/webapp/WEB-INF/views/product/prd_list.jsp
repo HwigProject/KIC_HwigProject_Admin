@@ -76,7 +76,7 @@
 										<td>${list.prd_price}</td>
 										<td>${list.prd_comment}</td>
 										<td>
-											<button type="button" class="btn btn-warning btn-sm">수정</button>
+											<button type="button" class="btn btn-warning btn-sm btn_mod">수정</button>
 											<button type="button" class="btn btn-danger btn-sm btn_del">삭제</button>
 										</td>
 									</tr>
@@ -129,6 +129,12 @@ $(document).ready(function() {
     });
 });
 
+	$('.btn_mod').click(function(){
+		var ids = $(this).parent().parent().children().eq(0).text(); //prd_id를 얻어온다
+		var url = '/product/prd_modify?prd_id='+ids;
+		$(location).attr('href', url); //수정 페이지로 이동
+	});
+	
 	$('.btn_del').click(function(){
 		var ids = $(this).parent().parent().children().eq(0).text(); //prd_id를 얻어온다
 		var url = '/product/prd_deletelist?prd_id='+ids;

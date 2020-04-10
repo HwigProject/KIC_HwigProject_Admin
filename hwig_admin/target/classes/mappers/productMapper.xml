@@ -75,4 +75,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			prd_stock, prd_price, 0, prd_kg, prd_from, prd_wrap, prd_info from tbl_prd_b
 			where prd_id = #{prd_id}
 	</insert>
+	
+	<!-- 상품 조회 -->
+	<select id="read" resultType="com.hwig.admin.product.ProductVO">
+		select prd_id, category_id, sel_id, prd_ea, prd_name, prd_thumb, prd_comment, prd_img,
+			prd_stock, prd_price, prd_kg, prd_from, prd_wrap, prd_info
+		from tbl_prd
+		where prd_id = #{prd_id}
+	</select>
+	
+	<!-- 등록 상품 수정 -->
+	<update id="update">
+		update tbl_prd set
+			prd_ea = #{prd_ea}, prd_name = #{prd_name}, prd_thumb = #{prd_thumb}, prd_comment = #{prd_comment},
+			prd_img = #{prd_img}, prd_stock = #{prd_stock}, prd_price = #{prd_price}, prd_sale = #{prd_sale}, prd_kg = #{prd_kg},
+			prd_from = #{prd_from}, prd_wrap = #{prd_wrap}, prd_info = #{prd_info}
+		where prd_id = #{prd_id}
+	</update>
 </mapper>

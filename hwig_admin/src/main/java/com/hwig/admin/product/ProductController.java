@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -184,5 +185,68 @@ public class ProductController {
 			rttr.addFlashAttribute("msg", "fail");
 		}
 		return "redirect:/product/prd_waitlist";
+	}
+	
+	//글 수정 - get
+	@RequestMapping(value="/prd_modify", method=RequestMethod.GET)
+	public void getModify(@RequestParam("prd_id") int prd_id, Model model) throws Exception {
+		ProductVO vo = service.read(prd_id);
+		model.addAttribute("modify", vo);
+	}
+	
+	//글 수정 - post
+	@RequestMapping(value="/prd_modify", method=RequestMethod.POST)
+	public String postModify(ProductVO vo, RedirectAttributes rttr, MultipartFile[] file, HttpServletRequest req) throws Exception {
+		
+		int count = 0;
+		//이미지 저장 
+		for(MultipartFile files : file) {
+			System.out.println("for문 진입 성공");
+			//이미지 없는 경우
+			if (files.getOriginalFilename() != null && !files.getOriginalFilename().equals("")) {
+				// 파일명 생성
+				UUID uid = UUID.randomUUID();
+				String fileName = uid.toString() + "_" + files.getOriginalFilename();
+				logger.info("path = " + savePath + vo.getPrd_thumb());
+	
+				// 파일을 서버에 저장
+					FileOutputStream fos = new FileOutputStream(savePath + productAttachPath + "/" + fileName);
+					logger.info("파일 서버에 저장하는 부분 => " + savePath + productAttachPath + "/" + fileName);
+					InputStream is = files.getInputStream();
+	
+					int readCount = 0;
+					byte[] buffer = new byte[1024];
+	
+					while ((readCount = is.read(buffer)) != -1) {
+						fos.write(buffer, 0, readCount);
+					}
+					fos.close();
+					
+					if(count == 0) {
+						vo.setPrd_thumb(productAttachPath + "/" + fileName);
+						System.out.println("썸네일 등록 : " + vo.getPrd_thumb());
+					}
+					else if(count == 1) {
+						vo.setPrd_img(productAttachPath + "/" + fileName);
+						System.out.println("설명 이미지 등록 : " + vo.getPrd_img());
+					}
+					count++;
+			}
+			else { //기존 이미지 사용
+				if(count == 0) {
+					vo.setPrd_thumb(req.getParameter("prd_thumb"));
+					System.out.println("썸네일 등록 : " + req.getParameter("prd_thumb"));
+				}
+				else if(count == 1) {
+					vo.setPrd_img(req.getParameter("prd_img"));
+					System.out.println("설명 이미지 등록 : " + req.getParameter("prd_img"));
+				}
+				count++;
+			}
+		}
+		
+		service.update(vo);
+		
+		return "redirect:/product/prd_list";
 	}
 }

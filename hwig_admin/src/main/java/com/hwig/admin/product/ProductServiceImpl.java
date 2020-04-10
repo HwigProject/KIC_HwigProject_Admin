@@ -53,5 +53,16 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		return dao.deletelist(prd_id);
 	}
+
+	//상품 조회
+	@Override
+	public ProductVO read(int prd_id) throws Exception {
+		return dao.read(prd_id);
+	}
+
+	@Override
+	public int update(ProductVO vo) throws Exception {
+		return dao.update(vo);
+	}
 	
 }
