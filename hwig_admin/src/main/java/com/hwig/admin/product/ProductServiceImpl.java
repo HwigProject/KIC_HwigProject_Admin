@@ -1,6 +1,7 @@
 package com.hwig.admin.product;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -37,6 +38,7 @@ public class ProductServiceImpl implements ProductService{
 		return dao.list(cri);
 	}
 	
+	//승인 예정 상품 삭제
 	@Override
 	public int delete(int prd_id) throws Exception {
 		return dao.delete(prd_id);
@@ -59,7 +61,28 @@ public class ProductServiceImpl implements ProductService{
 	public ProductVO read(int prd_id) throws Exception {
 		return dao.read(prd_id);
 	}
-
+	
+	//카테고리명 조회
+	@Override
+	public String readCategory(int prd_id) throws Exception {
+		return dao.readCategory(prd_id);
+	}
+	
+	//카테고리명 조회1
+	@Override
+	public  List<Map<Integer,String>> readCategories1() throws Exception {
+		System.out.println("카테고리" + dao.readCategories1());
+		return dao.readCategories1();
+	}
+	
+	//카테고리명 조회2
+	@Override
+	public  List<Map<Integer,String>> readCategories2() throws Exception {
+		System.out.println("카테고리" + dao.readCategories2());
+		return dao.readCategories2();
+	}
+		
+	//상품 수정
 	@Override
 	public int update(ProductVO vo) throws Exception {
 		return dao.update(vo);

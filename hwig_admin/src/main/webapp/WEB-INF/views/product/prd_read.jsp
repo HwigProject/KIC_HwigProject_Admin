@@ -24,13 +24,13 @@
 							<i class="fa fa-times"></i>
 	                    </div>
 					</div>
-					<div class="panel-body">
+					<div class="panel-body" id="readdiv">
 						<form role="form" method="post" class="form-horizontal form-border" encType="multipart/form-data" id="form">
 							<input type="hidden" value="${product.prd_id}" class="prdid">
 							<div class="form-group">
-								<label class="col-sm-3 control-label" for="category_id">카테고리 id</label>
+								<label class="col-sm-3 control-label" for="category_id">카테고리</label>
 								<div class="col-sm-6">
-									${product.category_id}
+									${cateName}
 								</div>
 							</div>
 							<div class="form-group">

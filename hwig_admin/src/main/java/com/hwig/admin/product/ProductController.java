@@ -3,6 +3,7 @@ package com.hwig.admin.product;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -104,8 +105,11 @@ public class ProductController {
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.listAllCount(cri));
+
+		List<Map<Integer,String>> catelist = service.readCategories2();
 		
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("catelist", catelist);
 		
 		return waitList;
 	}
@@ -121,7 +125,10 @@ public class ProductController {
 			pageMaker.setCri(cri);
 			pageMaker.setTotalCount(service.listAllCount(cri));
 			
+			 List<Map<Integer,String>> catelist = service.readCategories1();
+			
 			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("catelist", catelist);
 			
 			return list;
 		}
@@ -167,7 +174,10 @@ public class ProductController {
 			pageMaker.setCri(cri);
 			pageMaker.setTotalCount(service.listAllCount(cri));
 			
+			List<Map<Integer,String>> catelist = service.readCategories2();
+			 
 			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("catelist", catelist);
 			
 			return waitList;
 		}
@@ -254,7 +264,9 @@ public class ProductController {
 	@RequestMapping(value="/prd_read", method=RequestMethod.GET)
 	public void getRead(@RequestParam("prd_id") int prd_id, Model model) throws Exception {
 		ProductVO vo = service.read(prd_id);
+		String cateName = service.readCategory(prd_id);
 		model.addAttribute("product", vo);
+		model.addAttribute("cateName", cateName);
 	}
 	
 }

@@ -1,6 +1,7 @@
 package com.hwig.admin.product;
 
 import java.util.List;
+import java.util.Map;
 
 import com.hwig.admin.common.SearchCriteria;
 
@@ -29,6 +30,15 @@ public interface ProductService {
 	
 	//상품 조회
 	public ProductVO read(int prd_id) throws Exception;
+	
+	//카테고리명 조회
+	public String readCategory(int prd_id) throws Exception;
+	
+	//카테고리명 조회1
+	public List<Map<Integer,String>> readCategories1() throws Exception;
+	
+	//카테고리명 조회2
+	public List<Map<Integer,String>> readCategories2() throws Exception;
 	
 	//상품 수정
 	public int update(ProductVO vo) throws Exception;

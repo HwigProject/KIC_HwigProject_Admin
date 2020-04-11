@@ -1,6 +1,7 @@
 package com.hwig.admin.product;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -66,6 +67,24 @@ public class ProductDAOImpl implements ProductDAO{
 		return sql.selectOne(namespace + ".read", prd_id);
 	}
 
+	//카테고리명 조회
+	@Override
+	public String readCategory(int prd_id) throws Exception {
+		return sql.selectOne(namespace + ".readcategory", prd_id);
+	}
+	
+	//카테고리명 조회1
+	@Override
+	public  List<Map<Integer,String>> readCategories1() throws Exception {
+		return sql.selectList(namespace + ".readcategories1");
+	}
+	
+	//카테고리명 조회2
+	@Override
+	public  List<Map<Integer,String>> readCategories2() throws Exception {
+		return sql.selectList(namespace + ".readcategories2");
+	}
+	
 	@Override
 	public int update(ProductVO vo) throws Exception {
 		return sql.update(namespace + ".update", vo);

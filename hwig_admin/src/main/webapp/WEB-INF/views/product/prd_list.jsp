@@ -55,22 +55,22 @@
 						<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
 							<thead>
 								<tr>
-									<th>상품번호</th>
-									<th>카테고리</th>
-									<th>판매자id</th>
-									<th>상품명</th>
-									<th>원가</th>
-									<th>한줄설명</th>
+									<th id="th1">상품번호</th>
+									<th id="th2">카테고리</th>
+									<th id="th3">판매자</th>
+									<th id="th4">상품명</th>
+									<th id="th5">원가</th>
+									<th id="th6">한줄설명</th>
 								</tr>
 							</thead>
 							
 							<tbody>
 							<!-- 목록 -->
-								<c:forEach items="${list}" var="list">
+								<c:forEach items="${list}" var="list" varStatus="status">
 									<tr class="lists">
 										<td>${list.prd_id}</td>
-										<td>${list.category_id}</td>
-										<td>${list.sel_id}</td>
+										<td>${catelist[status.index].CATEGORY_NAME}</td>
+										<td>${catelist[status.index].SEL_CNAME}</td>
 										<td>${list.prd_name}</td>
 										<td>${list.prd_price}</td>
 										<td>${list.prd_comment}</td>

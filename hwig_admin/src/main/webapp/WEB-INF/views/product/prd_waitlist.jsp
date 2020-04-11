@@ -52,24 +52,24 @@
 								</div>
 							</div>
 						</div>
-						<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+						<table id="example" class="table table-striped table-bordered table-waitlist" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-									<th>상품번호</th>
-									<th>카테고리</th>
-									<th>판매자id</th>
-									<th>상품명</th>
-									<th>원가</th>
-									<th>한줄설명</th>
-									<th>수정삭제</th>
-								</tr>
+											<th id="th1">상품번호</th>
+											<th id="th2">카테고리</th>
+											<th id="th3">판매자</th>
+											<th id="th4">상품명</th>
+											<th id="th5">원가</th>
+											<th id="th6">한줄설명</th>
+											<th id="th7">수정삭제</th>
+										</tr>
                                     </thead>
                                     <tbody>
-	                                    <c:forEach items="${waitList}" var="waitList">
+	                                    <c:forEach items="${waitList}" var="waitList" varStatus="status">
 										<tr>
 											<td>${waitList.prd_id}</td>
-											<td>${waitList.category_id}</td>
-											<td>${waitList.sel_id}</td>
+											<td>${catelist[status.index].CATEGORY_NAME}</td>
+											<td>${catelist[status.index].SEL_CNAME}</td>
 											<td>${waitList.prd_name}</td>
 											<td>${waitList.prd_price}</td>
 											<td>${waitList.prd_comment}</td>
