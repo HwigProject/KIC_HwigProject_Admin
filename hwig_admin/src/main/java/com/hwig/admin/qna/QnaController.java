@@ -75,7 +75,9 @@ public class QnaController {
 		
 		
 		 MacroVO macro = rService.macro_view(qna_category);
-		 model.addAttribute("macro",macro);
+		 model.addAttribute("macro", macro);
+		 
+		 model.addAttribute("macro_c", rService.macro_c_list(qna_category));
 		 
 	}
 	
@@ -136,6 +138,8 @@ public class QnaController {
 	@RequestMapping(value = "/reply_write", method = RequestMethod.POST)
 	public String reply_write(QnaVO qna, ReplyVO reply, SearchCriteria cri, RedirectAttributes rttr) throws Exception{
 		
+		reply.setReply_content(reply.getReply_content().replace("\r\n", "<br>"));
+		
 		rService.reply_write(reply);
 		
 		rttr.addAttribute("qna_id", reply.getQna_id());
@@ -147,5 +151,167 @@ public class QnaController {
 		
 		return "redirect:/qna/qlist";
 	}
+	
+	//답글 수정
+	@RequestMapping(value = "/reply_modify", method = RequestMethod.POST)
+	public String reply_modify(QnaVO qna, ReplyVO reply, SearchCriteria cri, RedirectAttributes rttr) throws Exception{
+		
+		reply.setReply_content(reply.getReply_content().replace("\r\n", "<br>"));
+		
+		rService.reply_modify(reply);
 
+		rttr.addAttribute("qna_id", reply.getQna_id());		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+
+		return "redirect:/qna/qlist";
+	}
+	
+	//답글 삭제
+	@RequestMapping(value = "/reply_delete")
+	public String reply_delete(ReplyVO reply, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) throws Exception{
+		
+		rService.reply_delete(reply);
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		
+		return "redirect:/qna/qlist";
+	}
+	
+	//양식 관리  목록
+	@RequestMapping(value = "/temlist")
+	public String temlist(MacroVO macro, QnaVO qna, 
+						  @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr, Model model) throws Exception{
+		
+		
+		model.addAttribute("mList", rService.macro_list());
+		model.addAttribute("macro_ht", rService.macro_ht_list());
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		
+		return "/qna/temlist";
+	}
+	
+	//양식 머리,꼬리 수정폼
+	@RequestMapping(value = "/tem_ht_modify")
+	public void	getTem_ht_modify(@RequestParam("qna_category") String qna_category, MacroVO macro,
+			  					 @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
+		
+		model.addAttribute("macro", rService.macro_view(qna_category));
+		model.addAttribute("cri", cri);
+		
+		
+	}
+	
+	//양식 머리,꼬리 수정
+	@RequestMapping(value = "/tem_ht_modify", method = RequestMethod.POST)
+	public String postTem_ht_modify(MacroVO macro, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) throws Exception{
+
+		macro.setMacro_head(macro.getMacro_head().replace("\r\n", "<br>"));
+		macro.setMacro_tail(macro.getMacro_tail().replace("\r\n", "<br>"));
+		int result = rService.macro_ht_modify(macro);
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		
+		if(result == 1)
+		{
+			rttr.addFlashAttribute("msg", "success");
+		} else {
+			rttr.addFlashAttribute("msg", "fail");
+		}
+		
+		return "redirect:/qna/temlist";
+	}
+	
+	//본문 양식 추가폼
+	@RequestMapping(value = "/tem_write")
+	public void getTem_write(Model model) throws Exception{
+		
+		model.addAttribute("macro_list",rService.macro_list()); 
+
+	}
+	
+	//본문 양식 추가
+	@RequestMapping(value = "/tem_write", method = RequestMethod.POST)
+	public String postTem_write(MacroVO macro, RedirectAttributes rttr) throws Exception{
+		
+		macro.setMacro_content(macro.getMacro_content().replace("\r\n", "<br>"));
+		
+		int result = rService.macro_write(macro);
+			
+		if(result == 1)
+		{
+			rttr.addFlashAttribute("msg", "success");
+		} else {
+			rttr.addFlashAttribute("msg", "fail");
+		}
+			return "redirect:/qna/temlist";
+	}
+	
+	//본문 양식 수정
+	@RequestMapping(value = "/tem_modify")
+	public void	getTem_modify(@RequestParam("macro_c_id") int macro_c_id, MacroVO macro,
+				 @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
+
+			model.addAttribute("macro_c_view", rService.macro_c_view(macro_c_id));
+			model.addAttribute("cri", cri);
+	}
+	
+	//양식 본문 수정
+	@RequestMapping(value = "/tem_modify", method = RequestMethod.POST)
+	public String postTem_modify(MacroVO macro, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) throws Exception{
+
+		macro.setMacro_content(macro.getMacro_content().replace("\r\n", "<br>"));
+		
+		int result = rService.macro_modify(macro);
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		
+		if(result == 1)
+		{
+			rttr.addFlashAttribute("msg", "success");
+		} else {
+			rttr.addFlashAttribute("msg", "fail");
+		}
+		
+		return "redirect:/qna/temlist";
+	}
+	
+	//양식 본문 삭제
+	@Transactional(isolation = Isolation.READ_COMMITTED)
+	@RequestMapping(value = "/tem_delete")
+	public String faq_delete(MacroVO macro, int macro_c_id, RedirectAttributes rttr,
+							 @ModelAttribute("cri") SearchCriteria cri) throws Exception{
+		
+		int result = rService.macro_delete(macro_c_id);
+		rService.macro_id_d(macro);
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		
+		if(result == 1)
+		{
+			rttr.addFlashAttribute("msg", "success");
+		} else {
+			rttr.addFlashAttribute("msg", "fail");
+		}
+		
+		return "redirect:/qna/temlist";
+	}
 }

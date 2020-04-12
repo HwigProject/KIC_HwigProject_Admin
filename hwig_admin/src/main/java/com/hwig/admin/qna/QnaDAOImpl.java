@@ -59,7 +59,7 @@ public class QnaDAOImpl implements QnaDAO{
 	@Override
 	public void qna_id_d(QnaVO qna) throws Exception {
 		
-		sql.update(namespace + ".qna_id_id", qna);
+		sql.update(namespace + ".qna_id_d", qna);
 	}
 
 }
