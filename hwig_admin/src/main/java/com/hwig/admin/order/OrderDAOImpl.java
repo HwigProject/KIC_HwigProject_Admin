@@ -34,4 +34,29 @@ public class OrderDAOImpl implements OrderDAO {
 		return sqlSession.selectOne(namespace + ".orderAllCountAdmin", cri);
 	}
 
+	@Override
+	public OrderDetailDTO selectDetail(OrderDetailDTO orderDto) {
+		return sqlSession.selectOne(namespace + ".orderDetailSelect", orderDto);
+	}
+
+	@Override
+	public List<OrderDetailPrdDTO> selectDetailPrd(String order_id) {
+		return sqlSession.selectList(namespace + ".orderDetailPrdSelect", order_id);
+	}
+
+	@Override
+	public int orderVoInsert(OrderVO orderVo) {
+		return sqlSession.insert(namespace + ".orderInsert", orderVo);
+	}
+
+	@Override
+	public int orderBVoInsert(OrderBVO orderBVo) {
+		return sqlSession.insert(namespace + ".orderBInsert", orderBVo);
+	}
+
+	@Override
+	public int orderAddrVoInsert(OrderAddrVO orderAddrVo) {
+		return sqlSession.insert(namespace + ".orderAddrInsert", orderAddrVo);
+	}
+
 }

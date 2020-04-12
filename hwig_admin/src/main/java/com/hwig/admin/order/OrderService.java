@@ -7,5 +7,9 @@ public interface OrderService {
 	public List<OrderVO> listAll(OrderCriteria cri);
 	
 	public int listAllCount(OrderCriteria cri);
+	
+	public OrderDetailDTO findOneById(String order_id);
+	
+	public int register(OrderRegisterDTO orderRegisterDto);
 
 }

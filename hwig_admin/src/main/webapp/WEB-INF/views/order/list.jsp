@@ -45,7 +45,6 @@
 										<input type="search" class="form-control input-sm" aria-controls="example" id="keyword" value="${cri.keyword}">
 									</label>
 									<button type="button" class="btn btn-success" id="searchBtn">검색</button>
-									<button type="button" class="btn btn-info" id="registerBtn">등록</button>
 								</div>
 							</div>
 						</div>
@@ -63,7 +62,7 @@
 								<tbody>
 									<c:if test="${fn:length(list) > 0}">
 									<c:forEach items="${list}" var="orderVo">
-										<tr onclick="location.href='/order/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&order_id=${orderVo.order_id}'" style="cursor:pointer">
+										<tr onclick="location.href='/order/detail${pageMaker.makeSearch(pageMaker.cri.page)}&order_id=${orderVo.order_id}'" style="cursor:pointer">
 											<td>${orderVo.order_id}</td>
 											<td>${orderVo.mem_id}</td>
 											<td>${orderVo.order_reverse}</td>

@@ -24,13 +24,22 @@ public class OrderController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void listPage(@ModelAttribute("cri") OrderCriteria cri, Model model) {
 		logger.info(cri.toString());
-		
+
 		model.addAttribute("list", orderService.listAll(cri));
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(orderService.listAllCount(cri));
 		model.addAttribute("pageMaker", pageMaker);
+	}
+
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
+	public void detailPageGET(String order_id, @ModelAttribute("cri") OrderCriteria cri, Model model) {
+		model.addAttribute("data", orderService.findOneById(order_id));
+		model.addAttribute("page", cri.getPage());
+		model.addAttribute("perPageNum", cri.getPerPageNum());
+		model.addAttribute("searchType", cri.getSearchType());
+		model.addAttribute("keyword", cri.getKeyword());
 	}
 
 }

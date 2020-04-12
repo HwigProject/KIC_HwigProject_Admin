@@ -1,8 +1,10 @@
 package com.hwig.admin.order;
 
-public class OrderVO {
+import java.util.ArrayList;
+import java.util.List;
 
-	private int rownum;
+public class OrderDetailDTO {
+
 	private String order_id;
 	private String mem_id;
 	private String order_status; // 이건 DB에서
@@ -13,13 +15,13 @@ public class OrderVO {
 	private String order_request;
 	private int order_count;
 
-	public int getRownum() {
-		return rownum;
-	}
+	private String mem_name;
+	private String mem_tel;
 
-	public void setRownum(int rownum) {
-		this.rownum = rownum;
-	}
+	private String get_zipcode;
+	private String get_addr;
+
+	private List<OrderDetailPrdDTO> order_prds = new ArrayList<>();
 
 	public String getOrder_id() {
 		return order_id;
@@ -93,12 +95,53 @@ public class OrderVO {
 		this.order_count = order_count;
 	}
 
+	public String getMem_name() {
+		return mem_name;
+	}
+
+	public void setMem_name(String mem_name) {
+		this.mem_name = mem_name;
+	}
+
+	public String getMem_tel() {
+		return mem_tel;
+	}
+
+	public void setMem_tel(String mem_tel) {
+		this.mem_tel = mem_tel;
+	}
+
+	public String getGet_zipcode() {
+		return get_zipcode;
+	}
+
+	public void setGet_zipcode(String get_zipcode) {
+		this.get_zipcode = get_zipcode;
+	}
+
+	public String getGet_addr() {
+		return get_addr;
+	}
+
+	public void setGet_addr(String get_addr) {
+		this.get_addr = get_addr;
+	}
+
+	public List<OrderDetailPrdDTO> getOrder_prds() {
+		return order_prds;
+	}
+
+	public void setOrder_prds(List<OrderDetailPrdDTO> order_detail_prds) {
+		this.order_prds = order_detail_prds;
+	}
+
 	@Override
 	public String toString() {
-		return "OrderVO [rownum=" + rownum + ", order_id=" + order_id + ", mem_id=" + mem_id + ", order_status="
-				+ order_status + ", order_reverse=" + order_reverse + ", order_paymoney=" + order_paymoney
-				+ ", order_payway=" + order_payway + ", order_paydate=" + order_paydate + ", order_request="
-				+ order_request + ", order_count=" + order_count + "]";
+		return "OrderDetailDTO [order_id=" + order_id + ", mem_id=" + mem_id + ", order_status=" + order_status
+				+ ", order_reverse=" + order_reverse + ", order_paymoney=" + order_paymoney + ", order_payway="
+				+ order_payway + ", order_paydate=" + order_paydate + ", order_request=" + order_request
+				+ ", order_count=" + order_count + ", mem_name=" + mem_name + ", mem_tel=" + mem_tel + ", get_zipcode="
+				+ get_zipcode + ", get_addr=" + get_addr + ", order_prds=" + order_prds + "]";
 	}
 
 }

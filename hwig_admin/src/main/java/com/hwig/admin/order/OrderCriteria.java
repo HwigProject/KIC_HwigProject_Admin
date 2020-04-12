@@ -18,8 +18,7 @@ public class OrderCriteria extends SearchCriteria {
 	public String toString() {
 		return "OrderCriteria [sel_id=" + sel_id + ", getSearchType()=" + getSearchType() + ", getKeyword()="
 				+ getKeyword() + ", toString()=" + super.toString() + ", getPage()=" + getPage() + ", getPageStart()="
-				+ getPageStart() + ", getPageEnd()=" + getPageEnd() + ", getPerPageNum()=" + getPerPageNum()
-				+  "]";
+				+ getPageStart() + ", getPageEnd()=" + getPageEnd() + ", getPerPageNum()=" + getPerPageNum() + "]";
 	}
 
 }
