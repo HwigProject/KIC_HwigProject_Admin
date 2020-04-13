@@ -2,79 +2,87 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/headnav.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!--main content start-->
-        <section class="container animated fadeInUp">
+<section class="main-content-wrapper">
+    <div class="pageheader">
+        <h1>판매자 수정</h1>
+    </div>
+    <section id="main-content" class="animated fadeInUp">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div id="login-wrapper">
-                    <header>
-                        <div class="brand">
-                            <a href="index.html" class="logo">
-                                <i class="icon-layers"></i>
-                                <span>판매자 수정</span></a>
-                        </div>
-                    </header>
-                <div class="panel panel-primary">
+            <div class="col-md-12">
+                <div class="panel panel-default">
                     <div class="panel-heading">
-                          <h3 class="panel-title">     
-                           
-                        </h3>  
+                        <h3 class="panel-title">${data.sel_id}</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="modify" enctype="multipart/form-data" id="modifyForm">
+                        <form role="form" method="post" action="modify" enctype="multipart/form-data" id="modifyForm" class="form-horizontal form-border">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">사업자등록번호</label>
-                                <input type="number" class="form-control" id="sel_id" value="${data.sel_id}" readonly="readonly" name="sel_id" maxlength="20">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">비밀번호</label>
-                                <input type="password" class="form-control" id="sel_pw" value="${data.sel_pw}" name="sel_pw" maxlength="20">
-                            </div>
-                             <div class="form-group">
-                                <label for="exampleInputPassword1">상호명</label>
-                                <input type="text" class="form-control" id="sel_cname" value="${data.sel_cname}" name="sel_cname" readonly="readonly" maxlength="200">
-                            </div>
-                              <div class="form-group">
-                                <label for="exampleInputPassword1">대표자명</label>
-                                <input type="text" class="form-control" id="sel_name" value="${data.sel_name}" name="sel_name" maxlength="20">
+                                <label class="col-sm-3 control-label">사업자등록번호</label>
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" id="sel_id" name="sel_id" readonly="readonly" value="${data.sel_id}" maxlength="20">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">사업장 소재지</label>
-                                <input type="text" class="form-control" value="${data.sel_addr}" readonly="readonly">
-                                <input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control">
-								<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary" ><br>
-								<input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control">
-								<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" class="form-control">
-								<input type="text" id="sample4_detailAddress" placeholder="상세주소" class="form-control" maxlength="400">
-								<input type="text" id="sample4_extraAddress" placeholder="참고항목" class="form-control">
+                                <label class="col-sm-3 control-label">비밀번호</label>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" id="sel_pw" name="sel_pw" value="${data.sel_pw}" maxlength="20">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">전화번호</label>
-                                <input type="number" class="form-control" id="sel_tel" value="${data.sel_tel}" name="sel_tel" maxlength="20">
+                                <label class="col-sm-3 control-label">상호명</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="sel_cname" name="sel_cname" readonly="readonly" value="${data.sel_cname}" maxlength="200">
+                                </div>
                             </div>
                             <div class="form-group">
-								<label for="exampleInputFile">사업자등록증 사본</label>
-								<img src="${data.sel_img}" id="attach_img" width="300px" height="400px">
-								<input type="file" id="sel_img" name="attach_img" accept=".gif, .jpg, .png">
- 							</div>
-                       
-							<div align="right">
-                       		<button type="button" class="btn btn-primary" id="modifyBtn">수정</button>
-                       		<button type="button" class="btn btn-danger" id="listBtn">목록</button>
-                       		</div>
-                       		<input type="hidden" name="origin_img" value="${data.sel_img}">
-                       		<input type="hidden" name="sel_addr" value="" id="sel_addr">
+                                <label class="col-sm-3 control-label">대표자명</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="sel_name" name="sel_name" value="${data.sel_name}" maxlength="20">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">사업장 소재지</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" value="${data.sel_addr}" readonly="readonly">
+	                                <input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control">
+									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary" ><br>
+									<input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control">
+									<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" class="form-control">
+									<input type="text" id="sample4_detailAddress" placeholder="상세주소" class="form-control" maxlength="400">
+									<input type="text" id="sample4_extraAddress" placeholder="참고항목" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">전화번호</label>
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control " id="sel_tel" name="sel_tel" value="${data.sel_tel}" maxlength="20">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">사업자등록증 사본</label>
+                                <div class="col-sm-6">
+                                    <img src="${data.sel_img}" id="attach_img" width="300px" height="400px">
+									<input type="file" id="sel_img" name="attach_img" accept=".gif, .jpg, .png">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                               <div class="col-sm-offset-3 col-sm-6" align="right">
+		                      		<button type="button" class="btn btn-primary" id="modifyBtn">수정</button>
+		                      		<button type="button" class="btn btn-danger" id="listBtn">목록</button>
+	                      		</div>
+		                      		<input type="hidden" name="origin_img" value="${data.sel_img}">
+		                      		<input type="hidden" name="sel_addr" value="" id="sel_addr">
+                           </div>
                         </form>
-
                     </div>
-                </div>
                 </div>
             </div>
         </div>
-
     </section>
-        <!--main content end-->
+</section>
+<!--main content end-->
 
 <%@ include file="/WEB-INF/views/include/footnav.jsp" %>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

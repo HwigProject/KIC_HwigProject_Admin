@@ -177,5 +177,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{get_zipcode},
 			#{get_addr})
 	</insert>
+	
+	<update id="orderStatusUpdate">
+		update
+			tbl_order
+		set
+			order_status = #{order_status}
+		where order_id = #{order_id}
+	</update>
 
 </mapper>

@@ -79,4 +79,9 @@ public class OrderServiceImpl implements OrderService {
 		return 1;
 	}
 
+	@Override
+	public int statusModify(OrderVO orderVo) {
+		return orderDao.orderStatusUpdate(orderVo);
+	}
+
 }

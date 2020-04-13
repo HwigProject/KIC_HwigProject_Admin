@@ -11,5 +11,7 @@ public interface OrderService {
 	public OrderDetailDTO findOneById(String order_id);
 	
 	public int register(OrderRegisterDTO orderRegisterDto);
+	
+	public int statusModify(OrderVO orderVo);
 
 }

@@ -59,4 +59,9 @@ public class OrderDAOImpl implements OrderDAO {
 		return sqlSession.insert(namespace + ".orderAddrInsert", orderAddrVo);
 	}
 
+	@Override
+	public int orderStatusUpdate(OrderVO orderVo) {
+		return sqlSession.update(namespace + ".orderStatusUpdate", orderVo);
+	}
+
 }

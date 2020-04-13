@@ -22,4 +22,6 @@ public interface OrderDAO {
 	
 	public int orderAddrVoInsert(OrderAddrVO orderAddrVo);
 	
+	public int orderStatusUpdate(OrderVO orderVo);
+	
 }

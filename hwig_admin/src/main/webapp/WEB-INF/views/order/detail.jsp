@@ -39,7 +39,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">주문 상태</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="input4" id="input4" readonly="readonly" value="${data.order_status}">
+                                    <input type="text" class="form-control" id="order_status" name="input4" id="input4" readonly="readonly" value="${data.order_status}">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -117,7 +117,13 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-3 col-sm-6" align="right">
                                     <button type="button" class="btn btn-danger" id="listBtn">목록</button>
+                                    
+                                    <c:if test="${sessionScope.user_type eq 'seller'}">
+                                    
                                     <button type="button" class="btn btn-success" id="hwigBtn">제품 발송</button>
+                                    
+                                    </c:if>
+                                    
                                 </div>
                             </div>
                         </form>
@@ -136,9 +142,36 @@
 			self.location = "list?page=${page}&perPageNum=${perPageNum}&searchType=${searchType}&keyword=${keyword}";
 		});
 		
+		$(function(){
+			if($("#order_status").val() == "배송 중"){
+				$("#hwigBtn").attr("disabled","disabled");
+				return false;
+			}
+		});
+		
 		$("#hwigBtn").click(function(){
+			var jsondata = {
+					"order_status":$("#order_status").val()
+			}
 			
-		})
+			console.log("/api/order/${data.order_id}", jsondata);
+			
+			$.ajax({
+				url:"/api/order/${data.order_id}",
+				data:JSON.stringify(jsondata),
+				dataType:"json",
+				contentType:"application/json; charset=utf-8",
+				type:"put",
+				success:function(result){
+					if(result.code == 200){
+						alert("수정이 완료되었습니다.");
+						location.reload();
+					} else {
+						alert("수정이 실패되었습니다.");
+					}
+				} 
+			});
+		});
 	});
 	
 </script>
