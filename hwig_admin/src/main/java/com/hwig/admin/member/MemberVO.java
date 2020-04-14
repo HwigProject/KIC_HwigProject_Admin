@@ -6,7 +6,6 @@ public class MemberVO {
 	private String mem_pw;
 	private String mem_tel;
 	private String mem_name;
-	private String mem_zipcode;
 	private String mem_addr;
 	private String mem_email;
 	private String mem_regdate;
@@ -43,14 +42,6 @@ public class MemberVO {
 
 	public void setMem_name(String mem_name) {
 		this.mem_name = mem_name;
-	}
-
-	public String getMem_zipcode() {
-		return mem_zipcode;
-	}
-
-	public void setMem_zipcode(String mem_zipcode) {
-		this.mem_zipcode = mem_zipcode;
 	}
 
 	public String getMem_addr() {
@@ -96,8 +87,8 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_tel=" + mem_tel + ", mem_name=" + mem_name
-				+ ", mem_zipcode=" + mem_zipcode + ", mem_addr=" + mem_addr + ", mem_email=" + mem_email
-				+ ", mem_regdate=" + mem_regdate + ", mem_grade=" + mem_grade + ", mem_reverse=" + mem_reverse + "]";
+				+ ", mem_addr=" + mem_addr + ", mem_email=" + mem_email + ", mem_regdate=" + mem_regdate
+				+ ", mem_grade=" + mem_grade + ", mem_reverse=" + mem_reverse + "]";
 	}
 
 	public void empty() {
@@ -105,7 +96,6 @@ public class MemberVO {
 		mem_pw = "";
 		mem_tel = "";
 		mem_name = "";
-		mem_zipcode = "";
 		mem_addr = "";
 		mem_email = "";
 		mem_regdate = "";

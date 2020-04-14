@@ -9,14 +9,14 @@ public class OrderRegisterDTO {
 	private int order_paymoney;
 	private String request;
 
-	private List<Integer> pri_ids;
+	private List<Integer> prd_ids;
 	private int order_count;
 
-	private String post;
-	private String get;
-	private String get_tel;
-	private String get_zipcode;
-	private String get_addr;
+	private String order_sender;
+	private String order_receiver;
+	private String order_receiver_tel;
+	private String order_receiver_addr;
+	private boolean isNewAddr;
 
 	public String getMem_id() {
 		return mem_id;
@@ -50,12 +50,12 @@ public class OrderRegisterDTO {
 		this.request = request;
 	}
 
-	public List<Integer> getPri_ids() {
-		return pri_ids;
+	public List<Integer> getPrd_ids() {
+		return prd_ids;
 	}
 
-	public void setPri_ids(List<Integer> pri_ids) {
-		this.pri_ids = pri_ids;
+	public void setPrd_ids(List<Integer> prd_ids) {
+		this.prd_ids = prd_ids;
 	}
 
 	public int getOrder_count() {
@@ -66,52 +66,53 @@ public class OrderRegisterDTO {
 		this.order_count = order_count;
 	}
 
-	public String getPost() {
-		return post;
+	public String getOrder_sender() {
+		return order_sender;
 	}
 
-	public void setPost(String post) {
-		this.post = post;
+	public void setOrder_sender(String order_sender) {
+		this.order_sender = order_sender;
 	}
 
-	public String getGet() {
-		return get;
+	public String getOrder_receiver() {
+		return order_receiver;
 	}
 
-	public void setGet(String get) {
-		this.get = get;
+	public void setOrder_receiver(String order_receiver) {
+		this.order_receiver = order_receiver;
 	}
 
-	public String getGet_tel() {
-		return get_tel;
+	public String getOrder_receiver_tel() {
+		return order_receiver_tel;
 	}
 
-	public void setGet_tel(String get_tel) {
-		this.get_tel = get_tel;
+	public void setOrder_receiver_tel(String order_receiver_tel) {
+		this.order_receiver_tel = order_receiver_tel;
 	}
 
-	public String getGet_zipcode() {
-		return get_zipcode;
+	public String getOrder_receiver_addr() {
+		return order_receiver_addr;
 	}
 
-	public void setGet_zipcode(String get_zipcode) {
-		this.get_zipcode = get_zipcode;
+	public void setOrder_receiver_addr(String order_receiver_addr) {
+		this.order_receiver_addr = order_receiver_addr;
 	}
 
-	public String getGet_addr() {
-		return get_addr;
+	public boolean isNewAddr() {
+		return isNewAddr;
 	}
 
-	public void setGet_addr(String get_addr) {
-		this.get_addr = get_addr;
+	public void setIsNewAddr(boolean isNewAddr) {
+		this.isNewAddr = isNewAddr;
 	}
 
 	@Override
 	public String toString() {
 		return "OrderRegisterDTO [mem_id=" + mem_id + ", order_reverse=" + order_reverse + ", order_paymoney="
-				+ order_paymoney + ", request=" + request + ", pri_ids=" + pri_ids + ", order_count=" + order_count
-				+ ", post=" + post + ", get=" + get + ", get_tel=" + get_tel + ", get_zipcode=" + get_zipcode
-				+ ", get_addr=" + get_addr + "]";
+				+ order_paymoney + ", request=" + request + ", prd_ids=" + prd_ids + ", order_count=" + order_count
+				+ ", order_sender=" + order_sender + ", order_receiver=" + order_receiver + ", order_receiver_tel="
+				+ order_receiver_tel + ", order_receiver_addr=" + order_receiver_addr + ", isNewAddr=" + isNewAddr
+				+ "]";
 	}
 
 }

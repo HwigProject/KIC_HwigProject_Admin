@@ -18,8 +18,7 @@ public class OrderDetailDTO {
 	private String mem_name;
 	private String mem_tel;
 
-	private String get_zipcode;
-	private String get_addr;
+	private String order_receiver_addr;
 
 	private String sel_id;
 
@@ -113,20 +112,12 @@ public class OrderDetailDTO {
 		this.mem_tel = mem_tel;
 	}
 
-	public String getGet_zipcode() {
-		return get_zipcode;
+	public String getOrder_receiver_addr() {
+		return order_receiver_addr;
 	}
 
-	public void setGet_zipcode(String get_zipcode) {
-		this.get_zipcode = get_zipcode;
-	}
-
-	public String getGet_addr() {
-		return get_addr;
-	}
-
-	public void setGet_addr(String get_addr) {
-		this.get_addr = get_addr;
+	public void setOrder_receiver_addr(String order_receiver_addr) {
+		this.order_receiver_addr = order_receiver_addr;
 	}
 
 	public List<OrderDetailPrdDTO> getOrder_prds() {
@@ -150,8 +141,9 @@ public class OrderDetailDTO {
 		return "OrderDetailDTO [order_id=" + order_id + ", mem_id=" + mem_id + ", order_status=" + order_status
 				+ ", order_reverse=" + order_reverse + ", order_paymoney=" + order_paymoney + ", order_payway="
 				+ order_payway + ", order_paydate=" + order_paydate + ", order_request=" + order_request
-				+ ", order_count=" + order_count + ", mem_name=" + mem_name + ", mem_tel=" + mem_tel + ", get_zipcode="
-				+ get_zipcode + ", get_addr=" + get_addr + ", sel_id=" + sel_id + ", order_prds=" + order_prds + "]";
+				+ ", order_count=" + order_count + ", mem_name=" + mem_name + ", mem_tel=" + mem_tel
+				+ ", order_receiver_addr=" + order_receiver_addr + ", sel_id=" + sel_id + ", order_prds=" + order_prds
+				+ "]";
 	}
 
 }

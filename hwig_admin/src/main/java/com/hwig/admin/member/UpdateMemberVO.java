@@ -5,7 +5,6 @@ public class UpdateMemberVO {
 	private String mem_id;
 	private String mem_pw;
 	private String mem_tel;
-	private String mem_zipcode;
 	private String mem_addr;
 	private String mem_email;
 	private String mem_newpw;
@@ -34,14 +33,6 @@ public class UpdateMemberVO {
 		this.mem_tel = mem_tel;
 	}
 
-	public String getMem_zipcode() {
-		return mem_zipcode;
-	}
-
-	public void setMem_zipcode(String mem_zipcode) {
-		this.mem_zipcode = mem_zipcode;
-	}
-
 	public String getMem_addr() {
 		return mem_addr;
 	}
@@ -68,9 +59,8 @@ public class UpdateMemberVO {
 
 	@Override
 	public String toString() {
-		return "UpdateMemberVO [mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_tel=" + mem_tel + ", mem_zipcode="
-				+ mem_zipcode + ", mem_addr=" + mem_addr + ", mem_email=" + mem_email + ", mem_newpw=" + mem_newpw
-				+ "]";
+		return "UpdateMemberVO [mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_tel=" + mem_tel + ", mem_addr="
+				+ mem_addr + ", mem_email=" + mem_email + ", mem_newpw=" + mem_newpw + "]";
 	}
 
 }

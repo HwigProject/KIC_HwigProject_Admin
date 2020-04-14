@@ -97,8 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			A.order_count,
             (select B.mem_name from tbl_member B where A.mem_id = B.mem_id) as mem_name,
             (select B.mem_tel from tbl_member B where A.mem_id = B.mem_id) as mem_tel,
-            F.get_zipcode,
-            F.get_addr
+            F.order_receiver_addr
 		from
 			tbl_order A,
             tbl_addr F
@@ -165,18 +164,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="orderAddrInsert">
 		insert into tbl_addr (
 			order_id,
-			post,
-			get,
-			get_tel,
-			get_zipcode,
-			get_addr)
+			order_sender,
+			order_receiver,
+			order_receiver_tel,
+			order_receiver_addr)
 		values (
 			#{order_id},
-			#{post},
-			#{get},
-			#{get_tel},
-			#{get_zipcode},
-			#{get_addr})
+			#{order_sender},
+			#{order_receiver},
+			#{order_receiver_tel},
+			#{order_receiver_addr})
 	</insert>
 	
 	<update id="orderStatusUpdate">

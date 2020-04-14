@@ -3,11 +3,10 @@ package com.hwig.admin.order;
 public class OrderAddrVO {
 
 	private String order_id;
-	private String post;
-	private String get;
-	private String get_tel;
-	private String get_zipcode;
-	private String get_addr;
+	private String order_sender;
+	private String order_receiver;
+	private String order_receiver_tel;
+	private String order_receiver_addr;
 
 	public String getOrder_id() {
 		return order_id;
@@ -17,50 +16,43 @@ public class OrderAddrVO {
 		this.order_id = order_id;
 	}
 
-	public String getPost() {
-		return post;
+	public String getOrder_sender() {
+		return order_sender;
 	}
 
-	public void setPost(String post) {
-		this.post = post;
+	public void setOrder_sender(String order_sender) {
+		this.order_sender = order_sender;
 	}
 
-	public String getGet() {
-		return get;
+	public String getOrder_receiver() {
+		return order_receiver;
 	}
 
-	public void setGet(String get) {
-		this.get = get;
+	public void setOrder_receiver(String order_receiver) {
+		this.order_receiver = order_receiver;
 	}
 
-	public String getGet_tel() {
-		return get_tel;
+	public String getOrder_receiver_tel() {
+		return order_receiver_tel;
 	}
 
-	public void setGet_tel(String get_tel) {
-		this.get_tel = get_tel;
+	public void setOrder_receiver_tel(String order_receiver_tel) {
+		this.order_receiver_tel = order_receiver_tel;
 	}
 
-	public String getGet_zipcode() {
-		return get_zipcode;
+	public String getOrder_receiver_addr() {
+		return order_receiver_addr;
 	}
 
-	public void setGet_zipcode(String get_zipcode) {
-		this.get_zipcode = get_zipcode;
-	}
-
-	public String getGet_addr() {
-		return get_addr;
-	}
-
-	public void setGet_addr(String get_addr) {
-		this.get_addr = get_addr;
+	public void setOrder_receiver_addr(String order_receiver_addr) {
+		this.order_receiver_addr = order_receiver_addr;
 	}
 
 	@Override
 	public String toString() {
-		return "OrderAddrVO [order_id=" + order_id + ", post=" + post + ", get=" + get + ", get_tel=" + get_tel
-				+ ", get_zipcode=" + get_zipcode + ", get_addr=" + get_addr + "]";
+		return "OrderAddrVO [order_id=" + order_id + ", order_sender=" + order_sender + ", order_receiver="
+				+ order_receiver + ", order_receiver_tel=" + order_receiver_tel + ", order_receiver_addr="
+				+ order_receiver_addr + "]";
 	}
 
 }

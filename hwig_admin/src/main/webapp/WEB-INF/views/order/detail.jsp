@@ -67,15 +67,9 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">배송지 우편번호</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="input12" id="input12" readonly="readonly" value="${data.get_zipcode}">
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label class="col-sm-3 control-label">배송지 주소</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" name="input13" id="input13" readonly="readonly" value="${data.get_addr}">
+                                    <input type="text" class="form-control" name="input13" id="input13" readonly="readonly" value="${data.order_receiver_addr}">
                                 </div>
                             </div>
                             <div class="form-group">
