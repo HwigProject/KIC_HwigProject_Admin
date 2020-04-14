@@ -2,7 +2,6 @@ package com.hwig.admin.order;
 
 public class OrderVO {
 
-	private int rownum;
 	private String order_id;
 	private String mem_id;
 	private String order_status; // 이건 DB에서
@@ -12,14 +11,6 @@ public class OrderVO {
 	private String order_paydate;
 	private String order_request;
 	private int order_count;
-
-	public int getRownum() {
-		return rownum;
-	}
-
-	public void setRownum(int rownum) {
-		this.rownum = rownum;
-	}
 
 	public String getOrder_id() {
 		return order_id;
@@ -95,10 +86,10 @@ public class OrderVO {
 
 	@Override
 	public String toString() {
-		return "OrderVO [rownum=" + rownum + ", order_id=" + order_id + ", mem_id=" + mem_id + ", order_status="
-				+ order_status + ", order_reverse=" + order_reverse + ", order_paymoney=" + order_paymoney
-				+ ", order_payway=" + order_payway + ", order_paydate=" + order_paydate + ", order_request="
-				+ order_request + ", order_count=" + order_count + "]";
+		return "OrderVO [order_id=" + order_id + ", mem_id=" + mem_id + ", order_status=" + order_status
+				+ ", order_reverse=" + order_reverse + ", order_paymoney=" + order_paymoney + ", order_payway="
+				+ order_payway + ", order_paydate=" + order_paydate + ", order_request=" + order_request
+				+ ", order_count=" + order_count + "]";
 	}
 
 }

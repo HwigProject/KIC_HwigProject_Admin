@@ -53,6 +53,7 @@
 							<table class="table table-bordered table-striped text-center">
 								<thead>
 									<tr>
+										<th class="text-center">순번</th>
 										<th class="text-center">사업자번호</th>
 										<th class="text-center">상호명</th>
 										<th class="text-center">대표자명</th>
@@ -62,8 +63,14 @@
 								</thead>
 								<tbody>
 									<c:if test="${fn:length(list) > 0}">
-									<c:forEach items="${list}" var="sellerVo">
+									<c:forEach items="${list}" var="sellerVo" varStatus="status">
 										<tr onclick="location.href='/seller/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&sel_id=${sellerVo.sel_id}'" style="cursor:pointer">
+											<c:if test="${pageMaker.cri.page == 1}">
+												<td>${pageMaker.totalCount - status.index}</td>
+											</c:if>
+											<c:if test="${pageMaker.cri.page > 1}">
+												<td>${pageMaker.totalCount - ((pageMaker.cri.page-1) * pageMaker.cri.perPageNum) - status.index}</td>
+											</c:if>
 											<td>${sellerVo.sel_id}</td>
 											<td>${sellerVo.sel_cname}</td>
 											<td>${sellerVo.sel_name}</td>
@@ -74,7 +81,7 @@
 									</c:if>
 									<c:if test="${fn:length(list) < 1}">
 										<tr>
-											<td colspan="6">검색 결과가 없습니다</td>
+											<td colspan="7">검색 결과가 없습니다</td>
 										</tr>
 									</c:if>
 								</tbody>

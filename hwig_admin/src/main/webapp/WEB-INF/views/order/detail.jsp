@@ -120,7 +120,7 @@
                                     
                                     <c:if test="${sessionScope.user_type eq 'seller'}">
                                     
-                                    <button type="button" class="btn btn-success" id="hwigBtn">제품 발송</button>
+                                    <button type="button" class="btn btn-success" id="hwigBtn" <c:if test="${data.order_status  eq '배송 중'}">disabled="disabled"</c:if>>제품 발송</button>
                                     
                                     </c:if>
                                     
@@ -142,13 +142,6 @@
 			self.location = "list?page=${page}&perPageNum=${perPageNum}&searchType=${searchType}&keyword=${keyword}";
 		});
 		
-		$(function(){
-			if($("#order_status").val() == "배송 중"){
-				$("#hwigBtn").attr("disabled","disabled");
-				return false;
-			}
-		});
-		
 		$("#hwigBtn").click(function(){
 			var jsondata = {
 					"order_status":$("#order_status").val()
@@ -165,7 +158,8 @@
 				success:function(result){
 					if(result.code == 200){
 						alert("수정이 완료되었습니다.");
-						location.reload();
+						$("#hwigBtn").attr("disabled","disabled");
+						$("#order_status").val("배송 중");
 					} else {
 						alert("수정이 실패되었습니다.");
 					}

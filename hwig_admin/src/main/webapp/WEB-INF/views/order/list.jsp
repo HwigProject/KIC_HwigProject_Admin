@@ -52,28 +52,37 @@
 							<table class="table table-bordered table-striped text-center">
 								<thead>
 									<tr>
+										<th class="text-center">순번</th>
 										<th class="text-center">주문번호</th>
 										<th class="text-center">회원아이디</th>
 										<th class="text-center">적립금</th>
 										<th class="text-center">결제금액</th>
 										<th class="text-center">결제날짜</th>
+										<th class="text-center">주문상태</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:if test="${fn:length(list) > 0}">
-									<c:forEach items="${list}" var="orderVo">
+									<c:forEach items="${list}" var="orderVo" varStatus="status">
 										<tr onclick="location.href='/order/detail${pageMaker.makeSearch(pageMaker.cri.page)}&order_id=${orderVo.order_id}'" style="cursor:pointer">
+											<c:if test="${pageMaker.cri.page == 1}">
+												<td>${pageMaker.totalCount - status.index}</td>
+											</c:if>
+											<c:if test="${pageMaker.cri.page > 1}">
+												<td>${pageMaker.totalCount - ((pageMaker.cri.page-1) * pageMaker.cri.perPageNum) - status.index}</td>
+											</c:if>
 											<td>${orderVo.order_id}</td>
 											<td>${orderVo.mem_id}</td>
 											<td>${orderVo.order_reverse}</td>
 											<td>${orderVo.order_paymoney}</td>
 											<td>${orderVo.order_paydate}</td>
+											<td>${orderVo.order_status}</td>
 										</tr>
 									</c:forEach>
 									</c:if>
 									<c:if test="${fn:length(list) < 1}">
 										<tr>
-											<td colspan="6">검색 결과가 없습니다</td>
+											<td colspan="7">검색 결과가 없습니다</td>
 										</tr>
 									</c:if>
 								</tbody>

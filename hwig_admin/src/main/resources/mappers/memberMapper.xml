@@ -22,9 +22,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="memberAllSelect" resultType="MemberVO">
 		select * from (
-			select rownum, mem_id, mem_pw, mem_tel, mem_name, mem_zipcode, mem_addr,
+			select mem_id, mem_pw, mem_tel, mem_name, mem_zipcode, mem_addr,
 			mem_email, to_char(mem_regdate,'YYYY-MM-DD')as mem_regdate, mem_grade, mem_reverse,
-				row_number() over(order by rownum desc) as rnum from tbl_member where 1=1
+				row_number() over(order by mem_regdate desc) as rnum from tbl_member where 1=1
 		
 		<include  refid="search"></include>
 		

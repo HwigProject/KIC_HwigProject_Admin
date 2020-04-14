@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="orderAllSelectSeller" resultType="OrderVO">
 	select * from (
-		select rownum,
+		select
 			A.order_id,
 			A.mem_id, 
 			A.order_status, 
@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			to_char(A.order_paydate,'YYYY-MM-DD')as order_paydate, 
 			A.order_request, 
 			A.order_count,
-			row_number() over(order by rownum desc) as rnum
+			row_number() over(order by A.order_status desc, A.order_paydate desc) as rnum
 		from tbl_order A,
 			tbl_order_b B,
 			tbl_prd C
@@ -38,7 +38,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		
 		<include  refid="search"></include>
-		
 			) mb where rnum between #{pageStart} and #{pageEnd}
 	</select>
 	
@@ -58,8 +57,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="orderAllSelectAdmin" resultType="OrderVO">
 	select * from (
-		select 
-			rownum,
+		select
 			order_id,
 			mem_id, 
 			order_status, 
@@ -69,7 +67,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			to_char(order_paydate,'YYYY-MM-DD hh24:mi:ss')as order_paydate, 
 			order_request, 
 			order_count,
-			row_number() over(order by rownum desc) as rnum
+			row_number() over(order by order_status desc, order_paydate desc) as rnum
 		from tbl_order
 		where 1=1
 		
@@ -82,7 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select
 			count(order_id) 
 		from tbl_order
-		where 1=1;
+		where 1=1
 		<include refid="search"></include>
 	</select>
 	
@@ -124,6 +122,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             A.prd_id = B.prd_id
             and B.sel_id = C.sel_id
 			and A.order_id = #{order_id}
+			<if test="sel_id != null and sel_id !=''">
+				and C.sel_id = #{sel_id}
+			</if>
 	</select>
 	
 	<insert id="orderInsert">
@@ -131,7 +132,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[
 			select 
 				case when (select count(*) from tbl_order where to_char(order_paydate, 'YYYYMMDD') = to_char(sysdate, 'YYYYMMDD')) > 0   then 
-					((select to_char(sysdate, 'YYYYMMDD') from dual) || lpad((select count(*) + 1 from tbl_order where to_char(order_paydate, 'YYYYMMDD') = to_char(sysdate, 'YYYYMMDD')), 5, '0'))
+					((select to_char(sysdate, 'YYYYMMDD') from dual) || lpad((select count(*) from tbl_order where to_char(order_paydate, 'YYYYMMDD') = to_char(sysdate, 'YYYYMMDD')), 5, '0'))
 				else 
 					((select to_char(sysdate, 'YYYYMMDD') from dual) || lpad((select count(*) from tbl_order where to_char(order_paydate, 'YYYYMMDD') = to_char(sysdate, 'YYYYMMDD')), 5, '0'))
 				end  as order_id

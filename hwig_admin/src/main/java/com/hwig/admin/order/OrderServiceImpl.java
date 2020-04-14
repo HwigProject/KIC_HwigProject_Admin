@@ -1,6 +1,5 @@
 package com.hwig.admin.order;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -35,7 +34,16 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public int listAllCount(OrderCriteria cri) {
-		return orderDao.selectAllCountBySeller(cri);
+		String user_type = (String) session.getAttribute("user_type");
+		String user_id = null;
+		if (user_type.equals("seller")) {
+			user_id = ((SellerVO) session.getAttribute("user")).getSel_id();
+			cri.setSel_id(user_id);
+			return orderDao.selectAllCountBySeller(cri);
+		} else {
+			return orderDao.selectAllCountByAdmin(cri);
+		}
+		
 	}
 
 	@Override
@@ -44,7 +52,14 @@ public class OrderServiceImpl implements OrderService {
 		orderDto.setOrder_id(order_id);
 		orderDto = orderDao.selectDetail(orderDto);
 		
-		orderDto.setOrder_prds(orderDao.selectDetailPrd(order_id));
+		String user_type = (String) session.getAttribute("user_type");
+		if (user_type.equals("admin")) {
+			orderDto.setSel_id(null);
+		} else {
+			orderDto.setSel_id(((SellerVO) session.getAttribute("user")).getSel_id());
+		}
+		
+		orderDto.setOrder_prds(orderDao.selectDetailPrd(orderDto));
 		return orderDto;
 	}
 

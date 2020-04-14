@@ -14,7 +14,7 @@ public interface OrderDAO {
 	
 	public OrderDetailDTO selectDetail(OrderDetailDTO orderDto);
 	
-	public List<OrderDetailPrdDTO> selectDetailPrd(String order_id);
+	public List<OrderDetailPrdDTO> selectDetailPrd(OrderDetailDTO orderDto);
 	
 	public int orderVoInsert(OrderVO orderVo);
 	

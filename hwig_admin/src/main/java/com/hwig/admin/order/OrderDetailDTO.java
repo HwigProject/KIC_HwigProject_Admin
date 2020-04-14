@@ -21,6 +21,8 @@ public class OrderDetailDTO {
 	private String get_zipcode;
 	private String get_addr;
 
+	private String sel_id;
+
 	private List<OrderDetailPrdDTO> order_prds = new ArrayList<>();
 
 	public String getOrder_id() {
@@ -135,13 +137,21 @@ public class OrderDetailDTO {
 		this.order_prds = order_detail_prds;
 	}
 
+	public String getSel_id() {
+		return sel_id;
+	}
+
+	public void setSel_id(String sel_id) {
+		this.sel_id = sel_id;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderDetailDTO [order_id=" + order_id + ", mem_id=" + mem_id + ", order_status=" + order_status
 				+ ", order_reverse=" + order_reverse + ", order_paymoney=" + order_paymoney + ", order_payway="
 				+ order_payway + ", order_paydate=" + order_paydate + ", order_request=" + order_request
 				+ ", order_count=" + order_count + ", mem_name=" + mem_name + ", mem_tel=" + mem_tel + ", get_zipcode="
-				+ get_zipcode + ", get_addr=" + get_addr + ", order_prds=" + order_prds + "]";
+				+ get_zipcode + ", get_addr=" + get_addr + ", sel_id=" + sel_id + ", order_prds=" + order_prds + "]";
 	}
 
 }

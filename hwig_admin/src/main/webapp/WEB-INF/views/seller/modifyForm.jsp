@@ -24,12 +24,9 @@
                                     <input type="number" class="form-control" id="sel_id" name="sel_id" readonly="readonly" value="${data.sel_id}" maxlength="20">
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">비밀번호</label>
-                                <div class="col-sm-6">
-                                    <input type="password" class="form-control" id="sel_pw" name="sel_pw" value="${data.sel_pw}" maxlength="20">
-                                </div>
-                            </div>
+                            
+                                    <input type="hidden" class="form-control" id="sel_pw" name="sel_pw" value="${data.sel_pw}" maxlength="20">
+                                    
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">상호명</label>
                                 <div class="col-sm-6">
@@ -158,11 +155,6 @@
 			
 			if($.trim($("#sel_id").val()) == ""){
 				alert("사업자번호를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_pw").val()) == ""){
-				alert("비밀번호를 입력해주세요");
 				return false;
 			}
 			

@@ -52,6 +52,7 @@
 							<table class="table table-bordered table-striped text-center">
 								<thead>
 									<tr>
+										<th class="text-center">순번</th>
 										<th class="text-center">아이디</th>
 										<th class="text-center">이름</th>
 										<th class="text-center">이메일</th>
@@ -62,8 +63,14 @@
 								</thead>
 								<tbody>
 								<c:if test="${fn:length(list) > 0}">
-									<c:forEach items="${list}" var="memberVo">
+									<c:forEach items="${list}" var="memberVo" varStatus="status">
 										<tr onclick="location.href='/member/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&mem_id=${memberVo.mem_id}'" style="cursor:pointer">
+											<c:if test="${pageMaker.cri.page == 1}">
+												<td>${pageMaker.totalCount - status.index}</td>
+											</c:if>
+											<c:if test="${pageMaker.cri.page > 1}">
+												<td>${pageMaker.totalCount - ((pageMaker.cri.page-1) * pageMaker.cri.perPageNum) - status.index}</td>
+											</c:if>
 											<td>${memberVo.mem_id}</td>
 											<td>${memberVo.mem_name}</td>
 											<td>${memberVo.mem_email}</td>
@@ -75,7 +82,7 @@
 									</c:if>
 									<c:if test="${fn:length(list) < 1}">
 										<tr>
-											<td colspan="6">검색 결과가 없습니다</td>
+											<td colspan="7">검색 결과가 없습니다</td>
 										</tr>
 									</c:if>
 								</tbody>

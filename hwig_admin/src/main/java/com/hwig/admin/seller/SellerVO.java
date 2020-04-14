@@ -2,7 +2,6 @@ package com.hwig.admin.seller;
 
 public class SellerVO {
 
-	private int rownum;
 	private String sel_id;
 	private String sel_pw;
 	private String sel_cname;
@@ -11,14 +10,6 @@ public class SellerVO {
 	private String sel_tel;
 	private String sel_img;
 	private String origin_img;
-
-	public int getRownum() {
-		return rownum;
-	}
-
-	public void setRownum(int rownum) {
-		this.rownum = rownum;
-	}
 
 	public String getSel_id() {
 		return sel_id;
@@ -86,13 +77,12 @@ public class SellerVO {
 
 	@Override
 	public String toString() {
-		return "SellerVO [rownum=" + rownum + ", sel_id=" + sel_id + ", sel_pw=" + sel_pw + ", sel_cname=" + sel_cname
-				+ ", sel_name=" + sel_name + ", sel_addr=" + sel_addr + ", sel_tel=" + sel_tel + ", sel_img=" + sel_img
+		return "SellerVO [sel_id=" + sel_id + ", sel_pw=" + sel_pw + ", sel_cname=" + sel_cname + ", sel_name="
+				+ sel_name + ", sel_addr=" + sel_addr + ", sel_tel=" + sel_tel + ", sel_img=" + sel_img
 				+ ", origin_img=" + origin_img + "]";
 	}
-	
+
 	public void empty() {
-		rownum = 0;
 		sel_id = "";
 		sel_pw = "";
 		sel_cname = "";

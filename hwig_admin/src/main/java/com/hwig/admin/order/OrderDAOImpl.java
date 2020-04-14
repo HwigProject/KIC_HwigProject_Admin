@@ -40,8 +40,8 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 	@Override
-	public List<OrderDetailPrdDTO> selectDetailPrd(String order_id) {
-		return sqlSession.selectList(namespace + ".orderDetailPrdSelect", order_id);
+	public List<OrderDetailPrdDTO> selectDetailPrd(OrderDetailDTO orderDto) {
+		return sqlSession.selectList(namespace + ".orderDetailPrdSelect", orderDto);
 	}
 
 	@Override
