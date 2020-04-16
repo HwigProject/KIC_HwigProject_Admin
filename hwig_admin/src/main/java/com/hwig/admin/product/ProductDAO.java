@@ -19,6 +19,9 @@ public interface ProductDAO {
 	//등록 완료 목록 조회
 	public List<ProductVO> list(SearchCriteria cri) throws Exception;
 	
+	//등록 완료 목록 조회
+	public List<ProductListDTO> mainlist(int category_p_id) throws Exception;
+	
 	//예정 상품 삭제
 	public int delete(int prd_id) throws Exception;
 	

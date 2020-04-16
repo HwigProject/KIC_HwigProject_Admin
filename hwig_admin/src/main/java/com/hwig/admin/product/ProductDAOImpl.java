@@ -44,6 +44,11 @@ public class ProductDAOImpl implements ProductDAO{
 	public List<ProductVO> list(SearchCriteria cri) throws Exception {
 		return sql.selectList(namespace + ".list", cri);
 	}
+	
+	@Override
+	public List<ProductListDTO> mainlist(int category_p_id) throws Exception {
+		return sql.selectList(namespace + ".mainlist", category_p_id);
+	}
 
 	@Override
 	public int delete(int prd_id) throws Exception {
