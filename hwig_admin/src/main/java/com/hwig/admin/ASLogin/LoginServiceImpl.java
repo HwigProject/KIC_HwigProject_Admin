@@ -1,4 +1,4 @@
-package com.hwig.admin.login;
+package com.hwig.admin.ASLogin;
 
 import javax.servlet.http.HttpSession;
 

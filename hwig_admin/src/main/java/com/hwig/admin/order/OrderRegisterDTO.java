@@ -7,9 +7,9 @@ public class OrderRegisterDTO {
 	private String mem_id;
 	private int order_reverse;
 	private int order_paymoney;
-	private String request;
+	private String order_request;
 
-	private List<Integer> prd_ids;
+	private List<Integer> order_prd_ids;
 	private int order_count;
 
 	private String order_sender;
@@ -42,20 +42,24 @@ public class OrderRegisterDTO {
 		this.order_paymoney = order_paymoney;
 	}
 
-	public String getRequest() {
-		return request;
+	public String getOrder_request() {
+		return order_request;
 	}
 
-	public void setRequest(String request) {
-		this.request = request;
+	public void setOrder_request(String order_request) {
+		this.order_request = order_request;
 	}
 
-	public List<Integer> getPrd_ids() {
-		return prd_ids;
+	public List<Integer> getOrder_prd_ids() {
+		return order_prd_ids;
 	}
 
-	public void setPrd_ids(List<Integer> prd_ids) {
-		this.prd_ids = prd_ids;
+	public void setOrder_prd_ids(List<Integer> order_prd_ids) {
+		this.order_prd_ids = order_prd_ids;
+	}
+
+	public void setNewAddr(boolean isNewAddr) {
+		this.isNewAddr = isNewAddr;
 	}
 
 	public int getOrder_count() {
@@ -109,10 +113,10 @@ public class OrderRegisterDTO {
 	@Override
 	public String toString() {
 		return "OrderRegisterDTO [mem_id=" + mem_id + ", order_reverse=" + order_reverse + ", order_paymoney="
-				+ order_paymoney + ", request=" + request + ", prd_ids=" + prd_ids + ", order_count=" + order_count
-				+ ", order_sender=" + order_sender + ", order_receiver=" + order_receiver + ", order_receiver_tel="
-				+ order_receiver_tel + ", order_receiver_addr=" + order_receiver_addr + ", isNewAddr=" + isNewAddr
-				+ "]";
+				+ order_paymoney + ", order_request=" + order_request + ", order_prd_ids=" + order_prd_ids
+				+ ", order_count=" + order_count + ", order_sender=" + order_sender + ", order_receiver="
+				+ order_receiver + ", order_receiver_tel=" + order_receiver_tel + ", order_receiver_addr="
+				+ order_receiver_addr + ", isNewAddr=" + isNewAddr + "]";
 	}
 
 }

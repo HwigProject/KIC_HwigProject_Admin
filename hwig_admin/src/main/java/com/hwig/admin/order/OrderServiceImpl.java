@@ -75,15 +75,15 @@ public class OrderServiceImpl implements OrderService {
 		orderVo.setMem_id(orderRegisterDto.getMem_id());
 		orderVo.setOrder_reverse(orderRegisterDto.getOrder_reverse());
 		orderVo.setOrder_paymoney(orderRegisterDto.getOrder_paymoney());
-		orderVo.setOrder_request(orderRegisterDto.getRequest());
+		orderVo.setOrder_request(orderRegisterDto.getOrder_request());
 		orderVo.setOrder_count(orderRegisterDto.getOrder_count());
 		orderDao.orderVoInsert(orderVo);
 
 		String order_id = orderVo.getOrder_id();
 		OrderBVO orderBVo = new OrderBVO();
 		orderBVo.setOrder_id(order_id);
-		for (int i = 0; i < orderRegisterDto.getPrd_ids().size(); i++) {
-			orderBVo.setPrd_id(orderRegisterDto.getPrd_ids().get(i));
+		for (int i = 0; i < orderRegisterDto.getOrder_prd_ids().size(); i++) {
+			orderBVo.setPrd_id(orderRegisterDto.getOrder_prd_ids().get(i));
 			orderDao.orderBVoInsert(orderBVo);
 		}
 

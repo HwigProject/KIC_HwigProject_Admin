@@ -54,7 +54,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">전화번호</label>
                                 <div class="col-sm-6">
-                                    <input type="number" class="form-control " id="sel_tel" name="sel_tel" value="${data.sel_tel}" maxlength="20">
+                                    <input type="text" class="form-control " id="sel_tel" name="sel_tel" value="${data.sel_tel}" maxlength="20">
                                 </div>
                             </div>
                             <div class="form-group">

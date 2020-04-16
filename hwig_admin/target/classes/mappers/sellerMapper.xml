@@ -51,5 +51,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select count(sel_id) from tbl_seller where 1=1
 		<include refid="search"></include>
 	</select>
+	
+	<update id="sellerPwUpdate">
+		update tbl_seller set sel_pw = #{sel_pw} where sel_id = #{sel_id}
+	</update>
 
 </mapper>

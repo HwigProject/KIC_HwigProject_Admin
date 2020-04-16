@@ -197,6 +197,14 @@ $(document).ready(function() {
     $("#logoutBtn").click(function(){
     	self.location = "../logout";
     });
+    
+    $("#sellerAccountBtn1").click(function(){
+    	self.location = "/seller/account";
+    });
+    
+    $("#sellerAccountBtn2").click(function(){
+    	self.location = "/seller/account";
+    });
 });
 </script>
 </body>

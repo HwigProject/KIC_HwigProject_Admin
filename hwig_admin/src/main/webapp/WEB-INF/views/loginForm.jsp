@@ -151,7 +151,6 @@ $(document).ready(function() {
 			$("#admin_id").empty();
 			$("#sel_id").text("사업자등록번호");
 			$("#user_type").val("seller");
-			$("#user_id").val("1240473544");
 			console.log($("#user_type").val());
 		}
 	});

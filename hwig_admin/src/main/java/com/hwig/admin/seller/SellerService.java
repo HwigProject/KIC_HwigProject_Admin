@@ -16,4 +16,6 @@ public interface SellerService {
 	
 	public int listAllCount(SearchCriteria cri);
 	
+	public int pwModify(SellerPwDTO sellerPwDto);
+	
 }

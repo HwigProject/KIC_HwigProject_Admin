@@ -11,7 +11,7 @@
                     <header>
                         <div class="brand">
                             <a href="index.html" class="logo">
-                                <i class="icon-layers"></i>
+                                <i class="fa  fa-fw fa-gift"></i>
                                 <span>판매자 등록</span></a>
                         </div>
                     </header>
@@ -28,21 +28,21 @@
                                 	<label for="exampleInputEmail1">사업자등록번호</label>
                                 </div>
                                 <div class="col-md-9" style="padding-left: 0">
-                                	<input type="number" class="form-control" id="sel_id" name="sel_id" maxlength="20">
+                                	<input type="number" class="form-control" id="sel_id" name="sel_id" maxlength="20" placeholder="숫자만 입력하세요">
                                 </div>
                                 <button type="button" class="btn btn-primary" id="idCheckBtn">중복체크</button>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">비밀번호</label>
-                                <input type="password" class="form-control" id="sel_pw" name="sel_pw" maxlength="20">
+                                <input type="password" class="form-control" id="sel_pw" name="sel_pw" maxlength="20" placeholder="기본 설정 비밀번호는 판매자의 사업자등록번호입니다">
                             </div>
                              <div class="form-group">
                                 <label for="exampleInputPassword1">상호명</label>
-                                <input type="text" class="form-control" id="sel_cname" name="sel_cname" maxlength="200">
+                                <input type="text" class="form-control" id="sel_cname" name="sel_cname" maxlength="200" placeholder="상호명을 입력하세요">
                             </div>
                               <div class="form-group">
                                 <label for="exampleInputPassword1">대표자명</label>
-                                <input type="text" class="form-control" id="sel_name" name="sel_name" maxlength="20">
+                                <input type="text" class="form-control" id="sel_name" name="sel_name" maxlength="20" placeholder="대표자명을 입력하세요">
                             </div>
                             
                             <div class="form-group">
@@ -57,7 +57,7 @@
 							
                             <div class="form-group">
                                 <label for="exampleInputPassword1">전화번호</label>
-                                <input type="number" class="form-control" id="sel_tel" name="sel_tel" maxlength="20">
+                                <input type="text" class="form-control" id="sel_tel" name="sel_tel" maxlength="20" placeholder="전화번호를 입력하세요">
                             </div>
                             <div class="form-group">
 								<label for="exampleInputFile">사업자등록증 사본</label>

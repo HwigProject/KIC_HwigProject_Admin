@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -178,6 +179,28 @@ public class SellerController {
 		}
 
 		return sellerVo;
+	}
+
+	@RequestMapping(value = "/account", method = RequestMethod.GET)
+	public void accountPage() {
+	}
+
+	@RequestMapping(value = "/changePw", method = RequestMethod.POST)
+	public String changePw(SellerPwDTO sellerPwDto, RedirectAttributes rttr) {
+		String inputPass = sellerPwDto.getSel_pw();
+		PasswordEncoder passEncoder = new BCryptPasswordEncoder();
+		String pass = passEncoder.encode(inputPass);
+		sellerPwDto.setSel_pw(pass);
+
+		int result = sellerService.pwModify(sellerPwDto);
+
+		if (result == 1) {
+			rttr.addFlashAttribute("msg", "success");
+		} else {
+			rttr.addFlashAttribute("msg", "fail");
+		}
+
+		return "redirect:/seller/account";
 	}
 
 }

@@ -1,4 +1,4 @@
-package com.hwig.admin.login;
+package com.hwig.admin.ASLogin;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

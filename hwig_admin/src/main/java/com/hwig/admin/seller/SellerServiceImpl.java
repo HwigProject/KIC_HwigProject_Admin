@@ -40,4 +40,9 @@ public class SellerServiceImpl implements SellerService {
 		return sellerDao.selectAllCount(cri);
 	}
 
+	@Override
+	public int pwModify(SellerPwDTO sellerPwDto) {
+		return sellerDao.pwUpdate(sellerPwDto);
+	}
+
 }

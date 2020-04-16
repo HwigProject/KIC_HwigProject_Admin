@@ -41,4 +41,9 @@ public class SellerDAOImpl implements SellerDAO {
 		return sqlSession.selectOne(namespace + ".sellerAllCount", cri);
 	}
 
+	@Override
+	public int pwUpdate(SellerPwDTO sellerPwDto) {
+		return sqlSession.update(namespace + ".sellerPwUpdate", sellerPwDto);
+	}
+
 }

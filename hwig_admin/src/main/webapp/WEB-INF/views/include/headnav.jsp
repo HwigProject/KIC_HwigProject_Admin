@@ -94,11 +94,15 @@
                             </div>
                         </li>
                         <li class="divider"></li>
+                        
+                        <c:if test="${sessionScope.user_type eq 'seller'}">
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="#" id="sellerAccountBtn1">
                                 <span class="icon"><i class="fa fa-user"></i>
-                                </span>My Account</a>
+                                </span>판매자 정보</a>
                         </li>
+                        </c:if>
+                        
                         <li>
                             <a href="javascript:void(0);">
                                 <span class="icon"><i class="fa fa-envelope"></i>
@@ -151,11 +155,13 @@
                             </div>
                         </li>
                         <li class="divider"></li>
+                        <c:if test="${sessionScope.user_type eq 'seller'}">
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="#" id="sellerAccountBtn2">
                                 <span class="icon"><i class="fa fa-user"></i>
-                                </span>My Account</a>
+                                </span>판매자 정보</a>
                         </li>
+                        </c:if>
                         <li>
                             <a href="javascript:void(0);">
                                 <span class="icon"><i class="fa fa-envelope"></i>
