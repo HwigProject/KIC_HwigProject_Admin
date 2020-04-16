@@ -1,4 +1,4 @@
-package com.hwig.admin.notice;
+package com.hwig.admin.faq;
 
 import java.util.List;
 
@@ -13,26 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping("/api/notice")
-public class NoticeRestController {
+@RequestMapping("/api/faq")
+public class FaqRestController {
 
 	@Inject
-	NoticeService nService;
+	FaqService fService;
 	
-	@GetMapping("/nlist")
-	public List<NoticeVO> nlist(NoticeVO notice) throws Exception{
+	@GetMapping("/flist")
+	public List<FaqVO> flist(FaqVO faq) throws Exception{
 		
-		List<NoticeVO> nlist = nService.nList_main();
+		List<FaqVO> nlist = fService.fList_main();
 		
 		return nlist;
-	}
-	
-	@GetMapping("/notice_view")
-	public NoticeVO notice_view(@RequestParam("notice_id") int notice_id) throws Exception{
-
-		nService.notice_hit_up(notice_id);
-
-		return nService.notice_view(notice_id);
 	}
 }
 

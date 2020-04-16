@@ -48,8 +48,7 @@
                                         <tr>
                                             <th>글 번호</th>
                                             <th>제목</th>
-                                            <th>본문</th>                                           
-                                            <th>관리</th>
+                                            <th>본문</th>                  
                                         </tr>
                                     </thead>
 
@@ -58,11 +57,7 @@
 											<tr>
 												<td>${eList.event_id}</td>
 												<td><a href="event_view?event_id=${eList.event_id}">${eList.event_subject}</a></td>
-												<td>${eList.event_content}</td>												
-												<td>
-													<button type="button" onclick="location.href='/event/event_modify?event_id=${eList.event_id}'" class="btn btn-success">수정</button>
-                                					<button type="button" onclick="location.href='/event/event_delete?event_id=${eList.event_id}'" class="btn btn-danger">삭제</button>
-                                				</td>
+												<td>${eList.event_content}</td>									
 											</tr>
 										</c:forEach>
                                     </tbody>

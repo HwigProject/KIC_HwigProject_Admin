@@ -22,13 +22,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="search"></include>
 	</select>
 	
-	<!-- 공지사항 목록 -->
+	<!-- 공지사항 목록(관리자페이지) -->
 	<select id="nList" resultType="com.hwig.admin.notice.NoticeVO">
 		select * from (select row_number() over(order by notice_id desc) as rnum, a.* from tbl_notice a
 		<include  refid="search"></include>
 		)
 		where rnum between #{pageStart} and #{pageEnd} 
 	</select>
+	
+	<!-- 공지사항 목룍(메인 페이지) -->
+	<select id="nlist_main" resultType="com.hwig.admin.notice.NoticeVO">
+		select * from tbl_notice
+	</select>
+	
 	
 	<!-- 공지사항 등록 -->
 	<insert id="notice_write" parameterType="com.hwig.admin.notice.NoticeVO">

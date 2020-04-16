@@ -47,11 +47,12 @@ public class NoticeDAOImpl implements NoticeDAO{
 	}
 	
 	//공지사항 조회수 증가
-	/*
-	 * @Override public int notice_hit_up(int notice_id) throws Exception {
-	 * 
-	 * return sql.update(namespace + ".notice_hit_up", notice_id); }
-	 */
+	 @Override 
+	 public int notice_hit_up(int notice_id) throws Exception {
+	  
+		 return sql.update(namespace + ".notice_hit_up", notice_id); 
+	 }
+	 
 	
 	//공지사항 수정
 	@Override
@@ -73,5 +74,12 @@ public class NoticeDAOImpl implements NoticeDAO{
 	public void notice_id_d(NoticeVO notice) throws Exception {
 		
 		sql.update(namespace + ".notice_id_d", notice);
+	}
+	
+	//공지사항 목록 메인페이지
+	@Override
+	public List<NoticeVO> nList_main() throws Exception {
+		
+		return sql.selectList(namespace + ".nlist_main");
 	}
 }

@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class NoticeVO {
 	private int notice_id;
+	private int rnum;
 	private String notice_subject;
 	private String notice_content;
 	@JsonFormat(pattern = "yy-MM-dd")
@@ -52,4 +53,12 @@ public class NoticeVO {
 		this.notice_hit = notice_hit;
 	}
 
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+	
 }

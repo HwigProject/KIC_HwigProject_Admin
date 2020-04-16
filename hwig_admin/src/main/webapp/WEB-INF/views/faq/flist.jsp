@@ -84,25 +84,18 @@
 								cellspacing="0" width="100%">
 								<thead>
 									<tr>
-										<th>글 번호</th>
-										<th>카테고리</th>
-										<th>제목</th>
-										<th>관리</th>
+										<th class="col-md-2 text-center"">글 번호</th>
+										<th class="col-md-3 text-center"">카테고리</th>
+										<th class="col-md-7 text-center">제목</th>
 									</tr>
 								</thead>
 
 								<tbody>
-									<c:forEach var="fList" items="${fList}">
+									<c:forEach var="fList" varStatus="status" items="${fList}">
 										<tr>
-											<td>${fList.faq_id}</td>
+											<td>${pageMaker.totalCount - ((pageMaker.cri.page - 1) * pageMaker.cri.perPageNum + status.index)}</td>
 											<td>${fList.faq_category}</td>
 											<td><a href="faq_view?faq_id=${fList.faq_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}">${fList.faq_subject}</a></td>
-											<td>
-												<button type="button" onclick="location.href='/faq/faq_modify?faq_id=${fList.faq_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'"
-													class="btn btn-success">수정</button>
-												<button type="button" onclick="location.href='/faq/faq_delete?faq_id=${fList.faq_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'"
-													class="btn btn-danger">삭제</button>
-											</td>
 										</tr>
 									</c:forEach>
 								</tbody>

@@ -111,13 +111,12 @@ public class QnaController {
 	}
 	
 	//문의 삭제
-	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@RequestMapping(value = "/qna_delete")
 	public String qna_delete(QnaVO qna, int qna_id, RedirectAttributes rttr,
 							 @ModelAttribute("cri") SearchCriteria cri) throws Exception{
 		
 		int result = qService.qna_delete(qna_id);
-		qService.qna_id_d(qna);
+		
 		
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());

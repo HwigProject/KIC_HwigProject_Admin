@@ -12,4 +12,6 @@ public interface FaqDAO {
 	public int faq_modify(FaqVO faq) throws Exception;
 	public int faq_delete(int faq_id) throws Exception;
 	public void faq_id_d(FaqVO faq) throws Exception;
+	
+	public List<FaqVO> fList_main() throws Exception;
 }

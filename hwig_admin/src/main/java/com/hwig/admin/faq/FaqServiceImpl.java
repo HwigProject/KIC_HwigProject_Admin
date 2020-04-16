@@ -63,5 +63,9 @@ public class FaqServiceImpl implements FaqService{
 		dao.faq_id_d(faq);
 	}
 
-	
+	@Override
+	public List<FaqVO> fList_main() throws Exception {
+		
+		return dao.fList_main();
+	}
 }

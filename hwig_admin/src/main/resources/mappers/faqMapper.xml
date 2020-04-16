@@ -33,6 +33,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rnum between #{pageStart} and #{pageEnd}
 	</select>
 	
+	<!-- 자주묻는질문 목록_메인 -->
+	<select id="fList_main" resultType="com.hwig.admin.faq.FaqVO">
+		select * from tbl_faq
+	</select>
+	
 	<!-- 자주묻는질문 등록 -->
 	<insert id="faq_write" parameterType="com.hwig.admin.faq.FaqVO">
 		insert into tbl_faq values((select nvl(max(faq_id)+1,1) from tbl_faq), #{faq_category}, #{faq_subject}, #{faq_content})

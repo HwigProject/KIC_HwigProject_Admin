@@ -13,7 +13,7 @@
 	<section class="main-content-wrapper">
 			<section id="main-content" class="animated fadeInUp">
 		           <div class="row">
-  						<div class="col-md-12 col-sm-12" id="view-mail-wrapper">
+  						<div class="container" id="view-mail-wrapper">
 	                        <div class="panel">
 	                            <div class="panel-body">
 	                                <header>
@@ -22,19 +22,21 @@
 	                                <div class="row view-mail-header">
 	                                    <div class="col-md-6 ">
 	                                    	<div class="view-mail-reply">
-	                                            ${notice_view.notice_subject}
+	                                            제목 ${notice_view.notice_subject}
+	                                          
+	                                             
 	                                        </div>		                  
 	                                    </div>
 	                                    <div class="col-md-4">
 	                                        <div class="view-mail-reply pull-right">
-	                                            작성일 ${notice_view.notice_regdate}
+	                                              작성일 ${notice_view.notice_regdate}
 	                                        </div>
                                     	</div>
                                     	<div class="col-md-2">
 	                                        <div class="view-mail-reply pull-right">
-	                                            조회수 ${notice_view.notice_hit}
+	                                           조회수 ${notice_view.notice_hit}
 	                                        </div>
-                                    	</div>	                                   
+                                    	</div>                                   
 	                                </div>
 	
 	                                <div class="row">

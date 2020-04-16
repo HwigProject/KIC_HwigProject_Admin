@@ -13,7 +13,7 @@
 	<section class="main-content-wrapper">
 			<section id="main-content" class="animated fadeInUp">
 		           <div class="row">
-  						<div class="col-md-12 col-sm-12" id="view-mail-wrapper">
+  						<div class="container" id="view-mail-wrapper">
 	                        <div class="panel">
 	                            <div class="panel-body">
 	                                <header>

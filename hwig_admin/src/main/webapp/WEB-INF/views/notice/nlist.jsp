@@ -80,23 +80,18 @@
                                 <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
-                                            <th>글 번호</th>
-                                            <th>제목</th>
-                                            <th>작성일</th>    
-                                            <th>관리</th>
+                                            <th class="col-md-2 text-center">글 번호</th>
+                                            <th class="col-md-7 text-center">제목</th>
+                                            <th class="col-md-3 text-center">작성일</th>    
                                         </tr>
                                     </thead>
 
                                     <tbody>
-	                                    <c:forEach var="nList" items="${nList}">
+	                                    <c:forEach var="nList" varStatus="status" items="${nList}">
 											<tr>
-												<td>${nList.notice_id}</td>
+												<td>${pageMaker.totalCount - ((pageMaker.cri.page - 1) * pageMaker.cri.perPageNum + status.index)}</td>
 												<td><a href="notice_view?notice_id=${nList.notice_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}">${nList.notice_subject}</a></td>
-												<td>${nList.notice_regdate}</td>										
-												<td>
-													<button type="button" onclick="location.href='/notice/notice_modify?notice_id=${nList.notice_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}'" class="btn btn-success">수정</button>
-                                					<button type="button" onclick="location.href='/notice/notice_delete?notice_id=${nList.notice_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${scri.searchType}&keyword=${scri.keyword}'" class="btn btn-danger">삭제</button>
-                                				</td>
+												<td>${nList.notice_regdate}</td>																						
 											</tr>
 										</c:forEach>
                                     </tbody>

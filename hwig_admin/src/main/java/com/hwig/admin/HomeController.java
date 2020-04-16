@@ -1,5 +1,6 @@
 package com.hwig.admin;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index() {
 		
+
 		
 		return "index";
 	}

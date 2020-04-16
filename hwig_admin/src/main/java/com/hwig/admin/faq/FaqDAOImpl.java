@@ -66,6 +66,14 @@ public class FaqDAOImpl implements FaqDAO {
 		
 		sql.update(namespace + ".faq_id_d", faq);	
 	}
+	
+	
+	//자주묻는질문 목록(메인용)
+	@Override
+	public List<FaqVO> fList_main() throws Exception {
+		
+		return sql.selectList(namespace + ".fList_main");
+	}
 
 	
 }

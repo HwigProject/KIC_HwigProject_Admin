@@ -88,27 +88,18 @@
 										<th>카테고리</th>
 										<th>제목</th>
 										<th>작성일</th>
-										<th>작성자</th>
-										<th>관리</th>
+										<th>작성자</th>										
 									</tr>
 								</thead>
 
 								<tbody>
-									<c:forEach var="qList" items="${qList}">
+									<c:forEach var="qList" varStatus="status" items="${qList}">
 										<tr>
-											<td>${qList.qna_id}</td>
+											<td>${pageMaker.totalCount - ((pageMaker.cri.page - 1) * pageMaker.cri.perPageNum + status.index)}</td>
 											<td>${qList.qna_category}</td>
 											<td><a href="qna_view?qna_id=${qList.qna_id}&qna_category=${qList.qna_category}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}">${qList.qna_subject}</a></td>
 											<td>${qList.qna_regdate}</td>
-											<td>${qList.mem_id}</td>
-											<td>
-												<button type="button" onclick="location.href='/qna/qna_view?qna_id=${qList.qna_id}&qna_category=${qList.qna_category}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'"
-													class="btn btn-success">답변</button>
-												<button type="button" onclick="location.href='/qna/qna_modify?qna_id=${qList.qna_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'"
-													class="btn btn-success">수정</button>
-												<button type="button" onclick="location.href='/qna/qna_delete?qna_id=${qList.qna_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'"
-													class="btn btn-danger">삭제</button>
-											</td>
+											<td>${qList.mem_id}</td>											
 										</tr>
 																
 									</c:forEach>

@@ -14,7 +14,7 @@
 	<section class="main-content-wrapper">
 			<section id="main-content" class="animated fadeInUp">
 		           <div class="row" id="qna_row">
-  						<div class="col-md-12 col-sm-12" id="view-mail-wrapper">
+  						<div class="container" id="view-mail-wrapper">
 	                        <div class="panel">
 	                            <div class="panel-body">
 	                                <header>
@@ -48,7 +48,7 @@
                    </div>
                    
                    <div class="row" id="reply_row">
-  						<div class="col-md-12 col-sm-12" id="view-mail-wrapper">
+  						<div class="container" id="view-mail-wrapper">
 	                        <div class="panel">
 	                            <div class="panel-body">
 	                                <header>
@@ -79,7 +79,7 @@
 	                    </div>
                    </div>
                    <div class="row" id="reply_upload_row">
-  						<div class="col-md-12 col-sm-12" id="view-mail-wrapper">
+  						<div class="container" id="view-mail-wrapper">
 	                        <div class="panel">
 	                            <div class="panel-body">
 	                            <form role="form" method="post" autocomplete="off" id="reply_form">
@@ -199,7 +199,7 @@
 	</c:forEach>
 	console.log(data2[0]);
 	
-		$('#hd').unbind('click').bind('click',function(){ 
+		$('#hd').unbind('click').bind('click',function(){
 			$('#hdt').val(data[0]+"<br><br>");
 			hdtx = $('#hdt').val();
 		})
