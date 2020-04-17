@@ -56,13 +56,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         order by prd_id desc
 	</select>
 	
-	<!-- 메인 상품 목록 -->
-	<select id="mainlist" resultType="com.hwig.admin.product.ProductListDTO">
-		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tc.category_id, tc.category_p_id
-		from tbl_prd tp inner join tbl_category tc on tp.category_id = tc.category_id
-		where tc.category_p_id = #{category_p_id}
-	</select>
-	
 	<!-- 등록 예정 상품 삭제 -->
 	<delete id="delete">
 		delete from tbl_prd_b where prd_id = #{prd_id}
@@ -128,4 +121,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			prd_from = #{prd_from}, prd_wrap = #{prd_wrap}, prd_info = #{prd_info}
 		where prd_id = #{prd_id}
 	</update>
+	
+	
+	<!-- front와 통신 -->
+	
+	<!-- 메인 상품 목록 -->
+	<select id="mainlist" resultType="com.hwig.admin.product.ProductListDTO">
+		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tc.category_id, tc.category_p_id
+		from tbl_prd tp inner join tbl_category tc on tp.category_id = tc.category_id
+		where tc.category_p_id = #{category_p_id}
+	</select>
+	
+	<!-- 카테고리별 상품 목록 -->
+	<select id="catelist" resultType="com.hwig.admin.product.ProductVO">
+		select * from tbl_prd where category_id = #{category_id}
+	</select>
 </mapper>

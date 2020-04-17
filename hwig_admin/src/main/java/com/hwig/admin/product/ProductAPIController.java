@@ -21,12 +21,19 @@ public class ProductAPIController {
 	@Inject
 	ProductService service;
 
-	
+	//상품 메인 상품목록 조회
 	@RequestMapping(value="/mainlist", method=RequestMethod.GET)
 	public List<ProductListDTO> product(@RequestParam int category_p_id, @RequestParam int category_id) throws Exception {
-		System.out.println("category => " + category_p_id + "and => " + category_id);
+		System.out.println("category => " + category_p_id + " and => " + category_id);
 		System.out.println("mainlist 실행");
 		return  service.mainlist(category_p_id);
+	}
+
+	//카테고리별 상품 조회
+	@RequestMapping(value="/catelist", method=RequestMethod.GET)
+	public List<ProductVO> product(@RequestParam int category_id) throws Exception {
+		System.out.println("category_id => " + category_id);
+		return service.catelist(category_id);
 	}
 	
 	@RequestMapping(value="/test", method=RequestMethod.GET)

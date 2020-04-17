@@ -38,13 +38,6 @@ public class ProductServiceImpl implements ProductService{
 		return dao.list(cri);
 	}
 	
-	//메인 목록 조회
-	@Override
-	public List<ProductListDTO> mainlist(int category_p_id) throws Exception {
-		// TODO Auto-generated method stub
-		return dao.mainlist(category_p_id);
-	}
-	
 	//승인 예정 상품 삭제
 	@Override
 	public int delete(int prd_id) throws Exception {
@@ -95,5 +88,21 @@ public class ProductServiceImpl implements ProductService{
 		return dao.update(vo);
 	}
 
+
+	//front와 통신
+	
+	
+	//메인 목록 조회
+	@Override
+	public List<ProductListDTO> mainlist(int category_p_id) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.mainlist(category_p_id);
+	}
+
+	//카테고리별 상품 조회
+	@Override
+	public List<ProductVO> catelist(int category_id) throws Exception {
+		return dao.catelist(category_id);
+	}
 	
 }

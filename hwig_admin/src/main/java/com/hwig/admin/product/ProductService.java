@@ -19,9 +19,6 @@ public interface ProductService {
 	//등록 완료 목록 조회
 	public List<ProductVO> list(SearchCriteria cri) throws Exception;
 	
-	//등록 완료 목록 조회
-	public List<ProductListDTO> mainlist(int category_p_id) throws Exception;
-	
 	//승인 예정 상품 삭제
 	public int delete(int prd_id) throws Exception;
 	
@@ -45,4 +42,13 @@ public interface ProductService {
 	
 	//상품 수정
 	public int update(ProductVO vo) throws Exception;
+	
+
+	//front와 통신
+	
+	//등록 완료 목록 조회
+	public List<ProductListDTO> mainlist(int category_p_id) throws Exception;
+	
+	//카테고리별 상품 조회
+	public List<ProductVO> catelist(int category_id) throws Exception;
 }

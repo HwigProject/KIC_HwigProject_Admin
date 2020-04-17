@@ -44,11 +44,6 @@ public class ProductDAOImpl implements ProductDAO{
 	public List<ProductVO> list(SearchCriteria cri) throws Exception {
 		return sql.selectList(namespace + ".list", cri);
 	}
-	
-	@Override
-	public List<ProductListDTO> mainlist(int category_p_id) throws Exception {
-		return sql.selectList(namespace + ".mainlist", category_p_id);
-	}
 
 	@Override
 	public int delete(int prd_id) throws Exception {
@@ -93,6 +88,20 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	public int update(ProductVO vo) throws Exception {
 		return sql.update(namespace + ".update", vo);
+	}
+	
+	
+	//front와 통신
+	
+	//메인 상품 목록 조회
+	@Override
+	public List<ProductListDTO> mainlist(int category_p_id) throws Exception {
+		return sql.selectList(namespace + ".mainlist", category_p_id);
+	}
+	
+	//카테고리별 상품 조회
+	public List<ProductVO> catelist(int category_id) throws Exception {
+		return sql.selectList(namespace + ".catelist", category_id);
 	}
 	
 }
