@@ -14,14 +14,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hwig</title>
     <meta name="description" content="">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<style>
-	#listLabel {
-		float: left;
-	}
-	#example_filter {
-		float: right;
-	}
+       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+   <style>
+   #listLabel {
+      float: left;
+   }
+   #example_filter {
+      float: right;
+   }
 </style>
 <!-- Favicon -->
     <link rel="shortcut icon" href="../resources/assets/img/favicon.ico" type="image/x-icon">

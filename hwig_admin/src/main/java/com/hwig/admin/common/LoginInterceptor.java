@@ -21,8 +21,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
 			request.setAttribute("loginMsg", "fail");
 			/*
-			 * response.sendRedirect(request.getContextPath() + "/loginForm");
-			 * sendRedirect는 request, response의 모든 attribute를 지운다
+			 * response.sendRedirect(request.getContextPath() + "/loginForm"); sendRedirect는
+			 * request, response의 모든 attribute를 지운다
 			 */
 			RequestDispatcher rd = request.getRequestDispatcher("/loginForm");
 			rd.forward(request, response);
