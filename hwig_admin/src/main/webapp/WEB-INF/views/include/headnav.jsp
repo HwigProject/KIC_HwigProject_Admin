@@ -189,16 +189,16 @@
                         <ul class="nav-sub">
                         <c:if test="${sessionScope.user_type eq 'seller'}">
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">상품 등록</a>
+                                <a href="/product/prd_add" title="Data Tables">상품 등록</a>
                             </li>
 						</c:if>
 						<c:if test="${sessionScope.user_type eq 'admin'}">
 
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">승인 예정</a>
+                                <a href="/product/prd_waitlist" title="Data Tables">승인 예정</a>
                             </li>
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">승인 완료</a>
+                                <a href="/product/prd_list" title="Data Tables">승인 완료</a>
                             </li>
 						</c:if>
                         </ul>
@@ -233,16 +233,16 @@
                         </a>
                         <ul class="nav-sub">
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">공지사항</a>
+                                <a href="/notice/nlist" title="Data Tables">공지사항</a>
                             </li>
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">이벤트</a>
+                                <a href="/notice/elist" title="Data Tables">이벤트</a>
                             </li>
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">Q&A</a>
+                                <a href="/faq/flist" title="Data Tables">자주묻는질문</a>
                             </li>
                             <li>
-                                <a href="tables-data-tables.html" title="Data Tables">1:1 문의</a>
+                                <a href="/qna/qlist" title="Data Tables">Q&A</a>
                             </li>
                         </ul>
                     </li>
