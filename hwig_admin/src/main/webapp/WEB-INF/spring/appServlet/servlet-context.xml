@@ -28,4 +28,15 @@
 	<!-- aop -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
+	<beans:bean id="loginInterceptor" class="com.hwig.admin.common.LoginInterceptor" />
+   
+   <interceptors>
+      <interceptor>
+         <mapping path="/member/*"/>
+         <mapping path="/seller/*"/>
+         <mapping path="/order/*"/>
+         <beans:ref bean="loginInterceptor"/>
+      </interceptor>
+   </interceptors>
+   
 </beans:beans>
