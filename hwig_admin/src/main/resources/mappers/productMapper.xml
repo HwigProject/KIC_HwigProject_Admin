@@ -125,6 +125,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- front와 통신 -->
 	
+	<!-- 카테고리 목록 보내기 -->
+	<select id="category" resultType="hashmap">
+	 	select * from tbl_category
+	</select>
+	
 	<!-- 메인 상품 목록 -->
 	<select id="mainlist" resultType="com.hwig.admin.product.ProductListDTO">
 		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tc.category_id, tc.category_p_id

@@ -102,7 +102,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="prd_wrap">포장타입</label>
 								<div class="col-sm-6">
-									${prd_wrap}
+									${product.prd_wrap}
 								</div>
 							</div>
 							<div class="form-group">

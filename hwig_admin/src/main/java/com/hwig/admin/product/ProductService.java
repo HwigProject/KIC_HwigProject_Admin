@@ -46,6 +46,9 @@ public interface ProductService {
 
 	//front와 통신
 	
+	//카테고리 목록 보내기
+	public List<Map<Integer,String>> category() throws Exception;
+	
 	//등록 완료 목록 조회
 	public List<ProductListDTO> mainlist(int category_p_id) throws Exception;
 	

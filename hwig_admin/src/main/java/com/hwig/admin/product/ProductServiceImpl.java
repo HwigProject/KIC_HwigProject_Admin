@@ -91,6 +91,11 @@ public class ProductServiceImpl implements ProductService{
 
 	//front와 통신
 	
+	//
+	@Override
+	public List<Map<Integer,String>> category() throws Exception {
+		return dao.category();
+	}
 	
 	//메인 목록 조회
 	@Override

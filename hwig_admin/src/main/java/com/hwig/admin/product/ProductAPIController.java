@@ -21,6 +21,13 @@ public class ProductAPIController {
 	@Inject
 	ProductService service;
 
+	//카테고리 정보 보내기
+	@RequestMapping(value="/category", method=RequestMethod.GET)
+	public List<Map<Integer, String>> category() throws Exception {
+		System.out.println("category 목록 보내기 실행");
+		return service.category();
+	}
+	
 	//상품 메인 상품목록 조회
 	@RequestMapping(value="/mainlist", method=RequestMethod.GET)
 	public List<ProductListDTO> product(@RequestParam int category_p_id, @RequestParam int category_id) throws Exception {
