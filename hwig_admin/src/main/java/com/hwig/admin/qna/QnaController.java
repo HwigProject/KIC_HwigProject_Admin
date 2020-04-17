@@ -50,6 +50,8 @@ public class QnaController {
 	@RequestMapping(value = "/qna_write", method = RequestMethod.POST)
 	public String postQna_write(QnaVO qna, RedirectAttributes rttr) throws Exception{
 		
+		qna.setQna_content(qna.getQna_content().replace("\r\n", "<br>"));
+		
 		int result = qService.qna_write(qna);
 		
 		if(result == 1)

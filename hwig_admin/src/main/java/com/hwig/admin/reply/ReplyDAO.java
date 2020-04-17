@@ -9,6 +9,8 @@ public interface ReplyDAO {
 	public void reply_modify(ReplyVO reply) throws Exception;
 	public void reply_delete(ReplyVO reply) throws Exception;
 	
+	public List<ReplyVO> rList(String mem_id) throws Exception;
+	
 	public List<MacroVO> macro_c_list(String qna_category) throws Exception;
 	public List<MacroVO> macro_list() throws Exception;
 	public List<MacroVO> macro_ht_list() throws Exception;

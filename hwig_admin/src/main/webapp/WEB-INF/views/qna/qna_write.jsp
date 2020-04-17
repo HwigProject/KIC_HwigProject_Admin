@@ -54,8 +54,6 @@
 			alert("카테고리를 설정해주세요.")
 			return upForm.qna_category.focus();
 		}
-		
-		
 		if(confirm("등록 하시겠습니까?")){
 			upForm.submit();
 		}else{
@@ -85,7 +83,7 @@
                             <div class="panel-body">
                                 <form method="post" name="q_uploadForm" class="form-horizontal form-border">                                
                						<input type="hidden" name="qna_category">
-               						<input type="hidden" name="mem_id" value="test1">
+               						<input type="hidden" name="mem_id" value="test2">
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">제목</label>
                                         <div class="col-sm-6">

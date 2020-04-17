@@ -10,6 +10,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from tbl_reply
 		where qna_id = #{qna_id}
 	</select>
+<!-- 	
+	<resultMap type="QnaVO" id="QnaVO">
+		<result column="qna_id" property="qna_id"/>
+		<result column="mem_id" property="mem_id"/>
+		<result column="qna_category" property="qna_category"/>
+		<result column="qna_subject" property="qna_subject"/>
+		<result column="qna_content" property="qna_content"/>
+		<result column="qna_regdate" property="qna_regdate"/>
+	</resultMap>
+	
+	<resultMap type="ReplyVO" id="ReplyVO">
+		<result column="reply_content" property="reply_content"/>
+		<result column="reply_regdate" property="reply_regdate"/>
+		<collection property="qna" resultMap="QnaVO"/>
+	</resultMap> -->
+	
+	<!-- 답글 목록(메인용) -->
+	<select id="rList" parameterType="String" resultType="com.hwig.admin.reply.QReplyVO">
+		select q.*, r.reply_content, r.reply_regdate from tbl_qna q, tbl_reply r
+		where q.mem_id = #{mem_id} and q.qna_id = r.qna_id(+)
+	</select>
 	
 	<!-- 답글 작성 -->
 	<insert id="reply_write">

@@ -96,4 +96,10 @@ public class ReplyServiceImpl implements ReplyService{
 		dao.macro_id_d(macro);
 	}
 
+	@Override
+	public List<ReplyVO> rList(String mem_id) throws Exception {
+		
+		return dao.rList(mem_id);
+	}
+
 }

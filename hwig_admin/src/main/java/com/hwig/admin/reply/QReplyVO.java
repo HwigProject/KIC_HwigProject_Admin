@@ -2,24 +2,51 @@ package com.hwig.admin.reply;
 
 import java.sql.Date;
 
-import com.hwig.admin.qna.QnaVO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class ReplyVO {
+public class QReplyVO {
 	private int qna_id;
 	private int reply_id;
 	private String reply_content;
 	private Date reply_regdate;
 	private String qna_category;
-	
-	private QnaVO qna;
-	
-	
-	public QnaVO getQna() {
-		return qna;
+	private String mem_id;
+	private String qna_subject;
+	private String qna_content;
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone="Asia/Seoul")
+	private Date qna_regdate;
+
+
+	public String getMem_id() {
+		return mem_id;
 	}
 
-	public void setQna(QnaVO qna) {
-		this.qna = qna;
+	public void setMem_id(String mem_id) {
+		this.mem_id = mem_id;
+	}
+
+	public String getQna_subject() {
+		return qna_subject;
+	}
+
+	public void setQna_subject(String qna_subject) {
+		this.qna_subject = qna_subject;
+	}
+
+	public String getQna_content() {
+		return qna_content;
+	}
+
+	public void setQna_content(String qna_content) {
+		this.qna_content = qna_content;
+	}
+
+	public Date getQna_regdate() {
+		return qna_regdate;
+	}
+
+	public void setQna_regdate(Date qna_regdate) {
+		this.qna_regdate = qna_regdate;
 	}
 
 	public int getQna_id() {

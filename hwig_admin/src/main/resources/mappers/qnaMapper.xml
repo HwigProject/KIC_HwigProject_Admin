@@ -33,6 +33,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rnum between #{pageStart} and #{pageEnd}
 	</select>
 	
+	<!-- 문의 목록(메인) -->
+	<select id="qList_main" resultType="com.hwig.admin.qna.QnaVO" parameterType="String">
+		select * from tbl_qna where mem_id = #{mem_id}
+	</select>
+	
 	<!-- 답변 매크로 리스트 같이 가져옴 -->
 	<select id="macro_all">
 		select * from tbl_macro

@@ -62,4 +62,10 @@ public class QnaDAOImpl implements QnaDAO{
 		sql.update(namespace + ".qna_id_d", qna);
 	}
 
+	@Override
+	public List<QnaVO> qList_main(String mem_id) throws Exception {
+		
+		return sql.selectList(namespace + ".qList_main", mem_id);
+	}
+
 }

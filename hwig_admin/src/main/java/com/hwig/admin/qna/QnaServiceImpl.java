@@ -56,4 +56,10 @@ public class QnaServiceImpl implements QnaService{
 		
 		dao.qna_id_d(qna);
 	}
+
+	@Override
+	public List<QnaVO> qList_main(String mem_id) throws Exception {
+		
+		return dao.qList_main(mem_id);
+	}
 }

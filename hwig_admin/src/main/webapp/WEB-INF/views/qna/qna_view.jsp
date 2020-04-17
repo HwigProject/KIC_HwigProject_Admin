@@ -177,8 +177,6 @@
 		});
 	</script>
 	
-	
-	
 	<script> //버튼 매크로
 	$(function(){
 	var txt = "";
@@ -200,25 +198,25 @@
 	console.log(data2[0]);
 	
 		$('#hd').unbind('click').bind('click',function(){
-			$('#hdt').val(data[0]+"<br><br>");
+			$('#hdt').val(data[0]+"<br>");
 			hdtx = $('#hdt').val();
 		})
 		
 		$('#bd0').unbind('click').bind('click',function(){ 
-			$('#bdt').val(data2[0]+"<br><br>");
+			$('#bdt').val(data2[0]+"<br>");
 			bdtx = $('#bdt').val();
 		})
 		$('#bd1').unbind('click').bind('click',function(){ 
-			$('#bdt').val(data2[1]+"<br><br>");
+			$('#bdt').val(data2[1]+"<br>");
 			bdtx = $('#bdt').val();
 		})
 		$('#bd2').unbind('click').bind('click',function(){ 
-			$('#bdt').val(data2[2]+"<br><br>");
+			$('#bdt').val(data2[2]+"<br>");
 			bdtx = $('#bdt').val();
 		})
 
 		$('#ti').unbind('click').bind('click',function(){ 
-			$('#tit').val(data[1]+"<br><br>");
+			$('#tit').val(data[1]+"<br>");
 			titx = $('#tit').val();
 
 		}) 

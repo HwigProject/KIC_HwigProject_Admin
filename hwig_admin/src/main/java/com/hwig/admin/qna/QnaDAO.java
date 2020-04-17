@@ -14,4 +14,5 @@ public interface QnaDAO {
 	public int qna_delete(int qna_id) throws Exception;
 	public void qna_id_d(QnaVO qna) throws Exception;
 	
+	public List<QnaVO> qList_main(String mem_id) throws Exception;
 }

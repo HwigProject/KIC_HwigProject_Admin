@@ -109,4 +109,10 @@ public class ReplyDAOImpl implements ReplyDAO{
 		
 		sql.update(namespace + ".macro_id_d", macro);
 	}
+
+	@Override
+	public List<ReplyVO> rList(String mem_id) throws Exception {
+		
+		return sql.selectList(namespace + ".rList", mem_id);
+	}
 }
