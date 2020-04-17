@@ -16,7 +16,7 @@ public class NoticeDAOImpl implements NoticeDAO{
 	private SqlSession sql;
 	
 	//mapper
-	private static String namespace = "com.hwig.mappers.noticeMapper";
+	private static String namespace = "com.hwig.admin.mappers.noticeMapper";
 	
 	//공지사항 목록
 	@Override

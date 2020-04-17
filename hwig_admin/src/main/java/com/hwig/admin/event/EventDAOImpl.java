@@ -14,7 +14,7 @@ public class EventDAOImpl implements EventDAO{
 	SqlSession sql;
 	
 	//mapper
-	private static String namespace = "com.hwig.mappers.eventMapper";
+	private static String namespace = "com.hwig.admin.mappers.eventMapper";
 	
 	//이벤트 목록
 	@Override

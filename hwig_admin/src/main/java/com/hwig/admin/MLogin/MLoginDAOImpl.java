@@ -12,7 +12,7 @@ public class MLoginDAOImpl implements MLoginDAO{
 	private SqlSession sql;
 	
 	//mapper
-	private static String namespace = "com.hwig.mappers.mloginMapper";
+	private static String namespace = "com.hwig.admin.mappers.mloginMapper";
 
 	@Override
 	public MLoginVO mem_login(MLoginVO member) throws Exception {

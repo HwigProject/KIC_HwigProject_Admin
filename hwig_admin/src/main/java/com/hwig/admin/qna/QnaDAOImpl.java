@@ -17,7 +17,7 @@ public class QnaDAOImpl implements QnaDAO{
 	private SqlSession sql;
 	
 	//mapper
-	private static String namespace = "com.hwig.mappers.qnaMapper";
+	private static String namespace = "com.hwig.admin.mappers.qnaMapper";
 	
 	
 	@Override

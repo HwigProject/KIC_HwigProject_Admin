@@ -14,7 +14,7 @@ public class ReplyDAOImpl implements ReplyDAO{
 	private SqlSession sql;
 	
 	//mapper
-	private static String namespace = "com.hwig.mappers.replyMapper";
+	private static String namespace = "com.hwig.admin.mappers.replyMapper";
 	
 	//답글 조회
 	@Override

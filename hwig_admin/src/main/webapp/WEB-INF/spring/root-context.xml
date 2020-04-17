@@ -46,12 +46,22 @@
 	</bean>
 	
 	<!-- uploadpath -->
-	<bean id="savePath" class="java.lang.String">
-		<constructor-arg value="C:/Users/dnjst/eclipse-workspace/hwig_admin/src/main/webapp"></constructor-arg>
-	</bean>
-	
-	<bean id="AttachPath" class="java.lang.String">
-		<constructor-arg value="/resources/attach/event"></constructor-arg>
-	</bean>
+   <bean id="savePath" class="java.lang.String">
+      <constructor-arg value="C:/Users/LimJiNa/git/KIC_HwigProject_Admin/hwig_admin/src/main/webapp"></constructor-arg>
+      <constructor-arg value="C:/webtest/4.jsp/sou/KIC_HwigProject_Admin/hwig_admin/src/main/webapp"></constructor-arg>
+      <constructor-arg value="C:/Users/dnjst/eclipse-workspace/hwig_admin/src/main/webapp"></constructor-arg>
+   </bean>
+   
+   <bean id="sellerAttachPath" class="java.lang.String">
+      <constructor-arg value="/resources/attach/seller"></constructor-arg>
+   </bean>
+   
+   <bean id="productAttachPath" class="java.lang.String">
+      <constructor-arg value="/resources/attach/product"></constructor-arg>
+   </bean>
+   
+   <bean id="AttachPath" class="java.lang.String">
+      <constructor-arg value="/resources/attach/event"></constructor-arg>
+   </bean>
 		
 </beans>

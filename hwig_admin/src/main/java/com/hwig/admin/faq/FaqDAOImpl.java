@@ -16,7 +16,7 @@ public class FaqDAOImpl implements FaqDAO {
 	private SqlSession sql;
 	
 	//mapper
-	private static String namespace = "com.hwig.mappers.faqMapper";
+	private static String namespace = "com.hwig.admin.mappers.faqMapper";
 
 	//자주묻는질문 목록
 	@Override

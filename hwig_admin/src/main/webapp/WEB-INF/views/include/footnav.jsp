@@ -161,6 +161,8 @@
 <script src="../resources/assets/js/vendor/jquery-1.11.1.min.js"></script>
 <script src="../resources/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="../resources/assets/plugins/navgoco/jquery.navgoco.min.js"></script>
+<script src="../resources/assets/plugins/icheck/js/icheck.min.js"></script>
+<script src="../resources/assets/plugins/switchery/switchery.min.js"></script>
 <script src="../resources/assets/plugins/pace/pace.min.js"></script>
 <script src="../resources/assets/plugins/fullscreen/jquery.fullscreen-min.js"></script>
 <script src="../resources/assets/js/src/app.js"></script>
@@ -177,18 +179,12 @@
 <!-- Vector Map  -->
 <script src="../resources/assets/plugins/jvectormap/js/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="../resources/assets/plugins/jvectormap/js/jquery-jvectormap-world-mill-en.js"></script>
-<!-- Gauge  -->
-<script src="../resources/assets/plugins/gauge/gauge.min.js"></script>
-<script src="../resources/assets/plugins/gauge/gauge-demo.js"></script>
 <!-- Calendar  -->
 <script src="../resources/assets/plugins/calendar/clndr.js"></script>
 <script src="../resources/assets/plugins/calendar/clndr-demo.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
 <!-- Switch -->
 <script src="../resources/assets/plugins/switchery/switchery.min.js"></script>
-<!--Page Leve JS -->
-<script src="../resources/assets/plugins/dataTables/js/jquery.dataTables.js"></script>
-<script src="../resources/assets/plugins/dataTables/js/dataTables.bootstrap.js"></script>
 <!--Load these page level functions-->
 <script>
 $(document).ready(function() {
@@ -197,8 +193,19 @@ $(document).ready(function() {
     app.weather();
     app.spinStart();
     app.spinStop();
+    
+    $("#logoutBtn").click(function(){
+       self.location = "../logout";
+    });
+    
+    $("#sellerAccountBtn1").click(function(){
+       self.location = "/seller/account";
+    });
+    
+    $("#sellerAccountBtn2").click(function(){
+       self.location = "/seller/account";
+    });
 });
-
 </script>
 </body>
 
