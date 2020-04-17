@@ -189,7 +189,7 @@
 <script>
 $(document).ready(function() {
     app.dateRangePicker();
-    //app.chartJs();
+    app.chartJs();
     app.weather();
     app.spinStart();
     app.spinStop();

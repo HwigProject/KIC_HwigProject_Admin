@@ -94,7 +94,6 @@
                             </div>
                         </li>
                         <li class="divider"></li>
-                        
                         <c:if test="${sessionScope.user_type eq 'seller'}">
                         <li>
                             <a href="#" id="sellerAccountBtn1">
@@ -102,7 +101,6 @@
                                 </span>판매자 정보</a>
                         </li>
                         </c:if>
-                        
                         <li>
                             <a href="javascript:void(0);">
                                 <span class="icon"><i class="fa fa-envelope"></i>
@@ -189,25 +187,19 @@
                             <i class="fa  fa-fw fa-gift"></i> 상품관리
                         </a>
                         <ul class="nav-sub">
-                        
                         <c:if test="${sessionScope.user_type eq 'seller'}">
-                        
                             <li>
                                 <a href="tables-data-tables.html" title="Data Tables">상품 등록</a>
                             </li>
-						
 						</c:if>
 						<c:if test="${sessionScope.user_type eq 'admin'}">
-                            
                             <li>
                                 <a href="tables-data-tables.html" title="Data Tables">승인 예정</a>
                             </li>
                             <li>
                                 <a href="tables-data-tables.html" title="Data Tables">승인 완료</a>
                             </li>
-                            
 						</c:if>
-                            
                         </ul>
                     </li>
                     <li class="nav-dropdown">
@@ -220,9 +212,7 @@
                             </li>
                         </ul>
                     </li>
-                    
                     <c:if test="${sessionScope.user_type eq 'admin'}">
-                    
                     <li class="nav-dropdown">
                         <a href="#" title="Tables">
                             <i class="fa  fa-fw fa-user"></i> 고객관리
@@ -255,10 +245,8 @@
                             </li>
                         </ul>
                     </li>
-                    
                     </c:if>
                     <c:if test="${sessionScope.user_type eq 'seller'}" />
-                    
                 </ul>
             </nav>
         </aside>
