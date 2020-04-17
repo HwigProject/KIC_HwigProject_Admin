@@ -193,6 +193,7 @@
                             </li>
 						</c:if>
 						<c:if test="${sessionScope.user_type eq 'admin'}">
+
                             <li>
                                 <a href="tables-data-tables.html" title="Data Tables">승인 예정</a>
                             </li>

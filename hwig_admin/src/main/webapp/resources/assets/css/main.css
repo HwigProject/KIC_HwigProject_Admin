@@ -4340,3 +4340,40 @@ div.config h4 a:hover {
 .config-swatch-wrap .options .theme-style-wrapper:hover {
   cursor: pointer;
 }
+
+/*css add*/
+#example_filter {
+	float:right;
+}
+
+#listLabel {
+	float:left;
+}
+
+#example td{
+	vertical-align:middle;
+}
+
+#example .table-waitlist td:last-child{
+	text-align:center;
+}
+
+#example td:last-child button{
+	margin:0;
+}
+
+#th1 {
+	width:7%;
+}
+
+#th2 {
+	width:17%;
+}
+
+#th6{
+	width:30%;
+}
+
+#th7 {
+	width: 10%;
+}
