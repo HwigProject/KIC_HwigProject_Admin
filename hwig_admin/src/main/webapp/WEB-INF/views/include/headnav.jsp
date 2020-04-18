@@ -192,7 +192,7 @@
                                 <a href="/product/prd_add" title="Data Tables">상품 등록</a>
                             </li>
                              <li>
-                                <a href="/product/prd_waitlist_seller?sel_id=${sessionScope.user_id}" title="Data Tables">승인 예정</a>
+                                <a href="/product/prd_waitlist_seller?sel_id=${sessionScope.user.sel_id}" title="Data Tables">승인 예정</a>
                             </li>
 						</c:if>
 						<c:if test="${sessionScope.user_type eq 'admin'}">
