@@ -105,6 +105,7 @@
 		</div>
 	</section>
 </section>
+<%@ include file="/WEB-INF/views/include/footnav.jsp" %>
 <script>
 $(document).ready(function() {
 	function search(){
@@ -138,4 +139,3 @@ $(document).ready(function() {
 		}
 	});
 </script>
-<%@ include file="/WEB-INF/views/include/footnav.jsp" %>

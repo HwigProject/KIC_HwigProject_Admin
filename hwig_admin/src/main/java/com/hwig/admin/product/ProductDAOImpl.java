@@ -33,10 +33,23 @@ public class ProductDAOImpl implements ProductDAO{
 		return sql.selectOne(namespace + ".allCount", cri);
 	}
 	
+	//판매자용 리스트 갯수 세기
+	@Override
+	public int selectAllSelCount(ProductCriteria cri) {
+		return sql.selectOne(namespace + ".allSelCount", cri);
+	}
+	
+	
 	//상품 승인 예정 목록 조회
 	@Override
 	public List<ProductVO> waitList(SearchCriteria cri) throws Exception {
 		return sql.selectList(namespace + ".waitList", cri);
+	}
+	
+	//상품 승인 예정 목록 조회
+	@Override
+	public List<ProductVO> waitSelList(ProductCriteria cri) throws Exception {
+		return sql.selectList(namespace + ".waitSelList", cri);
 	}
 	
 	//등록 완료 목록 조회

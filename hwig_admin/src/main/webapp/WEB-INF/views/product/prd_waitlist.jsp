@@ -107,6 +107,7 @@
 		</div>
 	</section>
 </section>
+<%@ include file="/WEB-INF/views/include/footnav.jsp" %>
 <script>
 $(document).ready(function() {
 	function search(){
@@ -153,4 +154,3 @@ $(document).ready(function() {
 		alert("완료되었습니다.")
 	}
 </script>
-<%@ include file="/WEB-INF/views/include/footnav.jsp" %>

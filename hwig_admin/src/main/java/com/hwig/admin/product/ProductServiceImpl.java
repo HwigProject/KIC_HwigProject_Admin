@@ -26,10 +26,23 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selectAllCount(cri);
 	}
 	
+	//판매자용 리스트 갯수 세기
+	@Override
+	public int listAllSelCount(ProductCriteria cri) {
+		return dao.selectAllSelCount(cri);
+	}
+	
 	@Override
 	public List<ProductVO> waitList(SearchCriteria cri) throws Exception {
 		
 		return dao.waitList(cri);
+	}
+	
+	//판매자용 상품 승인 예정 목록 조회
+	@Override
+	public List<ProductVO> waitSelList(ProductCriteria cri) throws Exception {
+		
+		return dao.waitSelList(cri);
 	}
 	
 	//등록 완료 목록 조회

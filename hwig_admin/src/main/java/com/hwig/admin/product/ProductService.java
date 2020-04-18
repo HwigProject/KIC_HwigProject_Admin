@@ -13,8 +13,14 @@ public interface ProductService {
 	//리스트 갯수 세기
 	public int listAllCount(SearchCriteria cri);
 	
+	//판매자용 리스트 갯수 세기
+	public int listAllSelCount(ProductCriteria cri);
+	
 	//상품 승인 예정 목록 조회
 	public List<ProductVO> waitList(SearchCriteria cri) throws Exception;
+	
+	//판매자용 상품 승인 예정 목록 조회
+	public List<ProductVO> waitSelList(ProductCriteria cri) throws Exception;
 	
 	//등록 완료 목록 조회
 	public List<ProductVO> list(SearchCriteria cri) throws Exception;

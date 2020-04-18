@@ -76,7 +76,6 @@
 										<td>${waitList.prd_price}</td>
 										<td>${waitList.prd_comment}</td>
 										<td>
-											<button type="button" class="btn btn-success btn-sm">등록</button>
 											<button type="button" class="btn btn-danger btn-sm btn_del">삭제</button>
 										</td>
 									</tr>
@@ -110,6 +109,7 @@
 		</div>
 	</section>
 </section>
+<%@ include file="/WEB-INF/views/include/footnav.jsp" %>
 <script>
 $(document).ready(function() {
 	function search(){
@@ -129,9 +129,19 @@ $(document).ready(function() {
     });
 });
 
+$('.btn_del').click(function(){
+	var ids = $(this).parent().parent().children().eq(0).text(); //prd_id를 얻어온다
+	var url = '/product/prd_delete?prd_id='+ids;
+
+	var result = confirm(ids + "번 상품을 삭제하시겠습니까?"); //상품 삭제 확인 알림
+	
+	if(result){ //확인을 눌렀을 경우
+		$(location).attr('href', url); //삭제를 해 준다
+	}
+})
+
 	var result = "${msg}";
 	if(result == "success") {
 		alert("완료되었습니다.")
 	}
 </script>
-<%@ include file="/WEB-INF/views/include/footnav.jsp" %>

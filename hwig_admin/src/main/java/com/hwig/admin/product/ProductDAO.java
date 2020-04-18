@@ -13,8 +13,14 @@ public interface ProductDAO {
 	//리스트 갯수 세기
 	public int selectAllCount(SearchCriteria cri);
 	
+	//판매자용리스트 갯수 세기
+	public int selectAllSelCount(ProductCriteria cri);
+	
 	//등록 예정 리스트 조회
 	public List<ProductVO> waitList(SearchCriteria cri) throws Exception;
+	
+	//판매자용 등록 예정 리스트 조회
+	public List<ProductVO> waitSelList(ProductCriteria cri) throws Exception;
 	
 	//등록 완료 목록 조회
 	public List<ProductVO> list(SearchCriteria cri) throws Exception;
