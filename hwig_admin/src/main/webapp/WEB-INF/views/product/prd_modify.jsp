@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/headnav.jsp" %>
+<script src="../resources/assets/js/vendor/jquery-1.11.1.min.js"></script>
 <section class="main-content-wrapper">
         <div class="pageheader">
               <h1>상품 수정 페이지</h1>
@@ -121,6 +122,12 @@
 								<label class="col-sm-3 control-label" for="prd_price">원가</label>
 								<div class="col-sm-6">
 									<input type="number" value="${modify.prd_price}" class="form-control" id="prd_price" name="prd_price" required=""/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label" for="prd_sale">할인율</label>
+								<div class="col-sm-6">
+									<input type="number" value="${modify.prd_sale}" class="form-control" id="prd_sale" name="prd_sale" required=""/>
 								</div>
 							</div>
 							<div class="form-group">

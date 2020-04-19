@@ -60,4 +60,7 @@ public interface ProductService {
 	
 	//카테고리별 상품 조회
 	public List<ProductVO> catelist(int category_id) throws Exception;
+	
+	//신상품 순서대로 나열된 목록
+	public List<ProductVO> newlist() throws Exception;
 }

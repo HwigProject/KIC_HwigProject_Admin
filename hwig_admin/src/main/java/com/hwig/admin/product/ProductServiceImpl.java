@@ -123,4 +123,9 @@ public class ProductServiceImpl implements ProductService{
 		return dao.catelist(category_id);
 	}
 	
+	//신상품 순서대로 나열된 목록
+	@Override
+	public List<ProductVO> newlist() throws Exception {
+		return dao.newlist();
+	}
 }

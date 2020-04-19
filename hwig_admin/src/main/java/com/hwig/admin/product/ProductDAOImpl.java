@@ -124,4 +124,10 @@ public class ProductDAOImpl implements ProductDAO{
 		return sql.selectList(namespace + ".catelist", category_id);
 	}
 	
+	//신상품 순서대로 나열된 목록
+	@Override
+	public List<ProductVO> newlist() throws Exception {
+		return sql.selectList(namespace + ".newlist");
+	}
+	
 }
