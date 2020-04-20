@@ -53,13 +53,13 @@ public interface ProductService {
 	//front와 통신
 	
 	//카테고리 목록 보내기
-	public List<Map<Integer,String>> category() throws Exception;
+	public List<CategoryDTO> category() throws Exception;
 	
 	//등록 완료 목록 조회
 	public List<ProductListDTO> mainlist(int category_p_id) throws Exception;
 	
 	//카테고리별 상품 조회
-	public List<ProductVO> catelist(int category_id) throws Exception;
+	public List<ProductListDTO> catelist(int category_id) throws Exception;
 	
 	//신상품 순서대로 나열된 목록
 	public List<ProductVO> newlist() throws Exception;

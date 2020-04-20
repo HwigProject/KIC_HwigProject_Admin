@@ -178,8 +178,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- front와 통신 -->
 
-	<!-- 카테고리 목록 보내기 -->
-	<select id="category" resultType="hashmap">
+	<!-- 카테고리 목록 보내기 (상위카테고리)-->
+	<select id="category" resultType="com.hwig.admin.product.CategoryDTO">
 		select * from tbl_category
 	</select>
 
@@ -196,7 +196,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 카테고리별 상품 목록 -->
 	<select id="catelist"
-		resultType="com.hwig.admin.product.ProductVO">
+		resultType="com.hwig.admin.product.ProductListDTO">
 		select * from tbl_prd where category_id = #{category_id}
 	</select>
 	

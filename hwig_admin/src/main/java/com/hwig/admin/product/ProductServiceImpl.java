@@ -104,9 +104,9 @@ public class ProductServiceImpl implements ProductService{
 
 	//front와 통신
 	
-	//
+	//카테고리 목록 보내기
 	@Override
-	public List<Map<Integer,String>> category() throws Exception {
+	public List<CategoryDTO> category() throws Exception {
 		return dao.category();
 	}
 	
@@ -119,7 +119,7 @@ public class ProductServiceImpl implements ProductService{
 
 	//카테고리별 상품 조회
 	@Override
-	public List<ProductVO> catelist(int category_id) throws Exception {
+	public List<ProductListDTO> catelist(int category_id) throws Exception {
 		return dao.catelist(category_id);
 	}
 	

@@ -108,9 +108,10 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	//카테고리 목록 보내기
 	@Override
-	public List<Map<Integer,String>> category() throws Exception {
+	public List<CategoryDTO> category() throws Exception {
 		return sql.selectList(namespace + ".category");
 	}
+	
 	
 	//메인 상품 목록 조회
 	@Override
@@ -120,7 +121,7 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	//카테고리별 상품 조회
 	@Override
-	public List<ProductVO> catelist(int category_id) throws Exception {
+	public List<ProductListDTO> catelist(int category_id) throws Exception {
 		return sql.selectList(namespace + ".catelist", category_id);
 	}
 	
