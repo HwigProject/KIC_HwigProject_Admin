@@ -99,59 +99,68 @@ public class ProductController {
 	
 	//상품 등록 예정 목록
 	@RequestMapping(value = "/prd_waitlist", method=RequestMethod.GET)
-	public List<ProductVO> getWaitList(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	public List<ProductDTO> getWaitList(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 		
-		List<ProductVO> waitList = service.waitList(cri);
+		List<ProductDTO> waitList = service.waitList(cri);
 		model.addAttribute("waitList", waitList);
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.listAllCount(cri));
-
-		List<Map<Integer,String>> catelist = service.readCategories2();
 		
 		model.addAttribute("pageMaker", pageMaker);
-		model.addAttribute("catelist", catelist);
 		
 		return waitList;
 	}
 	
 	//판매자용 상품 등록 예정 목록
 	@RequestMapping(value = "/prd_waitlist_seller", method=RequestMethod.GET)
-	public List<ProductVO> getWaitListSeller(@RequestParam("sel_id") String sel_id, @ModelAttribute("cri") ProductCriteria cri, Model model) throws Exception {
+	public List<ProductDTO> getWaitListSeller(@RequestParam("sel_id") String sel_id, @ModelAttribute("cri") ProductCriteria cri, Model model) throws Exception {
 		
 		cri.setSel_id(sel_id);
 		
-		List<ProductVO> waitList = service.waitSelList(cri);
+		List<ProductDTO> waitList = service.waitSelList(cri);
 		model.addAttribute("waitList", waitList);
 		
 		ProductPageMaker pageMaker = new ProductPageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.listAllSelCount(cri));
-		
-		List<Map<Integer,String>> catelist = service.readCategories2();
 		 
 		model.addAttribute("pageMaker", pageMaker);
-		model.addAttribute("catelist", catelist);
 		
 		return waitList;
 	}
 	
 	//상품 등록 완료 목록
 		@RequestMapping(value = "/prd_list", method=RequestMethod.GET)
-		public List<ProductVO> getList(@ModelAttribute("cri") SearchCriteria cri,Model model) throws Exception {
+		public List<ProductDTO> getList(@ModelAttribute("cri") SearchCriteria cri,Model model) throws Exception {
 			
-			List<ProductVO> list = service.list(cri);
+			List<ProductDTO> list = service.list(cri);
 			model.addAttribute("list", list);
 			
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
 			pageMaker.setTotalCount(service.listAllCount(cri));
 			
-			 List<Map<Integer,String>> catelist = service.readCategories1();
+			model.addAttribute("pageMaker", pageMaker);
+			
+			return list;
+		}
+		
+	//판매자용 상품 등록 완료 목록
+		@RequestMapping(value = "/prd_list_seller", method=RequestMethod.GET)
+		public List<ProductDTO> getListSeller(@RequestParam("sel_id") String sel_id, @ModelAttribute("cri") ProductCriteria cri, Model model) throws Exception {
+			
+			cri.setSel_id(sel_id);
+			
+			List<ProductDTO> list = service.sellist(cri);
+			model.addAttribute("list", list);
+			
+			ProductPageMaker pageMaker = new ProductPageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(service.listAllSelCount(cri));
 			
 			model.addAttribute("pageMaker", pageMaker);
-			model.addAttribute("catelist", catelist);
 			
 			return list;
 		}

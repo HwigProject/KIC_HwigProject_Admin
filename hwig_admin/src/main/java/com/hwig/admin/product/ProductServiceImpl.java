@@ -33,22 +33,28 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
-	public List<ProductVO> waitList(SearchCriteria cri) throws Exception {
+	public List<ProductDTO> waitList(SearchCriteria cri) throws Exception {
 		
 		return dao.waitList(cri);
 	}
 	
 	//판매자용 상품 승인 예정 목록 조회
 	@Override
-	public List<ProductVO> waitSelList(ProductCriteria cri) throws Exception {
+	public List<ProductDTO> waitSelList(ProductCriteria cri) throws Exception {
 		
 		return dao.waitSelList(cri);
 	}
 	
 	//등록 완료 목록 조회
 	@Override
-	public List<ProductVO> list(SearchCriteria cri) throws Exception {
+	public List<ProductDTO> list(SearchCriteria cri) throws Exception {
 		return dao.list(cri);
+	}
+	
+	//판매자용 등록 완료 목록 조회
+	@Override
+	public List<ProductDTO> sellist(ProductCriteria cri) throws Exception {
+		return dao.sellist(cri);
 	}
 	
 	//승인 예정 상품 삭제

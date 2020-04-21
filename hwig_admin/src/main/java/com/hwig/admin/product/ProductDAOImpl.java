@@ -42,20 +42,26 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	//상품 승인 예정 목록 조회
 	@Override
-	public List<ProductVO> waitList(SearchCriteria cri) throws Exception {
+	public List<ProductDTO> waitList(SearchCriteria cri) throws Exception {
 		return sql.selectList(namespace + ".waitList", cri);
 	}
 	
 	//상품 승인 예정 목록 조회
 	@Override
-	public List<ProductVO> waitSelList(ProductCriteria cri) throws Exception {
+	public List<ProductDTO> waitSelList(ProductCriteria cri) throws Exception {
 		return sql.selectList(namespace + ".waitSelList", cri);
 	}
 	
 	//등록 완료 목록 조회
 	@Override
-	public List<ProductVO> list(SearchCriteria cri) throws Exception {
+	public List<ProductDTO> list(SearchCriteria cri) throws Exception {
 		return sql.selectList(namespace + ".list", cri);
+	}
+	
+	//판매자용등록 완료 목록 조회
+	@Override
+	public List<ProductDTO> sellist(ProductCriteria cri) throws Exception {
+		return sql.selectList(namespace + ".sellist", cri);
 	}
 
 	@Override

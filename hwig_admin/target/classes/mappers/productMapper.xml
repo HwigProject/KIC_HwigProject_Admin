@@ -43,56 +43,56 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 상품 등록 예정 리스트 조회 -->
 	<select id="waitList"
-		resultType="com.hwig.admin.product.ProductVO">
-		select prd_id, category_id, sel_id, prd_name, prd_price, prd_comment
+		resultType="com.hwig.admin.product.ProductDTO">
+		select tpall.prd_id, tpall.category_name, tpall.sel_cname, tpall.prd_name, tpall.prd_price, tpall.prd_comment
 		from (
-		select prd_id, category_id, sel_id, prd_name, prd_price, prd_comment,
-		row_number() over(order by prd_id desc) as rNum
-		from tbl_prd_b where 1=1
+		select tp.prd_id, tc.category_name, ts.sel_cname, tp.prd_name, tp.prd_price, tp.prd_comment,
+		row_number() over(order by tp.prd_id desc) as rNum
+		from tbl_category tc, tbl_prd_b tp, tbl_seller ts where 1=1 and tp.category_id = tc.category_id and tp.sel_id = ts.sel_id
 		<include refid="search"></include>
-		) tpb
+		) tpall
 		where rNum between #{pageStart} and #{pageEnd}
-		order by prd_id desc
+		order by tpall.prd_id desc
 	</select>
 	
 	<!-- 판매자용 상품 등록 예정 리스트 조회 -->
 	<select id="waitSelList"
-		resultType="com.hwig.admin.product.ProductVO">
-		select prd_id, category_id, sel_id, prd_name, prd_price, prd_comment
+		resultType="com.hwig.admin.product.ProductDTO">
+		select tpall.prd_id, tpall.category_name, tpall.sel_cname, tpall.prd_name, tpall.prd_price, tpall.prd_comment
 		from (
-		select prd_id, category_id, sel_id, prd_name, prd_price, prd_comment,
-		row_number() over(order by prd_id desc) as rNum
-		from tbl_prd_b where 1=1 and sel_id = #{sel_id}
+		select tp.prd_id, tc.category_name, ts.sel_cname, tp.prd_name, tp.prd_price, tp.prd_comment,
+		row_number() over(order by tp.prd_id desc) as rNum
+		from tbl_category tc, tbl_prd_b tp, tbl_seller ts where 1=1 and ts.sel_id = #{sel_id} and tp.category_id = tc.category_id and tp.sel_id = ts.sel_id
 		<include refid="search"></include>
-		) tpb
+		) tpall
 		where rNum between #{pageStart} and #{pageEnd}
-		order by prd_id desc
+		order by tpall.prd_id desc
 	</select>
 
 	<!-- 등록된 상품 목록 조회 -->
-	<select id="list" resultType="com.hwig.admin.product.ProductVO">
-		select prd_id, category_id, sel_id, prd_name, prd_price, prd_comment
+	<select id="list" resultType="com.hwig.admin.product.ProductDTO">
+		select tpall.prd_id, tpall.category_name, tpall.sel_cname, tpall.prd_name, tpall.prd_price, tpall.prd_comment
 		from (
-		select prd_id, category_id, sel_id, prd_name, prd_price, prd_comment,
-		row_number() over(order by prd_id desc) as rNum
-		from tbl_prd where 1=1
+		select tp.prd_id, tc.category_name, ts.sel_cname, tp.prd_name, tp.prd_price, tp.prd_comment,
+		row_number() over(order by tp.prd_id desc) as rNum
+		from tbl_category tc, tbl_prd tp, tbl_seller ts where 1=1 and tp.category_id = tc.category_id and tp.sel_id = ts.sel_id
 		<include refid="search"></include>
-		) tp
+		) tpall
 		where rNum between #{pageStart} and #{pageEnd}
-		order by prd_id desc
+		order by tpall.prd_id desc
 	</select>
 
 	<!-- 판매자용 등록된 상품 목록 조회 -->
-	<select id="sellist" resultType="com.hwig.admin.product.ProductVO">
-		select prd_id, category_id, sel_id, prd_name, prd_price, prd_comment
+	<select id="sellist" resultType="com.hwig.admin.product.ProductDTO">
+		select tpall.prd_id, tpall.category_name, tpall.sel_cname, tpall.prd_name, tpall.prd_price, tpall.prd_comment
 		from (
-		select prd_id, category_id, sel_id, prd_name, prd_price, prd_comment,
-		row_number() over(order by prd_id desc) as rNum
-		from tbl_prd where 1=1 and sel_id = #{sel_id}
+		select tp.prd_id, tc.category_name, ts.sel_cname, tp.prd_name, tp.prd_price, tp.prd_comment,
+		row_number() over(order by tp.prd_id desc) as rNum
+		from tbl_category tc, tbl_prd tp, tbl_seller ts where 1=1 and ts.sel_id = #{sel_id} and tp.category_id = tc.category_id and tp.sel_id = ts.sel_id
 		<include refid="search"></include>
-		) tp
+		) tpall
 		where rNum between #{pageStart} and #{pageEnd}
-		order by prd_id desc
+		order by tpall.prd_id desc
 	</select>
 
 	<!-- 등록 예정 상품 삭제 -->

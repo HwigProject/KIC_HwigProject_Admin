@@ -93,7 +93,8 @@ public class ProductAPIController {
 			for(CategoryDTO tcate : catelist) {
 				PCategoryDTO cdto = new PCategoryDTO();
 				int num = tcate.getCategory_p_id();
-				if(num ==0) {
+				int cnum = tcate.getCategory_id();
+				if(num == 0 && cnum == category_p_id) {
 					cdto.setCategory_p_id(tcate.getCategory_p_id());
 					cdto.setCategory_id(tcate.getCategory_id());
 					cdto.setCategory_name(tcate.getCategory_name());
@@ -103,7 +104,7 @@ public class ProductAPIController {
 			for(CategoryDTO tcate : catelist) {
 				LCategoryDTO cdto = new LCategoryDTO();
 				int num = tcate.getCategory_p_id();
-				if(num != 0) {
+				if(num != 0 && num == category_p_id) {
 					cdto.setCategory_p_id(tcate.getCategory_p_id());
 					cdto.setCategory_id(tcate.getCategory_id());
 					cdto.setCategory_name(tcate.getCategory_name());

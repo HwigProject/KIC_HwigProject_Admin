@@ -106,10 +106,11 @@
 <script>
 $(document).ready(function() {
 	function search(){
-		self.location = "prd_list"
+		self.location = "prd_list_seller"
 			+ '${pageMaker.makeQuery(1)}'
 			+ "&searchType="
 			+ $("#searchType option:selected").val()
+			+"&sel_id=${cri.sel_id}"
 			+ "&keyword=" + encodeURIComponent($('#keyword').val());
 	}
 	

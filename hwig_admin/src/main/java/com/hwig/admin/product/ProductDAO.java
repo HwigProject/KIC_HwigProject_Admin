@@ -17,13 +17,16 @@ public interface ProductDAO {
 	public int selectAllSelCount(ProductCriteria cri);
 	
 	//등록 예정 리스트 조회
-	public List<ProductVO> waitList(SearchCriteria cri) throws Exception;
+	public List<ProductDTO> waitList(SearchCriteria cri) throws Exception;
 	
 	//판매자용 등록 예정 리스트 조회
-	public List<ProductVO> waitSelList(ProductCriteria cri) throws Exception;
+	public List<ProductDTO> waitSelList(ProductCriteria cri) throws Exception;
 	
 	//등록 완료 목록 조회
-	public List<ProductVO> list(SearchCriteria cri) throws Exception;
+	public List<ProductDTO> list(SearchCriteria cri) throws Exception;
+	
+	//판매자용 등록 완료 목록 조회
+	public List<ProductDTO> sellist(ProductCriteria cri) throws Exception;
 	
 	//예정 상품 삭제
 	public int delete(int prd_id) throws Exception;
