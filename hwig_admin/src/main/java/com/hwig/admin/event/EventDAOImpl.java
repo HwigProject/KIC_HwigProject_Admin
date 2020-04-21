@@ -58,4 +58,28 @@ public class EventDAOImpl implements EventDAO{
 		sql.update(namespace + ".event_id_d", event);
 	}
 
+	@Override
+	public List<EventVO> event_square() throws Exception {
+		
+		return sql.selectList(namespace + ".event_square");
+	}
+
+	@Override
+	public List<EventVO> event_list() throws Exception {
+		
+		return sql.selectList(namespace + ".event_list");
+	}
+
+	@Override
+	public List<EventVO> event_banner() throws Exception {
+		
+		return sql.selectList(namespace + ".event_banner");
+	}
+
+	@Override
+	public EventVO event_content(int event_id) throws Exception {
+		
+		return sql.selectOne(namespace + ".event_content", event_id);
+	}
+
 }

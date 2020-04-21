@@ -9,27 +9,27 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
-   @Override
-   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-         throws Exception {
-      HttpSession session = request.getSession(false);
-      if (session != null) {
-         Object obj = session.getAttribute("user");
-         if (obj != null) {
-            return true;
-         }
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			Object obj = session.getAttribute("user");
+			if (obj != null) {
+				return true;
+			}
 
-         request.setAttribute("loginMsg", "fail");
-         /*
-          * response.sendRedirect(request.getContextPath() + "/loginForm");
-          * sendRedirect´Â request, responseÀÇ ¸ğµç attribute¸¦ Áö¿î´Ù
-          */
-         RequestDispatcher rd = request.getRequestDispatcher("/loginForm");
-         rd.forward(request, response);
-         return false;
-      }
+			request.setAttribute("loginMsg", "fail");
+			/*
+			 * response.sendRedirect(request.getContextPath() + "/loginForm"); sendRedirectëŠ”
+			 * request, responseì˜ ëª¨ë“  attributeë¥¼ ì§€ìš´ë‹¤
+			 */
+			RequestDispatcher rd = request.getRequestDispatcher("/loginForm");
+			rd.forward(request, response);
+			return false;
+		}
 
-      return true;
-   }
+		return true;
+	}
 
 }

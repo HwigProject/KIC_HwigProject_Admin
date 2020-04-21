@@ -41,4 +41,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="event_id_d" parameterType="com.hwig.admin.event.EventVO">
 		update tbl_event set event_id = event_id - 1 where event_id > #{event_id}
 	</update>
+	
+	
+	<!-- 이벤트 사각형 이미지 보내주기 -->
+	<select id="event_square" resultType="EventVO">
+		<![CDATA[
+		select event_subject, event_content, event_square_img
+		from (select * from tbl_event order by event_regdate desc)
+		where rownum <= 3
+		]]>
+	</select>
+	
+	<!-- 이벤트 리스트 이미지 보내주기 -->
+	<select id="event_list" resultType="EventVO">
+		select event_list_img 
+		from tbl_event
+		order by event_regdate desc
+	</select>
+	
+	<!-- 이벤트 본문 이미지 보내주기 -->
+	<select id="event_content" resultType="EventVO">
+		select event_content_img 
+		from tbl_event
+		where event_id = #{event_id}
+	</select>
+	
+	<!-- 이벤트 배너 이미지 보내주기 -->
+	<select id="event_banner" resultType="EventVO">
+		<![CDATA[
+		select event_banner_img
+		from (select * from tbl_event order by event_regdate desc)
+		where rownum <= 4
+		]]>
+	</select>
 </mapper>

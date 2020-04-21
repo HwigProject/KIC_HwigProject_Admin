@@ -195,15 +195,17 @@ $(document).ready(function() {
     app.spinStop();
     
     $("#logoutBtn").click(function(){
-       self.location = "../logout";
+
+    	self.location = "hwig_admin/logout";
     });
     
     $("#sellerAccountBtn1").click(function(){
-       self.location = "/seller/account";
+    	self.location = "/seller/account";
     });
     
     $("#sellerAccountBtn2").click(function(){
-       self.location = "/seller/account";
+    	self.location = "/seller/account";
+
     });
 });
 </script>

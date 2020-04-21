@@ -3,7 +3,6 @@ package com.hwig.admin.qna;
 import java.util.List;
 
 import com.hwig.admin.common.SearchCriteria;
-import com.hwig.admin.faq.FaqVO;
 
 public interface QnaDAO {
 	public List<QnaVO> qList(SearchCriteria cri) throws Exception;

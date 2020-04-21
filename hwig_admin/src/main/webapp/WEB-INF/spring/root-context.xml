@@ -8,60 +8,73 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-	
+
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	
+
 	<!-- spring-jdbc -->
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-		<property name="url" value="jdbc:log4jdbc:oracle:thin:@127.0.0.1:1521:orcl" />
-		<property name="username" value="scott" />
-		<property name="password" value="tiger" />
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
+		<property name="url"
+			value="jdbc:log4jdbc:oracle:thin:@hwigdb.cofhmzvbwdzr.ap-northeast-2.rds.amazonaws.com:1521/orcl" />
+		<property name="username" value="admin" />
+		<property name="password" value="hwig1234" />
 	</bean>
-	
+
 	<!-- sqlSessionFactory -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-	<property name="dataSource" ref="dataSource" />
-	<property name="configLocation" value="classpath:/mybatis-config.xml" />
-	<property name="mapperLocations" value="classpath:/mappers/*.xml" />
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation"
+			value="classpath:/mybatis-config.xml" />
+		<property name="mapperLocations"
+			value="classpath:/mappers/*.xml" />
 	</bean>
-	
+
 	<!-- sqlSesssionTemplate -->
-	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	<bean id="sqlSessionTemplate"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
 	</bean>
-	
+
 	<!-- transactionManager -->
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
-	
-	<tx:annotation-driven/>
-	
-	<context:component-scan base-package="com.hwig.admin" />
-	
+
+	<tx:annotation-driven />
+
+	<context:component-scan
+		base-package="com.hwig.admin" />
+
 	<!-- multipart/form-data -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="10485760"></property>
 	</bean>
-	
+
 	<!-- uploadpath -->
-   <bean id="savePath" class="java.lang.String">
-      <constructor-arg value="C:/Users/LimJiNa/git/KIC_HwigProject_Admin/hwig_admin/src/main/webapp"></constructor-arg>
-      <constructor-arg value="C:/webtest/4.jsp/sou/KIC_HwigProject_Admin/hwig_admin/src/main/webapp"></constructor-arg>
-      <constructor-arg value="C:/Users/dnjst/eclipse-workspace/hwig_admin/src/main/webapp"></constructor-arg>
-   </bean>
-   
-   <bean id="sellerAttachPath" class="java.lang.String">
-      <constructor-arg value="/resources/attach/seller"></constructor-arg>
-   </bean>
-   
-   <bean id="productAttachPath" class="java.lang.String">
-      <constructor-arg value="/resources/attach/product"></constructor-arg>
-   </bean>
-   
-   <bean id="AttachPath" class="java.lang.String">
-      <constructor-arg value="/resources/attach/event"></constructor-arg>
-   </bean>
-		
+	<bean id="savePath" class="java.lang.String">
+	<!--<constructor-arg
+			value="C:/Users/LimJiNa/git/KIC_HwigProject_Admin/hwig_admin/src/main/webapp"></constructor-arg>
+		<constructor-arg
+			value="C:/webtest/4.jsp/sou/KIC_HwigProject_Admin/hwig_admin/src/main/webapp"></constructor-arg> --> 
+		<constructor-arg
+			value="C:/Users/dnjst/eclipse-workspace/hwig_admin/src/main/webapp"></constructor-arg>
+	</bean>
+
+ 	<bean id="sellerAttachPath" class="java.lang.String">
+		<constructor-arg value="/resources/attach/seller"></constructor-arg>
+	</bean>
+
+	<bean id="productAttachPath" class="java.lang.String">
+		<constructor-arg value="/resources/attach/product"></constructor-arg>
+	</bean> 
+
+	<bean id="AttachPath" class="java.lang.String">
+		<constructor-arg value="/resources/attach/event"></constructor-arg>
+	</bean>
 </beans>

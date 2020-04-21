@@ -48,4 +48,28 @@ public class EventServiceImpl implements EventService{
 		dao.event_id_d(event);
 	}
 
+	@Override
+	public List<EventVO> event_square() throws Exception {
+		
+		return dao.event_square();
+	}
+
+	@Override
+	public List<EventVO> event_list() throws Exception {
+		
+		return dao.event_list();
+	}
+
+	@Override
+	public List<EventVO> event_banner() throws Exception {
+		
+		return dao.event_banner();
+	}
+
+	@Override
+	public EventVO event_content(int event_id) throws Exception {
+		
+		return dao.event_content(event_id);
+	}
+
 }
