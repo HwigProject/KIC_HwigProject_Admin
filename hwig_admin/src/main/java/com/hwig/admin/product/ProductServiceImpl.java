@@ -134,4 +134,10 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductVO> newlist() throws Exception {
 		return dao.newlist();
 	}
+	
+	//상품 검색
+	@Override
+	public List<ProductListDTO> prosearch(String keyword) throws Exception {
+		return dao.prosearch(keyword);
+	}
 }

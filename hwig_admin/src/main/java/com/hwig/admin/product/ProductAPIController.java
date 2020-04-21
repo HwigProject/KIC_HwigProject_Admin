@@ -67,12 +67,6 @@ public class ProductAPIController {
 	}
 	
 	//상품 메인 상품목록 조회
-	/*@RequestMapping(value="/mainlist", method=RequestMethod.GET)
-	public List<ProductListDTO> product(@RequestParam int category_p_id, @RequestParam int category_id) throws Exception {
-		System.out.println("category => " + category_p_id + " and => " + category_id);
-		System.out.println("mainlist 실행");
-		return  service.mainlist(category_p_id);
-	}*/
 	@RequestMapping(value="/mainlist", method=RequestMethod.GET)
 	public ProductCateDTO productmain(@RequestParam int category_p_id) throws Exception {
 		System.out.println("category => " + category_p_id );
@@ -163,6 +157,23 @@ public class ProductAPIController {
 		procate.setProductlist(prolist);
 		
 		return procate;
+	}
+	
+	//상품 상세보기
+	@RequestMapping(value="/productdetail", method=RequestMethod.GET)
+	public ProductVO productdetail(@RequestParam int prd_id) throws Exception {
+		System.out.println("상품 상세보기");
+		ProductVO pdetail = service.read(prd_id);
+		
+		return pdetail;
+	}
+	
+	//상품 검색
+	@RequestMapping(value="/productsearch", method=RequestMethod.GET)
+	public List<ProductListDTO> productsearch(@RequestParam String keyword) throws Exception {
+		List<ProductListDTO> prolist = service.prosearch(keyword);
+		
+		return prolist;
 	}
 	
 	@RequestMapping(value="/test", method=RequestMethod.GET)

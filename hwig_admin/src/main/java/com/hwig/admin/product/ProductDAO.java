@@ -66,4 +66,7 @@ public interface ProductDAO {
 	
 	//신상품 순서대로 나열된 목록
 	public List<ProductVO> newlist() throws Exception;
+	
+	//상품 검색
+	public List<ProductListDTO> prosearch(String keyword) throws Exception;
 }

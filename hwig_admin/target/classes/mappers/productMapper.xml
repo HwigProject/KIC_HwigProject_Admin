@@ -204,4 +204,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="newlist" resultType="com.hwig.admin.product.ProductVO">
 		select * from tbl_prd order by prd_date desc
 	</select>
+	
+	<!-- 상품 검색 -->
+	<select id="prosearch" resultType="com.hwig.admin.product.ProductListDTO">
+		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
+		from tbl_prd tp, tbl_category tc where tp.prd_name like '%' || #{keyword} || '%' and tp.category_id = tc.category_id
+	</select>
 </mapper>

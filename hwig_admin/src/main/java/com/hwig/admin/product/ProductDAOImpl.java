@@ -137,4 +137,10 @@ public class ProductDAOImpl implements ProductDAO{
 		return sql.selectList(namespace + ".newlist");
 	}
 	
+	//상품 검색
+	@Override
+	public List<ProductListDTO> prosearch(String keyword) throws Exception {
+		return sql.selectList(namespace + ".prosearch", keyword);
+	}
+	
 }
