@@ -52,5 +52,6 @@ public class LoginServiceImpl implements LoginService {
 	public void logout() {
 		session.invalidate();
 	}
+	
 
 }

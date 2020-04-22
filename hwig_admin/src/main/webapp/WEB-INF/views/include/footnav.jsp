@@ -196,7 +196,7 @@ $(document).ready(function() {
     
     $("#logoutBtn").click(function(){
 
-    	self.location = "hwig_admin/logout";
+    	self.location = "/logout";
     });
     
     $("#sellerAccountBtn1").click(function(){

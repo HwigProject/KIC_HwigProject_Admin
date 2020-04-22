@@ -15,14 +15,6 @@
     <title>Hwig</title>
     <meta name="description" content="">
        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-   <style>
-   #listLabel {
-      float: left;
-   }
-   #example_filter {
-      float: right;
-   }
-</style>
 <!-- Favicon -->
     <link rel="shortcut icon" href="../resources/assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap core CSS -->
@@ -59,7 +51,7 @@
         <header id="header">
             <!--logo start-->
             <div class="brand">
-                <a href="index.html" class="logo">
+                <a href="/" class="logo">
                     <i class="icon-layers"></i>
                     <span>NEU</span>BOARD</a>
             </div>
@@ -114,7 +106,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#" id="logoutBtn">
+                            <a href="javascript:void(0);" id="logoutBtn">
                                 <span class="icon"><i class="fa fa-sign-out"></i>
                                 </span>로그아웃</a>
                         </li>
@@ -173,7 +165,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="javascript:void(0);">
+                            <a href="#">
                                 <span class="icon"><i class="fa fa-sign-out"></i>
                                 </span>Logout</a>
                         </li>

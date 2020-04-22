@@ -97,7 +97,7 @@
 										<tr>
 											<td>${pageMaker.totalCount - ((pageMaker.cri.page - 1) * pageMaker.cri.perPageNum + status.index)}</td>
 											<td>${qList.qna_category}</td>
-											<td><a href="qna_view?qna_id=${qList.qna_id}&qna_category=${qList.qna_category}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}">${qList.qna_subject}</a></td>
+											<td><a onclick = "asd('qna_view?qna_id=${qList.qna_id}&qna_category=${qList.qna_category}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}')" href="#">${qList.qna_subject}</a></td>
 											<td>${qList.qna_regdate}</td>
 											<td>${qList.mem_id}</td>											
 										</tr>
@@ -146,7 +146,11 @@
 	     + "&keyword="
 	     + encodeURIComponent($('#keyword').val());
 	    });
-	 });   
+	 }); 
+	 
+	 function asd(str){
+		 window.location.href = encodeURI(str);
+	 }
 </script>
 
 <script>

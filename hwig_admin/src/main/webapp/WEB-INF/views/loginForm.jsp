@@ -17,8 +17,6 @@
 	#select_seller{
 		margin-left:30px;
 	}
-	
-
 </style>
 <!-- Favicon -->
     <link rel="shortcut icon" href="../resources/assets/img/favicon.ico" type="image/x-icon">
@@ -59,9 +57,10 @@
                 <div id="login-wrapper">
                     <header>
                         <div class="brand">
-                            <a href="index.html" class="logo">
+                            <div class="logo">
                                 <i class="icon-layers"></i>
-                                <span>HWIG 로그인</span></a>
+                                <span>HWIG 로그인</span>
+                            </div>
                         </div>
                     </header>
                     <div class="panel panel-primary">
@@ -71,7 +70,6 @@
                         <div class="panel-body">
                             <form class="form-horizontal" role="form" action="login" method="post" id="loginForm">
                             <div class="form-group">
-                                
                                     <div class="control-label" style="padding-left:0px; text-align: left">
                                         <label class="control-label" id="select_label">로그인 계정 선택</label>
                                         <input type="radio" name="loginType" id="select_admin" value="admin" >
@@ -180,6 +178,5 @@ $(document).ready(function() {
 	if(loginResult == 'fail') {
 		alert("로그인 후 사용하세요");
 	}
-
 });
 </script>
