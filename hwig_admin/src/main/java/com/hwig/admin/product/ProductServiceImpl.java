@@ -129,15 +129,28 @@ public class ProductServiceImpl implements ProductService{
 		return dao.catelist(category_id);
 	}
 	
-	//신상품 순서대로 나열된 목록
-	@Override
-	public List<ProductVO> newlist() throws Exception {
-		return dao.newlist();
-	}
-	
 	//상품 검색
 	@Override
 	public List<ProductListDTO> prosearch(String keyword) throws Exception {
 		return dao.prosearch(keyword);
 	}
+	
+	//베스트 목록
+	@Override
+	public List<ProductListDTO> bestlist() throws Exception {
+		return dao.bestlist();
+	}
+	
+	//신상품 순서대로 나열된 목록
+	@Override
+	public List<ProductListDTO> newlist() throws Exception {
+		return dao.newlist();
+	}
+	
+	//알뜰상품 목록
+	@Override
+	public List<ProductListDTO> salelist() throws Exception {
+		return dao.salelist();
+	}
+	
 }

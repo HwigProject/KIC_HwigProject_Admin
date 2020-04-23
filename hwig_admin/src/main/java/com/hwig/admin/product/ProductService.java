@@ -64,9 +64,15 @@ public interface ProductService {
 	//카테고리별 상품 조회
 	public List<ProductListDTO> catelist(int category_id) throws Exception;
 	
-	//신상품 순서대로 나열된 목록
-	public List<ProductVO> newlist() throws Exception;
-	
 	//상품 검색
 	public List<ProductListDTO> prosearch(String keyword) throws Exception;
+	
+	//베스트 목록
+	public List<ProductListDTO> bestlist() throws Exception;
+	
+	//신상품 순서대로 나열된 목록
+	public List<ProductListDTO> newlist() throws Exception;
+	
+	//알뜰상품 목록
+	public List<ProductListDTO> salelist() throws Exception;
 }

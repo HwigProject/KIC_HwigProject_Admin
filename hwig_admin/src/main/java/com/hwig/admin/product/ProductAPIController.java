@@ -176,6 +176,30 @@ public class ProductAPIController {
 		return prolist;
 	}
 	
+	//베스트 상품 목록
+	@RequestMapping(value="/productbest", method=RequestMethod.GET)
+	public List<ProductListDTO> productbest() throws Exception {
+		List<ProductListDTO> prolist = service.bestlist();
+		
+		return prolist;
+	}
+	
+	//신상품 목록
+	@RequestMapping(value="/productnew", method=RequestMethod.GET)
+	public List<ProductListDTO> productnew() throws Exception {
+		List<ProductListDTO> prolist = service.newlist();
+		
+		return prolist;
+	}
+	
+	//알뜰상품 목록
+	@RequestMapping(value="/productsale", method=RequestMethod.GET)
+	public List<ProductListDTO> productsale() throws Exception {
+		List<ProductListDTO> prolist = service.salelist();
+		
+		return prolist;
+	}
+	
 	@RequestMapping(value="/test", method=RequestMethod.GET)
 	public Map<String, String> test( HttpSession session) {
 		System.out.println("실행");

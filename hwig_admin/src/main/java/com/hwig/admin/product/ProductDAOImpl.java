@@ -131,16 +131,28 @@ public class ProductDAOImpl implements ProductDAO{
 		return sql.selectList(namespace + ".catelist", category_id);
 	}
 	
-	//신상품 순서대로 나열된 목록
-	@Override
-	public List<ProductVO> newlist() throws Exception {
-		return sql.selectList(namespace + ".newlist");
-	}
-	
 	//상품 검색
 	@Override
 	public List<ProductListDTO> prosearch(String keyword) throws Exception {
 		return sql.selectList(namespace + ".prosearch", keyword);
+	}
+	
+	//베스트 목록
+	@Override
+	public List<ProductListDTO> bestlist() throws Exception {
+		return sql.selectList(namespace + ".bestlist");
+	}
+	
+	//신상품 순서대로 나열된 목록
+	@Override
+	public List<ProductListDTO> newlist() throws Exception {
+		return sql.selectList(namespace + ".newlist");
+	}
+	
+	//알뜰상품 목록
+	@Override
+	public List<ProductListDTO> salelist() throws Exception {
+		return sql.selectList(namespace + ".salelist");
 	}
 	
 }
