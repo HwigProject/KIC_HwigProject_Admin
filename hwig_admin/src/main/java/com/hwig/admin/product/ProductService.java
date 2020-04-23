@@ -58,6 +58,9 @@ public interface ProductService {
 	//카테고리 목록 보내기
 	public List<CategoryDTO> category() throws Exception;
 	
+	//카테고리 선택하여 보내기
+	public List<CategoryDTO> cateselect(int category_id) throws Exception;
+	
 	//등록 완료 목록 조회
 	public List<ProductListDTO> mainlist(int category_p_id) throws Exception;
 	

@@ -182,6 +182,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="category" resultType="com.hwig.admin.product.CategoryDTO">
 		select * from tbl_category
 	</select>
+	
+	<!-- 카테고리 목록 선택하여 받아오기 -->
+	<select id="cateselect" resultType="com.hwig.admin.product.CategoryDTO">
+		select * from tbl_category where category_id = #{category_id}
+	</select>
 
 	<!-- 메인 상품 목록 -->
 	<select id="mainlist"

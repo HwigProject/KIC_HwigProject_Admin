@@ -178,26 +178,137 @@ public class ProductAPIController {
 	
 	//베스트 상품 목록
 	@RequestMapping(value="/productbest", method=RequestMethod.GET)
-	public List<ProductListDTO> productbest() throws Exception {
+	public ProductCateDTO productbest() throws Exception {
+		System.out.println("베스트 상품 실행");
+		List<CategoryDTO> catelist = service.cateselect(55);
 		List<ProductListDTO> prolist = service.bestlist();
 		
-		return prolist;
+		ProductCateDTO procate = new ProductCateDTO();
+		
+		List<PCategoryDTO> pcategory = new ArrayList<PCategoryDTO>();
+		List<LCategoryDTO> category = new ArrayList<LCategoryDTO>();
+		
+		if(catelist.size() < 1) {
+			
+		}
+		else {
+			for(CategoryDTO tcate : catelist) {
+				PCategoryDTO cdto = new PCategoryDTO();
+				int num = tcate.getCategory_p_id();
+				if(num ==0) {
+					cdto.setCategory_p_id(tcate.getCategory_p_id());
+					cdto.setCategory_id(tcate.getCategory_id());
+					cdto.setCategory_name(tcate.getCategory_name());
+					pcategory.add(cdto);
+				}
+			}
+			for(CategoryDTO tcate : catelist) {
+				LCategoryDTO cdto = new LCategoryDTO();
+				int num = tcate.getCategory_p_id();
+				if(num != 0) {
+					cdto.setCategory_p_id(tcate.getCategory_p_id());
+					cdto.setCategory_id(tcate.getCategory_id());
+					cdto.setCategory_name(tcate.getCategory_name());
+					category.add(cdto);
+				}
+			}
+		}
+		
+		procate.setPcategory(pcategory);
+		procate.setCategory(category);
+		procate.setProductlist(prolist);
+		
+		return procate;
 	}
 	
 	//신상품 목록
 	@RequestMapping(value="/productnew", method=RequestMethod.GET)
-	public List<ProductListDTO> productnew() throws Exception {
+	public ProductCateDTO productnew() throws Exception {
+		System.out.println("신상품 실행");
+		List<CategoryDTO> catelist = service.cateselect(33);
 		List<ProductListDTO> prolist = service.newlist();
 		
-		return prolist;
+		ProductCateDTO procate = new ProductCateDTO();
+		
+		List<PCategoryDTO> pcategory = new ArrayList<PCategoryDTO>();
+		List<LCategoryDTO> category = new ArrayList<LCategoryDTO>();
+		
+		if(catelist.size() < 1) {
+			
+		}
+		else {
+			for(CategoryDTO tcate : catelist) {
+				PCategoryDTO cdto = new PCategoryDTO();
+				int num = tcate.getCategory_p_id();
+				if(num ==0) {
+					cdto.setCategory_p_id(tcate.getCategory_p_id());
+					cdto.setCategory_id(tcate.getCategory_id());
+					cdto.setCategory_name(tcate.getCategory_name());
+					pcategory.add(cdto);
+				}
+			}
+			for(CategoryDTO tcate : catelist) {
+				LCategoryDTO cdto = new LCategoryDTO();
+				int num = tcate.getCategory_p_id();
+				if(num != 0) {
+					cdto.setCategory_p_id(tcate.getCategory_p_id());
+					cdto.setCategory_id(tcate.getCategory_id());
+					cdto.setCategory_name(tcate.getCategory_name());
+					category.add(cdto);
+				}
+			}
+		}
+		
+		procate.setPcategory(pcategory);
+		procate.setCategory(category);
+		procate.setProductlist(prolist);
+		
+		return procate;
 	}
 	
 	//알뜰상품 목록
 	@RequestMapping(value="/productsale", method=RequestMethod.GET)
-	public List<ProductListDTO> productsale() throws Exception {
+	public ProductCateDTO productsale() throws Exception {
+		System.out.println("알뜰상품 실행");
+		List<CategoryDTO> catelist = service.cateselect(44);
 		List<ProductListDTO> prolist = service.salelist();
 		
-		return prolist;
+		ProductCateDTO procate = new ProductCateDTO();
+		
+		List<PCategoryDTO> pcategory = new ArrayList<PCategoryDTO>();
+		List<LCategoryDTO> category = new ArrayList<LCategoryDTO>();
+		
+		if(catelist.size() < 1) {
+			
+		}
+		else {
+			for(CategoryDTO tcate : catelist) {
+				PCategoryDTO cdto = new PCategoryDTO();
+				int num = tcate.getCategory_p_id();
+				if(num ==0) {
+					cdto.setCategory_p_id(tcate.getCategory_p_id());
+					cdto.setCategory_id(tcate.getCategory_id());
+					cdto.setCategory_name(tcate.getCategory_name());
+					pcategory.add(cdto);
+				}
+			}
+			for(CategoryDTO tcate : catelist) {
+				LCategoryDTO cdto = new LCategoryDTO();
+				int num = tcate.getCategory_p_id();
+				if(num != 0) {
+					cdto.setCategory_p_id(tcate.getCategory_p_id());
+					cdto.setCategory_id(tcate.getCategory_id());
+					cdto.setCategory_name(tcate.getCategory_name());
+					category.add(cdto);
+				}
+			}
+		}
+		
+		procate.setPcategory(pcategory);
+		procate.setCategory(category);
+		procate.setProductlist(prolist);
+		
+		return procate;
 	}
 	
 	@RequestMapping(value="/test", method=RequestMethod.GET)

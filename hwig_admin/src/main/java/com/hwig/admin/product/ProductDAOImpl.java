@@ -118,6 +118,11 @@ public class ProductDAOImpl implements ProductDAO{
 		return sql.selectList(namespace + ".category");
 	}
 	
+	//카테고리 선택하여 보내기
+	@Override
+	public List<CategoryDTO> cateselect(int category_id) throws Exception{
+		return sql.selectList(namespace + ".cateselect", category_id);
+	}
 	
 	//메인 상품 목록 조회
 	@Override

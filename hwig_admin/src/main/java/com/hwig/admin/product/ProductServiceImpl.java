@@ -116,6 +116,12 @@ public class ProductServiceImpl implements ProductService{
 		return dao.category();
 	}
 	
+	//카테고리 선택하여 보내기
+	@Override
+	public List<CategoryDTO> cateselect(int category_id) throws Exception {
+		return dao.cateselect(category_id);
+	}
+	
 	//메인 목록 조회
 	@Override
 	public List<ProductListDTO> mainlist(int category_p_id) throws Exception {
