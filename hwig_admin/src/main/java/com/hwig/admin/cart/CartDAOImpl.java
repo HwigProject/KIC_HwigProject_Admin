@@ -19,9 +19,16 @@ public class CartDAOImpl implements CartDAO{
 	@Inject
 	private static String namespace = "com.hwig.admin.mappers.cartMapper";
 	
+	//장바구니 목록 가져오기
 	@Override
-	public List<Map<String,String>> cartlist(String mem_id) throws Exception {
+	public List<CartlistDTO> cartList(String mem_id) throws Exception {
 		return sql.selectList(namespace + ".cartlist", mem_id);
+	}
+	
+	//장바구니 등록
+	@Override
+	public int cartInsert(CartVO vo) throws Exception {
+		return sql.insert(namespace + ".cartinsert", vo);
 	}
 
 }

@@ -126,7 +126,7 @@ $(document).ready(function() {
 	$('.lists').bind({
 		click: function() {
 			var ids = $(this).children().eq(0).text();
-			var url="/product/prd_read?prd_id=" + ids;
+			var url="/product/prd_read_seller?prd_id=" + ids;
 			$(location).attr('href', url); //조회 페이지로 이동
 		},
 		mouseover: function(){

@@ -288,4 +288,13 @@ public class ProductController {
 		model.addAttribute("cateName", cateName);
 	}
 	
+	//글 조회 - get
+		@RequestMapping(value="/prd_read_seller", method=RequestMethod.GET)
+		public void getReadSeller(@RequestParam("prd_id") int prd_id, Model model) throws Exception {
+			ProductVO vo = service.read(prd_id);
+			String cateName = service.readCategory(prd_id);
+			model.addAttribute("product", vo);
+			model.addAttribute("cateName", cateName);
+		}
+	
 }
