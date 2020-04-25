@@ -24,5 +24,11 @@ public class CartServiceImpl implements CartService{
 	public int cartInsert(CartVO vo) throws Exception {
 		return dao.cartInsert(vo);
 	}
+	
+	//장바구니 삭제
+	@Override
+	public void cartDelete(List<CartdeleteDTO> listdto) throws Exception {
+		dao.cartDelete(listdto);
+	}
 
 }

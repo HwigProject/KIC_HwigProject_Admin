@@ -12,7 +12,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 장바구니 등록 -->
 	<insert id="cartinsert">
-		insert into tbl_cart (prd_id, mem_id, order_count)
+		merge into tbl_cart
+		using dual
+		on (prd_id = #{prd_id} and mem_id = #{mem_id})
+		when matched then
+		update set order_count= order_count + #{order_count}
+		when not matched then
+		insert(prd_id, mem_id, order_count)
 		values(#{prd_id}, #{mem_id}, #{order_count})
 	</insert>
+	
+	<!-- 장바구니 삭제 -->
+	<delete id="cartdelete" parameterType="com.hwig.admin.cart.CartdeleteDTO">
+		<!-- delete from tbl_cart where prd_id = #{prd_id} and mem_id = #{mem_id} -->
+		delete from tbl_cart
+		<where>
+			<foreach collection="list" item="item" open="" close="" separator="OR">
+				(prd_id = #{item.prd_id} and mem_id = #{item.mem_id})
+			</foreach>
+		</where>
+	</delete>
+	
 </mapper>

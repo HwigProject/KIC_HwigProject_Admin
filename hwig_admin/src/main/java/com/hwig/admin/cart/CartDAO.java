@@ -9,4 +9,7 @@ public interface CartDAO {
 	
 	//장바구니 등록
 	public int cartInsert(CartVO vo) throws Exception;
+	
+	//장바구니 삭제
+	public void cartDelete(List<CartdeleteDTO> listdto) throws Exception;
 }

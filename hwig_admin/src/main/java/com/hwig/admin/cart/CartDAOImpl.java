@@ -30,5 +30,11 @@ public class CartDAOImpl implements CartDAO{
 	public int cartInsert(CartVO vo) throws Exception {
 		return sql.insert(namespace + ".cartinsert", vo);
 	}
+	
+	//장바구니 삭제
+	@Override
+	public void cartDelete(List<CartdeleteDTO> listdto) throws Exception {
+		sql.delete(namespace + ".cartdelete", listdto);
+	}
 
 }

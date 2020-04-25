@@ -38,4 +38,10 @@ public class CartAPIController {
 		res.put("success", result);
 		return res;
 	}
+	
+	//장바구니에서 삭제하기
+	@RequestMapping(value="/cartdelete", method=RequestMethod.POST)
+	public void getCartDelete(@RequestBody List<CartdeleteDTO> listdto) throws Exception {
+		service.cartDelete(listdto);
+	}
 }
