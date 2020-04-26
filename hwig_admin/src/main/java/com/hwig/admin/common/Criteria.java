@@ -34,7 +34,7 @@ public class Criteria {
 	public int getPageStart() {
 		return (this.page - 1) * perPageNum + 1;
 	}
-	
+
 	public int getPageEnd() {
 		return this.perPageNum * this.page;
 	}
@@ -42,7 +42,6 @@ public class Criteria {
 	public int getPerPageNum() {
 		return this.perPageNum;
 	}
-	
 
 	@Override
 	public String toString() {

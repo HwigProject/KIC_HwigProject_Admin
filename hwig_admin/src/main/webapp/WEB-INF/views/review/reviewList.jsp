@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>1대1 문의</title>
+<title>고객후기</title>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 <script>
     var result = "${msg}";
@@ -28,7 +28,7 @@
 	<%@ include file="../include/headnav.jsp"%>
 	<section class="main-content-wrapper">
 		<div class="pageheader">
-			<h1>1대1 문의 관리</h1>
+			<h1>고객후기 관리</h1>
 			<div class="breadcrumb-wrapper hidden-xs">
 				<span class="label">You are here:</span>
 				<ol class="breadcrumb">
@@ -44,7 +44,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h1>
-								1대1 문의 관리
+								고객후기 관리
 							</h1>
 
 							<div class="actions pull-right">
@@ -63,10 +63,8 @@
 													<c:out value="${cri.searchType == null ? 'selected' : ' '}" />>----</option>
 													<option value="subject"
 													<c:out value="${cri.searchType eq 'subject' ? 'selected' : ' ' }" />>제목</option>
-													<option value="category"
-													<c:out value="${cri.searchType eq 'category' ? 'selected' : ' ' }" />>카테고리</option>
-													<option value="content"
-													<c:out value="${cri.searchType eq 'content' ? 'selected' : ' ' }" />>내용</option>							
+													<option value="mem"
+													<c:out value="${cri.searchType eq 'mem' ? 'selected' : ' ' }" />>회원</option>
 												</select>
 											</label>
 										</div>
@@ -84,8 +82,7 @@
 								cellspacing="0" width="100%">
 								<thead>
 									<tr>
-										<th>글 번호</th>
-										<th>카테고리</th>
+										<th>글 번호</th>										
 										<th>제목</th>
 										<th>작성일</th>
 										<th>작성자</th>										
@@ -93,13 +90,12 @@
 								</thead>
 
 								<tbody>
-									<c:forEach var="qList" varStatus="status" items="${qList}">
+									<c:forEach var="reviewList" varStatus="status" items="${reviewList}">
 										<tr>
 											<td>${pageMaker.totalCount - ((pageMaker.cri.page - 1) * pageMaker.cri.perPageNum + status.index)}</td>
-											<td>${qList.qna_category}</td>
-											<td><a onclick = "asd('qna_view?qna_id=${qList.qna_id}&qna_category=${qList.qna_category}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}')" href="#">${qList.qna_subject}</a></td>
-											<td>${qList.qna_regdate}</td>
-											<td>${qList.mem_id}</td>											
+											<td><a href = "review_view?review_id=${reviewList.review_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}">${reviewList.review_subject}</a></td>
+											<td>${reviewList.review_regdate}</td>
+											<td>${reviewList.mem_id}</td>											
 										</tr>
 																
 									</c:forEach>
@@ -112,19 +108,19 @@
 									<ul class="pagination">
 										<c:if test="${pageMaker.prev}">
 											<li class="paginate_button previous" tabindex="0"><a
-												href="qlist${pageMaker.makeSearch(pageMaker.startPage-1)}">Previous</a></li>
+												href="reviewList${pageMaker.makeSearch(pageMaker.startPage-1)}">Previous</a></li>
 										</c:if>
 
 										<c:forEach begin="${pageMaker.startPage}"
 											end="${pageMaker.endPage}" var="idx">
 											<li <c:out value="${pageMaker.cri.page == idx?'class=active':''}"/> class="paginate_button">
-												<a href="qlist${pageMaker.makeSearch(idx)}">${idx}</a>
+												<a href="reviewList${pageMaker.makeSearch(idx)}">${idx}</a>
 											</li>
 										</c:forEach>
 
 										<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 											<li class="paginate_button next"><a
-												href="qlist${pageMaker.makeSearch(pageMaker.endPage+1)}">Next</a></li>
+												href="reviewList${pageMaker.makeSearch(pageMaker.endPage+1)}">Next</a></li>
 										</c:if>
 									</ul>
 								</div>
@@ -139,7 +135,7 @@
 <script>
 	 $(function(){
 	  $('#searchBtn').click(function() {
-	   self.location = "qlist"
+	   self.location = "reviewList"
 	     + '${pageMaker.makeQuery(1)}'
 	     + "&searchType="
 	     + $("#searchType option:selected").val()
@@ -147,10 +143,6 @@
 	     + encodeURIComponent($('#keyword').val());
 	    });
 	 }); 
-	 
-	 function asd(str){
-		 window.location.href = encodeURI(str);
-	 }
 </script>
 
 <script>

@@ -237,6 +237,9 @@
                             <li>
                                 <a href="/qna/qlist" title="Data Tables">Q&A</a>
                             </li>
+                            <li>
+                                <a href="/review/reviewList" title="Data Tables">고객후기</a>
+                            </li>
                         </ul>
                     </li>
                     </c:if>

@@ -9,19 +9,18 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CartDAOImpl implements CartDAO{
+public class CartDAOImpl implements CartDAO {
 
-	//mybatis
+	// mybatis
 	@Inject
 	private SqlSession sql;
-	
-	//mapper
+
+	// mapper
 	@Inject
 	private static String namespace = "com.hwig.admin.mappers.cartMapper";
-	
+
 	@Override
-	public List<Map<String,String>> cartlist(String mem_id) throws Exception {
+	public List<Map<String, String>> cartlist(String mem_id) throws Exception {
 		return sql.selectList(namespace + ".cartlist", mem_id);
 	}
-
 }

@@ -22,7 +22,7 @@ public class FaqController {
 	@Inject
 	FaqService fService;
 	
-	//ÀÚÁÖ¹¯´ÂÁú¹® ¸ñ·Ï
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ë¦¬ìŠ¤íŠ¸
 	@RequestMapping(value = "/flist")
 	public void getFaq(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
 		
@@ -35,13 +35,13 @@ public class FaqController {
 		model.addAttribute("pageMaker", pageMaker);
 	}
 	
-	//ÀÚÁÖ¹¯´ÂÁú¹® µî·ÏÆû
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ë“±ë¡í¼
 	@RequestMapping(value = "/faq_write")
 	public void getFaq_write() throws Exception{
 		
 	}
 	
-	//ÀÚÁÖ¹¯´ÂÁú¹® µî·Ï
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ë“±ë¡
 	@RequestMapping(value = "/faq_write", method = RequestMethod.POST)
 	public String postQna_write(FaqVO faq, RedirectAttributes rttr) throws Exception{
 		
@@ -57,7 +57,7 @@ public class FaqController {
 		return "redirect:/faq/flist";
 	}
 	
-	//ÀÚÁÖ¹¯´ÂÁú¹® Á¶È¸
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ìƒì„¸ë³´ê¸°
 	@RequestMapping(value = "/faq_view")
 	public void faq_view(@RequestParam("faq_id") int faq_id,
 						 @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
@@ -67,7 +67,7 @@ public class FaqController {
 		model.addAttribute("cri", cri);
 	}
 	
-	//ÀÚÁÖ¹¯´ÂÁú¹® ¼öÁ¤Æû
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ìˆ˜ì •í¼
 	@RequestMapping(value = "/faq_modify")
 	public void getFaq_modify(@RequestParam("faq_id") int faq_id,
 							  @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
@@ -77,7 +77,7 @@ public class FaqController {
 		model.addAttribute("cri", cri);
 	}
 	
-	//ÀÚÁÖ¹¯´ÂÁú¹® ¼öÁ¤
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ìˆ˜ì •
 	@RequestMapping(value = "/faq_modify", method = RequestMethod.POST)
 	public String postFaq_modify(FaqVO faq, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) throws Exception{
 			
@@ -98,7 +98,7 @@ public class FaqController {
 		return "redirect:/faq/flist";
 	}
 	
-	//ÀÚÁÖ¹¯´ÂÁú¹® »èÁ¦
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ì‚­ì œ
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@RequestMapping(value = "/faq_delete")
 	public String faq_delete(FaqVO faq, int faq_id, RedirectAttributes rttr,
