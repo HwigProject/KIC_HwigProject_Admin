@@ -13,11 +13,20 @@ public interface ProductDAO {
 	//리스트 갯수 세기
 	public int selectAllCount(SearchCriteria cri);
 	
+	//판매자용리스트 갯수 세기
+	public int selectAllSelCount(ProductCriteria cri);
+	
 	//등록 예정 리스트 조회
-	public List<ProductVO> waitList(SearchCriteria cri) throws Exception;
+	public List<ProductDTO> waitList(SearchCriteria cri) throws Exception;
+	
+	//판매자용 등록 예정 리스트 조회
+	public List<ProductDTO> waitSelList(ProductCriteria cri) throws Exception;
 	
 	//등록 완료 목록 조회
-	public List<ProductVO> list(SearchCriteria cri) throws Exception;
+	public List<ProductDTO> list(SearchCriteria cri) throws Exception;
+	
+	//판매자용 등록 완료 목록 조회
+	public List<ProductDTO> sellist(ProductCriteria cri) throws Exception;
 	
 	//예정 상품 삭제
 	public int delete(int prd_id) throws Exception;
@@ -47,11 +56,26 @@ public interface ProductDAO {
 	//front와 통신
 
 	//카테고리 목록 보내기
-	public List<Map<Integer,String>> category() throws Exception;
+	public List<CategoryDTO> category() throws Exception;
+	
+	//카테고리 선택하여 보내기
+	public List<CategoryDTO> cateselect(int category_id) throws Exception;
 	
 	//등록 완료 목록 조회
 	public List<ProductListDTO> mainlist(int category_p_id) throws Exception;
 	
 	//카테고리별 상품 조회
-	public List<ProductVO> catelist(int category_id) throws Exception;
+	public List<ProductListDTO> catelist(int category_id) throws Exception;
+	
+	//상품 검색
+	public List<ProductListDTO> prosearch(String keyword) throws Exception;
+	
+	//베스트 목록
+	public List<ProductListDTO> bestlist() throws Exception;
+	
+	//신상품 순서대로 나열된 목록
+	public List<ProductListDTO> newlist() throws Exception;
+	
+	//알뜰상품 목록
+	public List<ProductListDTO> salelist() throws Exception;
 }

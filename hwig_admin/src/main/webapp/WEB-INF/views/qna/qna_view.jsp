@@ -35,7 +35,6 @@
 	                                </div>
 	                                <div class="col-md-12">
 	                                	<button class="btn btn-danger pull-right" onclick="location.href='/qna/qna_delete?qna_id=${qna_view.qna_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'">삭제</button>
-	                                    <button class="btn btn-success pull-right" onclick="location.href='/qna/qna_modify?qna_id=${qna_view.qna_id}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}'">수정</button>	
 	                                    <a href="qlist?&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}" class="btn btn-info pull-right">목록</a>	                                   
 	                                </div>
 	                            </div>

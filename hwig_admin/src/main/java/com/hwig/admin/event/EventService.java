@@ -9,4 +9,9 @@ public interface EventService {
 	public int event_modify(EventVO event) throws Exception;
 	public int event_delete(int event_id) throws Exception;
 	public void event_id_d(EventVO event) throws Exception;
+	
+	public List<EventVO> event_square() throws Exception;
+	public List<EventVO> event_list() throws Exception;
+	public List<EventVO> event_banner() throws Exception;
+	public EventVO event_content(int event_id) throws Exception;
 }

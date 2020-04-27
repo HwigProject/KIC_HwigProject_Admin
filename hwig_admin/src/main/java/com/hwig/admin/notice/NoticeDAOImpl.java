@@ -18,35 +18,35 @@ public class NoticeDAOImpl implements NoticeDAO{
 	//mapper
 	private static String namespace = "com.hwig.admin.mappers.noticeMapper";
 	
-	//°øÁö»çÇ× ¸ñ·Ï
+	//ê³µì§€ì‚¬í•­ ë¦¬ìŠ¤íŠ¸
 	@Override
 	public List<NoticeVO> nList(SearchCriteria cri) throws Exception {
 		
 		return sql.selectList(namespace + ".nList", cri);
 	}
 	
-	//ÀüÃ¼ °³¼ö ¼¼±â
+	//ê²Œì‹œê¸€ ê°œìˆ˜ ì„¸ê¸°
 	@Override
 	public int listCount(SearchCriteria cri) throws Exception {
 		
 		return sql.selectOne(namespace + ".listCount", cri);
 	}
 	
-	//°øÁö»çÇ× µî·Ï
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	@Override
 	public int notice_write(NoticeVO notice) throws Exception {
 		
 		return sql.insert(namespace + ".notice_write", notice);
 	}
 	
-	//°øÁö»çÇ× Á¶È¸
+	//ê³µì§€ì‚¬í•­ ìƒì„¸ë³´ê¸°
 	@Override
 	public NoticeVO notice_view(int notice_id) throws Exception {
 		
 		return sql.selectOne(namespace + ".notice_view", notice_id);
 	}
 	
-	//°øÁö»çÇ× Á¶È¸¼ö Áõ°¡
+	//ê³µì§€ì‚¬í•­ ì¡°íšŒìˆ˜ ì˜¬ë¦¬ê¸°
 	 @Override 
 	 public int notice_hit_up(int notice_id) throws Exception {
 	  
@@ -54,14 +54,14 @@ public class NoticeDAOImpl implements NoticeDAO{
 	 }
 	 
 	
-	//°øÁö»çÇ× ¼öÁ¤
+	//ê³µì§€ì‚¬í•­ ìˆ˜ì •
 	@Override
 	public int notice_modify(NoticeVO notice) throws Exception {
 		
 		return sql.update(namespace + ".notice_modify", notice);
 	}
 	
-	//°øÁö»çÇ× »èÁ¦
+	//ê³µì§€ì‚¬í•­ ì‚­ì œ
 	@Override
 	public int notice_delete(int notice_id) throws Exception {
 		
@@ -69,14 +69,14 @@ public class NoticeDAOImpl implements NoticeDAO{
 		
 	}
 	
-	//°øÁö»çÇ× »èÁ¦½Ã ¹øÈ£ ¶¯±è
+	//ê³µì§€ì‚¬í•­ ì‚­ì œì‹œ ì•„ì´ë”” ì˜¬ë ¤ì¤Œ
 	@Override
 	public void notice_id_d(NoticeVO notice) throws Exception {
 		
 		sql.update(namespace + ".notice_id_d", notice);
 	}
 	
-	//°øÁö»çÇ× ¸ñ·Ï ¸ŞÀÎÆäÀÌÁö
+	//ê³µì§€ì‚¬í•­ ë¦¬ìŠ¤íŠ¸ ë©”ì¸
 	@Override
 	public List<NoticeVO> nList_main() throws Exception {
 		

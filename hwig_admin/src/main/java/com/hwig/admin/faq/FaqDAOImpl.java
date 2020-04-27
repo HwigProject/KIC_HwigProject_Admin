@@ -18,49 +18,49 @@ public class FaqDAOImpl implements FaqDAO {
 	//mapper
 	private static String namespace = "com.hwig.admin.mappers.faqMapper";
 
-	//ÀÚÁÖ¹¯´ÂÁú¹® ¸ñ·Ï
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ë¦¬ìŠ¤íŠ¸
 	@Override
 	public List<FaqVO> fList(SearchCriteria cri) throws Exception {
 		
 		return sql.selectList(namespace + ".fList", cri);
 	}
 	
-	//ÀüÃ¼°³¼ö Ä«¿îÆ®
+	//ê²Œì‹œê¸€ ê°œìˆ˜ ì„¸ê¸°
 	@Override
 	public int listCount(SearchCriteria cri) throws Exception {
 		
 		return sql.selectOne(namespace + ".listCount", cri);
 	}
 	
-	//ÀÚÁÖ¹¯´ÂÁú¹® µî·Ï
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ë“±ë¡
 	@Override
 	public int faq_write(FaqVO faq) throws Exception {
 		
 		return sql.insert(namespace + ".faq_write", faq);
 	}
 	
-	//ÀÚÁÖ¹¯´ÂÁú¹® Á¶È¸
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ìƒì„¸ë³´ê¸°
 	@Override
 	public FaqVO faq_view(int faq_id) throws Exception {
 		
 		return sql.selectOne(namespace + ".faq_view", faq_id);
 	}
 	
-	//ÀÚÁÖ¹¯´ÂÁú¹® ¼öÁ¤
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ìˆ˜ì •
 	@Override
 	public int faq_modify(FaqVO faq) throws Exception {
 		
 		return sql.update(namespace + ".faq_modify", faq);
 	}
 	
-	//ÀÚÁÖ¹¯´ÂÁú¹® »èÁ¦
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ì‚­ì œ
 	@Override
 	public int faq_delete(int faq_id) throws Exception {
 		
 		return sql.delete(namespace + ".faq_delete", faq_id);
 	}
 
-	//°Ô½Ã±Û »èÁ¦½Ã ¹øÈ£ ÇÏ³ª¾¿ ‹¯±è
+	//ï¿½Ô½Ã±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public void faq_id_d(FaqVO faq) throws Exception {
 		
@@ -68,7 +68,7 @@ public class FaqDAOImpl implements FaqDAO {
 	}
 	
 	
-	//ÀÚÁÖ¹¯´ÂÁú¹® ¸ñ·Ï(¸ŞÀÎ¿ë)
+	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ë¦¬ìŠ¤íŠ¸(ë©”ì¸)
 	@Override
 	public List<FaqVO> fList_main() throws Exception {
 		

@@ -69,10 +69,12 @@
             </section>
         </section>
 	<%@ include file="../include/footnav.jsp" %>
-		<script>
-		$(document).ready(function() {
-	    $('#example').dataTable();
-		});
-	</script>
+	<script src="../resources/assets/plugins/dataTables/js/jquery.dataTables.js"></script>
+    <script src="../resources/assets/plugins/dataTables/js/dataTables.bootstrap.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#example').dataTable();
+    });
+    </script>
 </body>
 </html>

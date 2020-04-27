@@ -20,7 +20,7 @@ public class NoticeRestController {
 	NoticeService nService;
 	
 	@GetMapping("/nlist")
-	public List<NoticeVO> nlist(NoticeVO notice) throws Exception{
+	public List<NoticeVO> nlist() throws Exception{
 		
 		List<NoticeVO> nlist = nService.nList_main();
 		

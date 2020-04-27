@@ -164,5 +164,6 @@
             </section>
           </section>
 	<%@ include file="../include/footnav.jsp" %>
+	
 </body>
 </html>

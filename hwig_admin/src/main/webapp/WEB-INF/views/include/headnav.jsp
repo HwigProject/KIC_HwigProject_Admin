@@ -190,15 +190,17 @@
                             <li>
                                 <a href="/product/prd_list_seller?sel_id=${sessionScope.user.sel_id}" title="Data Tables">승인 완료</a>
                             </li>
-			            </c:if>
-			            <c:if test="${sessionScope.user_type eq 'admin'}">
+						</c:if>
+						<c:if test="${sessionScope.user_type eq 'admin'}">
                             <li>
                                 <a href="/product/prd_waitlist" title="Data Tables">승인 예정</a>
                             </li>
+			            </c:if>
+			            <c:if test="${sessionScope.user_type eq 'admin'}">
                             <li>
                                 <a href="/product/prd_list" title="Data Tables">승인 완료</a>
                             </li>
-                  		</c:if>
+                        </c:if>
                         </ul>
                     </li>
                     <li class="nav-dropdown">

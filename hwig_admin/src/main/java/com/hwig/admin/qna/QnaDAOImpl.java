@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.hwig.admin.common.SearchCriteria;
-import com.hwig.admin.faq.FaqVO;
 
 @Repository
 public class QnaDAOImpl implements QnaDAO{
