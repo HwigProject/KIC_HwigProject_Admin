@@ -6,16 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>NeuBoard</title>
     <meta name="description" content="">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<style>
-	#listLabel {
-		float: left;
-	}
-	#example_filter {
-		float: right;
-	}
-</style>
-<!-- Favicon -->
+		#select_label{
+			margin-left:20px;
+		}
+		#select_admin{
+			margin-left:50px;
+		}
+		#select_seller{
+			margin-left:30px;
+		}
+	</style>
+	<!-- Favicon -->
     <link rel="shortcut icon" href="../resources/assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../resources/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -54,9 +57,10 @@
                 <div id="login-wrapper">
                     <header>
                         <div class="brand">
-                            <a href="index.html" class="logo">
+                            <div class="logo">
                                 <i class="icon-layers"></i>
-                                <span>HWIG 로그인</span></a>
+                                <span>HWIG 로그인</span>
+                            </div>
                         </div>
                     </header>
                     <div class="panel panel-primary">
@@ -66,14 +70,14 @@
                         <div class="panel-body">
                             <form class="form-horizontal" role="form" action="/login" method="post" id="loginForm">
                             <div class="form-group">
-                                <label class="col-sm-4 control-label" style="text-align: left;">로그인 계정 선택</label>
-                                    <div class="col-sm-6 control-label" style="padding-left:0px; text-align: left">
-                                        <input type="radio" id="admin" name="loginType" value="admin" >
-                                        <label style="text-align: left;">관리자</label>
-                                        <input type="radio" id="seller" name="loginType" value="seller">
-                                        <label style="text-align: left;">판매자</label>
-                                        <input type="hidden" value="" id="user_type" name="user_type" />
-                                    </div>
+                                <div class="control-label" style="padding-left:0px; text-align: left">
+                                    <label class="control-label" id="select_label">로그인 계정 선택</label>
+                                    <input type="radio" name="loginType" id="select_admin" value="admin" >
+                                    <label style="text-align: left;">관리자</label>
+                                    <input type="radio" name="loginType" id="select_seller" value="seller">
+                                    <label style="text-align: left;">판매자</label>
+                                    <input type="hidden" value="" id="user_type" name="user_type" />
+                                </div>
                             </div>
                             	<hr />
                                 <div class="form-group">

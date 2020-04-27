@@ -14,16 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hwig</title>
     <meta name="description" content="">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-   <style>
-   #listLabel {
-      float: left;
-   }
-   #example_filter {
-      float: right;
-   }
-</style>
-<!-- Favicon -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<!-- Favicon -->
     <link rel="shortcut icon" href="../resources/assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../resources/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -46,6 +38,7 @@
     <link rel="stylesheet" href="../resources/assets/css/main.css">
     <!-- Feature detection -->
     <script src="../resources/assets/js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="assets/js/vendor/html5shiv.js"></script>
@@ -191,7 +184,7 @@
                             <li>
                                 <a href="/product/prd_add" title="Data Tables">상품 등록</a>
                             </li>
-                             <li>
+                            <li>
                                 <a href="/product/prd_waitlist_seller?sel_id=${sessionScope.user.sel_id}" title="Data Tables">승인 예정</a>
                             </li>
                             <li>
@@ -199,7 +192,6 @@
                             </li>
 						</c:if>
 						<c:if test="${sessionScope.user_type eq 'admin'}">
-
                             <li>
                                 <a href="/product/prd_waitlist" title="Data Tables">승인 예정</a>
                             </li>
@@ -249,6 +241,9 @@
                             </li>
                             <li>
                                 <a href="/qna/qlist" title="Data Tables">Q&A</a>
+                            </li>
+                            <li>
+                                <a href="/review/reviewList" title="Data Tables">고객후기</a>
                             </li>
                         </ul>
                     </li>
