@@ -29,7 +29,7 @@
 			frm.faq_category.value = '배송문의';
 		break;
 		case 5:
-			frm.faq_category.value = '적립금';
+			frm.faq_category.value = '쿠폰/적립금';
 		break;
 		case 6:
 			frm.faq_category.value = '서비스 이용 및 기타';
@@ -138,14 +138,21 @@
 		                                        <option value=2>주문/결제</option>
 		                                        <option value=3>취소/교환/반품</option>
 		                                        <option value=4>배송문의</option>
-		                                        <option value=5>적립금</option>
+		                                        <option value=5>쿠폰/적립금</option>
 		                                        <option value=6>서비스 이용 및 기타</option>
 		                                    </select>
 	                                	</div>
        								</div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">본문</label>
-                                        
+                                        <!-- <button type="button" id="hd">머리말</button>  <textarea id="hdt"></textarea> <p>
+	
+										<button type="button" id="bd">본문</button>   <textarea id="bdt"></textarea> <p>
+									
+										<button type="button" id="ti">꼬리말</button>  <textarea id="tit"></textarea> <p>
+									
+										<button type="button" id="mix">합체!</button>
+										<p id="ppp"><p> -->
                                         <div class="col-sm-6">
                                             <textarea style="resize:none; height:500px;" id="faq_content" name="faq_content" class="form-control"></textarea>
                                         </div>

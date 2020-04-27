@@ -30,9 +30,12 @@
 							<div class="col-xs-8">
 								<div class="dataTables_length" id="example_length">
 									<label>검색 <select name="searchType" id="searchType">
+											<option value=""
+												<c:out value="${cri.searchType == null ? 'selected' : ' '}" />>
+												----</option>
 											<option value="id"
 												<c:out value="${cri.searchType eq 'id' ? 'selected' : ' ' }" />>
-												상품번호</option>
+												상품id</option>
 											<option value="pname"
 												<c:out value="${cri.searchType eq 'pname' ? 'selected' : ' ' }" />>
 												상품명</option>
@@ -66,8 +69,8 @@
 								<c:forEach items="${list}" var="list" varStatus="status">
 									<tr class="lists">
 										<td>${list.prd_id}</td>
-										<td>${list.category_name}</td>
-										<td>${list.sel_cname}</td>
+										<td>${catelist[status.index].CATEGORY_NAME}</td>
+										<td>${catelist[status.index].SEL_CNAME}</td>
 										<td>${list.prd_name}</td>
 										<td>${list.prd_price}</td>
 										<td>${list.prd_comment}</td>
@@ -102,7 +105,6 @@
 		</div>
 	</section>
 </section>
-<%@ include file="/WEB-INF/views/include/footnav.jsp" %>
 <script>
 $(document).ready(function() {
 	function search(){
@@ -136,3 +138,4 @@ $(document).ready(function() {
 		}
 	});
 </script>
+<%@ include file="/WEB-INF/views/include/footnav.jsp" %>

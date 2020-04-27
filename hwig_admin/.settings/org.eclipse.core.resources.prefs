@@ -1,8 +1,2 @@
 eclipse.preferences.version=1
-encoding//src/main/java/com/hwig/admin/cart/CartDAO.java=UTF-8
-encoding//src/main/java/com/hwig/admin/cart/CartService.java=UTF-8
-encoding//src/main/java/com/hwig/admin/common/LoginInterceptor.java=UTF-8
-encoding//src/main/java/com/hwig/admin/event/EventController.java=UTF-8
-encoding//src/main/java/com/hwig/admin/qna/QnaController.java=UTF-8
-encoding//src/main/java/com/hwig/admin/seller/SellerController.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/main.jsp=UTF-8

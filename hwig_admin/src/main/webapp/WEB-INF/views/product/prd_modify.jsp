@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/views/include/headnav.jsp" %>
-<script src="../resources/assets/js/vendor/jquery-1.11.1.min.js"></script>
 <section class="main-content-wrapper">
         <div class="pageheader">
               <h1>상품 수정 페이지</h1>
@@ -125,18 +124,6 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-3 control-label" for="prd_sale">할인율</label>
-								<div class="col-sm-6">
-									<select class="form-control" name="prd_sale_select" id="prd_sale_select">
-										<option value="0">0%</option>
-										<option value="0.1">10%</option>
-										<option value="0.3">30%</option>
-										<option value="0.5">50%</option>
-									</select>
-									<input type="hidden" id="prd_sale" name="prd_sale" value="0" />
-								</div>
-							</div>
-							<div class="form-group">
 								<label class="col-sm-3 control-label" for="prd_kg">중량/용량</label>
 								<div class="col-sm-6">
 									<input type="text" value="${modify.prd_kg}" class="form-control" id="prd_kg" name="prd_kg" required="" placeholder="Required input"/>
@@ -184,9 +171,3 @@
 	</section>
 </section>
 <%@ include file="/WEB-INF/views/include/footnav.jsp" %>
-<script>
-		$("#prd_sale_select").click(function(){
-			var info_value= $("#prd_sale_select option:selected").attr('value');
-			$("#prd_sale").val(info_value);
-		})
-</script>

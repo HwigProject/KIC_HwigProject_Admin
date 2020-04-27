@@ -14,49 +14,49 @@ public class FaqServiceImpl implements FaqService{
 	@Inject
 	FaqDAO dao;
 	
-	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ë¦¬ìŠ¤íŠ¸
+	//ÀÚÁÖ¹¯´ÂÁú¹® ¸ñ·Ï
 	@Override
 	public List<FaqVO> fList(SearchCriteria cri) throws Exception {
 		
 		return dao.fList(cri);
 	}
 	
-	//ê²Œì‹œê¸€ ê°œìˆ˜ ì„¸ê¸°
+	//ÀüÃ¼ °³¼ö Ä«¿îÆ®
 	@Override
 	public int listCount(SearchCriteria cri) throws Exception {
 		
 		return dao.listCount(cri);
 	}
 	
-	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ë“±ë¡
+	//ÀÚÁÖ¹¯´ÂÁú¹® µî·Ï
 	@Override
 	public int faq_write(FaqVO faq) throws Exception {
 		
 		return dao.faq_write(faq);
 	}
 	
-	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ìƒì„¸ë³´ê¸°
+	//ÀÚÁÖ¹¯´ÂÁú¹® Á¶È¸
 	@Override
 	public FaqVO faq_view(int faq_id) throws Exception {
 
 		return dao.faq_view(faq_id);
 	}
 	
-	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ìˆ˜ì •
+	//ÀÚÁÖ¹¯´ÂÁú¹® ¼öÁ¤
 	@Override
 	public int faq_modify(FaqVO faq) throws Exception {
 		
 		return dao.faq_modify(faq);
 	}
 	
-	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ì‚­ì œ
+	//ÀÚÁÖ¹¯´ÂÁú¹® »èÁ¦
 	@Override
 	public int faq_delete(int faq_id) throws Exception {
 		
 		return dao.faq_delete(faq_id);
 	}
 	
-	//ìì£¼ë¬»ëŠ”ì§ˆë¬¸ ì‚­ì œì‹œ ì•„ì´ë”” ì˜¬ë ¤ì¤Œ
+	//°Ô½Ã±Û »èÁ¦½Ã ¹øÈ£ ÇÑÄ­¾¿ ¶¯°Ü¿È
 	@Override
 	public void faq_id_d(FaqVO faq) throws Exception {
 		

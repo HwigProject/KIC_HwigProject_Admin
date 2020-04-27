@@ -4,11 +4,11 @@
 	if (session != null) {
 		Object obj = session.getAttribute("user");
 		if (obj != null) {
-			response.sendRedirect("main");
+			response.sendRedirect("/main");
 		} else {
-			response.sendRedirect("loginForm");
+			response.sendRedirect("/loginForm");
 		}
 	} else {
-		response.sendRedirect("loginForm");
+		response.sendRedirect("/loginForm");
 	}
 %>
