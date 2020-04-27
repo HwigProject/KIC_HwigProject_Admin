@@ -61,6 +61,9 @@
 
 =======
 	
+<<<<<<< HEAD
+>>>>>>> parent of 703fdc6... Merge branch 'hwig_lws' into hwig_pjh
+=======
 >>>>>>> parent of 703fdc6... Merge branch 'hwig_lws' into hwig_pjh
 	<bean id="EventAttachPath" class="java.lang.String">
       <constructor-arg value="/resources/attach/event"></constructor-arg>

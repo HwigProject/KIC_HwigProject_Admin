@@ -196,7 +196,11 @@ $(document).ready(function() {
     
     $("#logoutBtn").click(function(){
 <<<<<<< HEAD
+<<<<<<< HEAD
     	self.location = "../logout";
+=======
+       self.location = "../logout";
+>>>>>>> parent of 703fdc6... Merge branch 'hwig_lws' into hwig_pjh
 =======
        self.location = "../logout";
 >>>>>>> parent of 703fdc6... Merge branch 'hwig_lws' into hwig_pjh
