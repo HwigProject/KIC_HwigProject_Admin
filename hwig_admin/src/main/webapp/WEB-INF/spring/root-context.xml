@@ -14,9 +14,9 @@
 	<!-- spring-jdbc -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-		<property name="url" value="jdbc:log4jdbc:oracle:thin:@hwigdb.cofhmzvbwdzr.ap-northeast-2.rds.amazonaws.com:1521/orcl" />
-		<property name="username" value="admin" />
-		<property name="password" value="hwig1234" />
+      	<property name="url" value="jdbc:log4jdbc:oracle:thin:@hwigdb.cofhmzvbwdzr.ap-northeast-2.rds.amazonaws.com:1521/orcl" />
+      	<property name="username" value="admin" />
+      	<property name="password" value="hwig1234" />
 	</bean>
 
 	<!-- sqlSessionFactory -->
@@ -57,7 +57,7 @@
 	<bean id="productAttachPath" class="java.lang.String">
 		<constructor-arg value="/resources/attach/product"></constructor-arg>
 	</bean>
-
+	
 	<bean id="EventAttachPath" class="java.lang.String">
       <constructor-arg value="/resources/attach/event"></constructor-arg>
    </bean>
