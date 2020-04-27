@@ -6,6 +6,7 @@ public class OrderVO {
 	private String mem_id;
 	private String order_status; // 이건 DB에서
 	private int order_reverse;
+	private int order_used_reverse;
 	private int order_paymoney;
 	private String order_payway;
 	private String order_paydate;
@@ -42,6 +43,14 @@ public class OrderVO {
 
 	public void setOrder_reverse(int order_reverse) {
 		this.order_reverse = order_reverse;
+	}
+
+	public int getOrder_used_reverse() {
+		return order_used_reverse;
+	}
+
+	public void setOrder_used_reverse(int order_used_reverse) {
+		this.order_used_reverse = order_used_reverse;
 	}
 
 	public int getOrder_paymoney() {
@@ -87,9 +96,9 @@ public class OrderVO {
 	@Override
 	public String toString() {
 		return "OrderVO [order_id=" + order_id + ", mem_id=" + mem_id + ", order_status=" + order_status
-				+ ", order_reverse=" + order_reverse + ", order_paymoney=" + order_paymoney + ", order_payway="
-				+ order_payway + ", order_paydate=" + order_paydate + ", order_request=" + order_request
-				+ ", order_count=" + order_count + "]";
+				+ ", order_reverse=" + order_reverse + ", order_used_reverse=" + order_used_reverse
+				+ ", order_paymoney=" + order_paymoney + ", order_payway=" + order_payway + ", order_paydate="
+				+ order_paydate + ", order_request=" + order_request + ", order_count=" + order_count + "]";
 	}
 
 }

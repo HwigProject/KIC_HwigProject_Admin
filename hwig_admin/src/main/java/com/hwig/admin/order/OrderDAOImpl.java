@@ -64,4 +64,9 @@ public class OrderDAOImpl implements OrderDAO {
 		return sqlSession.update(namespace + ".orderStatusUpdate", orderVo);
 	}
 
+	@Override
+	public ApiOrderCompletionDTO orderCompletion(String order_id) {
+		return sqlSession.selectOne(namespace + ".orderCompletion", order_id);
+	}
+
 }

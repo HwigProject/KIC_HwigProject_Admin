@@ -11,6 +11,7 @@ public class MemberVO {
 	private String mem_regdate;
 	private String mem_grade;
 	private int mem_reverse;
+	private int mem_price;
 
 	public String getMem_id() {
 		return mem_id;
@@ -84,11 +85,19 @@ public class MemberVO {
 		this.mem_reverse = mem_reverse;
 	}
 
+	public int getMem_price() {
+		return mem_price;
+	}
+
+	public void setMem_price(int mem_price) {
+		this.mem_price = mem_price;
+	}
+
 	@Override
 	public String toString() {
 		return "MemberVO [mem_id=" + mem_id + ", mem_pw=" + mem_pw + ", mem_tel=" + mem_tel + ", mem_name=" + mem_name
 				+ ", mem_addr=" + mem_addr + ", mem_email=" + mem_email + ", mem_regdate=" + mem_regdate
-				+ ", mem_grade=" + mem_grade + ", mem_reverse=" + mem_reverse + "]";
+				+ ", mem_grade=" + mem_grade + ", mem_reverse=" + mem_reverse + ", mem_price=" + mem_price + "]";
 	}
 
 	public void empty() {
@@ -101,6 +110,7 @@ public class MemberVO {
 		mem_regdate = "";
 		mem_grade = "";
 		mem_reverse = 0;
+		mem_price = 0;
 	}
 
 }

@@ -15,7 +15,7 @@ public interface SellerDAO {
 	public List<SellerVO> selectAll(SearchCriteria cri);
 
 	public int selectAllCount(SearchCriteria cri);
-	
+
 	public int pwUpdate(SellerPwDTO sellerPwDto);
 
 }

@@ -6,12 +6,14 @@ public class OrderRegisterDTO {
 
 	private String mem_id;
 	private int order_reverse;
+	private int order_used_reverse;
 	private int order_paymoney;
 	private String order_request;
 
 	private List<Integer> order_prd_ids;
-	private int order_count;
+	private List<Integer> prd_count;
 
+	private int order_count;
 	private String order_sender;
 	private String order_receiver;
 	private String order_receiver_tel;
@@ -32,6 +34,14 @@ public class OrderRegisterDTO {
 
 	public void setOrder_reverse(int order_reverse) {
 		this.order_reverse = order_reverse;
+	}
+
+	public int getOrder_used_reverse() {
+		return order_used_reverse;
+	}
+
+	public void setOrder_used_reverse(int order_used_reverse) {
+		this.order_used_reverse = order_used_reverse;
 	}
 
 	public int getOrder_paymoney() {
@@ -56,6 +66,14 @@ public class OrderRegisterDTO {
 
 	public void setOrder_prd_ids(List<Integer> order_prd_ids) {
 		this.order_prd_ids = order_prd_ids;
+	}
+
+	public List<Integer> getPrd_count() {
+		return prd_count;
+	}
+
+	public void setPrd_count(List<Integer> prd_count) {
+		this.prd_count = prd_count;
 	}
 
 	public void setNewAddr(boolean isNewAddr) {
@@ -112,11 +130,12 @@ public class OrderRegisterDTO {
 
 	@Override
 	public String toString() {
-		return "OrderRegisterDTO [mem_id=" + mem_id + ", order_reverse=" + order_reverse + ", order_paymoney="
-				+ order_paymoney + ", order_request=" + order_request + ", order_prd_ids=" + order_prd_ids
-				+ ", order_count=" + order_count + ", order_sender=" + order_sender + ", order_receiver="
-				+ order_receiver + ", order_receiver_tel=" + order_receiver_tel + ", order_receiver_addr="
-				+ order_receiver_addr + ", isNewAddr=" + isNewAddr + "]";
+		return "OrderRegisterDTO [mem_id=" + mem_id + ", order_reverse=" + order_reverse + ", order_used_reverse="
+				+ order_used_reverse + ", order_paymoney=" + order_paymoney + ", order_request=" + order_request
+				+ ", order_prd_ids=" + order_prd_ids + ", prd_count=" + prd_count + ", order_count=" + order_count
+				+ ", order_sender=" + order_sender + ", order_receiver=" + order_receiver + ", order_receiver_tel="
+				+ order_receiver_tel + ", order_receiver_addr=" + order_receiver_addr + ", isNewAddr=" + isNewAddr
+				+ "]";
 	}
 
 }

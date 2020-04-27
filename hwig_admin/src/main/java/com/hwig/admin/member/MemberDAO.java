@@ -7,20 +7,31 @@ import com.hwig.admin.common.SearchCriteria;
 public interface MemberDAO {
 
 	public int insert(MemberVO memberVo);
-	
+
 	public List<MemberVO> selectAll(SearchCriteria cri);
-	
+
 	public int selectAllCount(SearchCriteria cri);
-	
+
 	public MemberVO select(MemberVO memberVo);
-	
+
 	public int emailCheck(EmailCheckVO emailCheckVo);
-	
+
 	public int idCheck(IdCheckVO idCheckVo);
-	
-	public boolean isRightUserCheck(MemberVO memberVo);
-	
+
 	public int update(UpdateMemberVO updateMemberVo);
-	
+
 	public int delete(String mem_id);
+
+	public List<ApiOrderListVO> memberOrderSelectAll(ApiOrderListVO memberOrderDetailDto);
+
+	public int memberOrderAllCount(ApiOrderListVO memberOrderDetailDto);
+
+	public List<ApiOrderDetailVO> memberOrderDetailSelectAll(ApiOrderDetailVO ApiOrderDetailVo);
+
+	public int changeReverse(MemberVO memberVo);
+
+	public int changePrice(MemberVO memberVo);
+
+	public int changeGrade(MemberVO memberVo);
+
 }

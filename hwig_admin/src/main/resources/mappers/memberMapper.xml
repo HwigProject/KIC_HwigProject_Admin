@@ -5,10 +5,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.hwig.admin.mappers.memberMapper">
 
 	<insert id="memberInsert">
-		insert into tbl_member (mem_id, mem_pw, mem_tel, mem_name, mem_addr, mem_email, mem_regdate)
-			values (#{mem_id}, #{mem_pw}, #{mem_tel}, #{mem_name}, #{mem_addr}, #{mem_email}, sysdate)
+		insert into tbl_member (
+			mem_id,
+			mem_pw,
+			mem_tel,
+			mem_name,
+			mem_addr,
+			mem_email,
+			mem_regdate)
+		values (
+			#{mem_id},
+			#{mem_pw},
+			#{mem_tel},
+			#{mem_name},
+			#{mem_addr},
+			#{mem_email},
+			sysdate)
 	</insert>
-	
+
 	<sql id="search">
 		<if test="searchType != null">
 			<if test="searchType == 'id'.toString()">
@@ -19,23 +33,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</if>
 	</sql>
-	
+
 	<select id="memberAllSelect" resultType="MemberVO">
 		select * from (
-			select mem_id, mem_pw, mem_tel, mem_name, mem_addr,
-			mem_email, to_char(mem_regdate,'YYYY-MM-DD')as mem_regdate, mem_grade, mem_reverse,
-				row_number() over(order by mem_regdate desc) as rnum from tbl_member where 1=1
-		
-		<include  refid="search"></include>
-		
-			) mb where rnum between #{pageStart} and #{pageEnd}
+			select
+				mem_id,
+				mem_pw,
+				mem_tel,
+				mem_name,
+				mem_addr,
+				mem_email,
+				to_char(mem_regdate,'YYYY-MM-DD') as mem_regdate,
+				mem_grade,
+				mem_reverse,
+				row_number() over(order by mem_regdate desc) as rnum
+			from tbl_member where 1=1
+		<include refid="search"></include>
+			) mb
+		where rnum between #{pageStart} and #{pageEnd}
 	</select>
-	
+
 	<select id="memberAllCount" resultType="int">
 		select count(mem_id) from tbl_member where 1=1
-		<include  refid="search"></include>
+		<include refid="search"></include>
 	</select>
-	
+
 	<!-- 회원정보상세, 로그인시 사용 -->
 	<select id="memberSelect" resultType="MemberVO">
 		select * from tbl_member where mem_id = #{mem_id}
@@ -43,35 +65,105 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and mem_pw = #{mem_pw}
 		</if>
 	</select>
-	
+
 	<!-- 이메일 체크시 사용 -->
 	<select id="emailCheck" resultType="int">
 		select count(*) from tbl_member where mem_email = #{mem_email}
 	</select>
-	
+
 	<!-- 아이디 체크시 사용 -->
 	<select id="idCheck" resultType="int">
 		select count(*) from tbl_member where mem_id = #{mem_id}
 	</select>
-	
-	<!-- 회원정보수정전 아이디, 비밀번호 체크 -->
-	<select id="isRightUserCheck" resultType="int">
-		select count(*) from tbl_member where mem_id = #{mem_id} and mem_pw = #{mem_pw}
-	</select>
-	
+
 	<!-- 회원정보수정 -->
 	<update id="memberUpdate">
-		update tbl_member set
-			mem_tel = #{mem_tel}, mem_addr = #{mem_addr}, mem_email = #{mem_email}
-			<if test="mem_newpw != null and mem_newpw != ''">
-				,mem_pw = #{mem_newpw}
-			</if>
-				where mem_id = #{mem_id} and mem_pw = #{mem_pw}
+		update tbl_member set mem_tel = #{mem_tel}, mem_addr = #{mem_addr}, mem_email = #{mem_email}
+		<if test="mem_newpw != null and mem_newpw != ''">
+			,mem_pw = #{mem_newpw}
+		</if>
+		where mem_id = #{mem_id}
 	</update>
-	
+
 	<!-- 회원탈퇴 -->
 	<delete id="memberDelete">
 		delete from tbl_member where mem_id = #{mem_id}
 	</delete>
+
+	<select id="memberOrderSelectAll" resultType="ApiOrderListVO">
+		select * from (
+			select
+				B.mem_grade,
+				B.mem_name,
+				B.mem_reverse,
+				A.order_paydate,
+				(select C.prd_name from tbl_prd C, tbl_order_b D where C.prd_id = D.prd_id
+				and rownum=1) as prd_name,
+				A.order_count,
+				A.order_id,
+				A.order_paymoney,
+				A.order_status,
+				row_number() over(order by A.order_paydate desc) as rnum
+			from
+				tbl_order A,
+				tbl_member B
+			where A.mem_id = B.mem_id
+				and A.mem_id = #{mem_id}
+		) mb where rnum between #{pageStart} and #{pageEnd}
+	</select>
+
+	<select id="memberOrderAllCount" resultType="int">
+		select
+			count(A.order_id)
+		from
+			tbl_order A,
+			tbl_member B
+		where A.mem_id = B.mem_id
+			and A.mem_id = #{mem_id}
+	</select>
+	
+	<select id="memberOrderDetailSelectAll" resultType="ApiOrderDetailVO">
+		select
+			A.mem_id,
+		    A.order_id,
+		    D.prd_name,
+		    D.prd_price,
+		    B.prd_count,
+		    A.order_paymoney,
+		    D.prd_sale,
+		    A.order_used_reverse,
+		    A.order_reverse,
+		    A.order_payway,
+		    C.order_sender,
+		    to_char(A.order_paydate,'YYYY-MM-DD hh24:mi:ss')as order_paydate,
+		    A.order_status,
+		    C.order_receiver,
+		    C.order_receiver_tel,
+		    C.order_receiver_addr,
+		    A.order_request
+		from
+		    tbl_order A,
+		    tbl_order_b B,
+		    tbl_addr C,
+		    tbl_prd D
+		where
+		    A.order_id = B.order_id
+		    and B.prd_id = D.prd_id
+		    and B.order_id = C.order_id
+		    and A.mem_id = #{mem_id}
+		    and A.order_id = #{order_id}
+	</select>
+	
+	<update id="changeReverse">
+		update tbl_member set mem_reverse = #{mem_reverse} where mem_id = #{mem_id}
+	</update>
+	
+	<update id="changePrice">
+		update tbl_member set mem_price = #{mem_price} where mem_id = #{mem_id}
+	</update>
+	
+	<update id="changeGrade">
+		update tbl_member set mem_grade = #{mem_grade} where mem_id = #{mem_id}
+	</update>
 
 </mapper>

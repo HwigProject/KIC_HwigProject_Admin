@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<style>
+#keyword{
+	margin-right:10px;
+	height:37px;
+}
+#searchType{
+	width:100px;	
+}
+</style>
 <%@ include file="/WEB-INF/views/include/headnav.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -23,28 +32,23 @@
 					</div>
 					<div class="panel-body">
 						<div class="row">
-							<div class="col-xs-8">
+							<div class="col-xs-7">
 								<div class="dataTables_length" id="example_length">
-									<label>검색 <select name="searchType" id="searchType">
-											<option value=""
-												<c:out value="${cri.searchType == null ? 'selected' : ' '}" />>
-												----</option>
-											<option value="id"
-												<c:out value="${cri.searchType eq 'id' ? 'selected' : ' ' }" />>
-												아이디</option>
-											<option value="name"
-												<c:out value="${cri.searchType eq 'name' ? 'selected' : ' ' }" />>
-												이름</option>
-									</select>
-									</label>
+									<div class="form-group">
+										<label>검색
+											<select name="searchType" id="searchType">
+												<option value="" <c:out value="${cri.searchType == null ? 'selected' : ' '}" />>----</option>
+												<option value="id" <c:out value="${cri.searchType eq 'id' ? 'selected' : ' ' }" />>아이디</option>
+												<option value="name" <c:out value="${cri.searchType eq 'name' ? 'selected' : ' ' }" />>이름</option>
+											</select>
+										</label>
+									</div>
 								</div>
 							</div>
-							<div class="col-xs-4">
+							<div class="col-xs-5">
 								<div id="example_filter" class="dataTables_filter">
-									<label id="listLabel">
-										<input type="search" class="form-control input-sm" aria-controls="example" id="keyword" value="${cri.keyword}">
-									</label>
-									<button type="button" class="btn btn-success" id="searchBtn">검색</button>
+									<button type="button" class="btn btn-success pull-right" id="searchBtn">검색</button>
+									<label id="listLabel"><input type="search" class="form-control input-sm" aria-controls="example" id="keyword" value="${cri.keyword}"></label>
 								</div>
 							</div>
 						</div>

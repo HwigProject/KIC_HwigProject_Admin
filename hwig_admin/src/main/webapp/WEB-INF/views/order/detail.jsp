@@ -138,13 +138,13 @@
 		
 		$("#hwigBtn").click(function(){
 			var jsondata = {
-					"order_status":$("#order_status").val()
+					"order_status":"배송 중"
 			}
 			
 			console.log("/api/order/${data.order_id}", jsondata);
 			
 			$.ajax({
-				url:"/api/order/${data.order_id}",
+				url:"/api/orders/${data.order_id}",
 				data:JSON.stringify(jsondata),
 				dataType:"json",
 				contentType:"application/json; charset=utf-8",

@@ -6,7 +6,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.hwig.admin.mappers.adminMapper">
 
 	<select id="adminSelect" resultType="AdminVO">
-		select * from tbl_admin where admin_id = #{admin_id}
+		select * from
+			tbl_admin
+		where
+			admin_id = #{admin_id} and admin_pw = #{admin_pw}
 	</select>
 
 </mapper>

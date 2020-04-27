@@ -15,10 +15,10 @@ public class LoginController {
 
 	@Autowired
 	private LoginService loginService;
-	
+
 	@RequestMapping("/loginForm")
 	public void loginForm() {
-		
+
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)

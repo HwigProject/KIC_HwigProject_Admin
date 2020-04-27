@@ -10,10 +10,10 @@ import com.hwig.admin.common.SearchCriteria;
 
 @Repository
 public class SellerDAOImpl implements SellerDAO {
-	
+
 	@Autowired
 	private SqlSession sqlSession;
-	
+
 	private static final String namespace = "com.hwig.admin.mappers.sellerMapper";
 
 	@Override

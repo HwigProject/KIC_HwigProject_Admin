@@ -5,7 +5,6 @@ public class LoginDTO {
 	private String user_type;
 	private String user_id;
 	private String user_pw;
-	private boolean sel_cookie;
 
 	public String getUser_type() {
 		return user_type;
@@ -31,18 +30,9 @@ public class LoginDTO {
 		this.user_pw = user_pw;
 	}
 
-	public boolean isSel_cookie() {
-		return sel_cookie;
-	}
-
-	public void setSel_cookie(boolean sel_cookie) {
-		this.sel_cookie = sel_cookie;
-	}
-
 	@Override
 	public String toString() {
-		return "LoginDTO [user_type=" + user_type + ", user_id=" + user_id + ", user_pw=" + user_pw + ", sel_cookie="
-				+ sel_cookie + "]";
+		return "LoginDTO [user_type=" + user_type + ", user_id=" + user_id + ", user_pw=" + user_pw + "]";
 	}
 
 }

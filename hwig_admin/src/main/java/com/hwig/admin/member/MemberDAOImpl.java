@@ -46,14 +46,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne(namespace + ".idCheck", idCheckVo);
 	}
 
-	/**
-	 * 0보다 큰 경우 true 리턴 -> 회원정보가 있음 -> 맞는 회원 -> 정보수정가능
-	 */
-	@Override
-	public boolean isRightUserCheck(MemberVO memberVo) {
-		return (Integer)sqlSession.selectOne(namespace + ".isRightUserCheck", memberVo) > 0;
-	}
-
 	@Override
 	public int update(UpdateMemberVO updateMemberVo) {
 		return sqlSession.update(namespace + ".memberUpdate", updateMemberVo);
@@ -62,6 +54,36 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public int delete(String mem_id) {
 		return sqlSession.delete(namespace + ".memberDelete", mem_id);
+	}
+
+	@Override
+	public List<ApiOrderListVO> memberOrderSelectAll(ApiOrderListVO memberOrderDetailDto) {
+		return sqlSession.selectList(namespace + ".memberOrderSelectAll", memberOrderDetailDto);
+	}
+
+	@Override
+	public int memberOrderAllCount(ApiOrderListVO memberOrderDetailDto) {
+		return sqlSession.selectOne(namespace + ".memberOrderAllCount", memberOrderDetailDto);
+	}
+
+	@Override
+	public List<ApiOrderDetailVO> memberOrderDetailSelectAll(ApiOrderDetailVO ApiOrderDetailVo) {
+		return sqlSession.selectList(namespace + ".memberOrderDetailSelectAll", ApiOrderDetailVo);
+	}
+
+	@Override
+	public int changeReverse(MemberVO memberVo) {
+		return sqlSession.update(namespace + ".changeReverse", memberVo);
+	}
+
+	@Override
+	public int changePrice(MemberVO memberVo) {
+		return sqlSession.update(namespace + ".changePrice", memberVo);
+	}
+
+	@Override
+	public int changeGrade(MemberVO memberVo) {
+		return sqlSession.update(namespace + ".changeGrade", memberVo);
 	}
 
 }

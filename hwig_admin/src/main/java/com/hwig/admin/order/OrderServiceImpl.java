@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hwig.admin.member.MemberDAO;
 import com.hwig.admin.member.MemberService;
 import com.hwig.admin.member.MemberVO;
 import com.hwig.admin.seller.SellerVO;
@@ -17,6 +18,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	private OrderDAO orderDao;
+
+	@Autowired
+	private MemberDAO memberDao;
 
 	@Autowired
 	private MemberService memberService;
@@ -70,10 +74,11 @@ public class OrderServiceImpl implements OrderService {
 
 	@Transactional
 	@Override
-	public int register(OrderRegisterDTO orderRegisterDto) {
+	public String register(OrderRegisterDTO orderRegisterDto) {
 		OrderVO orderVo = new OrderVO();
 		orderVo.setMem_id(orderRegisterDto.getMem_id());
 		orderVo.setOrder_reverse(orderRegisterDto.getOrder_reverse());
+		orderVo.setOrder_used_reverse(orderRegisterDto.getOrder_used_reverse());
 		orderVo.setOrder_paymoney(orderRegisterDto.getOrder_paymoney());
 		orderVo.setOrder_request(orderRegisterDto.getOrder_request());
 		orderVo.setOrder_count(orderRegisterDto.getOrder_count());
@@ -84,6 +89,7 @@ public class OrderServiceImpl implements OrderService {
 		orderBVo.setOrder_id(order_id);
 		for (int i = 0; i < orderRegisterDto.getOrder_prd_ids().size(); i++) {
 			orderBVo.setPrd_id(orderRegisterDto.getOrder_prd_ids().get(i));
+			orderBVo.setPrd_count(orderRegisterDto.getPrd_count().get(i));
 			orderDao.orderBVoInsert(orderBVo);
 		}
 
@@ -93,23 +99,54 @@ public class OrderServiceImpl implements OrderService {
 		orderAddrVo.setOrder_receiver(orderRegisterDto.getOrder_receiver());
 		orderAddrVo.setOrder_receiver_tel(orderRegisterDto.getOrder_receiver_tel());
 
+		MemberVO memberVo = new MemberVO();
 		if (orderRegisterDto.isNewAddr()) {
 			orderAddrVo.setOrder_receiver_addr(orderRegisterDto.getOrder_receiver_addr());
 		} else {
-			MemberVO memberVo = new MemberVO();
 			memberVo.setMem_id(orderRegisterDto.getMem_id());
 			memberVo = memberService.findOne(memberVo.getMem_id());
 			orderRegisterDto.setOrder_receiver_addr(memberVo.getMem_addr());
-
 			orderAddrVo.setOrder_receiver_addr(orderRegisterDto.getOrder_receiver_addr());
 		}
+		orderDao.orderAddrVoInsert(orderAddrVo);
 
-		return orderDao.orderAddrVoInsert(orderAddrVo);
+		memberVo.setMem_id(orderRegisterDto.getMem_id());
+		memberVo = memberService.findOne(memberVo.getMem_id());
+		int totalReverse = memberVo.getMem_reverse() + orderRegisterDto.getOrder_reverse();
+		memberVo.setMem_reverse(totalReverse);
+		memberDao.changeReverse(memberVo);
+
+		int totalPrice = memberVo.getMem_price() + orderRegisterDto.getOrder_paymoney();
+		memberVo.setMem_price(totalPrice);
+		memberDao.changePrice(memberVo);
+
+		if (!memberVo.getMem_grade().equals("bronze")) {
+			if (memberVo.getMem_price() > 5000000) {
+				memberVo.setMem_grade("diamond");
+				memberDao.changeGrade(memberVo);
+			} else if (memberVo.getMem_price() > 3000000) {
+				memberVo.setMem_grade("platinum");
+				memberDao.changeGrade(memberVo);
+			} else if (memberVo.getMem_price() > 1000000) {
+				memberVo.setMem_grade("gold");
+				memberDao.changeGrade(memberVo);
+			} else if (memberVo.getMem_price() > 300000) {
+				memberVo.setMem_grade("silver");
+				memberDao.changeGrade(memberVo);
+			}
+		}
+
+		return order_id;
 	}
 
 	@Override
 	public int statusModify(OrderVO orderVo) {
 		return orderDao.orderStatusUpdate(orderVo);
+	}
+
+	@Override
+	public ApiOrderCompletionDTO orderCompletion(String order_id) {
+		return orderDao.orderCompletion(order_id);
 	}
 
 }

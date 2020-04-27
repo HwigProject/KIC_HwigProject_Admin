@@ -195,8 +195,6 @@ $(document).ready(function() {
     app.spinStop();
     
     $("#logoutBtn").click(function(){
-<<<<<<< HEAD
-<<<<<<< HEAD
     	self.location = "../logout";
     });
     
@@ -206,28 +204,6 @@ $(document).ready(function() {
     
     $("#sellerAccountBtn2").click(function(){
     	self.location = "/seller/account";
-=======
-       self.location = "../logout";
-    });
-    
-    $("#sellerAccountBtn1").click(function(){
-       self.location = "/seller/account";
-    });
-    
-    $("#sellerAccountBtn2").click(function(){
-       self.location = "/seller/account";
->>>>>>> refs/remotes/origin/hwig_lws
-=======
-       self.location = "../logout";
-    });
-    
-    $("#sellerAccountBtn1").click(function(){
-       self.location = "/seller/account";
-    });
-    
-    $("#sellerAccountBtn2").click(function(){
-       self.location = "/seller/account";
->>>>>>> refs/remotes/origin/hwig_pjh
     });
 });
 </script>
