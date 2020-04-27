@@ -198,7 +198,7 @@
                             <li>
                                 <a href="/product/prd_list" title="Data Tables">승인 완료</a>
                             </li>
-                        </c:if>
+						</c:if>
                         </ul>
                     </li>
                     <li class="nav-dropdown">
