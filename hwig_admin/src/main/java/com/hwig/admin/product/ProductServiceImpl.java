@@ -26,16 +26,35 @@ public class ProductServiceImpl implements ProductService{
 		return dao.selectAllCount(cri);
 	}
 	
+	//판매자용 리스트 갯수 세기
 	@Override
-	public List<ProductVO> waitList(SearchCriteria cri) throws Exception {
+	public int listAllSelCount(ProductCriteria cri) {
+		return dao.selectAllSelCount(cri);
+	}
+	
+	@Override
+	public List<ProductDTO> waitList(SearchCriteria cri) throws Exception {
 		
 		return dao.waitList(cri);
 	}
 	
+	//판매자용 상품 승인 예정 목록 조회
+	@Override
+	public List<ProductDTO> waitSelList(ProductCriteria cri) throws Exception {
+		
+		return dao.waitSelList(cri);
+	}
+	
 	//등록 완료 목록 조회
 	@Override
-	public List<ProductVO> list(SearchCriteria cri) throws Exception {
+	public List<ProductDTO> list(SearchCriteria cri) throws Exception {
 		return dao.list(cri);
+	}
+	
+	//판매자용 등록 완료 목록 조회
+	@Override
+	public List<ProductDTO> sellist(ProductCriteria cri) throws Exception {
+		return dao.sellist(cri);
 	}
 	
 	//승인 예정 상품 삭제
@@ -91,10 +110,16 @@ public class ProductServiceImpl implements ProductService{
 
 	//front와 통신
 	
-	//
+	//카테고리 목록 보내기
 	@Override
-	public List<Map<Integer,String>> category() throws Exception {
+	public List<CategoryDTO> category() throws Exception {
 		return dao.category();
+	}
+	
+	//카테고리 선택하여 보내기
+	@Override
+	public List<CategoryDTO> cateselect(int category_id) throws Exception {
+		return dao.cateselect(category_id);
 	}
 	
 	//메인 목록 조회
@@ -106,8 +131,32 @@ public class ProductServiceImpl implements ProductService{
 
 	//카테고리별 상품 조회
 	@Override
-	public List<ProductVO> catelist(int category_id) throws Exception {
+	public List<ProductListDTO> catelist(int category_id) throws Exception {
 		return dao.catelist(category_id);
+	}
+	
+	//상품 검색
+	@Override
+	public List<ProductListDTO> prosearch(String keyword) throws Exception {
+		return dao.prosearch(keyword);
+	}
+	
+	//베스트 목록
+	@Override
+	public List<ProductListDTO> bestlist() throws Exception {
+		return dao.bestlist();
+	}
+	
+	//신상품 순서대로 나열된 목록
+	@Override
+	public List<ProductListDTO> newlist() throws Exception {
+		return dao.newlist();
+	}
+	
+	//알뜰상품 목록
+	@Override
+	public List<ProductListDTO> salelist() throws Exception {
+		return dao.salelist();
 	}
 	
 }

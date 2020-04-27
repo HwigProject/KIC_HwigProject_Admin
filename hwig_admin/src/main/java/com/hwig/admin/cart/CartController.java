@@ -26,8 +26,8 @@ public class CartController {
 
 	//상품 등록 - get
 	@RequestMapping(value = "/cart_list", method=RequestMethod.GET)
-	public List<Map<String,String>> getCartlist(@RequestParam("mem_id") String mem_id, Model model) throws Exception {
-		List<Map<String,String>> cartlist = service.cartlist(mem_id);
+	public List<CartlistDTO> getCartlist(@RequestParam("mem_id") String mem_id, Model model) throws Exception {
+		List<CartlistDTO> cartlist = service.cartList(mem_id);
 		model.addAttribute("cartlist", cartlist);
 		
 		return cartlist;

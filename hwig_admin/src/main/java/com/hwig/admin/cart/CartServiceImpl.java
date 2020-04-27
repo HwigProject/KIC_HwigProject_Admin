@@ -13,9 +13,22 @@ public class CartServiceImpl implements CartService{
 	@Inject
 	private CartDAO dao;
 	
+	//장바구니 목록 가져오기
 	@Override
-	public List<Map<String,String>> cartlist(String mem_id) throws Exception {
-		return dao.cartlist(mem_id);
+	public List<CartlistDTO> cartList(String mem_id) throws Exception {
+		return dao.cartList(mem_id);
+	}
+	
+	//장바구니 등록
+	@Override
+	public int cartInsert(CartVO vo) throws Exception {
+		return dao.cartInsert(vo);
+	}
+	
+	//장바구니 삭제
+	@Override
+	public void cartDelete(List<CartdeleteDTO> listdto) throws Exception {
+		dao.cartDelete(listdto);
 	}
 
 }
