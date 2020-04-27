@@ -6,19 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>NeuBoard</title>
     <meta name="description" content="">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<style>
-	#select_label{
-		margin-left:20px;
-	}
-	#select_admin{
-		margin-left:50px;
-	}
-	#select_seller{
-		margin-left:30px;
-	}
-</style>
-<!-- Favicon -->
+		#select_label{
+			margin-left:20px;
+		}
+		#select_admin{
+			margin-left:50px;
+		}
+		#select_seller{
+			margin-left:30px;
+		}
+	</style>
+	<!-- Favicon -->
     <link rel="shortcut icon" href="../resources/assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../resources/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -70,14 +70,14 @@
                         <div class="panel-body">
                             <form class="form-horizontal" role="form" action="login" method="post" id="loginForm">
                             <div class="form-group">
-                                    <div class="control-label" style="padding-left:0px; text-align: left">
-                                        <label class="control-label" id="select_label">로그인 계정 선택</label>
-                                        <input type="radio" name="loginType" id="select_admin" value="admin" >
-                                        <label style="text-align: left;">관리자</label>
-                                        <input type="radio" name="loginType" id="select_seller" value="seller">
-                                        <label style="text-align: left;">판매자</label>
-                                        <input type="hidden" value="" id="user_type" name="user_type" />
-                                    </div>
+                                <div class="control-label" style="padding-left:0px; text-align: left">
+                                    <label class="control-label" id="select_label">로그인 계정 선택</label>
+                                    <input type="radio" name="loginType" id="select_admin" value="admin" >
+                                    <label style="text-align: left;">관리자</label>
+                                    <input type="radio" name="loginType" id="select_seller" value="seller">
+                                    <label style="text-align: left;">판매자</label>
+                                    <input type="hidden" value="" id="user_type" name="user_type" />
+                                </div>
                             </div>
                             	<hr />
                                 <div class="form-group">
@@ -144,39 +144,40 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 $(document).ready(function() {
-	
-	$("input:radio[name='loginType']").on("click", function(){
-		if($("input:radio[name='loginType']:checked").val() == "admin"){
-			$("#sel_id").empty();
-			$("#admin_id").text("관리자번호");
-			$("#user_type").val("admin");
-			console.log($("#user_type").val());
-		} else {
-			$("#admin_id").empty();
-			$("#sel_id").text("사업자등록번호");
-			$("#user_type").val("seller");
-			console.log($("#user_type").val());
-		}
-	});
-	
-	$("#loginBtn").click(function(){
-		console.log($("#loginForm"));
-		$("#loginForm").submit();
-	});
+   
+   $("input:radio[name='loginType']").on("click", function(){
+      if($("input:radio[name='loginType']:checked").val() == "admin"){
+         $("#sel_id").empty();
+         $("#admin_id").text("관리자번호");
+         $("#user_type").val("admin");
+         console.log($("#user_type").val());
+      } else {
+         $("#admin_id").empty();
+         $("#sel_id").text("사업자등록번호");
+         $("#user_type").val("seller");
+         console.log($("#user_type").val());
+      }
+   });
+   
+   $("#loginBtn").click(function(){
+      console.log($("#loginForm"));
+      $("#loginForm").submit();
+   });
 
-	$("#admin").attr('checked', true);
-	$("#sel_id").empty();
-	$("#admin_id").text("관리자번호");
-	$("#user_type").val("admin");
-	
-	var result = '${msg}';
-	if(result == 'fail') {
-		alert("로그인이 실패되었습니다");
-	}
-	
-	var loginResult = '${loginMsg}';
-	if(loginResult == 'fail') {
-		alert("로그인 후 사용하세요");
-	}
+   $("#admin").attr('checked', true);
+   $("#sel_id").empty();
+   $("#admin_id").text("관리자번호");
+   $("#user_type").val("admin");
+   
+   var result = '${msg}';
+   if(result == 'fail') {
+      alert("로그인이 실패되었습니다");
+   }
+   
+   var loginResult = '${loginMsg}';
+   if(loginResult == 'fail') {
+      alert("로그인 후 사용하세요");
+   }
+
 });
 </script>

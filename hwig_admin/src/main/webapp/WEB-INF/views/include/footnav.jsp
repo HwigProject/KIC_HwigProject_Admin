@@ -195,7 +195,6 @@ $(document).ready(function() {
     app.spinStop();
     
     $("#logoutBtn").click(function(){
-
     	self.location = "/logout";
     });
     
@@ -205,7 +204,6 @@ $(document).ready(function() {
     
     $("#sellerAccountBtn2").click(function(){
     	self.location = "/seller/account";
-
     });
 });
 </script>

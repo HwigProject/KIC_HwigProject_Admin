@@ -14,8 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Hwig</title>
     <meta name="description" content="">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<!-- Favicon -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+   <!-- Favicon -->
     <link rel="shortcut icon" href="../resources/assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../resources/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -51,7 +51,7 @@
         <header id="header">
             <!--logo start-->
             <div class="brand">
-                <a href="/" class="logo">
+                <a href="index.html" class="logo">
                     <i class="icon-layers"></i>
                     <span>NEU</span>BOARD</a>
             </div>
@@ -106,7 +106,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="javascript:void(0);" id="logoutBtn">
+                            <a href="#" id="logoutBtn">
                                 <span class="icon"><i class="fa fa-sign-out"></i>
                                 </span>로그아웃</a>
                         </li>
@@ -165,7 +165,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#">
+                            <a href="javascript:void(0);">
                                 <span class="icon"><i class="fa fa-sign-out"></i>
                                 </span>Logout</a>
                         </li>
@@ -184,16 +184,21 @@
                             <li>
                                 <a href="/product/prd_add" title="Data Tables">상품 등록</a>
                             </li>
-                  </c:if>
-                  <c:if test="${sessionScope.user_type eq 'admin'}">
-
+                            <li>
+                                <a href="/product/prd_waitlist_seller?sel_id=${sessionScope.user.sel_id}" title="Data Tables">승인 예정</a>
+                            </li>
+                            <li>
+                                <a href="/product/prd_list_seller?sel_id=${sessionScope.user.sel_id}" title="Data Tables">승인 완료</a>
+                            </li>
+                     </c:if>
+                     <c:if test="${sessionScope.user_type eq 'admin'}">
                             <li>
                                 <a href="/product/prd_waitlist" title="Data Tables">승인 예정</a>
                             </li>
                             <li>
                                 <a href="/product/prd_list" title="Data Tables">승인 완료</a>
                             </li>
-                  </c:if>
+                        </c:if>
                         </ul>
                     </li>
                     <li class="nav-dropdown">
@@ -243,7 +248,6 @@
                         </ul>
                     </li>
                     </c:if>
-                    <c:if test="${sessionScope.user_type eq 'seller'}" />
                 </ul>
             </nav>
         </aside>

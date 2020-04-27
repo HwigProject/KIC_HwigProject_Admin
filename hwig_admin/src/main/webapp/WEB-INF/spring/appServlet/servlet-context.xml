@@ -27,8 +27,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<context:component-scan
-		base-package="com.hwig.admin" />
+	<context:component-scan	base-package="com.hwig.admin" />
 
 	<!-- aop -->
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
@@ -39,13 +38,15 @@
 		<interceptor>
 			<mapping path="/member/*" />
 			<mapping path="/seller/*" />
+			<mapping path="/order/*" />
+			<mapping path="/api/*" />
 			<mapping path="/product/*" />
 			<mapping path="/cart/*" />
-			<mapping path="/order/*" />
 			<mapping path="/notice/*" />
 			<mapping path="/qna/*" />
 			<mapping path="/faq/*" />
 			<mapping path="/event/*" />
+			<mapping path="/review/*" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 	</interceptors>
