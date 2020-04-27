@@ -68,7 +68,7 @@
                             <h3 class="panel-title">로그인</h3>
                         </div>
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" action="login" method="post" id="loginForm">
+                            <form class="form-horizontal" role="form" action="/login" method="post" id="loginForm">
                             <div class="form-group">
                                 <div class="control-label" style="padding-left:0px; text-align: left">
                                     <label class="control-label" id="select_label">로그인 계정 선택</label>
