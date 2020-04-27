@@ -33,35 +33,16 @@ public class ProductDAOImpl implements ProductDAO{
 		return sql.selectOne(namespace + ".allCount", cri);
 	}
 	
-	//판매자용 리스트 갯수 세기
-	@Override
-	public int selectAllSelCount(ProductCriteria cri) {
-		return sql.selectOne(namespace + ".allSelCount", cri);
-	}
-	
-	
 	//상품 승인 예정 목록 조회
 	@Override
-	public List<ProductDTO> waitList(SearchCriteria cri) throws Exception {
+	public List<ProductVO> waitList(SearchCriteria cri) throws Exception {
 		return sql.selectList(namespace + ".waitList", cri);
-	}
-	
-	//상품 승인 예정 목록 조회
-	@Override
-	public List<ProductDTO> waitSelList(ProductCriteria cri) throws Exception {
-		return sql.selectList(namespace + ".waitSelList", cri);
 	}
 	
 	//등록 완료 목록 조회
 	@Override
-	public List<ProductDTO> list(SearchCriteria cri) throws Exception {
+	public List<ProductVO> list(SearchCriteria cri) throws Exception {
 		return sql.selectList(namespace + ".list", cri);
-	}
-	
-	//판매자용등록 완료 목록 조회
-	@Override
-	public List<ProductDTO> sellist(ProductCriteria cri) throws Exception {
-		return sql.selectList(namespace + ".sellist", cri);
 	}
 
 	@Override
@@ -114,14 +95,8 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	//카테고리 목록 보내기
 	@Override
-	public List<CategoryDTO> category() throws Exception {
+	public List<Map<Integer,String>> category() throws Exception {
 		return sql.selectList(namespace + ".category");
-	}
-	
-	//카테고리 선택하여 보내기
-	@Override
-	public List<CategoryDTO> cateselect(int category_id) throws Exception{
-		return sql.selectList(namespace + ".cateselect", category_id);
 	}
 	
 	//메인 상품 목록 조회
@@ -132,32 +107,8 @@ public class ProductDAOImpl implements ProductDAO{
 	
 	//카테고리별 상품 조회
 	@Override
-	public List<ProductListDTO> catelist(int category_id) throws Exception {
+	public List<ProductVO> catelist(int category_id) throws Exception {
 		return sql.selectList(namespace + ".catelist", category_id);
-	}
-	
-	//상품 검색
-	@Override
-	public List<ProductListDTO> prosearch(String keyword) throws Exception {
-		return sql.selectList(namespace + ".prosearch", keyword);
-	}
-	
-	//베스트 목록
-	@Override
-	public List<ProductListDTO> bestlist() throws Exception {
-		return sql.selectList(namespace + ".bestlist");
-	}
-	
-	//신상품 순서대로 나열된 목록
-	@Override
-	public List<ProductListDTO> newlist() throws Exception {
-		return sql.selectList(namespace + ".newlist");
-	}
-	
-	//알뜰상품 목록
-	@Override
-	public List<ProductListDTO> salelist() throws Exception {
-		return sql.selectList(namespace + ".salelist");
 	}
 	
 }

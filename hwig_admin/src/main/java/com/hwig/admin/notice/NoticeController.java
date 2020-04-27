@@ -22,7 +22,7 @@ public class NoticeController {
 	@Inject
 	NoticeService nService;
 	
-	//ê³µì§€ì‚¬í•­ ë¦¬ìŠ¤íŠ¸
+	//°øÁö»çÇ× ¸ñ·Ï
 	@RequestMapping(value = "/nlist")
 	public void getNotice(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
 		
@@ -35,13 +35,13 @@ public class NoticeController {
 		model.addAttribute("pageMaker", pageMaker);
 	}
 	
-	//ê³µì§€ì‚¬í•­ ë“±ë¡í¼
+	//°øÁö»çÇ× µî·ÏÆû
 	@RequestMapping(value = "/notice_write")
 	public void getNotice_write() throws Exception{
 		
 	}
 	
-	//ê³µì§€ì‚¬í•­ ë“±ë¡
+	//°øÁö»çÇ× µî·Ï
 	@RequestMapping(value = "/notice_write", method = RequestMethod.POST)
 	public String postNotice_write(NoticeVO notice, RedirectAttributes rttr) throws Exception{
 		
@@ -57,7 +57,7 @@ public class NoticeController {
 		return "redirect:/notice/nlist";
 	}
 	
-	//ê³µì§€ì‚¬í•­ ìƒì„¸ë³´ê¸°
+	//°øÁö»çÇ× Á¶È¸
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@RequestMapping(value = "/notice_view")
 	public void notice_view(@RequestParam("notice_id") int notice_id,
@@ -70,7 +70,7 @@ public class NoticeController {
 		model.addAttribute("cri", cri);
 	}
 	
-	//ê³µì§€ì‚¬í•­ ìˆ˜ì •í¼
+	//°øÁö»çÇ× ¼öÁ¤Æû
 	@RequestMapping(value = "/notice_modify")
 	public void getNotice_modify(@RequestParam("notice_id") int notice_id,
 								 @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
@@ -80,7 +80,7 @@ public class NoticeController {
 		model.addAttribute("cri", cri);
 	}
 	
-	//ê³µì§€ì‚¬í•­ ìˆ˜ì •
+	//°øÁö»çÇ× ¼öÁ¤
 	@RequestMapping(value = "/notice_modify", method = RequestMethod.POST)
 	public String postNotice_modify(NoticeVO notice, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) throws Exception{
 		
@@ -101,10 +101,10 @@ public class NoticeController {
 		return "redirect:/notice/nlist";
 	}
 	
-	//ê³µì§€ì‚¬í•­ ì‚­ì œ
+	//°øÁö»çÇ× »èÁ¦
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@RequestMapping(value = "/notice_delete")
-	public String notice_delete(NoticeVO notice, int notice_id, RedirectAttributes rttr, @ModelAttribute("cri") SearchCriteria cri) throws Exception{
+	public String faq_delete(NoticeVO notice, int notice_id, RedirectAttributes rttr, @ModelAttribute("cri") SearchCriteria cri) throws Exception{
 		int result = nService.notice_delete(notice_id);
 		nService.notice_id_d(notice);
 		

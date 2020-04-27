@@ -68,8 +68,8 @@
 	                                    <c:forEach items="${waitList}" var="waitList" varStatus="status">
 										<tr>
 											<td>${waitList.prd_id}</td>
-											<td>${waitList.category_name}</td>
-											<td>${waitList.sel_cname}</td>
+											<td>${catelist[status.index].CATEGORY_NAME}</td>
+											<td>${catelist[status.index].SEL_CNAME}</td>
 											<td>${waitList.prd_name}</td>
 											<td>${waitList.prd_price}</td>
 											<td>${waitList.prd_comment}</td>
@@ -107,7 +107,6 @@
 		</div>
 	</section>
 </section>
-<%@ include file="/WEB-INF/views/include/footnav.jsp" %>
 <script>
 $(document).ready(function() {
 	function search(){
@@ -154,3 +153,4 @@ $(document).ready(function() {
 		alert("완료되었습니다.")
 	}
 </script>
+<%@ include file="/WEB-INF/views/include/footnav.jsp" %>

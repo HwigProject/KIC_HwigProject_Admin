@@ -9,7 +9,6 @@ public class ProductListDTO {
 	private String prd_comment;
 	private int category_id;
 	private int category_p_id;
-	private double prd_sale;
 	
 	public int getPrd_id() {
 		return prd_id;
@@ -59,11 +58,6 @@ public class ProductListDTO {
 	public void setCategory_p_id(int category_p_id) {
 		this.category_p_id = category_p_id;
 	}
-	public double getPrd_sale() {
-		return prd_sale;
-	}
-	public void setPrd_sale(double prd_sale) {
-		this.prd_sale = prd_sale;
-	}
+	
 	
 }

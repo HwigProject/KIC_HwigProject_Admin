@@ -16,70 +16,46 @@ public class EventDAOImpl implements EventDAO{
 	//mapper
 	private static String namespace = "com.hwig.admin.mappers.eventMapper";
 	
-	//ì´ë²¤íŠ¸ ë¦¬ìŠ¤íŠ¸
+	//ÀÌº¥Æ® ¸ñ·Ï
 	@Override
 	public List<EventVO> eList() throws Exception {
 		
 		return sql.selectList(namespace + ".eList");
 	}
 	
-	//ì´ë²¤íŠ¸ ë“±ë¡
+	//ÀÌº¥Æ® µî·Ï
 	@Override
 	public int event_write(EventVO event) throws Exception {
 		
 		return sql.insert(namespace + ".event_write", event);
 	}
 	
-	//ì´ë²¤íŠ¸ ìƒì„¸ë³´ê¸°
+	//ÀÌº¥Æ® Á¶È¸
 	@Override
 	public EventVO event_view(int event_id) throws Exception {
 		
 		return sql.selectOne(namespace + ".event_view", event_id);
 	}
 	
-	//ì´ë²¤íŠ¸ ìˆ˜ì •
+	//ÀÌº¥Æ® ¼öÁ¤
 	@Override
 	public int event_modify(EventVO event) throws Exception {
 		
 		return sql.update(namespace + ".event_modify", event);
 	}
 
-	//ì´ë²¤íŠ¸ ì‚­ì œ
+	//ÀÌº¥Æ® »èÁ¦
 	@Override
 	public int event_delete(int event_id) throws Exception {
 		
 		return sql.delete(namespace + ".event_delete", event_id);
 	}
 	
-	//ì´ë²¤íŠ¸ ì‚­ì œì‹œ ì•„ì´ë””ê°’ ì˜¬ë ¤ì¤Œ
+	//ÀÌº¥Æ® »èÁ¦½Ã ¹øÈ£ ¶¯±è
 	@Override
 	public void event_id_d(EventVO event) throws Exception {
 		
 		sql.update(namespace + ".event_id_d", event);
-	}
-
-	@Override
-	public List<EventVO> event_square() throws Exception {
-		
-		return sql.selectList(namespace + ".event_square");
-	}
-
-	@Override
-	public List<EventVO> event_list() throws Exception {
-		
-		return sql.selectList(namespace + ".event_list");
-	}
-
-	@Override
-	public List<EventVO> event_banner() throws Exception {
-		
-		return sql.selectList(namespace + ".event_banner");
-	}
-
-	@Override
-	public EventVO event_content(int event_id) throws Exception {
-		
-		return sql.selectOne(namespace + ".event_content", event_id);
 	}
 
 }

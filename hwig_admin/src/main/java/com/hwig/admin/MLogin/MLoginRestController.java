@@ -21,31 +21,30 @@ public class MLoginRestController {
 	@Inject
 	MLoginService mService;
 	
-	@PostMapping("/login")
-	public Map<String, Object> login(@RequestBody MLoginVO member, HttpServletRequest req) throws Exception{
+	@PostMapping("/p_login")
+	public Map<String, Object> p_login(@RequestBody MLoginVO member, HttpServletRequest req) throws Exception{
 		System.out.println(member.getMem_id() + " " + member.getMem_pw());
-		boolean check = mService.isRightUesrCheck(member.getMem_id(), member.getMem_pw());
+		MLoginVO mem = mService.mem_login(member);
 		HttpSession ss = req.getSession();
 		
 		System.out.println(ss);
 		
-		
 		Map<String, Object> responseData = new HashMap<String, Object>();
 
-		if(check == false)
+		if(mem == null)
 		{
 			responseData.put("isLogged?", false);
 		}
-		else {
-			ss.setAttribute("mem", mService.mem_login(member));
-			responseData.put("mem", mService.mem_login(member));
+		else {			
+			ss.setAttribute("mem", mem);
+			responseData.put("mem", mem);
 			responseData.put("isLogged", true);
 		}
 			
 		return responseData;
 	}
 	
-	@GetMapping("/logout")
+	@GetMapping("/p_logout")
 	public Map<String, Object> p_logout(HttpSession ss) throws Exception{
 		
 		Map<String, Object> responseData = new HashMap<String, Object>();

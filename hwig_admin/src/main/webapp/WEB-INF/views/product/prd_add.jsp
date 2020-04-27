@@ -31,13 +31,18 @@
 								<div class="col-sm-6">
 									<select class="form-control" name="category_select" id="category_select">
 										<option value="100">기본채소</option>
-										<option value="101">국산 과일</option>
-										<option value="102">수입 과일</option>
-										<option value="200">소/돼지</option>
-										<option value="201">닭/오리</option>
-										<option value="202">간편조리/양념육</option>
+										<option value="101">쌈, 샐러드, 간편채소</option>
+										<option value="102">브로콜리, 특수채소</option>
+										<option value="103">콩나물, 버섯류</option>
 									</select>
 									<input type="hidden" id="category_id" name="category_id" value="100" />
+									<script>
+										$("#category_select").click(function(){
+											var s_value= $("#category_select option:selected").attr('value');
+											var s_int_value = parseInt(s_value);
+											$("#category_id").val(s_int_value);
+										})
+									</script>
 								</div>
 							</div>
 							<div class="form-group">
@@ -66,6 +71,17 @@
 										<img src=""/>
 									</div>
 								</div>
+								<script>
+									$('.prd_thumb').change(function(){
+										if(this.files && this.files[0]) {
+											var reader = new FileReader;
+											reader.onload = function(data) {
+												$(".select_thumb img").attr("src", data.target.result).width(500);
+											}
+											reader.readAsDataURL(this.files[0]);
+										}
+									});
+								</script>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="prd_comment">한줄설명</label>
@@ -81,6 +97,17 @@
 										<img src=""/>
 									</div>
 								</div>
+								<script>
+									$('.prd_img').change(function(){
+										if(this.files && this.files[0]) {
+											var reader = new FileReader;
+											reader.onload = function(data) {
+												$(".select_img img").attr("src", data.target.result).width(500);
+											}
+											reader.readAsDataURL(this.files[0]);
+										}
+									});
+								</script>
 							</div>
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="prd_stock">재고</label>
@@ -115,6 +142,12 @@
 										<option value="비닐">비닐</option>
 									</select>
 									<input type="hidden" id="prd_wrap" name="prd_wrap" value="100" />
+									<script>
+										$("#prd_wrap_select").click(function(){
+											var info_value= $("#prd_wrap_select option:selected").attr('value');
+											$("#prd_wrap").val(info_value);
+										})
+									</script>
 								</div>
 							</div>
 							<div class="form-group">
@@ -136,40 +169,3 @@
 	</section>
 </section>
 <%@ include file="/WEB-INF/views/include/footnav.jsp" %>
-
-									<script>
-										$("#category_select").click(function(){
-											var s_value= $("#category_select option:selected").attr('value');
-											var s_int_value = parseInt(s_value);
-											$("#category_id").val(s_int_value);
-										})
-									</script>
-									
-								<script>
-									$('.prd_thumb').change(function(){
-										if(this.files && this.files[0]) {
-											var reader = new FileReader;
-											reader.onload = function(data) {
-												$(".select_thumb img").attr("src", data.target.result).width(500);
-											}
-											reader.readAsDataURL(this.files[0]);
-										}
-									});
-								</script>
-								<script>
-									$('.prd_img').change(function(){
-										if(this.files && this.files[0]) {
-											var reader = new FileReader;
-											reader.onload = function(data) {
-												$(".select_img img").attr("src", data.target.result).width(500);
-											}
-											reader.readAsDataURL(this.files[0]);
-										}
-									});
-								</script>
-									<script>
-										$("#prd_wrap_select").click(function(){
-											var info_value= $("#prd_wrap_select option:selected").attr('value');
-											$("#prd_wrap").val(info_value);
-										})
-									</script>

@@ -14,35 +14,36 @@ public class NoticeServiceImpl implements NoticeService{
 	@Inject
 	NoticeDAO dao;
 
-	//ê³µì§€ì‚¬í•­ ë¦¬ìŠ¤íŠ¸
+	//°øÁö»çÇ× ¸ñ·Ï
 	@Override
 	public List<NoticeVO> nList(SearchCriteria cri) throws Exception {
 			
 		return dao.nList(cri);
 	}
 	
-	//ê²Œì‹œíŒ ê°œìˆ˜ ì„¸ê¸°
+	//ÀüÃ¼ °³¼ö ¼¼±â
 	@Override
 	public int listCount(SearchCriteria cri) throws Exception {
 		
 		return dao.listCount(cri);
 	}
 	
-	//ê³µì§€ì‚¬í•­ ë“±ë¡
+	//°øÁö»çÇ× µî·Ï
 	@Override
 	public int notice_write(NoticeVO notice) throws Exception {
 		
 		return dao.notice_write(notice);
 	}
 	
-	//ê³µì§€ì‚¬í•­ ìƒì„¸ë³´ê¸°
+	//°øÁö»çÇ× Á¶È¸
 	@Override
 	public NoticeVO notice_view(int notice_id) throws Exception {
 		
 		return dao.notice_view(notice_id);
 	}
 	
-	//ê³µì§€ì‚¬í•­ ì¡°íšŒìˆ˜
+	//°øÁö»çÇ× Á¶È¸¼ö Áõ°¡
+	
 	 @Override 
 	 public int notice_hit_up(int notice_id) throws Exception {
 	 
@@ -50,28 +51,28 @@ public class NoticeServiceImpl implements NoticeService{
 	 }
 	 
 	
-	//ê³µì§€ì‚¬í•­ ìˆ˜ì •
+	//°øÁö»çÇ× ¼öÁ¤
 	@Override
 	public int notice_modify(NoticeVO notice) throws Exception {
 		
 		return dao.notice_modify(notice);
 	}
 	
-	//ê³µì§€ì‚¬í•­ ì‚­ì œ
+	//°øÁö»çÇ× »èÁ¦
 	@Override
 	public int notice_delete(int notice_id) throws Exception {
 		
 		return dao.notice_delete(notice_id);
 	}
 	
-	//ê³µì§€ì‚¬í•­ ì‚­ì œì‹œ ì•„ì´ë”” ì˜¬ë ¤ì¤Œ
+	//°øÁö»çÇ× »èÁ¦½Ã ¹øÈ£ ¶¯±è
 	@Override
 	public void notice_id_d(NoticeVO notice) throws Exception {
 		
 		dao.notice_id_d(notice);
 	}
 	
-	//ê³µì§€ì‚¬í•­ ë¦¬ìŠ¤íŠ¸ ë©”ì¸
+	//°øÁö»çÇ× ¸ñ·Ï ¸ŞÀÎÆäÀÌÁö
 	@Override
 	public List<NoticeVO> nList_main() throws Exception {
 		

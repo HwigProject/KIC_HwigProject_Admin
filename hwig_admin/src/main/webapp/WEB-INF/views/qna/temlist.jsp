@@ -13,6 +13,7 @@
         alert("완료되었습니다.");
     }
 </script>
+
 <style>
 #keyword{
 	margin-right:10px;
@@ -68,7 +69,7 @@
 											<td>${macro_ht.macro_id}</td>
 											<td>${macro_ht.qna_category}</td>											
 											<td>
-												<button type="button" onclick="enco('/qna/tem_ht_modify?qna_category=${macro_ht.qna_category}')" class="btn btn-success">수정</button>                            
+												<button type="button" onclick="location.href='/qna/tem_ht_modify?qna_category=${macro_ht.qna_category}'" class="btn btn-success">수정</button>                            
                                 			</td>
 										</tr>
 																
@@ -131,20 +132,13 @@
 
 	<%@ include file="../include/footnav.jsp"%>
 
-<script src="../resources/assets/plugins/dataTables/js/jquery.dataTables.js"></script>
-<script src="../resources/assets/plugins/dataTables/js/dataTables.bootstrap.js"></script>
+
 <script>
 $(document).ready(function() {
     $('#example').dataTable();
     
     $('#example2').dataTable();
-	});	
-</script>
-<script>
-function enco(str){
-	 window.location.href = encodeURI(str);
-}
-
+	});
 </script>
 </body>
 </html>

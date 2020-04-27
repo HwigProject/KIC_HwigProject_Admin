@@ -9,7 +9,6 @@ import java.util.UUID;
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -92,82 +91,51 @@ public class ProductController {
 		else {
 			rttr.addFlashAttribute("msg", "fail");
 		}
-		String selid = vo.getSel_id();
-		String url = "redirect:/product/prd_waitlist_seller?sel_id=" + selid;
-		return url;
+		
+		return "redirect:/product/prd_waitlist_seller";
 	}
 	
 	//상품 등록 예정 목록
 	@RequestMapping(value = "/prd_waitlist", method=RequestMethod.GET)
-	public List<ProductDTO> getWaitList(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	public List<ProductVO> getWaitList(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 		
-		List<ProductDTO> waitList = service.waitList(cri);
+		List<ProductVO> waitList = service.waitList(cri);
 		model.addAttribute("waitList", waitList);
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.listAllCount(cri));
+
+		List<Map<Integer,String>> catelist = service.readCategories2();
 		
 		model.addAttribute("pageMaker", pageMaker);
-		
-		return waitList;
-	}
-	
-	//판매자용 상품 등록 예정 목록
-	@RequestMapping(value = "/prd_waitlist_seller", method=RequestMethod.GET)
-	public List<ProductDTO> getWaitListSeller(@RequestParam("sel_id") String sel_id, @ModelAttribute("cri") ProductCriteria cri, Model model) throws Exception {
-		
-		cri.setSel_id(sel_id);
-		
-		List<ProductDTO> waitList = service.waitSelList(cri);
-		model.addAttribute("waitList", waitList);
-		
-		ProductPageMaker pageMaker = new ProductPageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.listAllSelCount(cri));
-		 
-		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("catelist", catelist);
 		
 		return waitList;
 	}
 	
 	//상품 등록 완료 목록
 		@RequestMapping(value = "/prd_list", method=RequestMethod.GET)
-		public List<ProductDTO> getList(@ModelAttribute("cri") SearchCriteria cri,Model model) throws Exception {
+		public List<ProductVO> getList(@ModelAttribute("cri") SearchCriteria cri,Model model) throws Exception {
 			
-			List<ProductDTO> list = service.list(cri);
+			List<ProductVO> list = service.list(cri);
 			model.addAttribute("list", list);
 			
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
 			pageMaker.setTotalCount(service.listAllCount(cri));
 			
-			model.addAttribute("pageMaker", pageMaker);
-			
-			return list;
-		}
-		
-	//판매자용 상품 등록 완료 목록
-		@RequestMapping(value = "/prd_list_seller", method=RequestMethod.GET)
-		public List<ProductDTO> getListSeller(@RequestParam("sel_id") String sel_id, @ModelAttribute("cri") ProductCriteria cri, Model model) throws Exception {
-			
-			cri.setSel_id(sel_id);
-			
-			List<ProductDTO> list = service.sellist(cri);
-			model.addAttribute("list", list);
-			
-			ProductPageMaker pageMaker = new ProductPageMaker();
-			pageMaker.setCri(cri);
-			pageMaker.setTotalCount(service.listAllSelCount(cri));
+			 List<Map<Integer,String>> catelist = service.readCategories1();
 			
 			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("catelist", catelist);
 			
 			return list;
 		}
 	
 	//등록 예정 목록 상품 삭제 - get
 	@RequestMapping(value="/prd_delete", method=RequestMethod.GET)
-	public String getDelete(@RequestParam("prd_id") int prd_id,RedirectAttributes rttr, HttpSession session) throws Exception {
+	public String getDelete(@RequestParam("prd_id") int prd_id,RedirectAttributes rttr) throws Exception {
 		
 		int result = service.delete(prd_id);
 		if(result == 1) { //삭제 완료 메세지
@@ -177,13 +145,7 @@ public class ProductController {
 			rttr.addFlashAttribute("msg", "fail");
 		}
 		
-		if(session.getAttribute("user_type").equals("seller")) {
-			String url = "redirect:/product/prd_waitlist_seller?sel_id=" + session.getAttribute("user_id");
-			return url;
-		}
-		else
-			return "redirect:/product/prd_waitlist";
-			
+		return "redirect:/product/prd_waitlist";
 	}
 	
 	//등록 완료 상품 삭제 - get
@@ -200,6 +162,25 @@ public class ProductController {
 			
 		return "redirect:/product/prd_list";
 	}
+	
+	//상품 등록 예정 목록
+		@RequestMapping(value = "/prd_waitlist_seller", method=RequestMethod.GET)
+		public List<ProductVO> getWaitListSeller(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+			
+			List<ProductVO> waitList = service.waitList(cri);
+			model.addAttribute("waitList", waitList);
+			
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(service.listAllCount(cri));
+			
+			List<Map<Integer,String>> catelist = service.readCategories2();
+			 
+			model.addAttribute("pageMaker", pageMaker);
+			model.addAttribute("catelist", catelist);
+			
+			return waitList;
+		}
 	
 	//등록
 	@RequestMapping(value="/prd_add_list", method=RequestMethod.GET)
@@ -287,14 +268,5 @@ public class ProductController {
 		model.addAttribute("product", vo);
 		model.addAttribute("cateName", cateName);
 	}
-	
-	//글 조회 - get
-		@RequestMapping(value="/prd_read_seller", method=RequestMethod.GET)
-		public void getReadSeller(@RequestParam("prd_id") int prd_id, Model model) throws Exception {
-			ProductVO vo = service.read(prd_id);
-			String cateName = service.readCategory(prd_id);
-			model.addAttribute("product", vo);
-			model.addAttribute("cateName", cateName);
-		}
 	
 }

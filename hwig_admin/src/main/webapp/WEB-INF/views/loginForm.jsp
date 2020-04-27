@@ -144,40 +144,40 @@
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 $(document).ready(function() {
-   
-   $("input:radio[name='loginType']").on("click", function(){
-      if($("input:radio[name='loginType']:checked").val() == "admin"){
-         $("#sel_id").empty();
-         $("#admin_id").text("관리자번호");
-         $("#user_type").val("admin");
-         console.log($("#user_type").val());
-      } else {
-         $("#admin_id").empty();
-         $("#sel_id").text("사업자등록번호");
-         $("#user_type").val("seller");
-         console.log($("#user_type").val());
-      }
-   });
-   
-   $("#loginBtn").click(function(){
-      console.log($("#loginForm"));
-      $("#loginForm").submit();
-   });
+	
+	$("input:radio[name='loginType']").on("click", function(){
+		if($("input:radio[name='loginType']:checked").val() == "admin"){
+			$("#sel_id").empty();
+			$("#admin_id").text("관리자번호");
+			$("#user_type").val("admin");
+			console.log($("#user_type").val());
+		} else {
+			$("#admin_id").empty();
+			$("#sel_id").text("사업자등록번호");
+			$("#user_type").val("seller");
+			console.log($("#user_type").val());
+		}
+	});
+	
+	$("#loginBtn").click(function(){
+		console.log($("#loginForm"));
+		$("#loginForm").submit();
+	});
 
-   $("#admin").attr('checked', true);
-   $("#sel_id").empty();
-   $("#admin_id").text("관리자번호");
-   $("#user_type").val("admin");
-   
-   var result = '${msg}';
-   if(result == 'fail') {
-      alert("로그인이 실패되었습니다");
-   }
-   
-   var loginResult = '${loginMsg}';
-   if(loginResult == 'fail') {
-      alert("로그인 후 사용하세요");
-   }
+	$("#admin").attr('checked', true);
+	$("#sel_id").empty();
+	$("#admin_id").text("관리자번호");
+	$("#user_type").val("admin");
+	
+	var result = '${msg}';
+	if(result == 'fail') {
+		alert("로그인이 실패되었습니다");
+	}
+	
+	var loginResult = '${loginMsg}';
+	if(loginResult == 'fail') {
+		alert("로그인 후 사용하세요");
+	}
 
 });
 </script>

@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 답글 목록(메인용) -->
 	<select id="rList" parameterType="String" resultType="com.hwig.admin.reply.QReplyVO">
 		select q.*, r.reply_content, r.reply_regdate from tbl_qna q, tbl_reply r
-		where q.mem_id = #{mem_id} and q.qna_id = r.qna_id(+) order by q.qna_regdate
+		where q.mem_id = #{mem_id} and q.qna_id = r.qna_id(+)
 	</select>
 	
 	<!-- 답글 작성 -->
