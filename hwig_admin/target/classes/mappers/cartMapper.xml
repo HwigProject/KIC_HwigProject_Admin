@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hwig.admin.mappers.cartMapper">
+	<!-- 장바구니 목록 가져오기 -->
+	<select id="cartlist" resultType="com.hwig.admin.cart.CartlistDTO">
+		select tp.prd_name, tp.prd_price, tc.order_count, tp.prd_thumb
+		from tbl_prd tp, tbl_member tm, tbl_cart tc
+		where tp.prd_id = tc.prd_id and tm.mem_id = #{mem_id}
+	</select>
+	
+	<!-- 장바구니 등록 -->
+	<insert id="cartinsert">
+		merge into tbl_cart
+		using dual
+		on (prd_id = #{prd_id} and mem_id = #{mem_id})
+		when matched then
+		update set order_count= order_count + #{order_count}
+		when not matched then
+		insert(prd_id, mem_id, order_count)
+		values(#{prd_id}, #{mem_id}, #{order_count})
+	</insert>
+	
+	<!-- 장바구니 삭제 -->
+	<delete id="cartdelete" parameterType="com.hwig.admin.cart.CartdeleteDTO">
+		<!-- delete from tbl_cart where prd_id = #{prd_id} and mem_id = #{mem_id} -->
+		delete from tbl_cart
+		<where>
+			<foreach collection="list" item="item" open="" close="" separator="OR">
+				(prd_id = #{item.prd_id} and mem_id = #{item.mem_id})
+			</foreach>
+		</where>
+	</delete>
+	
+</mapper>
