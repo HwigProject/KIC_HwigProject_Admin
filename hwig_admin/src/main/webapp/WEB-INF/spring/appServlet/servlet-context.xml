@@ -41,12 +41,12 @@
 			<mapping path="/order/*" />
 			<mapping path="/api/*" />
 			<mapping path="/product/*" />
-         	<mapping path="/cart/*" />
-	        <mapping path="/notice/*" />
-	        <mapping path="/qna/*" />
-	        <mapping path="/faq/*" />
-	        <mapping path="/event/*" />
-	        <mapping path="/review/*" />
+			<mapping path="/cart/*" />
+			<mapping path="/notice/*" />
+			<mapping path="/qna/*" />
+			<mapping path="/faq/*" />
+			<mapping path="/event/*" />
+			<mapping path="/review/*" />
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 	</interceptors>
