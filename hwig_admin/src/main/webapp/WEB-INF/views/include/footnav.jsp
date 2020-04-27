@@ -195,15 +195,19 @@ $(document).ready(function() {
     app.spinStop();
     
     $("#logoutBtn").click(function(){
+<<<<<<< HEAD
     	self.location = "../logout";
+=======
+       self.location = "../logout";
+>>>>>>> parent of 703fdc6... Merge branch 'hwig_lws' into hwig_pjh
     });
     
     $("#sellerAccountBtn1").click(function(){
-    	self.location = "/seller/account";
+       self.location = "/seller/account";
     });
     
     $("#sellerAccountBtn2").click(function(){
-    	self.location = "/seller/account";
+       self.location = "/seller/account";
     });
 });
 </script>

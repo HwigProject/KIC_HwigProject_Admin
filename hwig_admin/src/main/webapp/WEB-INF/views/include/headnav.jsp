@@ -198,7 +198,11 @@
                             <li>
                                 <a href="/product/prd_list" title="Data Tables">승인 완료</a>
                             </li>
+<<<<<<< HEAD
                   		</c:if>
+=======
+						</c:if>
+>>>>>>> parent of 703fdc6... Merge branch 'hwig_lws' into hwig_pjh
                         </ul>
                     </li>
                     <li class="nav-dropdown">
@@ -234,7 +238,7 @@
                                 <a href="/notice/nlist" title="Data Tables">공지사항</a>
                             </li>
                             <li>
-                                <a href="/event/elist" title="Data Tables">이벤트</a>
+                                <a href="/notice/elist" title="Data Tables">이벤트</a>
                             </li>
                             <li>
                                 <a href="/faq/flist" title="Data Tables">자주묻는질문</a>
