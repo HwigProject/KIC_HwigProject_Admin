@@ -14,15 +14,15 @@
 	<!-- spring-jdbc -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
-      	<property name="url" value="jdbc:log4jdbc:oracle:thin:@hwigdb.cofhmzvbwdzr.ap-northeast-2.rds.amazonaws.com:1521/orcl" />
-      	<property name="username" value="admin" />
-      	<property name="password" value="hwig1234" />
+		<property name="url" value="jdbc:log4jdbc:oracle:thin:@hwigdb.cofhmzvbwdzr.ap-northeast-2.rds.amazonaws.com:1521/orcl" />
+		<property name="username" value="admin" />
+		<property name="password" value="hwig1234" />
 	</bean>
 
 	<!-- sqlSessionFactory -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:/mybatis-config.xml" />
+		<property name="configLocation"	value="classpath:/mybatis-config.xml" />
 		<property name="mapperLocations" value="classpath:/mappers/*.xml" />
 	</bean>
 
@@ -38,7 +38,7 @@
 
 	<tx:annotation-driven />
 
-	<context:component-scan base-package="com.hwig.admin" />
+	<context:component-scan	base-package="com.hwig.admin" />
 
 	<!-- multipart/form-data -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -50,20 +50,20 @@
 		<constructor-arg value="/home/ubuntu/apache-tomcat-8.5.54/webapps/hwig_admin"></constructor-arg>
 	</bean>
 
-	<bean id="sellerAttachPath" class="java.lang.String">
+ 	<bean id="sellerAttachPath" class="java.lang.String">
 		<constructor-arg value="/resources/attach/seller"></constructor-arg>
 	</bean>
 
 	<bean id="productAttachPath" class="java.lang.String">
 		<constructor-arg value="/resources/attach/product"></constructor-arg>
+	</bean> 
+
+	<bean id="EventAttachPath" class="java.lang.String">
+		<constructor-arg value="/resources/attach/event"></constructor-arg>
 	</bean>
 	
-	<bean id="EventAttachPath" class="java.lang.String">
-      <constructor-arg value="/resources/attach/event"></constructor-arg>
-   </bean>
-   
-   <bean id="ReviewAttachPath" class="java.lang.String">
-      <constructor-arg value="/resources/attach/review"></constructor-arg>
-   </bean>
-
+	<bean id="ReviewAttachPath" class="java.lang.String">
+		<constructor-arg value="/resources/attach/review"></constructor-arg>
+	</bean>
+	
 </beans>

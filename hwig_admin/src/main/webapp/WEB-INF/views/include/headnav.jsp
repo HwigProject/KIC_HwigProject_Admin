@@ -15,7 +15,7 @@
     <title>Hwig</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<!-- Favicon -->
+   <!-- Favicon -->
     <link rel="shortcut icon" href="../resources/assets/img/favicon.ico" type="image/x-icon">
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="../resources/assets/plugins/bootstrap/css/bootstrap.min.css">
@@ -198,7 +198,7 @@
                             <li>
                                 <a href="/product/prd_list" title="Data Tables">승인 완료</a>
                             </li>
-						</c:if>
+                        </c:if>
                         </ul>
                     </li>
                     <li class="nav-dropdown">
@@ -234,7 +234,7 @@
                                 <a href="/notice/nlist" title="Data Tables">공지사항</a>
                             </li>
                             <li>
-                                <a href="/notice/elist" title="Data Tables">이벤트</a>
+                                <a href="/event/elist" title="Data Tables">이벤트</a>
                             </li>
                             <li>
                                 <a href="/faq/flist" title="Data Tables">자주묻는질문</a>
