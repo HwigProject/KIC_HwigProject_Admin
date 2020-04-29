@@ -32,7 +32,7 @@ public class EventController {
 	private String savePath;
 	
 	//저장경로(바뀔 수 있음)
-	@Resource(name="AttachPath")
+	@Resource(name="EventAttachPath")
 	private String attachPath;
 	
 	//이벤트 목록 조회

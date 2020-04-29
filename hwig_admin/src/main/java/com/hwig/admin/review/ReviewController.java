@@ -26,7 +26,7 @@ public class ReviewController {
 	@Resource(name="savePath")
 	private String savePath;
 			
-	@Resource(name="AttachPath")
+	@Resource(name="ReviewAttachPath")
 	private String attachPath;
 	
 	@RequestMapping(value = "/reviewList")
