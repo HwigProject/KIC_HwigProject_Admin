@@ -30,7 +30,7 @@ public class ReviewRestController {
 	@Resource(name="savePath")
 	private String savePath;
 		
-	@Resource(name="AttachPath")
+	@Resource(name="ReviewAttachPath")
 	private String attachPath;
 	
 	@GetMapping(value = "/review_main")
