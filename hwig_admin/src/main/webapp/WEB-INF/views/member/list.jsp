@@ -68,7 +68,7 @@
 								<tbody>
 								<c:if test="${fn:length(list) > 0}">
 									<c:forEach items="${list}" var="memberVo" varStatus="status">
-										<tr onclick="location.href='/member/modifyForm${pageMaker.makeSearch(pageMaker.cri.page)}&mem_id=${memberVo.mem_id}'" style="cursor:pointer">
+										<tr onclick="location.href='/member/detailForm${pageMaker.makeSearch(pageMaker.cri.page)}&mem_id=${memberVo.mem_id}'" style="cursor:pointer">
 											<c:if test="${pageMaker.cri.page == 1}">
 												<td>${pageMaker.totalCount - status.index}</td>
 											</c:if>

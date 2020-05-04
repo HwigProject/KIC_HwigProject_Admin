@@ -97,8 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			A.order_request,
 			A.order_count,
 			(select B.mem_name from tbl_member B where A.mem_id = B.mem_id) as mem_name,
-			(select B.mem_tel from tbl_member B where A.mem_id = B.mem_id) as
-			mem_tel,
+			(select B.mem_tel from tbl_member B where A.mem_id = B.mem_id) as mem_tel,
 			F.order_receiver_addr
 		from
 			tbl_order A,
@@ -111,6 +110,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select
 			A.order_id,
 			A.prd_id,
+			A.order_count,
 			B.prd_name,
 			B.prd_price,
 			C.sel_cname
@@ -145,27 +145,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			order_reverse,
 			order_used_reverse,
 			order_paymoney,
-			order_request,
-			order_count)
+			order_payway,
+			order_request)
 		values (
 			#{order_id},
 			#{mem_id},
 			#{order_reverse},
 			#{order_used_reverse},
 			#{order_paymoney},
-			#{order_request},
-			#{order_count})
+			#{order_payway},
+			#{order_request})
 	</insert>
 
 	<insert id="orderBInsert">
 		insert into tbl_order_b (
 			order_id,
 			prd_id,
-			prd_count)
+			order_count)
 		values (
 			#{order_id},
 			#{prd_id},
-			#{prd_count})
+			#{order_count})
 	</insert>
 
 	<insert id="orderAddrInsert">
@@ -192,7 +192,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select
 			A.order_id,
 			B.prd_name,
-			A.order_count,
 			D.order_receiver_addr,
 			A.order_paydate,
 			A.order_payway,

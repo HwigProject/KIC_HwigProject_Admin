@@ -4,6 +4,7 @@ public class ApiOrderDTO {
 
 	private String order_paydate;
 	private String prd_name;
+	private String prd_thumb;
 	private int order_count;
 	private String order_id;
 	private int order_paymoney;
@@ -23,6 +24,14 @@ public class ApiOrderDTO {
 
 	public void setPrd_name(String prd_name) {
 		this.prd_name = prd_name;
+	}
+
+	public String getPrd_thumb() {
+		return prd_thumb;
+	}
+
+	public void setPrd_thumb(String prd_thumb) {
+		this.prd_thumb = prd_thumb;
 	}
 
 	public int getOrder_count() {
@@ -59,9 +68,9 @@ public class ApiOrderDTO {
 
 	@Override
 	public String toString() {
-		return "ApiOrderDTO [order_paydate=" + order_paydate + ", prd_name=" + prd_name + ", order_count=" + order_count
-				+ ", order_id=" + order_id + ", order_paymoney=" + order_paymoney + ", order_status=" + order_status
-				+ "]";
+		return "ApiOrderDTO [order_paydate=" + order_paydate + ", prd_name=" + prd_name + ", prd_thumb=" + prd_thumb
+				+ ", order_count=" + order_count + ", order_id=" + order_id + ", order_paymoney=" + order_paymoney
+				+ ", order_status=" + order_status + "]";
 	}
 
 }
