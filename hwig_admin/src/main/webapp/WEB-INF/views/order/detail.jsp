@@ -100,7 +100,7 @@
 														<td>${prdVo.prd_id}</td>
 														<td>${prdVo.prd_name}</td>
 														<td>${prdVo.prd_price}</td>
-														<td>${prdVo.prd_count}</td>
+														<td>${prdVo.order_count}</td>
 														<td>${prdVo.sel_cname}</td>
 													</tr>
 												</c:forEach>

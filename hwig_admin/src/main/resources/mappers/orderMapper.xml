@@ -26,7 +26,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				A.order_payway,
 				to_char(A.order_paydate,'YYYY-MM-DD')as order_paydate,
 				A.order_request,
-				A.order_count,
 				row_number() over(order by A.order_status desc, A.order_paydate desc) as rnum
 			from
 				tbl_order A,
@@ -66,7 +65,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				order_payway,
 				to_char(order_paydate,'YYYY-MM-DD hh24:mi:ss')as order_paydate,
 				order_request,
-				order_count,
 				row_number() over(order by order_status desc, order_paydate desc) as rnum
 			from
 				tbl_order
@@ -95,7 +93,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			A.order_payway,
 			to_char(A.order_paydate,'YYYY-MM-DD hh24:mi:ss')as order_paydate,
 			A.order_request,
-			A.order_count,
 			(select B.mem_name from tbl_member B where A.mem_id = B.mem_id) as mem_name,
 			(select B.mem_tel from tbl_member B where A.mem_id = B.mem_id) as mem_tel,
 			F.order_receiver_addr

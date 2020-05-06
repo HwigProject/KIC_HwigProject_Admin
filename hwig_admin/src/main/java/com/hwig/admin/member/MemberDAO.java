@@ -22,9 +22,9 @@ public interface MemberDAO {
 
 	public int delete(String mem_id);
 
-	public List<ApiOrderListVO> memberOrderSelectAll(ApiOrderListVO memberOrderDetailDto);
+	public List<ApiOrderListVO> memberOrderSelectAll(ApiOrderListVO apiOrderListVo);
 
-	public int memberOrderAllCount(ApiOrderListVO memberOrderDetailDto);
+	public int memberOrderAllCount(ApiOrderListVO apiOrderListVo);
 
 	public List<ApiOrderDetailVO> memberOrderDetailSelectAll(ApiOrderDetailVO ApiOrderDetailVo);
 

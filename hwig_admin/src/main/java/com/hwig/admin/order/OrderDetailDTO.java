@@ -13,6 +13,7 @@ public class OrderDetailDTO {
 	private String order_payway;
 	private String order_paydate;
 	private String order_request;
+	private int order_count;
 
 	private String mem_name;
 	private String mem_tel;
@@ -87,6 +88,14 @@ public class OrderDetailDTO {
 		this.order_request = order_request;
 	}
 
+	public int getOrder_count() {
+		return order_count;
+	}
+
+	public void setOrder_count(int order_count) {
+		this.order_count = order_count;
+	}
+
 	public String getMem_name() {
 		return mem_name;
 	}
@@ -131,9 +140,10 @@ public class OrderDetailDTO {
 	public String toString() {
 		return "OrderDetailDTO [order_id=" + order_id + ", mem_id=" + mem_id + ", order_status=" + order_status
 				+ ", order_reverse=" + order_reverse + ", order_paymoney=" + order_paymoney + ", order_payway="
-				+ order_payway + ", order_paydate=" + order_paydate + ", order_request=" + order_request + ", mem_name="
-				+ mem_name + ", mem_tel=" + mem_tel + ", order_receiver_addr=" + order_receiver_addr + ", sel_id="
-				+ sel_id + ", order_prds=" + order_prds + "]";
+				+ order_payway + ", order_paydate=" + order_paydate + ", order_request=" + order_request
+				+ ", order_count=" + order_count + ", mem_name=" + mem_name + ", mem_tel=" + mem_tel
+				+ ", order_receiver_addr=" + order_receiver_addr + ", sel_id=" + sel_id + ", order_prds=" + order_prds
+				+ "]";
 	}
 
 }
