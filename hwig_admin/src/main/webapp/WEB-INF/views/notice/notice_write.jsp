@@ -54,7 +54,7 @@ function check_upload(){
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">본문</label>
                                         <div class="col-sm-6">
-                                            <textarea styles="height:500px; resize:none;" name="notice_content" class="form-control"></textarea>
+                                            <textarea style="height:500px; resize:none;" name="notice_content" class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">

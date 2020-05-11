@@ -51,9 +51,9 @@
         <header id="header">
             <!--logo start-->
             <div class="brand">
-                <a href="index.html" class="logo">
+                <a href="/main" class="logo">
                     <i class="icon-layers"></i>
-                    <span>NEU</span>BOARD</a>
+                    Hwig</a>
             </div>
             <!--logo end-->
             <ul class="nav navbar-nav navbar-left">
@@ -234,7 +234,7 @@
                                 <a href="/notice/nlist" title="Data Tables">공지사항</a>
                             </li>
                             <li>
-                                <a href="/notice/elist" title="Data Tables">이벤트</a>
+                                <a href="/event/elist" title="Data Tables">이벤트</a>
                             </li>
                             <li>
                                 <a href="/faq/flist" title="Data Tables">자주묻는질문</a>

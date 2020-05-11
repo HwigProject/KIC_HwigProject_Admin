@@ -45,6 +45,8 @@ public class NoticeController {
 	@RequestMapping(value = "/notice_write", method = RequestMethod.POST)
 	public String postNotice_write(NoticeVO notice, RedirectAttributes rttr) throws Exception{
 		
+		notice.setNotice_content(notice.getNotice_content().replace("\r\n", "<br>"));
+		
 		int result = nService.notice_write(notice);
 
 		if(result == 1)
@@ -60,29 +62,28 @@ public class NoticeController {
 	//공지사항 상세보기
 	@Transactional(isolation = Isolation.READ_COMMITTED)
 	@RequestMapping(value = "/notice_view")
-	public void notice_view(@RequestParam("notice_id") int notice_id,
+	public void notice_view(@RequestParam("notice_id") int notice_id, 
 							@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
 		
-		NoticeVO notice = nService.notice_view(notice_id);		
-		
 		/* model.addAttribute("notice_hit_up", nService.notice_hit_up(notice_id)); */
-		model.addAttribute("notice_view", notice);
+		model.addAttribute("notice_view", nService.notice_view(notice_id));
 		model.addAttribute("cri", cri);
 	}
 	
 	//공지사항 수정폼
 	@RequestMapping(value = "/notice_modify")
-	public void getNotice_modify(@RequestParam("notice_id") int notice_id,
+	public void getNotice_modify(@RequestParam("notice_id") int notice_id, NoticeVO notice,
 								 @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
-		NoticeVO notice = nService.notice_view(notice_id);
 		
-		model.addAttribute("notice_view", notice);
+		model.addAttribute("notice_view", nService.notice_view(notice_id));
 		model.addAttribute("cri", cri);
 	}
 	
 	//공지사항 수정
 	@RequestMapping(value = "/notice_modify", method = RequestMethod.POST)
 	public String postNotice_modify(NoticeVO notice, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) throws Exception{
+		
+		notice.setNotice_content(notice.getNotice_content().replace("\r\n", "<br>"));
 		
 		int result = nService.notice_modify(notice);
 		

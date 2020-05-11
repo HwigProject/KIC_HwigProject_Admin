@@ -11,6 +11,7 @@ public class ReviewVO {
 	private String review_img;
 	private Date review_regdate;
 	private int review_hit;
+	private String prd_name;
 
 	public int getReview_id() {
 		return review_id;
@@ -74,5 +75,13 @@ public class ReviewVO {
 
 	public void setReview_hit(int review_hit) {
 		this.review_hit = review_hit;
+	}
+
+	public String getPrd_name() {
+		return prd_name;
+	}
+
+	public void setPrd_name(String prd_name) {
+		this.prd_name = prd_name;
 	}
 }
