@@ -10,10 +10,16 @@ public interface ProductDAO {
 	//상품 등록
 	public int add(ProductVO vo) throws Exception;
 	
-	//리스트 갯수 세기
+	//리스트 갯수 세기(등록예정)
+	public int selectAllCountb(SearchCriteria cri);
+	
+	//리스트 갯수 세기(등록완료)
 	public int selectAllCount(SearchCriteria cri);
 	
-	//판매자용리스트 갯수 세기
+	//판매자용리스트 갯수 세기(등록예정)
+	public int selectAllSelCountb(ProductCriteria cri);
+	
+	//판매자용리스트 갯수 세기(등록완료)
 	public int selectAllSelCount(ProductCriteria cri);
 	
 	//등록 예정 리스트 조회
