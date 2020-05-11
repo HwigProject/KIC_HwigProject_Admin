@@ -62,7 +62,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 고객후기 마이페이지에서 볼 때 -->
 	<select id="rv_mem_list" resultType="com.hwig.admin.review.ReviewVO" parameterType="String">
-		select * from tbl_review where mem_id = #{mem_id}
+		select r.review_id, r.review_subject, r.review_content, r.review_regdate, p.prd_name
+		from tbl_review r, tbl_prd p
+		where r.prd_id = p.prd_id and mem_id = #{mem_id}
 	</select>
 	
 	<!-- 후기 클릭했을 때 조회수 올려줌 -->
@@ -71,8 +73,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>	
 	
 	<insert id="review_write" parameterType="com.hwig.admin.review.ReviewVO">
-		insert into tbl_review(review_id, prd_id, mem_id, review_subject, review_content, review_img)
-		values((select nvl(max(review_id)+1,1) from tbl_review), #{prd_id}, #{mem_id}, #{review_subject}, #{review_content}, #{review_img})
+		insert into tbl_review(review_id, prd_id, mem_id, review_subject, review_content)
+		values((select nvl(max(review_id)+1,1) from tbl_review), #{prd_id}, #{mem_id}, #{review_subject}, #{review_content})
 	</insert>
 	
 </mapper>

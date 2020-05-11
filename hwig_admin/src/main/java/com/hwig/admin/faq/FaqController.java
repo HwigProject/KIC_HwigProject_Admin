@@ -45,6 +45,8 @@ public class FaqController {
 	@RequestMapping(value = "/faq_write", method = RequestMethod.POST)
 	public String postQna_write(FaqVO faq, RedirectAttributes rttr) throws Exception{
 		
+		faq.setFaq_content(faq.getFaq_content().replace("\r\n", "<br>"));
+		
 		int result = fService.faq_write(faq);
 		
 		if(result == 1)
@@ -80,7 +82,9 @@ public class FaqController {
 	//자주묻는질문 수정
 	@RequestMapping(value = "/faq_modify", method = RequestMethod.POST)
 	public String postFaq_modify(FaqVO faq, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) throws Exception{
-			
+		
+		faq.setFaq_content(faq.getFaq_content().replace("\r\n", "<br>"));
+		
 		int result = fService.faq_modify(faq);
 		
 		rttr.addAttribute("page", cri.getPage());

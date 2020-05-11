@@ -10,10 +10,16 @@ public interface ProductService {
 	//상품 등록
 	public int add(ProductVO vo) throws Exception;
 	
-	//리스트 갯수 세기
+	//리스트 갯수 세기(등록예정)
+	public int listAllCountb(SearchCriteria cri);
+	
+	//리스트 갯수 세기(등록완료)
 	public int listAllCount(SearchCriteria cri);
 	
-	//판매자용 리스트 갯수 세기
+	//판매자용 리스트 갯수 세기(등록예정)
+	public int listAllSelCountb(ProductCriteria cri);
+	
+	//판매자용 리스트 갯수 세기(등록완료)
 	public int listAllSelCount(ProductCriteria cri);
 	
 	//상품 승인 예정 목록 조회

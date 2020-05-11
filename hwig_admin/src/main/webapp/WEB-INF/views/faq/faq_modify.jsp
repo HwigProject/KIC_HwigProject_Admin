@@ -107,7 +107,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">본문</label>
                                         <div class="col-sm-6">
-                                            <textarea style="resize:none; height:500px;" name="faq_content" class="form-control">${faq_view.faq_content}</textarea>
+                                            <textarea style="resize:none; height:500px;" id="faq_content" name="faq_content" class="form-control">${faq_view.faq_content}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -124,5 +124,12 @@
             </section>
           </section>
 	<%@ include file="../include/footnav.jsp" %>
+	<script>
+		$(function(){
+			var txt_content = $('#faq_content').val();
+			var result = txt_content.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+			$('#faq_content').val(result); 
+		})
+	</script>
 </body>
 </html>

@@ -32,9 +32,11 @@
 								<div class="col-sm-6">
 									<select class="form-control" name="category_select" id="category_select">
 										<option value="100">기본채소</option>
-										<option value="101">쌈, 샐러드, 간편채소</option>
-										<option value="102">브로콜리, 특수채소</option>
-										<option value="103">콩나물, 버섯류</option>
+										<option value="101">국산 과일</option>
+										<option value="102">수입 과일</option>
+										<option value="200">소/돼지</option>
+										<option value="201">닭/오리</option>
+										<option value="202">간편조리/양념육</option>
 									</select>
 									<input type="hidden" id="category_id" name="category_id" value="100" />
 									<script>
