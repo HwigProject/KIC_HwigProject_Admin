@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hwig.admin.common.SearchCriteria;
 
@@ -113,6 +114,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.memberOrderDetailSelectAll(apiOrderDetailVo);
 	}
 
+	@Transactional
 	@Override
 	public int idNameEmailCheck(IdNameEmailCheckVO idNameEmailCheckVo) {
 		MemberVO memberVo = new MemberVO();

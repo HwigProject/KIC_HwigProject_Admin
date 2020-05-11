@@ -34,7 +34,6 @@ public interface MemberService {
 
 	public List<ApiOrderDetailVO> memberOrderDetailAll(ApiOrderDetailVO apiOrderDetailVo);
 	
-	@Transactional
 	public int idNameEmailCheck(IdNameEmailCheckVO idNameEmailCheckVo);
 	
 	public List<MemberOrderPrdVO> memberOrderPrd(MemberOrderPrdVO memberOrderPrdVo);
