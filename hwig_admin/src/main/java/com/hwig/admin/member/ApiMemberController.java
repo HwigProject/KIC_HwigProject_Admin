@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hwig.admin.common.CommonResponse;
@@ -170,49 +169,26 @@ public class ApiMemberController {
 	 * data키값의 size가 0이면 데이터값이 없는걸로 처리해라
 	 */
 	@RequestMapping(value = "/{mem_id}/orders", method = RequestMethod.GET)
-	public ApiOrderListDTO orderList(@PathVariable("mem_id") String mem_id, @RequestParam int page,
-			@RequestParam int perPageNum, @RequestParam String searchType, @RequestParam String keyword) {
+	public ApiOrderListDTO orderList(@PathVariable("mem_id") String mem_id) {
 		ApiOrderListVO apiOrderListVo = new ApiOrderListVO();
 		apiOrderListVo.setMem_id(mem_id);
-		apiOrderListVo.setPage(page);
-		apiOrderListVo.setPerPageNum(perPageNum);
-		apiOrderListVo.setSearchType(searchType);
-		apiOrderListVo.setKeyword(keyword);
 
 		List<ApiOrderListVO> result = memberService.memberOrderListAll(apiOrderListVo);
 
 		ApiOrderListDTO response = new ApiOrderListDTO();
-		ApiPageMaker apiPageMaker = new ApiPageMaker();
 		List<ApiOrderDTO> apiMemberOrderDtos = new ArrayList<ApiOrderDTO>();
 
-		if (result.size() < 1) {
-			apiPageMaker.setKeyword(keyword);
-			apiPageMaker.setPage(page);
-			apiPageMaker.setPageEnd(0);
-			apiPageMaker.setPageStart(0);
-			apiPageMaker.setPerPageNum(perPageNum);
-			apiPageMaker.setSearchType(searchType);
-		} else {
-			apiPageMaker.setKeyword(keyword);
-			apiPageMaker.setPage(page);
-			apiPageMaker.setPageEnd(result.get(0).getPageEnd());
-			apiPageMaker.setPageStart(result.get(0).getPageStart());
-			apiPageMaker.setPerPageNum(perPageNum);
-			apiPageMaker.setSearchType(searchType);
-
-			for (ApiOrderListVO dto : result) {
-				ApiOrderDTO orderDto = new ApiOrderDTO();
-				orderDto.setOrder_count(dto.getOrder_count());
-				orderDto.setOrder_id(dto.getOrder_id());
-				orderDto.setOrder_paydate(dto.getOrder_paydate());
-				orderDto.setOrder_paymoney(dto.getOrder_paymoney());
-				orderDto.setOrder_status(dto.getOrder_status());
-				orderDto.setPrd_name(dto.getPrd_name());
-				apiMemberOrderDtos.add(orderDto);
-			}
+		for (ApiOrderListVO dto : result) {
+			ApiOrderDTO orderDto = new ApiOrderDTO();
+			orderDto.setOrder_count(dto.getOrder_count());
+			orderDto.setOrder_id(dto.getOrder_id());
+			orderDto.setOrder_paydate(dto.getOrder_paydate());
+			orderDto.setOrder_paymoney(dto.getOrder_paymoney());
+			orderDto.setOrder_status(dto.getOrder_status());
+			orderDto.setPrd_name(dto.getPrd_name());
+			apiMemberOrderDtos.add(orderDto);
 		}
 
-		response.setPageMaker(apiPageMaker);
 		response.setData(apiMemberOrderDtos);
 
 		return response;
@@ -235,6 +211,7 @@ public class ApiMemberController {
 			for (ApiOrderDetailVO dto : result) {
 				ApiOrderPrdDetailDTO detailDto = new ApiOrderPrdDetailDTO();
 				detailDto.setPrd_count(dto.getPrd_count());
+				detailDto.setPrd_id(dto.getPrd_id());
 				detailDto.setPrd_name(dto.getPrd_name());
 				detailDto.setPrd_price(dto.getPrd_price());
 				apiOrderPrdDetailDtos.add(detailDto);
@@ -258,6 +235,45 @@ public class ApiMemberController {
 		response.setMemData(apiOrderMemdetailDto);
 
 		return response;
+	}
+
+	@RequestMapping(value = "/check/info", method = RequestMethod.POST)
+	public CommonResponse idNameEmailCheck(@RequestBody IdNameEmailCheckVO idNameEmailCheckVo) {
+		logger.info(idNameEmailCheckVo.toString());
+
+		int result = memberService.idNameEmailCheck(idNameEmailCheckVo);
+
+		CommonResponse response = new CommonResponse();
+
+		if (result < 1) {
+			response.setCode(HttpStatus.BAD_REQUEST.value());
+			response.setMsg("fail");
+		} else {
+			response.setCode(HttpStatus.OK.value());
+			response.setMsg("success");
+		}
+
+		return response;
+	}
+
+	@RequestMapping(value = "{mem_id}/prds", method = RequestMethod.GET)
+	public List<ApiMemberReviewPrdDTO> reviewPrdList(@PathVariable("mem_id") String mem_id) {
+		ApiMemberReviewPrdVO apiMemberReviewPrdVo = new ApiMemberReviewPrdVO();
+		apiMemberReviewPrdVo.setMem_id(mem_id);
+		List<ApiMemberReviewPrdVO> result = memberService.memberReviewPrd(apiMemberReviewPrdVo);
+		
+		List<ApiMemberReviewPrdDTO> reviewPrds = new ArrayList<ApiMemberReviewPrdDTO>();
+		for(ApiMemberReviewPrdVO dto : result) {
+			ApiMemberReviewPrdDTO prdDto = new ApiMemberReviewPrdDTO();
+			prdDto.setOrder_count(dto.getOrder_count());
+			prdDto.setOrder_paydate(dto.getOrder_paydate());
+			prdDto.setPrd_id(dto.getPrd_id());
+			prdDto.setPrd_name(dto.getPrd_name());
+			prdDto.setPrd_thumb(dto.getPrd_thumb());
+			reviewPrds.add(prdDto);
+		}
+		
+		return reviewPrds;
 	}
 
 }

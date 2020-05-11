@@ -80,8 +80,8 @@ public class OrderServiceImpl implements OrderService {
 		orderVo.setOrder_reverse(orderRegisterDto.getOrder_reverse());
 		orderVo.setOrder_used_reverse(orderRegisterDto.getOrder_used_reverse());
 		orderVo.setOrder_paymoney(orderRegisterDto.getOrder_paymoney());
+		orderVo.setOrder_payway(orderRegisterDto.getOrder_payway());
 		orderVo.setOrder_request(orderRegisterDto.getOrder_request());
-		orderVo.setOrder_count(orderRegisterDto.getOrder_count());
 		orderDao.orderVoInsert(orderVo);
 
 		String order_id = orderVo.getOrder_id();
@@ -89,7 +89,7 @@ public class OrderServiceImpl implements OrderService {
 		orderBVo.setOrder_id(order_id);
 		for (int i = 0; i < orderRegisterDto.getOrder_prd_ids().size(); i++) {
 			orderBVo.setPrd_id(orderRegisterDto.getOrder_prd_ids().get(i));
-			orderBVo.setPrd_count(orderRegisterDto.getPrd_count().get(i));
+			orderBVo.setOrder_count(orderRegisterDto.getOrder_counts().get(i));
 			orderDao.orderBVoInsert(orderBVo);
 		}
 

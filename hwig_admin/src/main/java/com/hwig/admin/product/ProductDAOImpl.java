@@ -27,13 +27,25 @@ public class ProductDAOImpl implements ProductDAO{
 		return sql.insert(namespace + ".add", vo);
 	}
 	
-	//리스트 갯수 세기
+	//리스트 갯수 세기(등록예정)
+	@Override
+	public int selectAllCountb(SearchCriteria cri) {
+		return sql.selectOne(namespace + ".allCountb", cri);
+	}
+	
+	//리스트 갯수 세기(등록완료)
 	@Override
 	public int selectAllCount(SearchCriteria cri) {
 		return sql.selectOne(namespace + ".allCount", cri);
 	}
 	
-	//판매자용 리스트 갯수 세기
+	//판매자용 리스트 갯수 세기(등록예정)
+	@Override
+	public int selectAllSelCountb(ProductCriteria cri) {
+		return sql.selectOne(namespace + ".allSelCountb", cri);
+	}
+	
+	//판매자용 리스트 갯수 세기(등록완료)
 	@Override
 	public int selectAllSelCount(ProductCriteria cri) {
 		return sql.selectOne(namespace + ".allSelCount", cri);

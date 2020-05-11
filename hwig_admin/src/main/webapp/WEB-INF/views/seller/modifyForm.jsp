@@ -7,7 +7,7 @@
 <!--main content start-->
 <section class="main-content-wrapper">
     <div class="pageheader">
-        <h1>판매자 수정</h1>
+        <h1>판매자 상세정보</h1>
     </div>
     <section id="main-content" class="animated fadeInUp">
         <div class="row">
@@ -42,9 +42,10 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">사업장 소재지</label>
                                 <div class="col-sm-6">
+                                	<input type="hidden" class="form-control" id="isNewAddr" name="isNewAddr" value="false">
                                     <input type="text" class="form-control" value="${data.sel_addr}" readonly="readonly">
 	                                <input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control">
-									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary" ><br>
+									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary" id="postcodeSearchBtn"><br>
 									<input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control">
 									<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" class="form-control">
 									<input type="text" id="sample4_detailAddress" placeholder="상세주소" class="form-control" maxlength="400">
@@ -89,12 +90,10 @@
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
                 // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                 var roadAddr = data.roadAddress; // 도로명 주소 변수
                 var extraRoadAddr = ''; // 참고 항목 변수
-
                 // 법정동명이 있을 경우 추가한다. (법정리는 제외)
                 // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
                 if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
@@ -108,7 +107,6 @@
                 if(extraRoadAddr !== ''){
                     extraRoadAddr = ' (' + extraRoadAddr + ')';
                 }
-
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample4_postcode').value = data.zonecode;
                 document.getElementById("sample4_roadAddress").value = roadAddr;
@@ -144,43 +142,21 @@
 			}
 		});
 		
+		$("#postcodeSearchBtn").click(function(){
+			$("#isNewAddr").val("true");
+		});
+		
 		$("#modifyBtn").click(function(){
-			var sel_addr = "(" + $("#sample4_postcode").val() + ") "
-										+ $("#sample4_roadAddress").val() + ", "
-										+ $("#sample4_detailAddress").val()
-										+ $("#sample4_extraAddress").val();
-			
-			$("#sel_addr").val(sel_addr);
-			console.log(sel_addr);
-			
-			if($.trim($("#sel_id").val()) == ""){
-				alert("사업자번호를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_cname").val()) == ""){
-				alert("상호명를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_name").val()) == ""){
-				alert("대표자명를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_addr").val()) == ""){
-				alert("사업장 소재지를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_tel").val()) == ""){
-				alert("전화번호를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_img").val()) == "" && $.trim($("#attach_img").attr("src")) == ""){
-				alert("사업자등록증 사본을 업로드해주세요");
-				return false;
+			if($("#isNewAddr").val() != "true"){
+				$("#isNewAddr").val(false);
+			} else {
+				var sel_addr = "(" + $("#sample4_postcode").val() + ") "
+				+ $("#sample4_roadAddress").val() + ", "
+				+ $("#sample4_detailAddress").val()
+				+ $("#sample4_extraAddress").val();
+
+				$("#sel_addr").val(sel_addr);
+				console.log(sel_addr);
 			}
 			
 			$("#modifyForm").submit();

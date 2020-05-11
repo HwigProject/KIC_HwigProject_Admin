@@ -1,16 +1,14 @@
 package com.hwig.admin.review;
 
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api/review")
 public class ReviewRestController {
 	
@@ -30,7 +29,7 @@ public class ReviewRestController {
 	@Resource(name="savePath")
 	private String savePath;
 		
-	@Resource(name="AttachPath")
+	@Resource(name="ReviewAttachPath")
 	private String attachPath;
 	
 	@GetMapping(value = "/review_main")
@@ -56,38 +55,38 @@ public class ReviewRestController {
 		 
 		 Map<String, Object> responseRv = new HashMap<String, Object>();
 		 
-		 if(file.getOriginalFilename() != null && !file.getOriginalFilename().equals("")) {
-			 UUID uid = UUID.randomUUID();
-				String fileName = uid.toString() + "_" + file.getOriginalFilename();
-				
-				FileOutputStream fos = new FileOutputStream(savePath + attachPath + "/" + fileName);
-				InputStream is = file.getInputStream();
-				
-				int readCount = 0;
-				byte[] buffer = new byte[1024];
-				
-				while ((readCount = is.read(buffer)) != -1) {
-					fos.write(buffer, 0, readCount);
-				}
-				fos.close();
-				
-				String path = session.getServletContext().getRealPath("/");
-				System.out.println("path:::"+path);
-				
-				review.setReview_img(attachPath + "/" + fileName);
+		 review.setReview_content(review.getReview_content().replace("\r\n", "<br>"));
+		 
+		/*
+		 * if(file.getOriginalFilename() != null &&
+		 * !file.getOriginalFilename().equals("")) { UUID uid = UUID.randomUUID();
+		 * String fileName = uid.toString() + "_" + file.getOriginalFilename();
+		 * 
+		 * FileOutputStream fos = new FileOutputStream(savePath + attachPath + "/" +
+		 * fileName); InputStream is = file.getInputStream();
+		 * 
+		 * int readCount = 0; byte[] buffer = new byte[1024];
+		 * 
+		 * while ((readCount = is.read(buffer)) != -1) { fos.write(buffer, 0,
+		 * readCount); } fos.close();
+		 * 
+		 * String path = session.getServletContext().getRealPath("/");
+		 * System.out.println("path:::"+path);
+		 * 
+		 * review.setReview_img(attachPath + "/" + fileName); } else {
+		 * review.setReview_img(attachPath + "/" + "null"); }
+		 */
+		 
+		 String x = review.getReview_content();
+			 
+		 String[] slang = {"시발", "씨발", "새끼", "병신", "씨1발", "좆", "엠창", "애미", "쓰벌", "ㅗ", "호로", "버러지"};
+			 
+		 for(int i=0; i<slang.length; i++) { 
+			 if(x.matches(".*"+slang[i]+".*")) {
+				 review.setReview_content(x.replace(slang[i], "***"));
+				 x = review.getReview_content(); 
+			 } 
 		 }
-		 
-		 
-			 String x = review.getReview_content();
-			 
-			 String[] slang = {"씨발", "새끼", "병신", "씨1발", "좆", "엠창", "애미", "쓰벌", "ㅗ", "호로", "버러지"};
-			 
-			 for(int i=0; i<slang.length; i++) { 
-				 if(x.matches(".*"+slang[i]+".*")) {
-					 review.setReview_content(x.replace(slang[i], "***"));
-					 x = review.getReview_content(); 
-				 } 
-			 }
 
 		 int result = rvService.review_write(review);
 		 

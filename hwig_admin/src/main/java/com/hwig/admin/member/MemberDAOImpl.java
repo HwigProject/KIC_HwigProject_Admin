@@ -57,13 +57,13 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<ApiOrderListVO> memberOrderSelectAll(ApiOrderListVO memberOrderDetailDto) {
-		return sqlSession.selectList(namespace + ".memberOrderSelectAll", memberOrderDetailDto);
+	public List<ApiOrderListVO> memberOrderSelectAll(ApiOrderListVO apiOrderListVo) {
+		return sqlSession.selectList(namespace + ".memberOrderSelectAll", apiOrderListVo);
 	}
 
 	@Override
-	public int memberOrderAllCount(ApiOrderListVO memberOrderDetailDto) {
-		return sqlSession.selectOne(namespace + ".memberOrderAllCount", memberOrderDetailDto);
+	public int memberOrderAllCount(ApiOrderListVO apiOrderListVo) {
+		return sqlSession.selectOne(namespace + ".memberOrderAllCount", apiOrderListVo);
 	}
 
 	@Override
@@ -84,6 +84,26 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public int changeGrade(MemberVO memberVo) {
 		return sqlSession.update(namespace + ".changeGrade", memberVo);
+	}
+
+	@Override
+	public int idNameEmailCheck(MemberVO memberVo) {
+		return sqlSession.selectOne(namespace + ".idNameEmailCheck", memberVo);
+	}
+
+	@Override
+	public int resetPw(MemberVO memberVo) {
+		return sqlSession.update(namespace + ".resetPw", memberVo);
+	}
+
+	@Override
+	public List<MemberOrderPrdVO> memberOrderPrdSelect(MemberOrderPrdVO memberOrderPrdVo) {
+		return sqlSession.selectList(namespace + ".memberOrderPrdSelect", memberOrderPrdVo);
+	}
+
+	@Override
+	public List<ApiMemberReviewPrdVO> memberReviewPrdSelect(ApiMemberReviewPrdVO apiMemberReviewPrdVO) {
+		return sqlSession.selectList(namespace + ".memberReviewPrdSelect", apiMemberReviewPrdVO);
 	}
 
 }

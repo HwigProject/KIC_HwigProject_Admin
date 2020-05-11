@@ -47,11 +47,13 @@
 
 	<!-- uploadpath -->
 	<bean id="savePath" class="java.lang.String">
-		<constructor-arg value="/home/ubuntu/apache-tomcat-8.5.54/webapps/hwig_admin"></constructor-arg>
+		<!-- <constructor-arg value="/home/ubuntu/apache-tomcat-8.5.54/webapps/hwig_admin"></constructor-arg> -->
+		<constructor-arg value="C:/Users/LimJiNa/git/KIC_HwigProject_Admin/hwig_admin/src/main/webapp"></constructor-arg>
 	</bean>
 
 	<bean id="sellerAttachPath" class="java.lang.String">
 		<constructor-arg value="/resources/attach/seller"></constructor-arg>
+		<!-- <constructor-arg value="/resources/attach/seller"></constructor-arg> -->
 	</bean>
 
 	<bean id="productAttachPath" class="java.lang.String">

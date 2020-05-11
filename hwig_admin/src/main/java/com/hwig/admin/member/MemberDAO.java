@@ -22,9 +22,9 @@ public interface MemberDAO {
 
 	public int delete(String mem_id);
 
-	public List<ApiOrderListVO> memberOrderSelectAll(ApiOrderListVO memberOrderDetailDto);
+	public List<ApiOrderListVO> memberOrderSelectAll(ApiOrderListVO apiOrderListVo);
 
-	public int memberOrderAllCount(ApiOrderListVO memberOrderDetailDto);
+	public int memberOrderAllCount(ApiOrderListVO apiOrderListVo);
 
 	public List<ApiOrderDetailVO> memberOrderDetailSelectAll(ApiOrderDetailVO ApiOrderDetailVo);
 
@@ -33,5 +33,13 @@ public interface MemberDAO {
 	public int changePrice(MemberVO memberVo);
 
 	public int changeGrade(MemberVO memberVo);
+
+	public int idNameEmailCheck(MemberVO memberVo);
+
+	public int resetPw(MemberVO memberVo);
+	
+	public List<MemberOrderPrdVO> memberOrderPrdSelect(MemberOrderPrdVO memberOrderPrdVo);
+	
+	public List<ApiMemberReviewPrdVO> memberReviewPrdSelect(ApiMemberReviewPrdVO apiMemberReviewPrdVO);
 
 }

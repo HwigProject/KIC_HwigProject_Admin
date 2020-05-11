@@ -4,6 +4,7 @@ public class ApiOrderDetailVO {
 
 	private String mem_id;
 	private String order_id;
+	private int prd_id;
 	private String prd_name;
 	private int prd_price;
 	private int prd_count;
@@ -38,6 +39,14 @@ public class ApiOrderDetailVO {
 
 	public void setOrder_id(String order_id) {
 		this.order_id = order_id;
+	}
+
+	public int getPrd_id() {
+		return prd_id;
+	}
+
+	public void setPrd_id(int prd_id) {
+		this.prd_id = prd_id;
 	}
 
 	public String getPrd_name() {
@@ -162,13 +171,13 @@ public class ApiOrderDetailVO {
 
 	@Override
 	public String toString() {
-		return "ApiOrderDetailVO [mem_id=" + mem_id + ", order_id=" + order_id + ", prd_name=" + prd_name
-				+ ", prd_price=" + prd_price + ", prd_count=" + prd_count + ", order_paymoney=" + order_paymoney
-				+ ", prd_sale=" + prd_sale + ", order_used_reverse=" + order_used_reverse + ", order_reverse="
-				+ order_reverse + ", order_payway=" + order_payway + ", order_sender=" + order_sender
-				+ ", order_paydate=" + order_paydate + ", order_status=" + order_status + ", order_receiver="
-				+ order_receiver + ", order_receiver_tel=" + order_receiver_tel + ", order_receiver_addr="
-				+ order_receiver_addr + ", order_request=" + order_request + "]";
+		return "ApiOrderDetailVO [mem_id=" + mem_id + ", order_id=" + order_id + ", prd_id=" + prd_id + ", prd_name="
+				+ prd_name + ", prd_price=" + prd_price + ", prd_count=" + prd_count + ", order_paymoney="
+				+ order_paymoney + ", prd_sale=" + prd_sale + ", order_used_reverse=" + order_used_reverse
+				+ ", order_reverse=" + order_reverse + ", order_payway=" + order_payway + ", order_sender="
+				+ order_sender + ", order_paydate=" + order_paydate + ", order_status=" + order_status
+				+ ", order_receiver=" + order_receiver + ", order_receiver_tel=" + order_receiver_tel
+				+ ", order_receiver_addr=" + order_receiver_addr + ", order_request=" + order_request + "]";
 	}
 
 }

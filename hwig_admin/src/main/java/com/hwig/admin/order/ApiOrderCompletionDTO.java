@@ -4,7 +4,6 @@ public class ApiOrderCompletionDTO {
 
 	private String order_id;
 	private String prd_name;
-	private int order_count;
 	private String order_receiver_addr;
 	private String order_paydate;
 	private String order_payway;
@@ -24,14 +23,6 @@ public class ApiOrderCompletionDTO {
 
 	public void setPrd_name(String prd_name) {
 		this.prd_name = prd_name;
-	}
-
-	public int getOrder_count() {
-		return order_count;
-	}
-
-	public void setOrder_count(int order_count) {
-		this.order_count = order_count;
 	}
 
 	public String getOrder_receiver_addr() {
@@ -68,9 +59,9 @@ public class ApiOrderCompletionDTO {
 
 	@Override
 	public String toString() {
-		return "ApiOrderCompletionDTO [order_id=" + order_id + ", prd_name=" + prd_name + ", order_count=" + order_count
-				+ ", order_receiver_addr=" + order_receiver_addr + ", order_paydate=" + order_paydate
-				+ ", order_payway=" + order_payway + ", order_paymoney=" + order_paymoney + "]";
+		return "ApiOrderCompletionDTO [order_id=" + order_id + ", prd_name=" + prd_name + ", order_receiver_addr="
+				+ order_receiver_addr + ", order_paydate=" + order_paydate + ", order_payway=" + order_payway
+				+ ", order_paymoney=" + order_paymoney + "]";
 	}
 
 }

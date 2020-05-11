@@ -66,5 +66,4 @@ public class QnaDAOImpl implements QnaDAO{
 		
 		return sql.selectList(namespace + ".qList_main", mem_id);
 	}
-
 }

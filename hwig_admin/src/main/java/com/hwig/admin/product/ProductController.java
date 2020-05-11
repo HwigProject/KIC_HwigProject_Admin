@@ -106,7 +106,7 @@ public class ProductController {
 		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.listAllCount(cri));
+		pageMaker.setTotalCount(service.listAllCountb(cri));
 		
 		model.addAttribute("pageMaker", pageMaker);
 		
@@ -124,7 +124,7 @@ public class ProductController {
 		
 		ProductPageMaker pageMaker = new ProductPageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.listAllSelCount(cri));
+		pageMaker.setTotalCount(service.listAllSelCountb(cri));
 		 
 		model.addAttribute("pageMaker", pageMaker);
 		

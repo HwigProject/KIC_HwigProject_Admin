@@ -43,7 +43,7 @@
 							<div class="form-group">
 								<label class="col-sm-3 control-label" for="sel_id">판매자 id</label>
 								<div class="col-sm-6">
-									<input type="text" class="form-control" id="sel_id" name="sel_id" required="" placeholder="Required input"/>
+									<input type="text" class="form-control" id="sel_id" name="sel_id" value="${sessionScope.user.sel_id}" readonly="readonly"/>
 								</div>
 							</div>
 							<div class="form-group">
