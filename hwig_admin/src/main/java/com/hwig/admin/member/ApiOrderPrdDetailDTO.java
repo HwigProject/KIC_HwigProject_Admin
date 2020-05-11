@@ -5,6 +5,7 @@ public class ApiOrderPrdDetailDTO {
 	private String prd_name;
 	private int prd_price;
 	private int prd_count;
+	private String prd_thumb;
 
 	public String getPrd_name() {
 		return prd_name;
@@ -30,9 +31,18 @@ public class ApiOrderPrdDetailDTO {
 		this.prd_count = prd_count;
 	}
 
+	public String getPrd_thumb() {
+		return prd_thumb;
+	}
+
+	public void setPrd_thumb(String prd_thumb) {
+		this.prd_thumb = prd_thumb;
+	}
+
 	@Override
 	public String toString() {
-		return "ApiPrdDTO [prd_name=" + prd_name + ", prd_price=" + prd_price + ", prd_count=" + prd_count + "]";
+		return "ApiOrderPrdDetailDTO [prd_name=" + prd_name + ", prd_price=" + prd_price + ", prd_count=" + prd_count
+				+ ", prd_thumb=" + prd_thumb + "]";
 	}
 
 }

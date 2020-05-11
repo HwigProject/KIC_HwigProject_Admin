@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hwig.admin.common.CommonResponse;
@@ -170,35 +169,14 @@ public class ApiMemberController {
 	 * data키값의 size가 0이면 데이터값이 없는걸로 처리해라
 	 */
 	@RequestMapping(value = "/{mem_id}/orders", method = RequestMethod.GET)
-	public ApiOrderListDTO orderList(@PathVariable("mem_id") String mem_id, @RequestParam int page,
-			@RequestParam int perPageNum, @RequestParam String searchType, @RequestParam String keyword) {
+	public ApiOrderListDTO orderList(@PathVariable("mem_id") String mem_id) {
 		ApiOrderListVO apiOrderListVo = new ApiOrderListVO();
 		apiOrderListVo.setMem_id(mem_id);
-		apiOrderListVo.setPage(page);
-		apiOrderListVo.setPerPageNum(perPageNum);
-		apiOrderListVo.setSearchType(searchType);
-		apiOrderListVo.setKeyword(keyword);
 
 		List<ApiOrderListVO> result = memberService.memberOrderListAll(apiOrderListVo);
 
 		ApiOrderListDTO response = new ApiOrderListDTO();
-		ApiPageMaker apiPageMaker = new ApiPageMaker();
 		List<ApiOrderDTO> apiMemberOrderDtos = new ArrayList<ApiOrderDTO>();
-
-		if (result.size() < 1) {
-			apiPageMaker.setKeyword(keyword);
-			apiPageMaker.setPage(page);
-			apiPageMaker.setPageEnd(0);
-			apiPageMaker.setPageStart(0);
-			apiPageMaker.setPerPageNum(perPageNum);
-			apiPageMaker.setSearchType(searchType);
-		} else {
-			apiPageMaker.setKeyword(keyword);
-			apiPageMaker.setPage(page);
-			apiPageMaker.setPageEnd(result.get(0).getPageEnd());
-			apiPageMaker.setPageStart(result.get(0).getPageStart());
-			apiPageMaker.setPerPageNum(perPageNum);
-			apiPageMaker.setSearchType(searchType);
 
 			for (ApiOrderListVO dto : result) {
 				ApiOrderDTO orderDto = new ApiOrderDTO();
@@ -210,9 +188,7 @@ public class ApiMemberController {
 				orderDto.setPrd_name(dto.getPrd_name());
 				apiMemberOrderDtos.add(orderDto);
 			}
-		}
 
-		response.setPageMaker(apiPageMaker);
 		response.setData(apiMemberOrderDtos);
 
 		return response;

@@ -51,9 +51,9 @@
         <header id="header">
             <!--logo start-->
             <div class="brand">
-                <a href="index.html" class="logo">
+                <a href="/main" class="logo">
                     <i class="icon-layers"></i>
-                    <span>NEU</span>BOARD</a>
+                    Hwig</a>
             </div>
             <!--logo end-->
             <ul class="nav navbar-nav navbar-left">

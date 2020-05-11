@@ -1,7 +1,13 @@
 package com.hwig.admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.hwig.admin.order.OrderVO;
+import com.hwig.admin.product.ProductVO;
+import com.hwig.admin.qna.QnaVO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -17,4 +23,45 @@ public class AdminServiceImpl implements AdminService {
 		return adminDao.select(adminVo);
 	}
 
+	@Override
+	public IndexVO qna_count() {
+		
+		return adminDao.qna_select();
+	}
+
+	@Override
+	public IndexVO reply_count() {
+		
+		return adminDao.reply_select();
+	}
+
+	@Override
+	public IndexVO member_count() {
+		
+		return adminDao.member_select();
+	}
+
+	@Override
+	public IndexVO order_paymoney() {
+		
+		return adminDao.order_paymoney();
+	}
+	
+	@Override
+	public List<QnaVO> qna_list() {
+		
+		return adminDao.qna_list();
+	}
+	
+	@Override
+	public List<OrderVO> order_list() {
+		
+		return adminDao.order_list();
+	}
+
+	@Override
+	public List<ProductVO> prd_list() {
+		
+		return adminDao.prd_list();
+	}
 }

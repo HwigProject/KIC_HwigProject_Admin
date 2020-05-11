@@ -54,7 +54,7 @@ function check_upload(){
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">본문</label>
                                         <div class="col-sm-6">
-                                            <textarea styles="height:500px; resize:none;" name="notice_content" class="form-control">${notice_view.notice_content}</textarea>
+                                            <textarea style="height:500px; resize:none;" id="notice_content" name="notice_content" class="form-control">${notice_view.notice_content}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -71,5 +71,13 @@ function check_upload(){
             </section>
           </section>
 	<%@ include file="../include/footnav.jsp" %>
+	<script>
+		$(function(){
+			var txt_head = $('#notice_content').val();
+			
+			var result = txt_head.replace(/(<br>|<br\/>|<br \/>)/g, '\r\n');
+			$('#notice_content').val(result);
+		})
+	</script>
 </body>
 </html>

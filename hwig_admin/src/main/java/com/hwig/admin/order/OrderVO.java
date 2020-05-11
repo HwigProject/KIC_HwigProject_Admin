@@ -11,7 +11,6 @@ public class OrderVO {
 	private String order_payway;
 	private String order_paydate;
 	private String order_request;
-	private int order_count;
 
 	public String getOrder_id() {
 		return order_id;
@@ -85,20 +84,12 @@ public class OrderVO {
 		this.order_request = order_request;
 	}
 
-	public int getOrder_count() {
-		return order_count;
-	}
-
-	public void setOrder_count(int order_count) {
-		this.order_count = order_count;
-	}
-
 	@Override
 	public String toString() {
 		return "OrderVO [order_id=" + order_id + ", mem_id=" + mem_id + ", order_status=" + order_status
 				+ ", order_reverse=" + order_reverse + ", order_used_reverse=" + order_used_reverse
 				+ ", order_paymoney=" + order_paymoney + ", order_payway=" + order_payway + ", order_paydate="
-				+ order_paydate + ", order_request=" + order_request + ", order_count=" + order_count + "]";
+				+ order_paydate + ", order_request=" + order_request + "]";
 	}
 
 }

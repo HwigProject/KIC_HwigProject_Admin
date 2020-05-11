@@ -57,13 +57,13 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<ApiOrderListVO> memberOrderSelectAll(ApiOrderListVO memberOrderDetailDto) {
-		return sqlSession.selectList(namespace + ".memberOrderSelectAll", memberOrderDetailDto);
+	public List<ApiOrderListVO> memberOrderSelectAll(ApiOrderListVO apiOrderListVo) {
+		return sqlSession.selectList(namespace + ".memberOrderSelectAll", apiOrderListVo);
 	}
 
 	@Override
-	public int memberOrderAllCount(ApiOrderListVO memberOrderDetailDto) {
-		return sqlSession.selectOne(namespace + ".memberOrderAllCount", memberOrderDetailDto);
+	public int memberOrderAllCount(ApiOrderListVO apiOrderListVo) {
+		return sqlSession.selectOne(namespace + ".memberOrderAllCount", apiOrderListVo);
 	}
 
 	@Override

@@ -6,6 +6,7 @@ public class OrderDetailPrdDTO {
 	private int prd_id;
 	private String prd_name;
 	private int prd_price;
+	private int order_count;
 	private String sel_cname;
 
 	public String getOrder_id() {
@@ -40,6 +41,14 @@ public class OrderDetailPrdDTO {
 		this.prd_price = prd_price;
 	}
 
+	public int getOrder_count() {
+		return order_count;
+	}
+
+	public void setOrder_count(int order_count) {
+		this.order_count = order_count;
+	}
+
 	public String getSel_cname() {
 		return sel_cname;
 	}
@@ -51,7 +60,7 @@ public class OrderDetailPrdDTO {
 	@Override
 	public String toString() {
 		return "OrderDetailPrdDTO [order_id=" + order_id + ", prd_id=" + prd_id + ", prd_name=" + prd_name
-				+ ", prd_price=" + prd_price + ", sel_cname=" + sel_cname + "]";
+				+ ", prd_price=" + prd_price + ", order_count=" + order_count + ", sel_cname=" + sel_cname + "]";
 	}
 
 }

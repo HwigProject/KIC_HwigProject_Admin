@@ -99,13 +99,13 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<ApiOrderListVO> memberOrderListAll(ApiOrderListVO memberOrderDetailDto) {
-		return memberDao.memberOrderSelectAll(memberOrderDetailDto);
+	public List<ApiOrderListVO> memberOrderListAll(ApiOrderListVO apiOrderListVo) {
+		return memberDao.memberOrderSelectAll(apiOrderListVo);
 	}
 
 	@Override
-	public int memberOrderListAllCount(ApiOrderListVO memberOrderDetailDto) {
-		return memberDao.memberOrderAllCount(memberOrderDetailDto);
+	public int memberOrderListAllCount(ApiOrderListVO apiOrderListVo) {
+		return memberDao.memberOrderAllCount(apiOrderListVo);
 	}
 
 	@Override

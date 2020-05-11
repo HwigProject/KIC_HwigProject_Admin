@@ -97,17 +97,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				B.mem_name,
 				B.mem_reverse,
 				A.order_paydate,
-				(select C.prd_name from tbl_prd C, tbl_order_b D where C.prd_id = D.prd_id
-				and rownum=1) as prd_name,
-				A.order_count,
+				C.prd_name,
+				D.order_count,
 				A.order_id,
 				A.order_paymoney,
 				A.order_status,
 				row_number() over(order by A.order_paydate desc) as rnum
 			from
 				tbl_order A,
-				tbl_member B
+				tbl_member B,
+				tbl_prd C,
+				tbl_order_b D
 			where A.mem_id = B.mem_id
+				and C.prd_id = D.prd_id
 				and A.mem_id = #{mem_id}
 		) mb where rnum between #{pageStart} and #{pageEnd}
 	</select>
@@ -128,7 +130,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    A.order_id,
 		    D.prd_name,
 		    D.prd_price,
-		    B.prd_count,
+		    B.order_count,
 		    A.order_paymoney,
 		    D.prd_sale,
 		    A.order_used_reverse,

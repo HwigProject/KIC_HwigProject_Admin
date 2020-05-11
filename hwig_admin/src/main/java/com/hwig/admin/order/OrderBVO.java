@@ -4,7 +4,7 @@ public class OrderBVO {
 
 	private String order_id;
 	private int prd_id;
-	private int prd_count;
+	private int order_count;
 
 	public String getOrder_id() {
 		return order_id;
@@ -22,17 +22,17 @@ public class OrderBVO {
 		this.prd_id = prd_id;
 	}
 
-	public int getPrd_count() {
-		return prd_count;
+	public int getOrder_count() {
+		return order_count;
 	}
 
-	public void setPrd_count(int prd_count) {
-		this.prd_count = prd_count;
+	public void setOrder_count(int order_count) {
+		this.order_count = order_count;
 	}
 
 	@Override
 	public String toString() {
-		return "OrderBVO [order_id=" + order_id + ", prd_id=" + prd_id + ", prd_count=" + prd_count + "]";
+		return "OrderBVO [order_id=" + order_id + ", prd_id=" + prd_id + ", order_count=" + order_count + "]";
 	}
 
 }

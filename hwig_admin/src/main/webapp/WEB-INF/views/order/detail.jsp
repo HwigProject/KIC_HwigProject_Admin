@@ -7,7 +7,7 @@
 <!--main content start-->
 <section class="main-content-wrapper">
     <div class="pageheader">
-        <h1>주문 상세 정보</h1>
+        <h1>주문 상세정보</h1>
     </div>
     <section id="main-content" class="animated fadeInUp">
         <div class="row">
@@ -89,6 +89,7 @@
 													<th class="text-center">상품아이디</th>
 													<th class="text-center">상품이름</th>
 													<th class="text-center">상품가격</th>
+													<th class="text-center">상품갯수</th>
 													<th class="text-center">판매자이름</th>
 												</tr>
 											</thead>
@@ -99,6 +100,7 @@
 														<td>${prdVo.prd_id}</td>
 														<td>${prdVo.prd_name}</td>
 														<td>${prdVo.prd_price}</td>
+														<td>${prdVo.order_count}</td>
 														<td>${prdVo.sel_cname}</td>
 													</tr>
 												</c:forEach>

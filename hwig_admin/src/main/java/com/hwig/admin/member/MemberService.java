@@ -26,9 +26,9 @@ public interface MemberService {
 
 	public int remove(String mem_id);
 
-	public List<ApiOrderListVO> memberOrderListAll(ApiOrderListVO memberOrderDetailDto);
+	public List<ApiOrderListVO> memberOrderListAll(ApiOrderListVO apiOrderListVo);
 
-	public int memberOrderListAllCount(ApiOrderListVO memberOrderDetailDto);
+	public int memberOrderListAllCount(ApiOrderListVO apiOrderListVo);
 
 	public List<ApiOrderDetailVO> memberOrderDetailAll(ApiOrderDetailVO apiOrderDetailVo);
 

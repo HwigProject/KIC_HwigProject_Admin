@@ -7,42 +7,48 @@
 <!--main content start-->
 <section class="main-content-wrapper">
     <div class="pageheader">
-        <h1>판매자 상세정보</h1>
+        <h1>회원 상세정보</h1>
     </div>
     <section id="main-content" class="animated fadeInUp">
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">${data.sel_id}</h3>
+                        <h3 class="panel-title">${data.mem_id}</h3>
                     </div>
                     <div class="panel-body">
                         <form role="form" method="post" action="modify" enctype="multipart/form-data" id="modifyForm" class="form-horizontal form-border">
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">사업자등록번호</label>
+                        	<div class="form-group">
+                                <label class="col-sm-3 control-label">아이디</label>
                                 <div class="col-sm-6">
-                                    <input type="number" class="form-control" id="sel_id" name="sel_id" readonly="readonly" value="${data.sel_id}" maxlength="20">
+                                    <input type="text" class="form-control" id="mem_id" name="mem_id" readonly="readonly" value="${data.mem_id}" maxlength="20">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">이름</label>
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" id="mem_name" name="mem_name" readonly="readonly" value="${data.mem_name}" maxlength="20">
                                 </div>
                             </div>
                             
-                                    <input type="hidden" class="form-control" id="sel_pw" name="sel_pw" value="${data.sel_pw}" maxlength="20">
+                                    <input type="hidden" class="form-control" id="mem_pw" name="mem_pw" value="${data.mem_pw}" maxlength="20">
                                     
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">상호명</label>
+                                <label class="col-sm-3 control-label">이메일</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="sel_cname" name="sel_cname" readonly="readonly" value="${data.sel_cname}" maxlength="200">
+                                    <input type="text" class="form-control" id="mem_email" name="mem_email" value="${data.mem_email}" maxlength="200">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">대표자명</label>
+                                <label class="col-sm-3 control-label">전화번호</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="sel_name" name="sel_name" value="${data.sel_name}" maxlength="20">
+                                    <input type="text" class="form-control" id="mem_tel" name="mem_tel" value="${data.mem_tel}" maxlength="20">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">사업장 소재지</label>
+                                <label class="col-sm-3 control-label">주소</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" value="${data.sel_addr}" readonly="readonly">
+                                    <input type="text" class="form-control" value="${data.mem_addr}" readonly="readonly">
 	                                <input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control">
 									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary" ><br>
 									<input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control">
@@ -52,25 +58,63 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">전화번호</label>
+                                <label class="col-sm-3 control-label">가입날짜</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control " id="sel_tel" name="sel_tel" value="${data.sel_tel}" maxlength="20">
+                                    <input type="text" class="form-control " id="mem_regdate" name="mem_regdate" value="${data.mem_regdate}" maxlength="20" readonly="readonly">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-sm-3 control-label">사업자등록증 사본</label>
+                                <label class="col-sm-3 control-label">등급</label>
                                 <div class="col-sm-6">
-                                    <img src="${data.sel_img}" id="attach_img" width="300px" height="400px">
-									<input type="file" id="sel_img" name="attach_img" accept=".gif, .jpg, .png">
+                                    <input type="text" class="form-control " id="mem_grade" name="mem_grade" value="${data.mem_grade}" maxlength="20" readonly="readonly">
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">적립금</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control " id="mem_reverse" name="mem_reverse" value="${data.mem_reverse}" maxlength="20" readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">총 주문금액</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control " id="mem_price" name="mem_price" value="${data.mem_price}" maxlength="20" readonly="readonly">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">주문리스트</label>
+                                <div class="col-sm-6">
+                                    <div class="table-responsive">
+										<table class="table table-bordered table-striped text-center">
+											<thead>
+												<tr>
+													<th class="text-center">상품아이디</th>
+													<th class="text-center">상품이름</th>
+													<th class="text-center">상품가격</th>
+													<th class="text-center">상품갯수</th>
+												</tr>
+											</thead>
+											<tbody>
+												<c:if test="${fn:length(data.order_prds) > 0}">
+												<c:forEach items="${data.order_prds}" var="prdVo">
+													<tr>
+														<td>${prdVo.prd_id}</td>
+														<td>${prdVo.prd_name}</td>
+														<td>${prdVo.prd_price}</td>
+														<td>${prdVo.prd_count}</td>
+													</tr>
+												</c:forEach>
+												</c:if>
+											</tbody>
+										</table>
+									</div>
+                                </div>
+							</div>
                             <div class="form-group">
                                <div class="col-sm-offset-3 col-sm-6" align="right">
 		                      		<button type="button" class="btn btn-primary" id="modifyBtn">수정</button>
 		                      		<button type="button" class="btn btn-danger" id="listBtn">목록</button>
 	                      		</div>
-		                      		<input type="hidden" name="origin_img" value="${data.sel_img}">
-		                      		<input type="hidden" name="sel_addr" value="" id="sel_addr">
                            </div>
                         </form>
                     </div>
@@ -122,25 +166,6 @@
     }
     
 	$(document).ready(function() {
-		$("#sel_img").change(function() {
-			var extend = $("#sel_img").val().substring($("#sel_img").val().lastIndexOf(".")+1);
-			
-			if(extend != "gif" && extend != "png" && extend != "jpg"){
-				 $("#sel_img").val("");
-				 alert("이미지 파일은 확장자 gif, png, jpg만 가능합니다");
-				return false;
-			}
-			
-			if (this.files && this.files[0]) {
-				var reader = new FileReader;
-				reader.onload = function(data) {
-					$("#attach_img").attr("src", data.target.result);
-					$("#attach_img").show();
-				}
-				reader.readAsDataURL(this.files[0]);
-			}
-		});
-		
 		$("#modifyBtn").click(function(){
 			var sel_addr = "(" + $("#sample4_postcode").val() + ") "
 										+ $("#sample4_roadAddress").val() + ", "

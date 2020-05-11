@@ -28,4 +28,13 @@ public class MemberController {
 		model.addAttribute("pageMaker", pageMaker);
 	}
 
+	@RequestMapping(value = "/detailForm", method = RequestMethod.GET)
+	public void detailPage(String mem_id, @ModelAttribute("cri") SearchCriteria cri, Model model) {
+		model.addAttribute("data", memberService.findOne(mem_id));
+		model.addAttribute("page", cri.getPage());
+		model.addAttribute("perPageNum", cri.getPerPageNum());
+		model.addAttribute("searchType", cri.getSearchType());
+		model.addAttribute("keyword", cri.getKeyword());
+	}
+
 }
