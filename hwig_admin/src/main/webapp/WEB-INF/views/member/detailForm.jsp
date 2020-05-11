@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">이름</label>
                                 <div class="col-sm-6">
-                                    <input type="number" class="form-control" id="mem_name" name="mem_name" readonly="readonly" value="${data.mem_name}" maxlength="20">
+                                    <input type="text" class="form-control" id="mem_name" name="mem_name" readonly="readonly" value="${data.mem_name}" maxlength="20">
                                 </div>
                             </div>
                             
@@ -88,22 +88,27 @@
 										<table class="table table-bordered table-striped text-center">
 											<thead>
 												<tr>
-													<th class="text-center">상품아이디</th>
+													<th class="text-center">주문번호</th>
 													<th class="text-center">상품이름</th>
 													<th class="text-center">상품가격</th>
 													<th class="text-center">상품갯수</th>
 												</tr>
 											</thead>
 											<tbody>
-												<c:if test="${fn:length(data.order_prds) > 0}">
-												<c:forEach items="${data.order_prds}" var="prdVo">
+												<c:if test="${fn:length(prdData) > 0}">
+												<c:forEach items="${prdData}" var="prdData">
 													<tr>
-														<td>${prdVo.prd_id}</td>
-														<td>${prdVo.prd_name}</td>
-														<td>${prdVo.prd_price}</td>
-														<td>${prdVo.prd_count}</td>
+														<td>${prdData.order_id}</td>
+														<td>${prdData.prd_name}</td>
+														<td>${prdData.prd_price}</td>
+														<td>${prdData.order_count}</td>
 													</tr>
 												</c:forEach>
+												</c:if>
+												<c:if test="${fn:length(prdData) < 1}">
+													<tr>
+														<td colspan="3">주문한 상품이 없습니다</td>
+													</tr>
 												</c:if>
 											</tbody>
 										</table>

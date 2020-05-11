@@ -86,4 +86,24 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.update(namespace + ".changeGrade", memberVo);
 	}
 
+	@Override
+	public int idNameEmailCheck(MemberVO memberVo) {
+		return sqlSession.selectOne(namespace + ".idNameEmailCheck", memberVo);
+	}
+
+	@Override
+	public int resetPw(MemberVO memberVo) {
+		return sqlSession.update(namespace + ".resetPw", memberVo);
+	}
+
+	@Override
+	public List<MemberOrderPrdVO> memberOrderPrdSelect(MemberOrderPrdVO memberOrderPrdVo) {
+		return sqlSession.selectList(namespace + ".memberOrderPrdSelect", memberOrderPrdVo);
+	}
+
+	@Override
+	public List<ApiMemberReviewPrdVO> memberReviewPrdSelect(ApiMemberReviewPrdVO apiMemberReviewPrdVO) {
+		return sqlSession.selectList(namespace + ".memberReviewPrdSelect", apiMemberReviewPrdVO);
+	}
+
 }

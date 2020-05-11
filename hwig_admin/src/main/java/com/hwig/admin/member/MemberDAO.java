@@ -34,4 +34,12 @@ public interface MemberDAO {
 
 	public int changeGrade(MemberVO memberVo);
 
+	public int idNameEmailCheck(MemberVO memberVo);
+
+	public int resetPw(MemberVO memberVo);
+	
+	public List<MemberOrderPrdVO> memberOrderPrdSelect(MemberOrderPrdVO memberOrderPrdVo);
+	
+	public List<ApiMemberReviewPrdVO> memberReviewPrdSelect(ApiMemberReviewPrdVO apiMemberReviewPrdVO);
+
 }

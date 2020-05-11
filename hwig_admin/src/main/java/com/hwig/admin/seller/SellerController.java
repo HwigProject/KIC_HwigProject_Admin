@@ -64,16 +64,16 @@ public class SellerController {
 	}
 
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modifyPagePOST(SellerVO sellerVo, MultipartFile attach_img, @ModelAttribute("cri") SearchCriteria cri,
-			RedirectAttributes rttr, HttpSession session) {
-		logger.info(sellerVo.toString());
+	public String modifyPagePOST(SellerModifyDTO sellerModifyDto, MultipartFile attach_img,
+			@ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr, HttpSession session) {
+		logger.info(sellerModifyDto.toString());
 
 		if (attach_img != null && !attach_img.getOriginalFilename().equals("")) {
 			// 파일명 생성
 			UUID uid = UUID.randomUUID();
 			String fileName = uid.toString() + "_" + attach_img.getOriginalFilename();
-			logger.info(savePath + sellerVo.getOrigin_img());
-			new File(savePath + sellerVo.getOrigin_img()).delete();
+			logger.info(savePath + sellerModifyDto.getOrigin_img());
+			new File(savePath + sellerModifyDto.getOrigin_img()).delete();
 
 			// 파일을 서버에 저장
 			try {
@@ -94,9 +94,25 @@ public class SellerController {
 				e.printStackTrace();
 			}
 			// 저장된 파일정보 셋팅
-			sellerVo.setSel_img(sellerAttachPath + "/" + fileName);
+			sellerModifyDto.setSel_img(sellerAttachPath + "/" + fileName);
 		} else {
-			sellerVo.setSel_img(sellerVo.getOrigin_img());
+			sellerModifyDto.setSel_img(sellerModifyDto.getOrigin_img());
+		}
+
+		SellerVO sellerVo = new SellerVO();
+		if (!"true".equals(sellerModifyDto.getIsNewAddr())) {
+			sellerVo.setSel_name(sellerModifyDto.getSel_name());
+			sellerVo.setSel_pw(sellerModifyDto.getSel_pw());
+			sellerVo.setSel_tel(sellerModifyDto.getSel_tel());
+			sellerVo.setSel_img(sellerModifyDto.getSel_img());
+			sellerVo.setSel_id(sellerModifyDto.getSel_id());
+		} else {
+			sellerVo.setSel_name(sellerModifyDto.getSel_name());
+			sellerVo.setSel_pw(sellerModifyDto.getSel_pw());
+			sellerVo.setSel_addr(sellerModifyDto.getSel_addr());
+			sellerVo.setSel_tel(sellerModifyDto.getSel_tel());
+			sellerVo.setSel_img(sellerModifyDto.getSel_img());
+			sellerVo.setSel_id(sellerModifyDto.getSel_id());
 		}
 
 		// 파일 정보 포함해서 DB에 저장

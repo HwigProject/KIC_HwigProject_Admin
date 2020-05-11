@@ -24,13 +24,16 @@ public class MemberController {
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(memberService.listAllCount(cri));
-
 		model.addAttribute("pageMaker", pageMaker);
 	}
 
 	@RequestMapping(value = "/detailForm", method = RequestMethod.GET)
 	public void detailPage(String mem_id, @ModelAttribute("cri") SearchCriteria cri, Model model) {
 		model.addAttribute("data", memberService.findOne(mem_id));
+		
+		MemberOrderPrdVO memberOrderPrdVo = new MemberOrderPrdVO();
+		memberOrderPrdVo.setMem_id(mem_id);
+		model.addAttribute("prdData", memberService.memberOrderPrd(memberOrderPrdVo));
 		model.addAttribute("page", cri.getPage());
 		model.addAttribute("perPageNum", cri.getPerPageNum());
 		model.addAttribute("searchType", cri.getSearchType());

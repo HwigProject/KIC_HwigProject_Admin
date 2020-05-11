@@ -114,7 +114,7 @@
                                 <div class="col-sm-offset-3 col-sm-6" align="right">
                                     <button type="button" class="btn btn-danger" id="listBtn">목록</button>
                                     
-                                    <c:if test="${sessionScope.user_type eq 'seller'}">
+                                    <c:if test="${sessionScope.user_type eq 'admin'}">
                                     
                                     <button type="button" class="btn btn-success" id="hwigBtn" <c:if test="${data.order_status  eq '배송 중'}">disabled="disabled"</c:if>>제품 발송</button>
                                     

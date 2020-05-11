@@ -91,27 +91,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 
 	<select id="memberOrderSelectAll" resultType="ApiOrderListVO">
-		select * from (
-			select
-				B.mem_grade,
-				B.mem_name,
-				B.mem_reverse,
-				A.order_paydate,
-				C.prd_name,
-				D.order_count,
-				A.order_id,
-				A.order_paymoney,
-				A.order_status,
-				row_number() over(order by A.order_paydate desc) as rnum
-			from
-				tbl_order A,
-				tbl_member B,
-				tbl_prd C,
-				tbl_order_b D
-			where A.mem_id = B.mem_id
-				and C.prd_id = D.prd_id
-				and A.mem_id = #{mem_id}
-		) mb where rnum between #{pageStart} and #{pageEnd}
+		select
+			order_paydate,
+			(select C.prd_name from tbl_prd C, tbl_order_b D where C.prd_id = D.prd_id
+			and rownum=1) as prd_name,
+	        (select D.order_count from tbl_prd C, tbl_order_b D where C.prd_id = D.prd_id
+			and rownum=1) as order_count,
+			order_id,
+			order_paymoney,
+			order_status
+		from
+			tbl_order
+		where mem_id = #{mem_id}
+	          order by order_id desc
 	</select>
 
 	<select id="memberOrderAllCount" resultType="int">
@@ -128,6 +120,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select
 			A.mem_id,
 		    A.order_id,
+		    D.prd_id,
 		    D.prd_name,
 		    D.prd_price,
 		    B.order_count,
@@ -167,5 +160,60 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="changeGrade">
 		update tbl_member set mem_grade = #{mem_grade} where mem_id = #{mem_id}
 	</update>
+	
+	<select id="idNameEmailCheck" resultType="int">
+		select
+			count(*)
+		from
+			tbl_member
+		where
+			mem_id = #{mem_id}
+			and mem_name = #{mem_name}
+			and mem_email = #{mem_email}
+	</select>
+	
+	<update id="resetPw">
+		update tbl_member set mem_pw = #{mem_pw} where mem_id = #{mem_id}
+	</update>
+	
+	<select id="memberOrderPrdSelect" resultType="MemberOrderPrdVO">
+		select
+			D.prd_name,
+			D.prd_price,
+			C.order_count,
+			C.order_id,
+			row_number() over(order by C.order_id desc) as rnum
+		from
+			tbl_member A,
+			tbl_order B,
+			tbl_order_b C,
+			tbl_prd D
+		where
+			A.mem_id = B.mem_id
+			and B.order_id = C.order_id
+			and C.prd_id = D.prd_id
+			and A.mem_id = #{mem_id}
+	</select>
+	
+	<select id="memberReviewPrdSelect" resultType="ApiMemberReviewPrdVO">
+		select
+			to_char(A.order_paydate,'YYYY-MM-DD hh24:mi:ss')as order_paydate,
+		    C.prd_name,
+		    B.order_count,
+		    C.prd_thumb,
+		    C.prd_id,
+		    A.mem_id,
+		    B.order_prd_review
+		from
+		    tbl_order A,
+		    tbl_order_b B,
+		    tbl_prd C
+		where
+		    A.order_id = B.order_id
+		    and B.prd_id = C.prd_id
+		    and A.mem_id = #{mem_id}
+		    and B.order_prd_review = 0
+		    and A.order_status = '배송 완료'
+	</select>
 
 </mapper>
