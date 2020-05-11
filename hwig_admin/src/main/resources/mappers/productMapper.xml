@@ -17,15 +17,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{prd_info})
 	</insert>
 
-	<!-- 리스트 갯수 세기 -->
-	<select id="allCount" resultType="int">
+	<!-- 리스트 갯수 세기 (등록예정)-->
+	<select id="allCountb" resultType="int">
 		select count(prd_id) from tbl_prd_b where 1=1
 		<include refid="search"></include>
 	</select>
 	
-	<!-- 판매자용 리스트 갯수 세기 -->
-	<select id="allSelCount" resultType="int">
+	<!-- 리스트 갯수 세기 (등록완료)-->
+	<select id="allCount" resultType="int">
+		select count(prd_id) from tbl_prd where 1=1
+		<include refid="search"></include>
+	</select>
+	
+	<!-- 판매자용 리스트 갯수 세기 (등록예정) -->
+	<select id="allSelCountb" resultType="int">
 		select count(prd_id) from tbl_prd_b where 1=1 and sel_id = #{sel_id}
+		<include refid="search"></include>
+	</select>
+	
+	<!-- 판매자용 리스트 갯수 세기 (등록완료)-->
+	<select id="allSelCount" resultType="int">
+		select count(prd_id) from tbl_prd where 1=1 and sel_id = #{sel_id}
 		<include refid="search"></include>
 	</select>
 

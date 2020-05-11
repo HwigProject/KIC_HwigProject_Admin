@@ -32,11 +32,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<update id="sellerUpdate">
 		update tbl_seller set
-			sel_pw = #{sel_pw},
 			sel_name = #{sel_name},
-			sel_addr = #{sel_addr},
+			sel_pw = #{sel_pw},
 			sel_tel = #{sel_tel},
 			sel_img = #{sel_img}
+			<if test="sel_addr != null">
+				, sel_addr = #{sel_addr}
+			</if>
 		where sel_id = #{sel_id}
 	</update>
 

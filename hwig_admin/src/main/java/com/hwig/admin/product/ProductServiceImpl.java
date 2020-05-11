@@ -20,13 +20,25 @@ public class ProductServiceImpl implements ProductService{
 		return dao.add(vo);
 	}
 	
-	//리스트 갯수 세기
+	//리스트 갯수 세기(등록예정)
+	@Override
+	public int listAllCountb(SearchCriteria cri) {
+		return dao.selectAllCountb(cri);
+	}
+	
+	//리스트 갯수 세기(등록완료)
 	@Override
 	public int listAllCount(SearchCriteria cri) {
 		return dao.selectAllCount(cri);
 	}
 	
-	//판매자용 리스트 갯수 세기
+	//판매자용 리스트 갯수 세기(등록예정)
+	@Override
+	public int listAllSelCountb(ProductCriteria cri) {
+		return dao.selectAllSelCountb(cri);
+	}
+	
+	//판매자용 리스트 갯수 세기(등록완료)
 	@Override
 	public int listAllSelCount(ProductCriteria cri) {
 		return dao.selectAllSelCount(cri);
