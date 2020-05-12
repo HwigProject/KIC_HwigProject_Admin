@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hwig.admin.order.OrderService;
+import com.hwig.admin.product.ProductVO;
 import com.hwig.admin.qna.QnaService;
 
 @Controller
@@ -35,6 +36,7 @@ public class HomeController {
 		model.addAttribute("qList_index", aService.qna_list());
 		model.addAttribute("order_list", aService.order_list());
 		model.addAttribute("prd_list", aService.prd_list());
+		model.addAttribute("chart_circle", aService.chart_circle());
 	}
 
 }

@@ -13,29 +13,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 문의 수 -->
-	<select id="qna_count" resultType="IndexVO">
+	<select id="qna_count" resultType="int">
 		select count(qna_id) as qna_id
 		from tbl_qna
 	</select>
 	
 	<!-- 답변 수 -->
-	<select id="reply_count" resultType="IndexVO">
+	<select id="reply_count" resultType="int">
 		select count(reply_id) as reply_id
 		from tbl_reply
 	</select>
 	
 	<!-- 회원 수 -->
-	<select id="member_count" resultType="IndexVO">
+	<select id="member_count" resultType="int">
 		select count(mem_id) as mem_id
 		from tbl_member
 	</select>
 	
 	<!-- 총 주문 가격 -->
-	<select id="order_paymoney" resultType="IndexVO">
-		select sum(order_paymoney) as order_paymoney from tbl_order
-		<![CDATA[
-		where rownum <= 10
-		]]>
+	<select id="order_paymoney" resultType="int">
+		select nvl(sum(order_paymoney),0) as order_paymoney from tbl_order
 		order by order_paydate desc
 	</select>
 
@@ -67,5 +64,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rownum <=5
 		]]>
 		order by prd_id desc
+	</select>
+	
+	<!-- 동그라미 차트 -->
+	<select id="chart_circle" resultType="com.hwig.admin.product.ProductVO">
+		select sum(prd_price) as prd_price, category_id from tbl_prd group by category_id
 	</select>
 </mapper>

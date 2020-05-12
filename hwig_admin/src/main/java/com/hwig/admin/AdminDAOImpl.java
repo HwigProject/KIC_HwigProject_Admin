@@ -24,25 +24,25 @@ public class AdminDAOImpl implements AdminDAO {
 	}
 
 	@Override
-	public IndexVO qna_select() {
+	public int qna_select() {
 		
 		return sqlSession.selectOne(namespace + ".qna_count");
 	}
 
 	@Override
-	public IndexVO reply_select() {
+	public int reply_select() {
 		
 		return sqlSession.selectOne(namespace + ".reply_count");
 	}
 
 	@Override
-	public IndexVO member_select() {
+	public int member_select() {
 		
 		return sqlSession.selectOne(namespace + ".member_count");
 	}
 
 	@Override
-	public IndexVO order_paymoney() {
+	public int order_paymoney() {
 		
 		return sqlSession.selectOne(namespace + ".order_paymoney");
 	}
@@ -63,5 +63,11 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<ProductVO> prd_list() {
 		
 		return sqlSession.selectList(namespace + ".prd_list");
+	}
+
+	@Override
+	public List<ProductVO> chart_circle() {
+		
+		return sqlSession.selectList(namespace + ".chart_circle");
 	}
 }

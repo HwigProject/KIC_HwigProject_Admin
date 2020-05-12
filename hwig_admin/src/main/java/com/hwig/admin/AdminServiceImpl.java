@@ -24,26 +24,26 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public IndexVO qna_count() {
+	public int qna_count() {
 		
 		return adminDao.qna_select();
 	}
 
 	@Override
-	public IndexVO reply_count() {
+	public int reply_count() {
 		
 		return adminDao.reply_select();
 	}
 
 	@Override
-	public IndexVO member_count() {
+	public int member_count() {
 		
 		return adminDao.member_select();
 	}
 
 	@Override
-	public IndexVO order_paymoney() {
-		
+	public int order_paymoney() {
+
 		return adminDao.order_paymoney();
 	}
 	
@@ -63,5 +63,11 @@ public class AdminServiceImpl implements AdminService {
 	public List<ProductVO> prd_list() {
 		
 		return adminDao.prd_list();
+	}
+
+	@Override
+	public List<ProductVO> chart_circle() {
+		
+		return adminDao.chart_circle();
 	}
 }
