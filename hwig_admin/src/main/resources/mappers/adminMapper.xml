@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 문의 목록 -->
 	<select id="qna_list" resultType="com.hwig.admin.qna.QnaVO">
 		select * from tbl_qna
-		where qna_id != (select qna_id from tbl_reply)
+		where qna_id not in (select qna_id from tbl_reply)
 		<![CDATA[
 		and rownum <= 6
 		]]>

@@ -42,9 +42,10 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">사업장 소재지</label>
                                 <div class="col-sm-6">
+                                	<input type="hidden" class="form-control" id="isNewAddr" name="isNewAddr" value="false">
                                     <input type="text" class="form-control" value="${data.sel_addr}" readonly="readonly">
 	                                <input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control">
-									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary" ><br>
+									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary" id="postcodeSearchBtn"><br>
 									<input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control">
 									<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" class="form-control">
 									<input type="text" id="sample4_detailAddress" placeholder="상세주소" class="form-control" maxlength="400">
@@ -141,43 +142,21 @@
 			}
 		});
 		
+		$("#postcodeSearchBtn").click(function(){
+			$("#isNewAddr").val("true");
+		});
+		
 		$("#modifyBtn").click(function(){
-			var sel_addr = "(" + $("#sample4_postcode").val() + ") "
-										+ $("#sample4_roadAddress").val() + ", "
-										+ $("#sample4_detailAddress").val()
-										+ $("#sample4_extraAddress").val();
-			
-			$("#sel_addr").val(sel_addr);
-			console.log(sel_addr);
-			
-			if($.trim($("#sel_id").val()) == ""){
-				alert("사업자번호를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_cname").val()) == ""){
-				alert("상호명를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_name").val()) == ""){
-				alert("대표자명를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_addr").val()) == ""){
-				alert("사업장 소재지를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_tel").val()) == ""){
-				alert("전화번호를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_img").val()) == "" && $.trim($("#attach_img").attr("src")) == ""){
-				alert("사업자등록증 사본을 업로드해주세요");
-				return false;
+			if($("#isNewAddr").val() != "true"){
+				$("#isNewAddr").val(false);
+			} else {
+				var sel_addr = "(" + $("#sample4_postcode").val() + ") "
+				+ $("#sample4_roadAddress").val() + ", "
+				+ $("#sample4_detailAddress").val()
+				+ $("#sample4_extraAddress").val();
+
+				$("#sel_addr").val(sel_addr);
+				console.log(sel_addr);
 			}
 			
 			$("#modifyForm").submit();

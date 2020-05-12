@@ -178,16 +178,16 @@ public class ApiMemberController {
 		ApiOrderListDTO response = new ApiOrderListDTO();
 		List<ApiOrderDTO> apiMemberOrderDtos = new ArrayList<ApiOrderDTO>();
 
-			for (ApiOrderListVO dto : result) {
-				ApiOrderDTO orderDto = new ApiOrderDTO();
-				orderDto.setOrder_count(dto.getOrder_count());
-				orderDto.setOrder_id(dto.getOrder_id());
-				orderDto.setOrder_paydate(dto.getOrder_paydate());
-				orderDto.setOrder_paymoney(dto.getOrder_paymoney());
-				orderDto.setOrder_status(dto.getOrder_status());
-				orderDto.setPrd_name(dto.getPrd_name());
-				apiMemberOrderDtos.add(orderDto);
-			}
+		for (ApiOrderListVO dto : result) {
+			ApiOrderDTO orderDto = new ApiOrderDTO();
+			orderDto.setOrder_count(dto.getOrder_count());
+			orderDto.setOrder_id(dto.getOrder_id());
+			orderDto.setOrder_paydate(dto.getOrder_paydate());
+			orderDto.setOrder_paymoney(dto.getOrder_paymoney());
+			orderDto.setOrder_status(dto.getOrder_status());
+			orderDto.setPrd_name(dto.getPrd_name());
+			apiMemberOrderDtos.add(orderDto);
+		}
 
 		response.setData(apiMemberOrderDtos);
 
@@ -211,6 +211,7 @@ public class ApiMemberController {
 			for (ApiOrderDetailVO dto : result) {
 				ApiOrderPrdDetailDTO detailDto = new ApiOrderPrdDetailDTO();
 				detailDto.setPrd_count(dto.getPrd_count());
+				detailDto.setPrd_id(dto.getPrd_id());
 				detailDto.setPrd_name(dto.getPrd_name());
 				detailDto.setPrd_price(dto.getPrd_price());
 				apiOrderPrdDetailDtos.add(detailDto);
@@ -234,6 +235,45 @@ public class ApiMemberController {
 		response.setMemData(apiOrderMemdetailDto);
 
 		return response;
+	}
+
+	@RequestMapping(value = "/check/info", method = RequestMethod.POST)
+	public CommonResponse idNameEmailCheck(@RequestBody IdNameEmailCheckVO idNameEmailCheckVo) {
+		logger.info(idNameEmailCheckVo.toString());
+
+		int result = memberService.idNameEmailCheck(idNameEmailCheckVo);
+
+		CommonResponse response = new CommonResponse();
+
+		if (result < 1) {
+			response.setCode(HttpStatus.BAD_REQUEST.value());
+			response.setMsg("fail");
+		} else {
+			response.setCode(HttpStatus.OK.value());
+			response.setMsg("success");
+		}
+
+		return response;
+	}
+
+	@RequestMapping(value = "{mem_id}/prds", method = RequestMethod.GET)
+	public List<ApiMemberReviewPrdDTO> reviewPrdList(@PathVariable("mem_id") String mem_id) {
+		ApiMemberReviewPrdVO apiMemberReviewPrdVo = new ApiMemberReviewPrdVO();
+		apiMemberReviewPrdVo.setMem_id(mem_id);
+		List<ApiMemberReviewPrdVO> result = memberService.memberReviewPrd(apiMemberReviewPrdVo);
+		
+		List<ApiMemberReviewPrdDTO> reviewPrds = new ArrayList<ApiMemberReviewPrdDTO>();
+		for(ApiMemberReviewPrdVO dto : result) {
+			ApiMemberReviewPrdDTO prdDto = new ApiMemberReviewPrdDTO();
+			prdDto.setOrder_count(dto.getOrder_count());
+			prdDto.setOrder_paydate(dto.getOrder_paydate());
+			prdDto.setPrd_id(dto.getPrd_id());
+			prdDto.setPrd_name(dto.getPrd_name());
+			prdDto.setPrd_thumb(dto.getPrd_thumb());
+			reviewPrds.add(prdDto);
+		}
+		
+		return reviewPrds;
 	}
 
 }

@@ -2,6 +2,8 @@ package com.hwig.admin.member;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.hwig.admin.common.SearchCriteria;
 
 public interface MemberService {
@@ -31,5 +33,11 @@ public interface MemberService {
 	public int memberOrderListAllCount(ApiOrderListVO apiOrderListVo);
 
 	public List<ApiOrderDetailVO> memberOrderDetailAll(ApiOrderDetailVO apiOrderDetailVo);
+	
+	public int idNameEmailCheck(IdNameEmailCheckVO idNameEmailCheckVo);
+	
+	public List<MemberOrderPrdVO> memberOrderPrd(MemberOrderPrdVO memberOrderPrdVo);
+	
+	public List<ApiMemberReviewPrdVO> memberReviewPrd(ApiMemberReviewPrdVO apiMemberReviewPrdVO);
 
 }

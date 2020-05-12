@@ -7,6 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hwig.admin.common.SearchCriteria;
 
@@ -111,6 +112,41 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<ApiOrderDetailVO> memberOrderDetailAll(ApiOrderDetailVO apiOrderDetailVo) {
 		return memberDao.memberOrderDetailSelectAll(apiOrderDetailVo);
+	}
+
+	@Transactional
+	@Override
+	public int idNameEmailCheck(IdNameEmailCheckVO idNameEmailCheckVo) {
+		MemberVO memberVo = new MemberVO();
+		memberVo.setMem_id(idNameEmailCheckVo.getMem_id());
+		memberVo.setMem_name(idNameEmailCheckVo.getMem_name());
+		memberVo.setMem_email(idNameEmailCheckVo.getMem_email());
+
+		int result = memberDao.idNameEmailCheck(memberVo);
+
+		if (result < 1) {
+			return 0;
+		} else {
+			String mem_pw = "0000000";
+			PasswordEncoder passEncoder = new BCryptPasswordEncoder();
+			String pass = passEncoder.encode(mem_pw);
+
+			memberVo.setMem_id(idNameEmailCheckVo.getMem_id());
+			memberVo.setMem_pw(pass);
+			memberDao.resetPw(memberVo);
+		}
+
+		return 1;
+	}
+
+	@Override
+	public List<MemberOrderPrdVO> memberOrderPrd(MemberOrderPrdVO memberOrderPrdVo) {
+		return memberDao.memberOrderPrdSelect(memberOrderPrdVo);
+	}
+
+	@Override
+	public List<ApiMemberReviewPrdVO> memberReviewPrd(ApiMemberReviewPrdVO apiMemberReviewPrdVO) {
+		return memberDao.memberReviewPrdSelect(apiMemberReviewPrdVO);
 	}
 
 }
