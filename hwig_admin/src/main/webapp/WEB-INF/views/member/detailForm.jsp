@@ -107,7 +107,7 @@
 												</c:if>
 												<c:if test="${fn:length(prdData) < 1}">
 													<tr>
-														<td colspan="3">주문한 상품이 없습니다</td>
+														<td colspan="4">주문한 상품이 없습니다</td>
 													</tr>
 												</c:if>
 											</tbody>

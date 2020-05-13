@@ -178,7 +178,7 @@
 <script src="../resources/assets/plugins/morris/js/raphael.2.1.0.min.js"></script>
 <!-- Gauge  -->
 <script src="../resources/assets/plugins/gauge/gauge.min.js"></script>
-<script src="../resources/assets/plugins/gauge/gauge-demo.js"></script>
+<!-- <script src="../resources/assets/plugins/gauge/gauge-demo.js"></script> -->
 <!-- Vector Map  -->
 <script src="../resources/assets/plugins/jvectormap/js/jquery-jvectormap-1.2.2.min.js"></script>
 <script src="../resources/assets/plugins/jvectormap/js/jquery-jvectormap-world-mill-en.js"></script>
