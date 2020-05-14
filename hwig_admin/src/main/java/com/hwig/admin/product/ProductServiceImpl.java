@@ -171,4 +171,29 @@ public class ProductServiceImpl implements ProductService{
 		return dao.salelist();
 	}
 	
+	//top4
+	//재고많은 순서대로 나열된 목록
+	@Override
+	public List<ProductWhatDTO> wprolist() throws Exception{
+		return dao.wprolist();
+	}
+	
+	//알뜰상품 순서대로 나열된 목록
+	@Override
+	public List<ProductSaleDTO> sprolist() throws Exception{
+		return dao.sprolist();
+	}
+	
+	//신상품 순서대로 나열된 목록
+	@Override
+	public List<ProductNewDTO> nprolist() throws Exception{
+		return dao.nprolist();
+	}
+	
+	//랜덤 순서대로 나열된 목록
+	@Override
+	public List<ProductRandDTO> rprolist(int category_p_id) throws Exception{
+		return dao.rprolist(category_p_id);
+	}
+	
 }
