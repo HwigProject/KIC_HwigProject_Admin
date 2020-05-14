@@ -30,7 +30,8 @@ public class ProductAPIController {
 		List<CategoryDTO> catelist = service.category(); //DB에서 가져온 카테고리 전체목록
 		
 		TotalCategoryDTO tcategory = new TotalCategoryDTO();
-		
+
+		List<SCategoryDTO> scategory = new ArrayList<SCategoryDTO>(); //이벤트 등
 		List<PCategoryDTO> pcategory = new ArrayList<PCategoryDTO>();
 		List<LCategoryDTO> category = new ArrayList<LCategoryDTO>();
 		
@@ -39,9 +40,20 @@ public class ProductAPIController {
 		}
 		else {
 			for(CategoryDTO tcate : catelist) {
+				SCategoryDTO cdto = new SCategoryDTO();
+				int num = tcate.getCategory_id();
+				if(num == 33 || num == 44 || num == 55) {
+					cdto.setCategory_p_id(tcate.getCategory_p_id());
+					cdto.setCategory_id(tcate.getCategory_id());
+					cdto.setCategory_name(tcate.getCategory_name());
+					scategory.add(cdto);
+				}
+			}
+			for(CategoryDTO tcate : catelist) {
 				PCategoryDTO cdto = new PCategoryDTO();
 				int num = tcate.getCategory_p_id();
-				if(num ==0) {
+				int num2 = tcate.getCategory_id();
+				if((num ==0 && num2 ==1) || (num==0 && num2 ==2)) {
 					cdto.setCategory_p_id(tcate.getCategory_p_id());
 					cdto.setCategory_id(tcate.getCategory_id());
 					cdto.setCategory_name(tcate.getCategory_name());
@@ -59,21 +71,56 @@ public class ProductAPIController {
 				}
 			}
 		}
-		
+
+		tcategory.setScategory(scategory);
 		tcategory.setPcategory(pcategory);
 		tcategory.setCategory(category);
 		
 		return tcategory;
 	}
 	
+	//메인에 필요한 상품들 보내기
+	@RequestMapping(value="/main", method=RequestMethod.GET)
+	public TotalProductDTO product() throws Exception {
+		System.out.println("main에 필요한 상품 목록 보내기 실행");
+		
+		List<ProductWhatDTO> wlist = service.wprolist(); //재고
+		List<ProductSaleDTO> slist = service.sprolist(); //세일
+		List<ProductNewDTO> nlist = service.nprolist(); //신상품
+		List<ProductRandDTO> rlist1 = service.rprolist(1); //랜덤1
+		List<ProductRandDTO> rlist2 = service.rprolist(2); //랜덤2
+		
+		TotalProductDTO tproduct = new TotalProductDTO();
+		
+		tproduct.setWproduct(wlist);
+		tproduct.setSproduct(slist);
+		tproduct.setNproduct(nlist);
+		tproduct.setRproduct(rlist1);
+		tproduct.setRproduct(rlist2);
+		
+		return tproduct;
+	}
+	
 	//상품 메인 상품목록 조회
 	@RequestMapping(value="/mainlist", method=RequestMethod.GET)
-	public ProductCateDTO productmain(@RequestParam int category_p_id) throws Exception {
-		System.out.println("category => " + category_p_id );
+	public ProductCateDTO productmain(@RequestParam int cate_id) throws Exception {
+		System.out.println("category => " + cate_id );
 		System.out.println("mainlist 실행");
-
+		
+		int cate = 0;
+		
 		List<CategoryDTO> catelist = service.category(); //DB에서 가져온 카테고리 전체목록
-		List<ProductListDTO> prolist = service.mainlist(category_p_id);
+		List<ProductListDTO> prolist = new ArrayList<ProductListDTO>();
+		
+		//받은 id 판별
+		if(cate_id < 99) { //상위 카테고리일때
+			cate = cate_id;
+			prolist = service.mainlist(cate_id);
+		}
+		else {
+			cate = cate_id/100;
+			prolist = service.catelist(cate_id);
+		}
 		
 		ProductCateDTO procate = new ProductCateDTO();
 
@@ -88,7 +135,7 @@ public class ProductAPIController {
 				PCategoryDTO cdto = new PCategoryDTO();
 				int num = tcate.getCategory_p_id();
 				int cnum = tcate.getCategory_id();
-				if(num == 0 && cnum == category_p_id) {
+				if(num == 0 && cnum == cate) {
 					cdto.setCategory_p_id(tcate.getCategory_p_id());
 					cdto.setCategory_id(tcate.getCategory_id());
 					cdto.setCategory_name(tcate.getCategory_name());
@@ -98,7 +145,7 @@ public class ProductAPIController {
 			for(CategoryDTO tcate : catelist) {
 				LCategoryDTO cdto = new LCategoryDTO();
 				int num = tcate.getCategory_p_id();
-				if(num != 0 && num == category_p_id) {
+				if(num != 0 && num == cate) {
 					cdto.setCategory_p_id(tcate.getCategory_p_id());
 					cdto.setCategory_id(tcate.getCategory_id());
 					cdto.setCategory_name(tcate.getCategory_name());
@@ -115,6 +162,7 @@ public class ProductAPIController {
 	}
 
 	//카테고리별 상품 조회
+	/*
 	@RequestMapping(value="/catelist", method=RequestMethod.GET)
 	public ProductCateDTO product(@RequestParam int category_id) throws Exception {
 		System.out.println("category_id => " + category_id);
@@ -158,7 +206,7 @@ public class ProductAPIController {
 		
 		return procate;
 	}
-	
+	*/
 	//상품 상세보기
 	@RequestMapping(value="/productdetail", method=RequestMethod.GET)
 	public ProductVO productdetail(@RequestParam int prd_id) throws Exception {

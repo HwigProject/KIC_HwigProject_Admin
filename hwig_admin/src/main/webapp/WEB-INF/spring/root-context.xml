@@ -47,23 +47,23 @@
 
 	<!-- uploadpath -->
 	<bean id="savePath" class="java.lang.String">
-		<constructor-arg value="/home/ubuntu/apache-tomcat-8.5.54/webapps/hwig_admin"></constructor-arg>
+		<constructor-arg value="/home/ubuntu/apache-tomcat-8.5.54/webapps"></constructor-arg>
 	</bean>
 
 	<bean id="sellerAttachPath" class="java.lang.String">
-		<constructor-arg value="/resources/attach/seller"></constructor-arg>
+		<constructor-arg value="/docs/images/seller"></constructor-arg>
 	</bean>
 
 	<bean id="productAttachPath" class="java.lang.String">
-		<constructor-arg value="/resources/attach/product"></constructor-arg>
+		<constructor-arg value="/docs/images/product"></constructor-arg>
 	</bean>
 	
 	<bean id="EventAttachPath" class="java.lang.String">
-      <constructor-arg value="/resources/attach/event"></constructor-arg>
-   </bean>
+    	<constructor-arg value="/docs/images/event"></constructor-arg>
+    </bean>
    
-   <bean id="ReviewAttachPath" class="java.lang.String">
-      <constructor-arg value="/resources/attach/review"></constructor-arg>
-   </bean>
+    <bean id="ReviewAttachPath" class="java.lang.String">
+    	<constructor-arg value="/docs/images/review"></constructor-arg>
+    </bean>
 
 </beans>

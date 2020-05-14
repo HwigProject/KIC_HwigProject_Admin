@@ -84,4 +84,17 @@ public interface ProductService {
 	
 	//알뜰상품 목록
 	public List<ProductListDTO> salelist() throws Exception;
+	
+	//top4
+	//재고많은 순서대로 나열된 목록
+	public List<ProductWhatDTO> wprolist() throws Exception;
+	
+	//알뜰상품 순서대로 나열된 목록
+	public List<ProductSaleDTO> sprolist() throws Exception;
+	
+	//신상품 순서대로 나열된 목록
+	public List<ProductNewDTO> nprolist() throws Exception;
+	
+	//랜덤 순서대로 나열된 목록
+	public List<ProductRandDTO> rprolist(int category_p_id) throws Exception;
 }

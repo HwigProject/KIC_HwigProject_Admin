@@ -113,7 +113,7 @@
                             <div class="panel-body">
                                 <table class="table">
                                     <thead>
-                                        <tr class="warning">
+                                        <tr style="background:#ffe5ad">
                                             <th>글 번호</th>
                                             <th>카테고리</th>
                                             <th>제목</th>
@@ -126,7 +126,7 @@
                                     		<tr>
 	                                            <td>${qna_list.qna_id}</td>
 	                                            <td>${qna_list.qna_category}</td>
-	                                            <td>${qna_list.qna_subject}</td>
+	                                            <td><a href="qna/qlist">${qna_list.qna_subject}</a></td>
 	                                            <td>${qna_list.qna_regdate}</td>
 	                                            <td>${qna_list.mem_id}</td>
                                         	</tr>

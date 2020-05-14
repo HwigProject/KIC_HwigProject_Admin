@@ -57,5 +57,4 @@ public class QnaVO {
 	public void setQna_regdate(Date qna_regdate) {
 		this.qna_regdate = qna_regdate;
 	}
-
 }

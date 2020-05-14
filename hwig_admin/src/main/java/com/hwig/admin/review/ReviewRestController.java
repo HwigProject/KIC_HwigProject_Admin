@@ -87,7 +87,7 @@ public class ReviewRestController {
 				 x = review.getReview_content(); 
 			 } 
 		 }
-
+		 
 		 int result = rvService.review_write(review);
 		 
 		 if(result==1)

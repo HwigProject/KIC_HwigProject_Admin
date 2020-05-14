@@ -32,7 +32,6 @@ public class QnaController {
 	public void getQna(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
 		
 		model.addAttribute("qList", qService.qList(cri));
-		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(qService.listCount(cri));

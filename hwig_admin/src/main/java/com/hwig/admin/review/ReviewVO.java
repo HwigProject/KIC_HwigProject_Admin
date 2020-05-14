@@ -2,6 +2,8 @@ package com.hwig.admin.review;
 
 import java.sql.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class ReviewVO {
 	private int review_id;
 	private int prd_id;
@@ -9,6 +11,7 @@ public class ReviewVO {
 	private String review_subject;
 	private String review_content;
 	private String review_img;
+	@JsonFormat(pattern = "yy-MM-dd")
 	private Date review_regdate;
 	private int review_hit;
 	private String prd_name;
