@@ -41,16 +41,16 @@ public class CartAPIController {
 
 	// 장바구니에서 삭제하기
 	@RequestMapping(value = "/cartdelete", method = RequestMethod.POST)
-	public void getCartDelete(@RequestBody List<CartdeleteDTO> listdto) throws Exception {
-		String memid = listdto.get(0).getMem_id();
+	public void getCartDelete(@RequestBody CartdeleteDTO listdto) throws Exception {
+		String memid = listdto.getMem_id();
 		Map<String, Object> cmap = new HashMap<String, Object>();
-		
-		for(int i=0; i<listdto.get(0).getPrd_id().size(); i++) {
-				int prdid = listdto.get(0).getPrd_ids(i);
-				cmap.put("mem_id", memid);
-				cmap.put("prd_id", prdid);
-				
-				service.cartDelete(cmap);
-			}
+
+		for (int i = 0; i < listdto.getPrd_id().size(); i++) {
+			int prdid = listdto.getPrd_ids(i);
+			cmap.put("mem_id", memid);
+			cmap.put("prd_id", prdid);
+
+			service.cartDelete(cmap);
+		}
 	}
 }
