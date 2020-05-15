@@ -58,7 +58,8 @@ public class ReviewRestController {
 		rvService.review_hit(review_id);
 	}
 
-	@PostMapping(value = "/review_write")
+	@PostMapping(value = "/review_write", headers = ("content-type=multipart/*"))
+
 	public Map<String, Object> review_write(@RequestBody ReviewVO review, MultipartFile file, RedirectAttributes rttr,
 			HttpSession session) throws Exception {
 
@@ -66,6 +67,7 @@ public class ReviewRestController {
 
 		review.setReview_content(review.getReview_content().replace("\r\n", "<br>"));
 
+		
 		if(file.getOriginalFilename() != null && !file.getOriginalFilename().equals("")) { 
 		
 			UUID uid = UUID.randomUUID();
