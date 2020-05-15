@@ -156,6 +156,7 @@
 						alert("수정이 완료되었습니다.");
 						$("#hwigBtn").attr("disabled","disabled");
 						$("#order_status").val("배송 중");
+						self.location = "list?page=${page}&perPageNum=${perPageNum}&searchType=${searchType}&keyword=${keyword}";
 					} else {
 						alert("수정이 실패되었습니다.");
 					}

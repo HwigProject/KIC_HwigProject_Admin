@@ -4,11 +4,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
         <!--main content start-->
         <section class="main-content-wrapper">
-            <div class="pageheader">
-                <h1>관리자 페이지</h1>
-                <p class="description">휙 관리자 페이지 입니다.</p>
-            </div>
+        	<c:if test="${sessionScope.user_type eq 'admin'}">
+	            <div class="pageheader">
+	                <h1>HWIG ADMIN</h1>
+	            </div>
+            </c:if>
+            <c:if test="${sessionScope.user_type eq 'seller'}">
+	            <div class="pageheader">
+	                <h1>HWIG SELLER</h1>
+	            </div>
+            </c:if>
             
+            <c:if test="${sessionScope.user_type eq 'admin'}">
             <section id="main-content" class="animated fadeInUp">
                 <div class="row">
                     <div class="col-md-12 col-lg-6">
@@ -215,6 +222,7 @@
                     </div>
                 </div>
             </section>
+            </c:if>
         </section>
         <!--main content end-->
     
