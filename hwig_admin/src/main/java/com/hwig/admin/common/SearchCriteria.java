@@ -1,6 +1,7 @@
 package com.hwig.admin.common;
 
 public class SearchCriteria extends Criteria {
+	
 	private String searchType;
 	private String keyword;
 
@@ -24,4 +25,5 @@ public class SearchCriteria extends Criteria {
 	public String toString() {
 		return "SearchCriteria [searchType=" + searchType + ", keyword=" + keyword + "]";
 	}
+	
 }

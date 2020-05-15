@@ -11,5 +11,8 @@ public interface CartDAO {
 	public int cartInsert(CartVO vo) throws Exception;
 	
 	//장바구니 삭제
-	public void cartDelete(List<CartdeleteDTO> listdto) throws Exception;
+	public void cartDelete(Map<String, Object> cmap) throws Exception;
+	
+	//회원탈퇴시 담겨져 있는 상품들 삭제
+	public int cartPrdDelete(String order_id);
 }

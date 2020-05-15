@@ -1,4 +1,4 @@
-var opts = {
+/*var opts = {
   lines: 12, // The number of lines to draw
   angle: 0, // The length of each line
   lineWidth: 0.4, // The line thickness
@@ -18,4 +18,4 @@ var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
 gauge.maxValue = 5000; // set max gauge value
 gauge.animationSpeed = 32; // set animation speed (32 is default value)
 gauge.set(3200); // set actual value
-gauge.setTextField(document.getElementById("gauge-text"));
+gauge.setTextField(document.getElementById("gauge-text"));*/

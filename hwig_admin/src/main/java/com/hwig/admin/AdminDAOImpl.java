@@ -43,7 +43,7 @@ public class AdminDAOImpl implements AdminDAO {
 
 	@Override
 	public int order_paymoney() {
-		
+
 		return sqlSession.selectOne(namespace + ".order_paymoney");
 	}
 	

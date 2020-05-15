@@ -2,11 +2,21 @@ package com.hwig.admin.cart;
 
 public class CartlistDTO {
 	
+	private int prd_id;
 	private String prd_name;
 	private int prd_price;
 	private int order_count;
 	private String prd_thumb;
+	private String prd_comment;
+	private int prd_stock;
 	
+	public int getPrd_id() {
+		return prd_id;
+	}
+	public void setPrd_id(int prd_id) {
+		this.prd_id = prd_id;
+	}
+
 	public String getPrd_name() {
 		return prd_name;
 	}
@@ -31,11 +41,24 @@ public class CartlistDTO {
 	public void setPrd_thumb(String prd_thumb) {
 		this.prd_thumb = prd_thumb;
 	}
+	public String getPrd_comment() {
+		return prd_comment;
+	}
+	public void setPrd_comment(String prd_comment) {
+		this.prd_comment = prd_comment;
+	}
+	public int getPrd_stock() {
+		return prd_stock;
+	}
+	public void setPrd_stock(int prd_stock) {
+		this.prd_stock = prd_stock;
+	}
 	
 	@Override
 	public String toString() {
-		return "CartlistDTO [prd_name=" + prd_name + ", prd_price=" + prd_price + ", order_count=" + order_count
-				+ ", prd_thumb=" + prd_thumb + "]";
+		return "CartlistDTO [prd_id=" + prd_id + ", prd_name=" + prd_name + ", prd_price=" + prd_price
+				+ ", order_count=" + order_count + ", prd_thumb=" + prd_thumb + ", prd_comment=" + prd_comment
+				+ ", prd_stock=" + prd_stock + "]";
 	}
 	
 }

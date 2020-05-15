@@ -76,4 +76,5 @@ public class AdminServiceImpl implements AdminService {
 		
 		return adminDao.review_list(sel_id);
 	}
+	
 }

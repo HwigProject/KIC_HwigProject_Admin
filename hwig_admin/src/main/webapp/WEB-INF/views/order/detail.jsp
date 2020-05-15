@@ -86,11 +86,11 @@
 										<table class="table table-bordered table-striped text-center">
 											<thead>
 												<tr>
-													<th class="text-center">상품아이디</th>
-													<th class="text-center">상품이름</th>
-													<th class="text-center">상품가격</th>
-													<th class="text-center">상품갯수</th>
-													<th class="text-center">판매자이름</th>
+													<th class="text-center">아이디</th>
+													<th class="text-center">이름</th>
+													<th class="text-center">가격</th>
+													<th class="text-center">갯수</th>
+													<th class="text-center">판매자</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -156,6 +156,7 @@
 						alert("수정이 완료되었습니다.");
 						$("#hwigBtn").attr("disabled","disabled");
 						$("#order_status").val("배송 중");
+						self.location = "list?page=${page}&perPageNum=${perPageNum}&searchType=${searchType}&keyword=${keyword}";
 					} else {
 						alert("수정이 실패되었습니다.");
 					}

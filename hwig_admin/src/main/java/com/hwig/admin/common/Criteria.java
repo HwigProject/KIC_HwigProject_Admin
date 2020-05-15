@@ -1,6 +1,7 @@
 package com.hwig.admin.common;
 
 public class Criteria {
+	
 	private int page;
 	private int perPageNum;
 
@@ -47,4 +48,5 @@ public class Criteria {
 	public String toString() {
 		return "Criteria [page=" + page + ", perPageNum=" + perPageNum + "]";
 	}
+	
 }

@@ -33,8 +33,17 @@ public class CartDAOImpl implements CartDAO{
 	
 	//장바구니 삭제
 	@Override
-	public void cartDelete(List<CartdeleteDTO> listdto) throws Exception {
-		sql.delete(namespace + ".cartdelete", listdto);
+	//public void cartDelete(List<CartdeleteDTO> listdto) throws Exception {
+	public void cartDelete(Map<String, Object> cmap) throws Exception {
+		sql.delete(namespace + ".cartdelete", cmap);
+	}
+
+	/*
+	 * 회원탈퇴시 장바구니에 담겨져 있는 상품 삭제
+	 */
+	@Override
+	public int cartPrdDelete(String mem_id) {
+		return sql.delete(namespace + ".cartPrdDelete", mem_id);
 	}
 
 }

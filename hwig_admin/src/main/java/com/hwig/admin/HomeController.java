@@ -17,10 +17,10 @@ public class HomeController {
 
 	@Inject
 	AdminService aService;
-	
+
 	@Inject
 	QnaService qService;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		return "index";
@@ -36,8 +36,17 @@ public class HomeController {
 		model.addAttribute("order_list", aService.order_list());
 		model.addAttribute("prd_list", aService.prd_list());
 		model.addAttribute("chart_circle", aService.chart_circle());
+		
 		//여기부터 판매자 화면
 		model.addAttribute("review_list", aService.review_list((String)ss.getAttribute("user_id")));
 	}
+
+//	@RequestMapping("/main")
+//	public void main(Model model) {
+//		model.addAttribute("member_count", aService.member_count());
+//
+//		//DecimalFormat formatter = new DecimalFormat("###,###");
+//		model.addAttribute("order_paymoney", aService.order_paymoney());
+//	}
 
 }

@@ -78,6 +78,11 @@ public class ReviewDAOImpl implements ReviewDAO{
 		return sql.insert(namespace + ".review_write", review);
 	}
 
+	@Override
+	public int reviewDelete(String mem_id) {
+		return sql.delete(namespace + ".reviewDelete", mem_id);
+	}
+
 	
 
 

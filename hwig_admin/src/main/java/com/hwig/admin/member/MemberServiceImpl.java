@@ -120,7 +120,7 @@ public class MemberServiceImpl implements MemberService {
 	public List<ApiOrderDetailVO> memberOrderDetailAll(ApiOrderDetailVO apiOrderDetailVo) {
 		return memberDao.memberOrderDetailSelectAll(apiOrderDetailVo);
 	}
-	
+
 	@Override
 	public int changeReverse(MemberVO memberVo) {
 		return memberDao.changeReverse(memberVo);
@@ -165,7 +165,7 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberOrderPrdVO> memberOrderPrd(MemberCriteria cri) {
 		return memberDao.memberOrderPrdSelect(cri);
 	}
-	
+
 	@Override
 	public int memberOrderPrdCount(MemberCriteria cri) {
 		return memberDao.memberOrderPrdCount(cri);
@@ -224,7 +224,7 @@ public class MemberServiceImpl implements MemberService {
 			memberVo.setMem_addr(memberUpdateVo.getMem_addr());
 			memberVo.setMem_id(memberUpdateVo.getMem_id());
 		}
-		
+
 		return memberDao.adminMemberUpdate(memberVo);
 	}
 

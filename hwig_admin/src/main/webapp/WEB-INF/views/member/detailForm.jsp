@@ -17,17 +17,17 @@
                         <h3 class="panel-title">${data.mem_id}</h3>
                     </div>
                     <div class="panel-body">
-                        <form role="form" method="post" action="modify" enctype="multipart/form-data" id="modifyForm" class="form-horizontal form-border">
+                        <form role="form" method="post" action="modify" id="modifyForm" class="form-horizontal form-border">
                         	<div class="form-group">
                                 <label class="col-sm-3 control-label">아이디</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="mem_id" name="mem_id" readonly="readonly" value="${data.mem_id}" maxlength="20">
+                                    <input type="text" class="form-control" id="mem_id" name="mem_id" value="${data.mem_id}" maxlength="20" readonly="readonly">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">이름</label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="mem_name" name="mem_name" readonly="readonly" value="${data.mem_name}" maxlength="20">
+                                    <input type="text" class="form-control" id="mem_name" name="mem_name" value="${data.mem_name}" maxlength="20">
                                 </div>
                             </div>
                             
@@ -48,9 +48,10 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">주소</label>
                                 <div class="col-sm-6">
+                                	<input type="hidden" class="form-control" id="isNewAddr" name="isNewAddr" value="false">
                                     <input type="text" class="form-control" value="${data.mem_addr}" readonly="readonly">
 	                                <input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control">
-									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary" ><br>
+									<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" class="btn btn-primary" id="postcodeSearchBtn"><br>
 									<input type="text" id="sample4_roadAddress" placeholder="도로명주소" class="form-control">
 									<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소" class="form-control">
 									<input type="text" id="sample4_detailAddress" placeholder="상세주소" class="form-control" maxlength="400">
@@ -94,6 +95,9 @@
 													<th class="text-center">상품갯수</th>
 												</tr>
 											</thead>
+<<<<<<< HEAD
+											<tbody id="prdDataList">
+=======
 											<tbody>
 												<c:if test="${fn:length(prdData) > 0}">
 												<c:forEach items="${prdData}" var="prdData">
@@ -110,8 +114,10 @@
 														<td colspan="4">주문한 상품이 없습니다</td>
 													</tr>
 												</c:if>
+>>>>>>> refs/remotes/origin/hwig_lws
 											</tbody>
 										</table>
+										<button type="button" class="btn btn-default btn-trans" id="orderSearchBtn">더보기</button>
 									</div>
                                 </div>
 							</div>
@@ -120,6 +126,7 @@
 		                      		<button type="button" class="btn btn-primary" id="modifyBtn">수정</button>
 		                      		<button type="button" class="btn btn-danger" id="listBtn">목록</button>
 	                      		</div>
+	                      		<input type="hidden" name="mem_addr" value="" id="mem_addr">
                            </div>
                         </form>
                     </div>
@@ -171,43 +178,69 @@
     }
     
 	$(document).ready(function() {
+		var $pagination = $("#pagination"),
+        totalRecords = 0,
+        recPerPage = 10,
+        page = 1,
+        totalPages = 0;
+		mem_id = $("#mem_id").val();
+        var defaultOpts = {
+        		totalPages: 20,
+        		onPageClick: function (event, curPage) {
+                    page = curPage;
+                   
+                    list();
+              }
+        }
+        
+        list();
+        
+        function list(){
+	        var object = {prdPage:page, prdPerPageNum:recPerPage, mem_id:mem_id};
+	        console.log("/member/prds"+"?"+$.param(object))
+	       		$.ajax({
+	       			url:"/member/prds"+"?"+$.param(object),
+	       			dataType:"json",
+	       			contentType:"application/json; charset=utf-8",
+	       			method:"get",
+	       			success:function(result){
+	       				var html = "";
+	       				
+	       				if(result.memberOrderPrdVo.length < 1){
+	       					html += "<tr>";
+	       					html += "<td colspan='4' align='center'>주문한 상품이 없습니다.</td>";
+	       					html +="</tr>";
+	       				} else {
+	        				$.each(result.memberOrderPrdVo, function(index, value){
+	        					html += "<tr>";
+	        					html += "<td>"+value.order_id+"</td>";
+	        					html += "<td>"+value.prd_name+"</td>";
+	        					html += "<td>"+value.prd_price+"</td>";
+	        					html += "<td>"+value.order_count+"</td>";
+	        					html += "</tr>";
+	        				});
+	       				}
+	       				
+	       				$("#prdDataList").append(html);
+	       				
+	       			}
+	       		});
+		}
+        
+		$("#postcodeSearchBtn").click(function(){
+			$("#isNewAddr").val("true");
+		});
+		
 		$("#modifyBtn").click(function(){
-			var sel_addr = "(" + $("#sample4_postcode").val() + ") "
-										+ $("#sample4_roadAddress").val() + ", "
-										+ $("#sample4_detailAddress").val()
-										+ $("#sample4_extraAddress").val();
-			
-			$("#sel_addr").val(sel_addr);
-			console.log(sel_addr);
-			
-			if($.trim($("#sel_id").val()) == ""){
-				alert("사업자번호를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_cname").val()) == ""){
-				alert("상호명를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_name").val()) == ""){
-				alert("대표자명를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_addr").val()) == ""){
-				alert("사업장 소재지를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_tel").val()) == ""){
-				alert("전화번호를 입력해주세요");
-				return false;
-			}
-			
-			if($.trim($("#sel_img").val()) == "" && $.trim($("#attach_img").attr("src")) == ""){
-				alert("사업자등록증 사본을 업로드해주세요");
-				return false;
+			if($("#isNewAddr").val() != "true"){
+				$("#isNewAddr").val(false);
+			} else {
+				var mem_addr = "(" + $("#sample4_postcode").val() + ") "
+				+ $("#sample4_roadAddress").val() + ", "
+				+ $("#sample4_detailAddress").val()
+				+ $("#sample4_extraAddress").val();
+
+				$("#mem_addr").val(mem_addr);
 			}
 			
 			$("#modifyForm").submit();
@@ -215,6 +248,10 @@
 		
 		$("#listBtn").click(function(){
 			self.location = "list?page=${page}&perPageNum=${perPageNum}&searchType=${searchType}&keyword=${keyword}";
+		});
+		
+		$("#orderSearchBtn").click(function(){
+			self.location = "/order/list?page=1&perPageNum=10&searchType=memid&keyword=${data.mem_id}";
 		});
 	});
 </script>
