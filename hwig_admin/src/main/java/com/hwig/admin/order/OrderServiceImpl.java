@@ -161,7 +161,7 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public int orderPrdReview(String prd_id) {
+	public int orderPrdReview(int prd_id) {
 		return orderDao.orderPrdReview(prd_id);
 	}
 

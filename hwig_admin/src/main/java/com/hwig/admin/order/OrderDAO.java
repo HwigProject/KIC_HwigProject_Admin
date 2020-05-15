@@ -32,6 +32,6 @@ public interface OrderDAO {
 	
 	public int orderDelete(String order_id);
 	
-	public int orderPrdReview(String prd_id);
+	public int orderPrdReview(int prd_id);
 
 }

@@ -10,21 +10,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from tbl_reply
 		where qna_id = #{qna_id}
 	</select>
-<!-- 	
-	<resultMap type="QnaVO" id="QnaVO">
-		<result column="qna_id" property="qna_id"/>
-		<result column="mem_id" property="mem_id"/>
-		<result column="qna_category" property="qna_category"/>
-		<result column="qna_subject" property="qna_subject"/>
-		<result column="qna_content" property="qna_content"/>
-		<result column="qna_regdate" property="qna_regdate"/>
-	</resultMap>
-	
-	<resultMap type="ReplyVO" id="ReplyVO">
-		<result column="reply_content" property="reply_content"/>
-		<result column="reply_regdate" property="reply_regdate"/>
-		<collection property="qna" resultMap="QnaVO"/>
-	</resultMap> -->
 	
 	<!-- 답글 목록(메인용) -->
 	<select id="rList" parameterType="String" resultType="com.hwig.admin.reply.QReplyVO">
@@ -101,7 +86,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from tbl_macro_c where macro_c_id = #{macro_c_id}
 	</delete>
 	
-	<!-- 자주묻는질문 삭제시 번호 순번 하나씩 땡김 -->
+	<!-- 삭제시 번호 순번 하나씩 땡김 -->
 	<update id="macro_id_d" parameterType="com.hwig.admin.reply.MacroVO">
 		update tbl_macro_c set macro_c_id = macro_c_id - 1 where macro_c_id > #{macro_c_id}
 	</update>

@@ -43,6 +43,7 @@ public class AdminDAOImpl implements AdminDAO {
 
 	@Override
 	public int order_paymoney() {
+
 		return sqlSession.selectOne(namespace + ".order_paymoney");
 	}
 	
@@ -62,5 +63,17 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<ProductVO> prd_list() {
 		
 		return sqlSession.selectList(namespace + ".prd_list");
+	}
+
+	@Override
+	public List<ProductVO> chart_circle() {
+		
+		return sqlSession.selectList(namespace + ".chart_circle");
+	}
+
+	@Override
+	public List<ReviewListVO> review_list(String sel_id) {
+		
+		return sqlSession.selectList(namespace + ".review_list", sel_id);
 	}
 }

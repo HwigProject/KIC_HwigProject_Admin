@@ -43,6 +43,7 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public int order_paymoney() {
+
 		return adminDao.order_paymoney();
 	}
 	
@@ -62,6 +63,18 @@ public class AdminServiceImpl implements AdminService {
 	public List<ProductVO> prd_list() {
 		
 		return adminDao.prd_list();
+	}
+
+	@Override
+	public List<ProductVO> chart_circle() {
+		
+		return adminDao.chart_circle();
+	}
+
+	@Override
+	public List<ReviewListVO> review_list(String sel_id) {
+		
+		return adminDao.review_list(sel_id);
 	}
 	
 }

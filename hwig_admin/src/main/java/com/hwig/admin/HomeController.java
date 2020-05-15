@@ -3,6 +3,7 @@ package com.hwig.admin;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,14 +27,18 @@ public class HomeController {
 	}
 
 	@RequestMapping("/main")
-	public void main(Model model) throws Exception {
-//		model.addAttribute("qna_count", aService.qna_count());
-//		model.addAttribute("reply_count", aService.reply_count());
+	public void main(Model model, HttpSession ss) throws Exception {
+		model.addAttribute("qna_count", aService.qna_count());
+		model.addAttribute("reply_count", aService.reply_count());
 		model.addAttribute("member_count", aService.member_count());
 		model.addAttribute("order_paymoney", aService.order_paymoney());
-//		model.addAttribute("qList_index", aService.qna_list());
+		model.addAttribute("qna_list", aService.qna_list());
 		model.addAttribute("order_list", aService.order_list());
-//		model.addAttribute("prd_list", aService.prd_list());
+		model.addAttribute("prd_list", aService.prd_list());
+		model.addAttribute("chart_circle", aService.chart_circle());
+		
+		//여기부터 판매자 화면
+		model.addAttribute("review_list", aService.review_list((String)ss.getAttribute("user_id")));
 	}
 
 //	@RequestMapping("/main")

@@ -58,6 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 고객후기 상품페이지에서 뿌려줄 때 -->
 	<select id="rv_main_list" resultType="com.hwig.admin.review.ReviewVO" parameterType="int">
 		select * from tbl_review where prd_id = #{prd_id}
+		order by review_regdate
 	</select>
 	
 	<!-- 고객후기 마이페이지에서 볼 때 -->
