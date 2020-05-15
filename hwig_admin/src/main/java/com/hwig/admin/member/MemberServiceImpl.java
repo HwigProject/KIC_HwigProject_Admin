@@ -195,8 +195,8 @@ public class MemberServiceImpl implements MemberService {
 				}
 			}
 
-//			cartService.cartPrdRemove(mem_id);
-//			reviewService.reviewRemove(mem_id);
+			cartService.cartPrdRemove(mem_id);
+			reviewService.reviewRemove(mem_id);
 
 			memberDao.delete(mem_id);
 		}
