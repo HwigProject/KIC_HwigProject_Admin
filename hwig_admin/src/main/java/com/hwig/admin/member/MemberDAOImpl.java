@@ -95,7 +95,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<MemberOrderPrdVO> memberOrderPrdSelect(MemberCriteria cri) {
 		return sqlSession.selectList(namespace + ".memberOrderPrdSelect", cri);
 	}
-	
+
 	@Override
 	public int memberOrderPrdCount(MemberCriteria cri) {
 		return sqlSession.selectOne(namespace + ".memberOrderPrdCount", cri);
@@ -105,12 +105,12 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<ApiMemberReviewPrdVO> memberReviewPrdSelect(ApiMemberReviewPrdVO apiMemberReviewPrdVo) {
 		return sqlSession.selectList(namespace + ".memberReviewPrdSelect", apiMemberReviewPrdVo);
 	}
-	
+
 	@Override
 	public int delete(String mem_id) {
 		return sqlSession.delete(namespace + ".memberDelete", mem_id);
 	}
-	
+
 	@Override
 	public List<MemberDeleteVO> memberOrders(String mem_id) {
 		return sqlSession.selectList(namespace + ".memberOrders", mem_id);

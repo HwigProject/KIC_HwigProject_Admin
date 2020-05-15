@@ -16,4 +16,7 @@ public interface AdminService {
 	public List<QnaVO> qna_list();
 	public List<OrderVO> order_list();
 	public List<ProductVO> prd_list();
+	public List<ProductVO> chart_circle();
+	//여기부터 판매자 페이지
+	public List<ReviewListVO> review_list(String sel_id);
 }

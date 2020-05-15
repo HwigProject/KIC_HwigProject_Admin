@@ -85,7 +85,7 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 	@Override
-	public int orderPrdReview(String prd_id) {
+	public int orderPrdReview(int prd_id) {
 		return sqlSession.update(namespace + ".orderPrdReviewUpdate", prd_id);
 	}
 

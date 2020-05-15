@@ -42,6 +42,8 @@ public class LoginServiceImpl implements LoginService {
 				session.setAttribute("user", sellerVo);
 				session.setAttribute("user_type", loginDto.getUser_type());
 				session.setAttribute("user_name", sellerVo.getSel_cname());
+				session.setAttribute("user_id", sellerVo.getSel_id());
+				System.out.println(sellerVo.toString());
 			}
 		}
 

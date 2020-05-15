@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 문의 목록 -->
 	<select id="qna_list" resultType="com.hwig.admin.qna.QnaVO">
 		select * from tbl_qna
-		where qna_id != (select qna_id from tbl_reply)
+		where qna_id not in (select qna_id from tbl_reply)
 		<![CDATA[
 		and rownum <= 6
 		]]>
@@ -74,5 +74,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rownum <=5
 		]]>
 		order by prd_id desc
+	</select>
+	
+	<!-- 동그라미 차트 -->
+	<select id="chart_circle" resultType="com.hwig.admin.product.ProductVO">
+		select sum(prd_price) as prd_price, category_id 
+		from tbl_prd group by category_id
+	</select>
+	
+	<!-- 여기부터 판매자 -->
+	<!-- 고객 후기 -->
+	<select id="review_list" resultType="ReviewListVO" parameterType="String">
+		select prd_name, review_subject, review_content, review_regdate
+		from tbl_prd p, tbl_review r
+		<![CDATA[
+		where p.prd_id = r.prd_id and p.sel_id = #{sel_id} and rownum <= 3
+		]]>
+		order by review_regdate
 	</select>
 </mapper>

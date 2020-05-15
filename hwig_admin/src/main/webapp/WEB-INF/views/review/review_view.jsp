@@ -27,7 +27,7 @@
 	                                    <div class="col-md-12">
 	                                        <div class="panel view-mail-body">
 	                                            <div class="panel-body">
-	                                            	<img src="http://13.209.202.242:8080${review_view.review_img}">
+	                                            	<%-- <img src="http://13.209.202.242:8080${review_view.review_img}"> --%>
 	                                                <p>${review_view.review_content}</p>
 	                                            </div>                              
 	                                        </div>

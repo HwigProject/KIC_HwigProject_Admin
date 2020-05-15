@@ -99,7 +99,7 @@
 											<td>${qList.qna_category}</td>
 											<td><a onclick = "enc('qna_view?qna_id=${qList.qna_id}&qna_category=${qList.qna_category}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}')" href="#">${qList.qna_subject}</a></td>
 											<td>${qList.qna_regdate}</td>
-											<td>${qList.mem_id}</td>											
+											<td>${qList.mem_id}</td>										
 										</tr>
 																
 									</c:forEach>
