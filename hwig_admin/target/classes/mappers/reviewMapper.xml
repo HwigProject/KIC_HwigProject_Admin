@@ -77,4 +77,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values((select nvl(max(review_id)+1,1) from tbl_review), #{prd_id}, #{mem_id}, #{review_subject}, #{review_content})
 	</insert>
 	
+	<delete id="reviewDelete">
+		delete from tbl_review where mem_id = #{mem_id}
+	</delete>
+	
 </mapper>

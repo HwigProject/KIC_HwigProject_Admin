@@ -13,30 +13,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 문의 수 -->
-	<select id="qna_count" resultType="IndexVO">
+	<select id="qna_count" resultType="int">
 		select count(qna_id) as qna_id
 		from tbl_qna
 	</select>
 	
 	<!-- 답변 수 -->
-	<select id="reply_count" resultType="IndexVO">
+	<select id="reply_count" resultType="int">
 		select count(reply_id) as reply_id
 		from tbl_reply
 	</select>
 	
 	<!-- 회원 수 -->
-	<select id="member_count" resultType="IndexVO">
+	<select id="member_count" resultType="int">
 		select count(mem_id) as mem_id
 		from tbl_member
 	</select>
 	
 	<!-- 총 주문 가격 -->
-	<select id="order_paymoney" resultType="IndexVO">
-		select sum(order_paymoney) as order_paymoney from tbl_order
-		<![CDATA[
-		where rownum <= 10
-		]]>
-		order by order_paydate desc
+	<select id="order_paymoney" resultType="int">
+		select
+			sum(order_paymoney) as order_paymoney
+		from
+			tbl_order
 	</select>
 
 	<!-- 문의 목록 -->
@@ -50,13 +49,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 주문 목록 -->
-	<select id="order_list" resultType="com.hwig.admin.order.OrderVO">
-		select order_id, mem_id, order_paymoney, order_paydate
-		from tbl_order
+	<select id="order_list" resultType="OrderListVO">
+		select
+			order_id,
+			mem_id,
+			order_paymoney,
+			order_status,
+			order_request,
+			to_char(order_paydate,'YYYY-MM-DD hh24:mi:ss')as order_paydate
+		from
+			tbl_order
 		<![CDATA[
-		where rownum <=5
+			where rownum <=5
 		]]>
-		order by order_paydate desc
+		order by
+			order_paydate desc
 	</select>
 	
 	<!-- 승인 요청 상품 목록 -->

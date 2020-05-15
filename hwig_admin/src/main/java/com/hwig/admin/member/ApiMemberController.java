@@ -146,25 +146,6 @@ public class ApiMemberController {
 		return response;
 	}
 
-	@RequestMapping(value = "/{mem_id}", method = RequestMethod.DELETE)
-	public CommonResponse remove(@PathVariable("mem_id") String mem_id) {
-		logger.info(mem_id);
-
-		CommonResponse response = new CommonResponse();
-
-		int result = memberService.remove(mem_id);
-
-		if (result < 1) {
-			response.setCode(HttpStatus.BAD_REQUEST.value());
-			response.setMsg("fail");
-		} else {
-			response.setCode(HttpStatus.OK.value());
-			response.setMsg("success");
-		}
-
-		return response;
-	}
-
 	/*
 	 * data키값의 size가 0이면 데이터값이 없는걸로 처리해라
 	 */
@@ -261,9 +242,9 @@ public class ApiMemberController {
 		ApiMemberReviewPrdVO apiMemberReviewPrdVo = new ApiMemberReviewPrdVO();
 		apiMemberReviewPrdVo.setMem_id(mem_id);
 		List<ApiMemberReviewPrdVO> result = memberService.memberReviewPrd(apiMemberReviewPrdVo);
-		
+
 		List<ApiMemberReviewPrdDTO> reviewPrds = new ArrayList<ApiMemberReviewPrdDTO>();
-		for(ApiMemberReviewPrdVO dto : result) {
+		for (ApiMemberReviewPrdVO dto : result) {
 			ApiMemberReviewPrdDTO prdDto = new ApiMemberReviewPrdDTO();
 			prdDto.setOrder_count(dto.getOrder_count());
 			prdDto.setOrder_paydate(dto.getOrder_paydate());
@@ -272,8 +253,25 @@ public class ApiMemberController {
 			prdDto.setPrd_thumb(dto.getPrd_thumb());
 			reviewPrds.add(prdDto);
 		}
-		
+
 		return reviewPrds;
+	}
+
+	@RequestMapping(value = "/{mem_id}", method = RequestMethod.DELETE)
+	public CommonResponse remove(@PathVariable("mem_id") String mem_id) {
+		CommonResponse response = new CommonResponse();
+
+		int result = memberService.remove(mem_id);
+
+		if (result < 1) {
+			response.setCode(HttpStatus.BAD_REQUEST.value());
+			response.setMsg("fail");
+		} else {
+			response.setCode(HttpStatus.OK.value());
+			response.setMsg("success");
+		}
+
+		return response;
 	}
 
 }

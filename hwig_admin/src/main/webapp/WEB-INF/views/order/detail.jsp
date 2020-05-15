@@ -86,11 +86,11 @@
 										<table class="table table-bordered table-striped text-center">
 											<thead>
 												<tr>
-													<th class="text-center">상품아이디</th>
-													<th class="text-center">상품이름</th>
-													<th class="text-center">상품가격</th>
-													<th class="text-center">상품갯수</th>
-													<th class="text-center">판매자이름</th>
+													<th class="text-center">아이디</th>
+													<th class="text-center">이름</th>
+													<th class="text-center">가격</th>
+													<th class="text-center">갯수</th>
+													<th class="text-center">판매자</th>
 												</tr>
 											</thead>
 											<tbody>

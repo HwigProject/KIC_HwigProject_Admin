@@ -1,7 +1,6 @@
 package com.hwig.admin.cart;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -35,6 +34,14 @@ public class CartDAOImpl implements CartDAO{
 	@Override
 	public void cartDelete(List<CartdeleteDTO> listdto) throws Exception {
 		sql.delete(namespace + ".cartdelete", listdto);
+	}
+
+	/*
+	 * 회원탈퇴시 장바구니에 담겨져 있는 상품 삭제
+	 */
+	@Override
+	public int cartPrdDelete(String mem_id) {
+		return sql.delete(namespace + ".cartPrdDelete", mem_id);
 	}
 
 }

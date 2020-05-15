@@ -16,4 +16,6 @@ public interface ReviewDAO {
 	public List<ReviewVO> rv_main_list(int prd_id) throws Exception;
 	public List<ReviewVO> rv_mem_list(String mem_id) throws Exception;
 	public void review_hit(int review_id) throws Exception;
+	
+	public int reviewDelete(String mem_id);
 }

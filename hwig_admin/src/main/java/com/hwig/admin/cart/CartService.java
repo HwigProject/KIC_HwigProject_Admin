@@ -1,7 +1,8 @@
 package com.hwig.admin.cart;
 
 import java.util.List;
-import java.util.Map;
+
+import com.hwig.admin.member.MemberDeleteVO;
 
 public interface CartService {
 	//장바구니 목록 가져오기
@@ -12,4 +13,6 @@ public interface CartService {
 	
 	//장바구니 삭제
 	public void cartDelete(List<CartdeleteDTO> listdto) throws Exception;
+	
+	public int cartPrdRemove(String order_id);
 }

@@ -1,11 +1,12 @@
 package com.hwig.admin.cart;
 
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Repository;
+
+import com.hwig.admin.member.MemberDeleteVO;
 
 @Repository
 public class CartServiceImpl implements CartService{
@@ -29,6 +30,11 @@ public class CartServiceImpl implements CartService{
 	@Override
 	public void cartDelete(List<CartdeleteDTO> listdto) throws Exception {
 		dao.cartDelete(listdto);
+	}
+
+	@Override
+	public int cartPrdRemove(String order_id) {
+		return dao.cartPrdDelete(order_id);
 	}
 
 }

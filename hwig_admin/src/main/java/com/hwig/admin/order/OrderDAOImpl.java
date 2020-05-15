@@ -69,4 +69,24 @@ public class OrderDAOImpl implements OrderDAO {
 		return sqlSession.selectOne(namespace + ".orderCompletion", order_id);
 	}
 
+	@Override
+	public int addrDelete(String order_id) {
+		return sqlSession.delete(namespace + ".addrDelete", order_id);
+	}
+
+	@Override
+	public int orderBDelete(String order_id) {
+		return sqlSession.delete(namespace + ".orderBDelete", order_id);
+	}
+
+	@Override
+	public int orderDelete(String order_id) {
+		return sqlSession.delete(namespace + ".orderDelete", order_id);
+	}
+
+	@Override
+	public int orderPrdReview(String prd_id) {
+		return sqlSession.update(namespace + ".orderPrdReviewUpdate", prd_id);
+	}
+
 }

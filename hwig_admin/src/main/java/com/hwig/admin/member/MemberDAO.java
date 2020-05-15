@@ -20,8 +20,6 @@ public interface MemberDAO {
 
 	public int update(UpdateMemberVO updateMemberVo);
 
-	public int delete(String mem_id);
-
 	public List<ApiOrderListVO> memberOrderSelectAll(ApiOrderListVO apiOrderListVo);
 
 	public int memberOrderAllCount(ApiOrderListVO apiOrderListVo);
@@ -38,8 +36,16 @@ public interface MemberDAO {
 
 	public int resetPw(MemberVO memberVo);
 	
-	public List<MemberOrderPrdVO> memberOrderPrdSelect(MemberOrderPrdVO memberOrderPrdVo);
+	public List<MemberOrderPrdVO> memberOrderPrdSelect(MemberCriteria cri);
 	
-	public List<ApiMemberReviewPrdVO> memberReviewPrdSelect(ApiMemberReviewPrdVO apiMemberReviewPrdVO);
+	public int memberOrderPrdCount(MemberCriteria cri);
+	
+	public List<ApiMemberReviewPrdVO> memberReviewPrdSelect(ApiMemberReviewPrdVO apiMemberReviewPrdVo);
+	
+	public int delete(String mem_id);
+	
+	public List<MemberDeleteVO> memberOrders(String mem_id);
+	
+	public int adminMemberUpdate(MemberVO memberVo);
 
 }

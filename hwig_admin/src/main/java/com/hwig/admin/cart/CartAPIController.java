@@ -6,41 +6,45 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hwig.admin.common.CommonResponse;
+
 @RestController
-@CrossOrigin(origins="*", allowedHeaders="*")
-@RequestMapping(value="/api/cart")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping(value = "/api/cart")
 public class CartAPIController {
 
 	@Inject
 	CartService service;
-	
-	//해당 회원의 장바구니 목록 가져오기
-	@RequestMapping(value="/cartlist", method=RequestMethod.GET)
+
+	// 해당 회원의 장바구니 목록 가져오기
+	@RequestMapping(value = "/cartlist", method = RequestMethod.GET)
 	public List<CartlistDTO> getCartlist(@RequestParam String mem_id) throws Exception {
 		List<CartlistDTO> cartlist = service.cartList(mem_id);
-		
+
 		return cartlist;
 	}
-	
-	//장바구니에 등록하기
-	@RequestMapping(value="/cartinsert", method=RequestMethod.POST)
+
+	// 장바구니에 등록하기
+	@RequestMapping(value = "/cartinsert", method = RequestMethod.POST)
 	public Map<String, Integer> postCartInsert(@RequestBody CartVO vo) throws Exception {
-		
+
 		int result = service.cartInsert(vo);
 		Map<String, Integer> res = new HashMap<String, Integer>();
 		res.put("success", result);
 		return res;
 	}
-	
-	//장바구니에서 삭제하기
-	@RequestMapping(value="/cartdelete", method=RequestMethod.POST)
+
+	// 장바구니에서 삭제하기
+	@RequestMapping(value = "/cartdelete", method = RequestMethod.POST)
 	public void getCartDelete(@RequestBody List<CartdeleteDTO> listdto) throws Exception {
 		service.cartDelete(listdto);
 	}

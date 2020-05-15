@@ -15,5 +15,13 @@ public interface OrderService {
 	public int statusModify(OrderVO orderVo);
 
 	public ApiOrderCompletionDTO orderCompletion(String order_id);
+	
+	public int addrRemove(String order_id);
+	
+	public int orderBRemove(String order_id);
+	
+	public int orderRemove(String order_id);
+	
+	public int orderPrdReview(String prd_id);
 
 }

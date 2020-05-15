@@ -9,10 +9,10 @@ import com.hwig.admin.qna.QnaVO;
 public interface AdminDAO {
 
 	public AdminVO select(AdminVO adminVo);
-	public IndexVO qna_select();
-	public IndexVO reply_select();
-	public IndexVO member_select();
-	public IndexVO order_paymoney();
+	public int qna_select();
+	public int reply_select();
+	public int member_select();
+	public int order_paymoney();
 	public List<QnaVO> qna_list();
 	public List<OrderVO> order_list();
 	public List<ProductVO> prd_list();

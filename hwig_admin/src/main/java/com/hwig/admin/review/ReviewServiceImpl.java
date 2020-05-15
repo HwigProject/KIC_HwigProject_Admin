@@ -74,5 +74,10 @@ public class ReviewServiceImpl implements ReviewService{
 		dao.review_hit(review_id);
 	}
 
+	@Override
+	public int reviewRemove(String mem_id) {
+		return dao.reviewDelete(mem_id);
+	}
+
 
 }

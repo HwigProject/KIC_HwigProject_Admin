@@ -16,4 +16,6 @@ public interface ReviewService {
 	public int review_write(ReviewVO review) throws Exception;
 	public List<ReviewVO> rv_mem_list(String mem_id) throws Exception;
 	public void review_hit(int review_id) throws Exception;
+	
+	public int reviewRemove(String mem_id);
 }
