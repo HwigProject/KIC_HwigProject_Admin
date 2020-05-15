@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hwig.admin.order.OrderService;
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/api/review")
@@ -25,6 +27,9 @@ public class ReviewRestController {
 	
 	@Inject
 	ReviewService rvService;
+	
+	@Inject
+	OrderService oService;
 	
 	@Resource(name="savePath")
 	private String savePath;
@@ -89,6 +94,7 @@ public class ReviewRestController {
 		 }
 		 
 		 int result = rvService.review_write(review);
+		 oService.orderPrdReview(review.getPrd_id());
 		 
 		 if(result==1)
 		 {

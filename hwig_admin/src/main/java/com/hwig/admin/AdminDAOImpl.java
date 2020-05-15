@@ -70,4 +70,10 @@ public class AdminDAOImpl implements AdminDAO {
 		
 		return sqlSession.selectList(namespace + ".chart_circle");
 	}
+
+	@Override
+	public List<ReviewListVO> review_list(String sel_id) {
+		
+		return sqlSession.selectList(namespace + ".review_list", sel_id);
+	}
 }

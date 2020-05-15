@@ -9,13 +9,25 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hwig.admin.cart.CartService;
 import com.hwig.admin.common.SearchCriteria;
+import com.hwig.admin.order.OrderService;
+import com.hwig.admin.review.ReviewService;
 
 @Service
 public class MemberServiceImpl implements MemberService {
 
 	@Autowired
 	private MemberDAO memberDao;
+
+	@Autowired
+	private CartService cartService;
+
+	@Autowired
+	private OrderService orderService;
+
+	@Autowired
+	private ReviewService reviewService;
 
 	@Override
 	public int register(MemberVO memberVo) {
@@ -95,11 +107,6 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int remove(String mem_id) {
-		return memberDao.delete(mem_id);
-	}
-
-	@Override
 	public List<ApiOrderListVO> memberOrderListAll(ApiOrderListVO apiOrderListVo) {
 		return memberDao.memberOrderSelectAll(apiOrderListVo);
 	}
@@ -112,6 +119,21 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<ApiOrderDetailVO> memberOrderDetailAll(ApiOrderDetailVO apiOrderDetailVo) {
 		return memberDao.memberOrderDetailSelectAll(apiOrderDetailVo);
+	}
+	
+	@Override
+	public int changeReverse(MemberVO memberVo) {
+		return memberDao.changeReverse(memberVo);
+	}
+
+	@Override
+	public int changePrice(MemberVO memberVo) {
+		return memberDao.changePrice(memberVo);
+	}
+
+	@Override
+	public int changeGrade(MemberVO memberVo) {
+		return memberDao.changeGrade(memberVo);
 	}
 
 	@Transactional
@@ -140,13 +162,70 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public List<MemberOrderPrdVO> memberOrderPrd(MemberOrderPrdVO memberOrderPrdVo) {
-		return memberDao.memberOrderPrdSelect(memberOrderPrdVo);
+	public List<MemberOrderPrdVO> memberOrderPrd(MemberCriteria cri) {
+		return memberDao.memberOrderPrdSelect(cri);
+	}
+	
+	@Override
+	public int memberOrderPrdCount(MemberCriteria cri) {
+		return memberDao.memberOrderPrdCount(cri);
 	}
 
 	@Override
-	public List<ApiMemberReviewPrdVO> memberReviewPrd(ApiMemberReviewPrdVO apiMemberReviewPrdVO) {
-		return memberDao.memberReviewPrdSelect(apiMemberReviewPrdVO);
+	public List<ApiMemberReviewPrdVO> memberReviewPrd(ApiMemberReviewPrdVO apiMemberReviewPrdVo) {
+		return memberDao.memberReviewPrdSelect(apiMemberReviewPrdVo);
+	}
+
+	@Transactional
+	@Override
+	public int remove(String mem_id) {
+		List<MemberDeleteVO> selectMemberOrders = memberDao.memberOrders(mem_id);
+		System.out.println(selectMemberOrders.size());
+
+		if (selectMemberOrders.size() < 1) {
+			return 1;
+		} else {
+			for (MemberDeleteVO dto : selectMemberOrders) {
+				if (!(dto.getOrder_status().equals("배송 중") || dto.getOrder_status().equals("상품 준비 중"))) {
+					orderService.addrRemove(dto.getOrder_id());
+					orderService.orderBRemove(dto.getOrder_id());
+					orderService.orderRemove(dto.getOrder_id());
+				} else {
+					return 0;
+				}
+			}
+
+//			cartService.cartPrdRemove(mem_id);
+//			reviewService.reviewRemove(mem_id);
+
+			memberDao.delete(mem_id);
+		}
+
+		return 1;
+	}
+
+	@Override
+	public List<MemberDeleteVO> memberOrders(String mem_id) {
+		return memberDao.memberOrders(mem_id);
+	}
+
+	@Override
+	public int adminMemberModify(MemberUpdateVO memberUpdateVo) {
+		MemberVO memberVo = new MemberVO();
+		if (!"true".equals(memberUpdateVo.getIsNewAddr())) {
+			memberVo.setMem_name(memberUpdateVo.getMem_name());
+			memberVo.setMem_email(memberUpdateVo.getMem_email());
+			memberVo.setMem_tel(memberUpdateVo.getMem_tel());
+			memberVo.setMem_id(memberUpdateVo.getMem_id());
+		} else {
+			memberVo.setMem_name(memberUpdateVo.getMem_name());
+			memberVo.setMem_email(memberUpdateVo.getMem_email());
+			memberVo.setMem_tel(memberUpdateVo.getMem_tel());
+			memberVo.setMem_addr(memberUpdateVo.getMem_addr());
+			memberVo.setMem_id(memberUpdateVo.getMem_id());
+		}
+		
+		return memberDao.adminMemberUpdate(memberVo);
 	}
 
 }

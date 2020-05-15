@@ -35,6 +35,7 @@ public class OrderController {
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public void detailPageGET(String order_id, @ModelAttribute("cri") OrderCriteria cri, Model model) {
+		logger.info(orderService.findOneById(order_id).toString());
 		model.addAttribute("data", orderService.findOneById(order_id));
 		model.addAttribute("page", cri.getPage());
 		model.addAttribute("perPageNum", cri.getPerPageNum());

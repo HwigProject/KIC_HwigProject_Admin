@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hwig.admin.member.MemberDAO;
 import com.hwig.admin.member.MemberService;
 import com.hwig.admin.member.MemberVO;
 import com.hwig.admin.seller.SellerVO;
@@ -18,9 +17,6 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	private OrderDAO orderDao;
-
-	@Autowired
-	private MemberDAO memberDao;
 
 	@Autowired
 	private MemberService memberService;
@@ -114,25 +110,25 @@ public class OrderServiceImpl implements OrderService {
 		memberVo = memberService.findOne(memberVo.getMem_id());
 		int totalReverse = memberVo.getMem_reverse() + orderRegisterDto.getOrder_reverse();
 		memberVo.setMem_reverse(totalReverse);
-		memberDao.changeReverse(memberVo);
+		memberService.changeReverse(memberVo);
 
 		int totalPrice = memberVo.getMem_price() + orderRegisterDto.getOrder_paymoney();
 		memberVo.setMem_price(totalPrice);
-		memberDao.changePrice(memberVo);
+		memberService.changePrice(memberVo);
 
 		if (!memberVo.getMem_grade().equals("bronze")) {
 			if (memberVo.getMem_price() > 5000000) {
 				memberVo.setMem_grade("diamond");
-				memberDao.changeGrade(memberVo);
+				memberService.changeGrade(memberVo);
 			} else if (memberVo.getMem_price() > 3000000) {
 				memberVo.setMem_grade("platinum");
-				memberDao.changeGrade(memberVo);
+				memberService.changeGrade(memberVo);
 			} else if (memberVo.getMem_price() > 1000000) {
 				memberVo.setMem_grade("gold");
-				memberDao.changeGrade(memberVo);
+				memberService.changeGrade(memberVo);
 			} else if (memberVo.getMem_price() > 300000) {
 				memberVo.setMem_grade("silver");
-				memberDao.changeGrade(memberVo);
+				memberService.changeGrade(memberVo);
 			}
 		}
 
@@ -147,6 +143,26 @@ public class OrderServiceImpl implements OrderService {
 	@Override
 	public ApiOrderCompletionDTO orderCompletion(String order_id) {
 		return orderDao.orderCompletion(order_id);
+	}
+
+	@Override
+	public int addrRemove(String order_id) {
+		return orderDao.addrDelete(order_id);
+	}
+
+	@Override
+	public int orderBRemove(String order_id) {
+		return orderDao.orderBDelete(order_id);
+	}
+
+	@Override
+	public int orderRemove(String order_id) {
+		return orderDao.orderDelete(order_id);
+	}
+
+	@Override
+	public int orderPrdReview(int prd_id) {
+		return orderDao.orderPrdReview(prd_id);
 	}
 
 }

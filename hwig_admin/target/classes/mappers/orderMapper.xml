@@ -180,6 +180,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{order_receiver_addr})
 	</insert>
 
+	<!-- 배송상태변경 -->
 	<update id="orderStatusUpdate">
 		update tbl_order set order_status = #{order_status} where order_id = #{order_id}
 	</update>
@@ -203,5 +204,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and A.order_id=#{order_id}
 			<!-- and order_paydate = (select max(order_paydate) from tbl_order where order_id=#{order_id}) -->
 	</select>
+	
+	<delete id="addrDelete">
+		delete from tbl_addr where order_id = #{order_id}
+	</delete>
+	
+	<delete id="orderBDelete">
+		delete from tbl_order_b where order_id = #{order_id}
+	</delete>
+	
+	<delete id="orderDelete">
+		delete from tbl_order where mem_id = #{mem_id}
+	</delete>
+	
+	<!-- 주문기본테이블 리뷰작성여부변경 -->
+	<update id="orderPrdReviewUpdate">
+		update tbl_order_b set order_prd_review = #{order_prd_review} where prd_id = #{prd_id}
+	</update>
 
 </mapper>

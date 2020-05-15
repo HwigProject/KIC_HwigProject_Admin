@@ -48,6 +48,8 @@ public class QnaRestController {
 		 
 		 Map<String, Object> resQna_write = new HashMap<String, Object>();
 		 
+		 qna.setQna_content(qna.getQna_content().replace("\r\n", "<br>"));
+		 
 		 int result = qService.qna_write(qna);
 		 
 		 if(result==1)

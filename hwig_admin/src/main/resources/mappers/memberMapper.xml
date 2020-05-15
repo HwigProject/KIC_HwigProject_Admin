@@ -4,6 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hwig.admin.mappers.memberMapper">
 
+	<!-- 회원가입 -->
 	<insert id="memberInsert">
 		insert into tbl_member (
 			mem_id,
@@ -34,6 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</sql>
 
+	<!-- admin리스트 -->
 	<select id="memberAllSelect" resultType="MemberVO">
 		select * from (
 			select
@@ -60,7 +62,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 회원정보상세, 로그인시 사용 -->
 	<select id="memberSelect" resultType="MemberVO">
-		select * from tbl_member where mem_id = #{mem_id}
+		select
+			mem_id,
+			mem_pw,
+			mem_tel,
+			mem_name,
+			mem_addr,
+			mem_email,
+			to_char(mem_regdate,'YYYY-MM-DD') as mem_regdate,
+			mem_grade,
+			mem_reverse,
+			mem_price
+		from tbl_member where mem_id = #{mem_id}
 		<if test="mem_pw != null and mem_pw != ''">
 			and mem_pw = #{mem_pw}
 		</if>
@@ -85,11 +98,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where mem_id = #{mem_id}
 	</update>
 
-	<!-- 회원탈퇴 -->
-	<delete id="memberDelete">
-		delete from tbl_member where mem_id = #{mem_id}
-	</delete>
-
+	<!-- 주문한 리스트 -->
 	<select id="memberOrderSelectAll" resultType="ApiOrderListVO">
 		select
 			order_paydate,
@@ -116,6 +125,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and A.mem_id = #{mem_id}
 	</select>
 	
+	<!-- 주문상세 -->
 	<select id="memberOrderDetailSelectAll" resultType="ApiOrderDetailVO">
 		select
 			A.mem_id,
@@ -149,18 +159,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    and A.order_id = #{order_id}
 	</select>
 	
+	<!-- 적립금 적립 -->
 	<update id="changeReverse">
 		update tbl_member set mem_reverse = #{mem_reverse} where mem_id = #{mem_id}
 	</update>
 	
+	<!-- 주문가격 적립 -->
 	<update id="changePrice">
 		update tbl_member set mem_price = #{mem_price} where mem_id = #{mem_id}
 	</update>
 	
+	<!-- 등급 변경 -->
 	<update id="changeGrade">
 		update tbl_member set mem_grade = #{mem_grade} where mem_id = #{mem_id}
 	</update>
 	
+	<!-- 비밀번호 분실시 아이디, 이름, 이메일 체크 -->
 	<select id="idNameEmailCheck" resultType="int">
 		select
 			count(*)
@@ -172,11 +186,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and mem_email = #{mem_email}
 	</select>
 	
+	<!-- 분실한 이메일 초기화 -->
 	<update id="resetPw">
 		update tbl_member set mem_pw = #{mem_pw} where mem_id = #{mem_id}
 	</update>
 	
+	<!-- admin 주문한 상품 리스트 -->
 	<select id="memberOrderPrdSelect" resultType="MemberOrderPrdVO">
+	select * from (
 		select
 			D.prd_name,
 			D.prd_price,
@@ -193,8 +210,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			and B.order_id = C.order_id
 			and C.prd_id = D.prd_id
 			and A.mem_id = #{mem_id}
+			) mb
+		where rnum between #{prdPageStart} and #{prdPageEnd}
 	</select>
 	
+	<select id="memberOrderPrdCount" resultType="int">
+		select
+			count(*)
+		from
+			tbl_member A,
+			tbl_order B,
+			tbl_order_b C,
+			tbl_prd D
+		where
+			A.mem_id = B.mem_id
+			and B.order_id = C.order_id
+			and C.prd_id = D.prd_id
+			and A.mem_id = #{mem_id}
+	</select>
+	
+	<!-- 후기 작성 가능한 주문 상품 리스트 -->
 	<select id="memberReviewPrdSelect" resultType="ApiMemberReviewPrdVO">
 		select
 			to_char(A.order_paydate,'YYYY-MM-DD hh24:mi:ss')as order_paydate,
@@ -213,7 +248,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    and B.prd_id = C.prd_id
 		    and A.mem_id = #{mem_id}
 		    and B.order_prd_review = 0
+		    <if test="B.order_prd_review == 1">
+				and B.order_prd_review = 1
+			</if>
 		    and A.order_status = '배송 완료'
 	</select>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="memberDelete">
+		delete from tbl_member where mem_id = #{mem_id}
+	</delete>
+	
+	<!-- 회원탈퇴처리 전 배송상태조회 -->
+	<select id="memberOrders" resultType="MemberDeleteVO">
+		select
+			A.order_id,
+			A.order_status
+		from
+			tbl_order A,
+			tbl_member B
+		where
+			A.mem_id = B.mem_id
+			and A.mem_id = #{mem_id}
+	</select>
+	
+	<!-- admin 회원정보수정 -->
+	<update id="adminMemberUpdate">
+		update
+			tbl_member
+		set
+			mem_name = #{mem_name},
+			mem_email = #{mem_email},
+			mem_tel = #{mem_tel}
+			<if test="mem_addr != null">
+				, mem_addr = #{mem_addr}
+			</if>
+		where mem_id = #{mem_id}
+	</update>
 
 </mapper>

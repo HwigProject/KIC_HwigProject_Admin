@@ -3,13 +3,13 @@ package com.hwig.admin;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.hwig.admin.order.OrderVO;
 import com.hwig.admin.qna.QnaService;
 
 @Controller
@@ -27,7 +27,7 @@ public class HomeController {
 	}
 
 	@RequestMapping("/main")
-	public void main(Model model) throws Exception {
+	public void main(Model model, HttpSession ss) throws Exception {
 		model.addAttribute("qna_count", aService.qna_count());
 		model.addAttribute("reply_count", aService.reply_count());
 		model.addAttribute("member_count", aService.member_count());
@@ -36,6 +36,8 @@ public class HomeController {
 		model.addAttribute("order_list", aService.order_list());
 		model.addAttribute("prd_list", aService.prd_list());
 		model.addAttribute("chart_circle", aService.chart_circle());
+		//여기부터 판매자 화면
+		model.addAttribute("review_list", aService.review_list((String)ss.getAttribute("user_id")));
 	}
 
 }

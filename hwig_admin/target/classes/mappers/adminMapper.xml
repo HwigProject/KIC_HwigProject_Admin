@@ -47,13 +47,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 주문 목록 -->
-	<select id="order_list" resultType="com.hwig.admin.order.OrderVO">
-		select order_id, mem_id, order_paymoney, order_paydate
-		from tbl_order
+	<select id="order_list" resultType="OrderListVO">
+		select
+			order_id,
+			mem_id,
+			order_paymoney,
+			order_status,
+			order_request,
+			to_char(order_paydate,'YYYY-MM-DD hh24:mi:ss')as order_paydate
+		from
+			tbl_order
 		<![CDATA[
-		where rownum <=5
+			where rownum <=5
 		]]>
-		order by order_paydate desc
+		order by
+			order_paydate desc
 	</select>
 	
 	<!-- 승인 요청 상품 목록 -->
@@ -68,6 +76,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 동그라미 차트 -->
 	<select id="chart_circle" resultType="com.hwig.admin.product.ProductVO">
-		select sum(prd_price) as prd_price, category_id from tbl_prd group by category_id
+		select sum(prd_price) as prd_price, category_id 
+		from tbl_prd group by category_id
+	</select>
+	
+	<!-- 여기부터 판매자 -->
+	<!-- 고객 후기 -->
+	<select id="review_list" resultType="ReviewListVO" parameterType="String">
+		select prd_name, review_subject, review_content, review_regdate
+		from tbl_prd p, tbl_review r
+		<![CDATA[
+		where p.prd_id = r.prd_id and p.sel_id = #{sel_id} and rownum <= 3
+		]]>
+		order by review_regdate
 	</select>
 </mapper>

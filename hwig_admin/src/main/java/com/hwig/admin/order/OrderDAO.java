@@ -25,5 +25,13 @@ public interface OrderDAO {
 	public int orderStatusUpdate(OrderVO orderVo);
 
 	public ApiOrderCompletionDTO orderCompletion(String order_id);
+	
+	public int addrDelete(String order_id);
+	
+	public int orderBDelete(String order_id);
+	
+	public int orderDelete(String order_id);
+	
+	public int orderPrdReview(int prd_id);
 
 }

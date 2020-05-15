@@ -1,20 +1,12 @@
+  
 package com.hwig.admin.member;
 
 public class MemberOrderPrdVO {
 
-	private String mem_id;
 	private String prd_name;
 	private int prd_price;
 	private int order_count;
 	private String order_id;
-
-	public String getMem_id() {
-		return mem_id;
-	}
-
-	public void setMem_id(String mem_id) {
-		this.mem_id = mem_id;
-	}
 
 	public String getPrd_name() {
 		return prd_name;
@@ -50,8 +42,8 @@ public class MemberOrderPrdVO {
 
 	@Override
 	public String toString() {
-		return "MemberOrderPrdVO [mem_id=" + mem_id + ", prd_name=" + prd_name + ", prd_price=" + prd_price
-				+ ", order_count=" + order_count + ", order_id=" + order_id + "]";
+		return "MemberOrderPrdVO [prd_name=" + prd_name + ", prd_price=" + prd_price + ", order_count=" + order_count
+				+ ", order_id=" + order_id + "]";
 	}
 
 }

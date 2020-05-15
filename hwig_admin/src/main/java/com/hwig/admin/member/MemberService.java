@@ -2,8 +2,6 @@ package com.hwig.admin.member;
 
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import com.hwig.admin.common.SearchCriteria;
 
 public interface MemberService {
@@ -26,18 +24,30 @@ public interface MemberService {
 
 	public int modify(UpdateMemberVO updateMemberVo);
 
-	public int remove(String mem_id);
-
 	public List<ApiOrderListVO> memberOrderListAll(ApiOrderListVO apiOrderListVo);
 
 	public int memberOrderListAllCount(ApiOrderListVO apiOrderListVo);
 
 	public List<ApiOrderDetailVO> memberOrderDetailAll(ApiOrderDetailVO apiOrderDetailVo);
 	
+	public int changeReverse(MemberVO memberVo);
+
+	public int changePrice(MemberVO memberVo);
+
+	public int changeGrade(MemberVO memberVo);
+	
 	public int idNameEmailCheck(IdNameEmailCheckVO idNameEmailCheckVo);
 	
-	public List<MemberOrderPrdVO> memberOrderPrd(MemberOrderPrdVO memberOrderPrdVo);
+	public List<MemberOrderPrdVO> memberOrderPrd(MemberCriteria cri);
 	
-	public List<ApiMemberReviewPrdVO> memberReviewPrd(ApiMemberReviewPrdVO apiMemberReviewPrdVO);
+	public int memberOrderPrdCount(MemberCriteria cri);
+	
+	public List<ApiMemberReviewPrdVO> memberReviewPrd(ApiMemberReviewPrdVO apiMemberReviewPrdVo);
+	
+	public int remove (String mem_id);
+	
+	public List<MemberDeleteVO> memberOrders(String mem_id);
+	
+	public int adminMemberModify(MemberUpdateVO memberUpdateVo);
 
 }

@@ -70,4 +70,10 @@ public class AdminServiceImpl implements AdminService {
 		
 		return adminDao.chart_circle();
 	}
+
+	@Override
+	public List<ReviewListVO> review_list(String sel_id) {
+		
+		return adminDao.review_list(sel_id);
+	}
 }

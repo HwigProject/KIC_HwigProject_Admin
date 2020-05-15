@@ -52,11 +52,6 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public int delete(String mem_id) {
-		return sqlSession.delete(namespace + ".memberDelete", mem_id);
-	}
-
-	@Override
 	public List<ApiOrderListVO> memberOrderSelectAll(ApiOrderListVO apiOrderListVo) {
 		return sqlSession.selectList(namespace + ".memberOrderSelectAll", apiOrderListVo);
 	}
@@ -97,13 +92,33 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<MemberOrderPrdVO> memberOrderPrdSelect(MemberOrderPrdVO memberOrderPrdVo) {
-		return sqlSession.selectList(namespace + ".memberOrderPrdSelect", memberOrderPrdVo);
+	public List<MemberOrderPrdVO> memberOrderPrdSelect(MemberCriteria cri) {
+		return sqlSession.selectList(namespace + ".memberOrderPrdSelect", cri);
+	}
+	
+	@Override
+	public int memberOrderPrdCount(MemberCriteria cri) {
+		return sqlSession.selectOne(namespace + ".memberOrderPrdCount", cri);
 	}
 
 	@Override
-	public List<ApiMemberReviewPrdVO> memberReviewPrdSelect(ApiMemberReviewPrdVO apiMemberReviewPrdVO) {
-		return sqlSession.selectList(namespace + ".memberReviewPrdSelect", apiMemberReviewPrdVO);
+	public List<ApiMemberReviewPrdVO> memberReviewPrdSelect(ApiMemberReviewPrdVO apiMemberReviewPrdVo) {
+		return sqlSession.selectList(namespace + ".memberReviewPrdSelect", apiMemberReviewPrdVo);
+	}
+	
+	@Override
+	public int delete(String mem_id) {
+		return sqlSession.delete(namespace + ".memberDelete", mem_id);
+	}
+	
+	@Override
+	public List<MemberDeleteVO> memberOrders(String mem_id) {
+		return sqlSession.selectList(namespace + ".memberOrders", mem_id);
+	}
+
+	@Override
+	public int adminMemberUpdate(MemberVO memberVo) {
+		return sqlSession.update(namespace + ".adminMemberUpdate", memberVo);
 	}
 
 }

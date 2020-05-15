@@ -4,216 +4,264 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
         <!--main content start-->
         <section class="main-content-wrapper">
-            <div class="pageheader">
-                <h1>관리자 페이지</h1>
-                <p class="description">휙 관리자 페이지 입니다.</p>
-            </div>
-            
-            <section id="main-content" class="animated fadeInUp">
-                <div class="row">
-                    <div class="col-md-12 col-lg-6">
-                        <div class="row">
-                             <div class="col-md-6">
-                            		<div class="panel panel-solid-info widget-mini">
-                                   		<div class="panel-body">
-                                       		<i class="icon-user"></i>
-                                       		<span class="total text-center">${member_count}</span>
-                                       		<span class="title text-center">회원 수</span>
-                                   		</div>
-                               		</div>
-                           		</div>
-                           		<div class="col-md-6">
-	                                <div class="panel panel-solid-success widget-mini">
-		                                <div class="panel-body">
-			                                     <i class="icon-bar-chart"></i>
-		                                        <span class="total text-center" id="order_paymoney">￦ ${order_paymoney}</span>
-		                                        <span class="title text-center">총 매출</span>
+            <c:if test="${sessionScope.user_type eq 'admin'}">
+	            <div class="pageheader">
+	                <h1>HWIG ADMIN</h1>
+	            </div>
+            </c:if>
+            <c:if test="${sessionScope.user_type eq 'seller'}">
+	            <div class="pageheader">
+	                <h1>HWIG SELLER</h1>
+	            </div>
+            </c:if>
+            <c:if test="${sessionScope.user_type eq 'admin'}">
+	            <section id="main-content" class="animated fadeInUp">
+	                <div class="row">
+	                    <div class="col-md-12 col-lg-6">
+	                        <div class="row">
+	                             <div class="col-md-6">
+	                            		<div class="panel panel-solid-info widget-mini">
+	                                   		<div class="panel-body">
+	                                       		<i class="icon-user"></i>
+	                                       		<span class="total text-center">${member_count}</span>
+	                                       		<span class="title text-center">회원 수</span>
+	                                   		</div>
+	                               		</div>
+	                           		</div>
+	                           		<div class="col-md-6">
+		                                <div class="panel panel-solid-success widget-mini">
+			                                <div class="panel-body">
+				                                     <i class="icon-bar-chart"></i>
+			                                        <span class="total text-center" id="order_paymoney">￦ ${order_paymoney}</span>
+			                                        <span class="title text-center">총 매출</span>
+			                                </div>
 		                                </div>
+	                            	</div>
+	                            
+	                            		<div class="col-md-6">
+			                                <div class="panel panel-solid-warning widget-mini">
+			                                    <div class="panel-body">
+			                                        <i class="icon-support"></i>
+			                                        <span class="total text-center">${reply_count}</span>
+			                                        <span class="title text-center">문의답변</span>
+			                                    </div>
+			                                </div>
+	                            		</div>
+	                            
+	                            <div class="col-md-6">
+	                                <div class="panel panel-solid-warning widget-mini">
+	                                    <div class="panel-body">
+	                                        <i class="icon-envelope-open"></i>
+	                                        <span class="total text-center">${qna_count}</span>
+	                                        <span class="title text-center">고객문의</span>
+	                                    </div>
 	                                </div>
-                            	</div>
-                            
-                            		<div class="col-md-6">
-		                                <div class="panel panel-solid-warning widget-mini">
-		                                    <div class="panel-body">
-		                                        <i class="icon-support"></i>
-		                                        <span class="total text-center">${reply_count}</span>
-		                                        <span class="title text-center">문의답변</span>
-		                                    </div>
-		                                </div>
-                            		</div>
-                            
-                            <div class="col-md-6">
-                                <div class="panel panel-solid-warning widget-mini">
-                                    <div class="panel-body">
-                                        <i class="icon-envelope-open"></i>
-                                        <span class="total text-center">${qna_count}</span>
-                                        <span class="title text-center">고객문의</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                        <div class="panel panel-default browser-chart">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">카테고리별 판매액</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                        <ul>
-                                            <li><i class="fa fa-circle success-color"></i> 소·돼지</li>
-                                            <li><i class="fa fa-circle primary-color"></i> 닭·오리</li>
-                                            <li><i class="fa fa-circle warning-color"></i> 간편조리·양념육</li>
-                                            <li><i class="fa fa-circle info-color"></i> 기본채소</li>
-                                            <li><i class="fa fa-circle default-color"></i> 국산과일</li>
-                                            <li><i class="fa fa-circle default-color" style="color:red"></i> 수입과일</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                        <div id="doughnut-canvas-holder">
-                                            <canvas id="doughnut-chart-area" width="137" height="137"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Monthly Goal</h3>
-                                <div class="actions pull-right">
-                                    <i class="fa fa-expand"></i>
-                                </div>
-                            </div>
-                            <div class="panel-body widget-gauge">
-                                <canvas width="160" height="100" id="gauge" class=""></canvas>
-                                <div class="goal-wrapper">
-                                    <span class="gauge-value pull-left"></span>
-                                    <span id="gauge-text" class="gauge-value pull-left">￦${order_paymoney}</span>
-                                    <span id="goal-text" class="goal-value pull-right">￦10,000,000</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-					 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">문의 목록</h3>
-                                <div class="actions pull-right">
-                                    <i class="fa fa-expand"></i>
-                                    <i class="fa fa-chevron-down"></i>
-                                    <i class="fa fa-times"></i>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr style="background:#ffe5ad">
-                                            <th>글 번호</th>
-                                            <th>카테고리</th>
-                                            <th>제목</th>
-                                            <th>작성일</th>
-                                            <th>작성자</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	<c:forEach var="qna_list" items="${qna_list}">
-                                    		<tr>
-	                                            <td>${qna_list.qna_id}</td>
-	                                            <td>${qna_list.qna_category}</td>
-	                                            <td><a href="qna/qlist">${qna_list.qna_subject}</a></td>
-	                                            <td>${qna_list.qna_regdate}</td>
-	                                            <td>${qna_list.mem_id}</td>
-                                        	</tr>
-                                    	</c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row">
-                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">주문 목록</h3>
-                                <div class="actions pull-right">
-                                    <i class="fa fa-expand"></i>
-                                    <i class="fa fa-chevron-down"></i>
-                                    <i class="fa fa-times"></i>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr class="success">
-                                            <th>주문번호</th>
-                                            <th>회원아이디</th>
-                                            <th>결제금액</th>
-                                            <th>주문날짜</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    	<c:forEach var="order_list" items="${order_list}">
-                                    		<tr>
-	                                            <td>${order_list.order_id}</td>
-	                                            <td>${order_list.mem_id}</td>
-	                                            <td>${order_list.order_paymoney}</td>
-	                                            <td>${order_list.order_paydate}</td>
-                                        	</tr>
-                                    	</c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
-                 <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">승인 요청 상품 목록</h3>
-                                <div class="actions pull-right">
-                                    <i class="fa fa-expand"></i>
-                                    <i class="fa fa-chevron-down"></i>
-                                    <i class="fa fa-times"></i>
-                                </div>
-                            </div>
-                            <div class="panel-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr class="info">
-                                            <th>상품번호</th>
-                                            <th>카테고리</th>
-                                            <th>판매자</th>
-                                            <th>상품명</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <c:forEach var="prd_list" items="${prd_list}">
-                                    		<tr>
-	                                            <td>${prd_list.prd_id}</td>
-	                                            <td>${prd_list.category_id}</td>
-	                                            <td>${prd_list.sel_id}</td>
-	                                            <td>${prd_list.prd_name}</td>
-                                        	</tr>
-                                    	</c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </section>
-        <!--main content end-->
-    
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+	                        <div class="panel panel-default browser-chart">
+	                            <div class="panel-heading">
+	                                <h3 class="panel-title">카테고리별 판매액</h3>
+	                            </div>
+	                            <div class="panel-body">
+	                                <div class="row">
+	                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+	                                        <ul>
+	                                            <li><i class="fa fa-circle success-color"></i> 소·돼지</li>
+	                                            <li><i class="fa fa-circle primary-color"></i> 닭·오리</li>
+	                                            <li><i class="fa fa-circle warning-color"></i> 간편조리·양념육</li>
+	                                            <li><i class="fa fa-circle info-color"></i> 기본채소</li>
+	                                            <li><i class="fa fa-circle default-color"></i> 국산과일</li>
+	                                            <li><i class="fa fa-circle default-color" style="color:red"></i> 수입과일</li>
+	                                        </ul>
+	                                    </div>
+	                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+	                                        <div id="doughnut-canvas-holder">
+	                                            <canvas id="doughnut-chart-area" width="137" height="137"></canvas>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+	                        <div class="panel panel-default">
+	                            <div class="panel-heading">
+	                                <h3 class="panel-title">Monthly Goal</h3>
+	                                <div class="actions pull-right">
+	                                    <i class="fa fa-expand"></i>
+	                                </div>
+	                            </div>
+	                            <div class="panel-body widget-gauge">
+	                                <canvas width="160" height="100" id="gauge" class=""></canvas>
+	                                <div class="goal-wrapper">
+	                                    <span class="gauge-value pull-left"></span>
+	                                    <span id="gauge-text" class="gauge-value pull-left">￦${order_paymoney}</span>
+	                                    <span id="goal-text" class="goal-value pull-right">￦10,000,000</span>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                
+	                <div class="row">
+						 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	                        <div class="panel panel-default">
+	                            <div class="panel-heading">
+	                                <h3 class="panel-title">문의 목록</h3>
+	                                <div class="actions pull-right">
+	                                    <i class="fa fa-expand"></i>
+	                                    <i class="fa fa-chevron-down"></i>
+	                                    <i class="fa fa-times"></i>
+	                                </div>
+	                            </div>
+	                            <div class="panel-body">
+	                                <table class="table">
+	                                    <thead>
+	                                        <tr style="background:#ffe5ad">
+	                                            <th>글 번호</th>
+	                                            <th>카테고리</th>
+	                                            <th>제목</th>
+	                                            <th>작성일</th>
+	                                            <th>작성자</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    	<c:forEach var="qna_list" items="${qna_list}">
+	                                    		<tr>
+		                                            <td>${qna_list.qna_id}</td>
+		                                            <td>${qna_list.qna_category}</td>
+		                                            <td><a href="qna/qlist">${qna_list.qna_subject}</a></td>
+		                                            <td>${qna_list.qna_regdate}</td>
+		                                            <td>${qna_list.mem_id}</td>
+	                                        	</tr>
+	                                    	</c:forEach>
+	                                    </tbody>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                
+	                <div class="row">
+	                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	                        <div class="panel panel-default">
+	                            <div class="panel-heading">
+	                                <h3 class="panel-title">주문 목록</h3>
+	                                <div class="actions pull-right">
+	                                    <i class="fa fa-expand"></i>
+	                                    <i class="fa fa-chevron-down"></i>
+	                                    <i class="fa fa-times"></i>
+	                                </div>
+	                            </div>
+	                            <div class="panel-body">
+	                                <table class="table">
+	                                    <thead>
+	                                        <tr class="success">
+	                                            <th>주문번호</th>
+	                                            <th>회원아이디</th>
+	                                            <th>결제금액</th>
+	                                            <th>주문날짜</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                    	<c:forEach var="order_list" items="${order_list}">
+	                                    		<tr>
+		                                            <td>${order_list.order_id}</td>
+		                                            <td>${order_list.mem_id}</td>
+		                                            <td>${order_list.order_paymoney}</td>
+		                                            <td>${order_list.order_paydate}</td>
+	                                        	</tr>
+	                                    	</c:forEach>
+	                                    </tbody>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                 </div>
+	                 <div class="row">
+	                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	                        <div class="panel panel-default">
+	                            <div class="panel-heading">
+	                                <h3 class="panel-title">승인 요청 상품 목록</h3>
+	                                <div class="actions pull-right">
+	                                    <i class="fa fa-expand"></i>
+	                                    <i class="fa fa-chevron-down"></i>
+	                                    <i class="fa fa-times"></i>
+	                                </div>
+	                            </div>
+	                            <div class="panel-body">
+	                                <table class="table">
+	                                    <thead>
+	                                        <tr class="info">
+	                                            <th>상품번호</th>
+	                                            <th>카테고리</th>
+	                                            <th>판매자</th>
+	                                            <th>상품명</th>
+	                                        </tr>
+	                                    </thead>
+	                                    <tbody>
+	                                        <c:forEach var="prd_list" items="${prd_list}">
+	                                    		<tr>
+		                                            <td>${prd_list.prd_id}</td>
+		                                            <td>${prd_list.category_id}</td>
+		                                            <td>${prd_list.sel_id}</td>
+		                                            <td>${prd_list.prd_name}</td>
+	                                        	</tr>
+	                                    	</c:forEach>
+	                                    </tbody>
+	                                </table>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </section>
+            </c:if>
+            <c:if test="${sessionScope.user_type eq 'seller'}">
+	            <section id="main-content" class="animated fadeInUp">
+	                <div class="row">
+						 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	                        <div class="panel panel-default">
+	                            <div class="panel-heading">
+	                                <h3 class="panel-title">후기 목록</h3>
+	                                <div class="actions pull-right">
+	                                    <i class="fa fa-expand"></i>
+	                                    <i class="fa fa-chevron-down"></i>
+	                                    <i class="fa fa-times"></i>
+	                                </div>
+	                            </div>
+		                            <c:forEach var="review_list" items="${review_list}">
+					                    <div class="panel" style="display:flex;">
+					                          <div class="panel-body col-md-4">
+					                              <header>
+					                                  <p class="pull-right">${review_list.review_regdate}</p>
+					                              </header>
+					                              <div class="row view-mail-header">
+					                                 <div class="col-md-8 ">
+					                                     <strong>[${review_list.prd_name}] ${review_list.review_subject}</strong>
+					                                 </div>
+					                              </div>
+					                              <hr style="border: 0.5px solid #d3d3d3;">
+					                              <div class="row">
+					                                  <div class="col-md-12">
+					                                      <div class="panel view-mail-body">
+					                                          <div class="panel-body" style="height:450px;">
+					                                              ${review_list.review_content}
+					                                          </div>
+						                                  </div>
+						                              </div>
+						                          </div>
+						                      </div>
+						                  </div>
+						           </c:forEach>
+				               </div>
+				            </div>
+	                     </div>
+		            </section>
+    	        </c:if>
+        	</section>
+        	<!--main content end-->
 <%@ include file="/WEB-INF/views/include/footnav.jsp" %>
 <script>
 $(function(){
