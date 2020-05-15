@@ -95,26 +95,8 @@
 													<th class="text-center">상품갯수</th>
 												</tr>
 											</thead>
-<<<<<<< HEAD
+
 											<tbody id="prdDataList">
-=======
-											<tbody>
-												<c:if test="${fn:length(prdData) > 0}">
-												<c:forEach items="${prdData}" var="prdData">
-													<tr>
-														<td>${prdData.order_id}</td>
-														<td>${prdData.prd_name}</td>
-														<td>${prdData.prd_price}</td>
-														<td>${prdData.order_count}</td>
-													</tr>
-												</c:forEach>
-												</c:if>
-												<c:if test="${fn:length(prdData) < 1}">
-													<tr>
-														<td colspan="4">주문한 상품이 없습니다</td>
-													</tr>
-												</c:if>
->>>>>>> refs/remotes/origin/hwig_lws
 											</tbody>
 										</table>
 										<button type="button" class="btn btn-default btn-trans" id="orderSearchBtn">더보기</button>
