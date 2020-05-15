@@ -6,16 +6,12 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.hwig.admin.common.CommonResponse;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -46,6 +42,15 @@ public class CartAPIController {
 	// 장바구니에서 삭제하기
 	@RequestMapping(value = "/cartdelete", method = RequestMethod.POST)
 	public void getCartDelete(@RequestBody List<CartdeleteDTO> listdto) throws Exception {
-		service.cartDelete(listdto);
+		String memid = listdto.get(0).getMem_id();
+		Map<String, Object> cmap = new HashMap<String, Object>();
+		
+		for(int i=0; i<listdto.get(0).getPrd_id().size(); i++) {
+				int prdid = listdto.get(0).getPrd_ids(i);
+				cmap.put("mem_id", memid);
+				cmap.put("prd_id", prdid);
+				
+				service.cartDelete(cmap);
+			}
 	}
 }

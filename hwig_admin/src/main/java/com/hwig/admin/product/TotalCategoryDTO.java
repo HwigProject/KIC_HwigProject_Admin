@@ -4,6 +4,7 @@ import java.util.List;
 
 public class TotalCategoryDTO {
 	private List<PCategoryDTO> pcategory;
+	private List<SCategoryDTO> scategory;
 	private List<LCategoryDTO> category;
 
 	public List<PCategoryDTO> getPcategory() {
@@ -12,6 +13,14 @@ public class TotalCategoryDTO {
 
 	public void setPcategory(List<PCategoryDTO> pcategory) {
 		this.pcategory = pcategory;
+	}
+
+	public List<SCategoryDTO> getScategory() {
+		return scategory;
+	}
+
+	public void setScategory(List<SCategoryDTO> scategory) {
+		this.scategory = scategory;
 	}
 
 	public List<LCategoryDTO> getCategory() {

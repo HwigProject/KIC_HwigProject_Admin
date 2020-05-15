@@ -192,7 +192,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 카테고리 목록 보내기 (상위카테고리)-->
 	<select id="category" resultType="com.hwig.admin.product.CategoryDTO">
-		select * from tbl_category
+		select * from tbl_category order by category_id asc
 	</select>
 	
 	<!-- 카테고리 목록 선택하여 받아오기 -->
@@ -242,5 +242,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="salelist" resultType="com.hwig.admin.product.ProductListDTO">
 		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale 
 		from tbl_prd tp, tbl_category tc where prd_sale != 0 and tp.category_id = tc.category_id order by prd_sale desc
+	</select>
+	
+	<!-- 재고 많은 순서대로 나열된 목록 중 상위 4개 -->
+	<select id="mainwhatlist" resultType="com.hwig.admin.product.ProductWhatDTO">
+		select tp.prd_id, tp.category_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
+		from tbl_prd tp where rownum <![CDATA[<]]>=4 order by prd_stock desc
+	</select>
+	
+	<!-- 할인율 순서대로 나열된 목록 중 상위 4개 -->
+	<select id="mainsalelist" resultType="com.hwig.admin.product.ProductSaleDTO">
+		select tp.prd_id, tp.category_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
+		from tbl_prd tp where rownum <![CDATA[<]]>=4 order by prd_sale desc
+	</select>
+	
+	<!-- 신상품 순서대로 나열된 목록 중 상위 4개 -->
+	<select id="mainnewlist" resultType="com.hwig.admin.product.ProductNewDTO">
+		select tp.prd_id, tp.category_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
+		from tbl_prd tp where rownum <![CDATA[<]]>=4 order by prd_date desc
+	</select>
+	
+	<!-- 큰 카테고리 마다 랜덤으로 4개 뽑기 -->
+	<select id="mainrandlist" resultType="com.hwig.admin.product.ProductRandDTO">
+		select * from (select tp.prd_id, tp.category_id, tc.category_p_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
+		from tbl_prd tp, tbl_category tc where tc.category_p_id=#{category_p_id} order by dbms_random.value) where rownum <![CDATA[<]]>=4
 	</select>
 </mapper>
