@@ -195,5 +195,10 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProductRandDTO> rprolist(int category_p_id) throws Exception{
 		return dao.rprolist(category_p_id);
 	}
+
+	@Override
+	public int changeStock(ProductStockVO productStockVo) {
+		return dao.changeStock(productStockVo);
+	}
 	
 }

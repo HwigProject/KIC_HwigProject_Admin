@@ -46,4 +46,9 @@ public class SellerDAOImpl implements SellerDAO {
 		return sqlSession.update(namespace + ".sellerPwUpdate", sellerPwDto);
 	}
 
+	@Override
+	public List<StockPrdsVO> stockPrdSelect(String sel_id) {
+		return sqlSession.selectList(namespace + ".stockPrds", sel_id);
+	}
+
 }

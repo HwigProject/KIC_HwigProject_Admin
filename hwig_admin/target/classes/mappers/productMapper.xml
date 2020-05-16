@@ -267,4 +267,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from (select tp.prd_id, tp.category_id, tc.category_p_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
 		from tbl_prd tp, tbl_category tc where tc.category_p_id=#{category_p_id} order by dbms_random.value) where rownum <![CDATA[<]]>=4
 	</select>
+	
+	<update id="changeStock">
+		update tbl_prd set prd_stock = #{prd_stock} where prd_id = #{prd_id}
+	</update>
+	
 </mapper>

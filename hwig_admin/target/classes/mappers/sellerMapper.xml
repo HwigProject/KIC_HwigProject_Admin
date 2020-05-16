@@ -80,5 +80,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="sellerPwUpdate">
 		update tbl_seller set sel_pw = #{sel_pw} where sel_id = #{sel_id}
 	</update>
+	
+	<select id="stockPrds" resultType="StockPrdsVO">
+		select
+			prd_id,
+			prd_name,
+			prd_stock,
+			prd_price,
+			prd_from,
+			prd_info,
+			to_char(prd_date,'YYYY-MM-DD') as prd_date
+		from
+			tbl_prd
+		where
+			sel_id = #{sel_id}
+		order by
+			prd_stock desc
+	</select>
 
 </mapper>

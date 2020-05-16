@@ -97,4 +97,7 @@ public interface ProductService {
 	
 	//랜덤 순서대로 나열된 목록
 	public List<ProductRandDTO> rprolist(int category_p_id) throws Exception;
+	
+	public int changeStock(ProductStockVO productStockVo);
+	
 }

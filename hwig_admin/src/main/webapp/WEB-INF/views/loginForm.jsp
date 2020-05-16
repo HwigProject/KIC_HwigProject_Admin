@@ -146,7 +146,7 @@
 		$("input:radio[name='loginType']").on("click", function(){
 			if($("input:radio[name='loginType']:checked").val() == "admin"){
 				$("#sel_id").empty();
-				$("#admin_id").text("관리자번호");
+				$("#admin_id").text("관리자아이디");
 				$("#user_type").val("admin");
 				console.log($("#user_type").val());
 			} else {
@@ -164,7 +164,7 @@
 	
 		$("#admin").attr('checked', true);
 		$("#sel_id").empty();
-		$("#admin_id").text("관리자번호");
+		$("#admin_id").text("관리자아이디");
 		$("#user_type").val("admin");
 		
 		var result = '${msg}';

@@ -45,4 +45,9 @@ public class SellerServiceImpl implements SellerService {
 		return sellerDao.pwUpdate(sellerPwDto);
 	}
 
+	@Override
+	public List<StockPrdsVO> stockPrdList(String sel_id) {
+		return sellerDao.stockPrdSelect(sel_id);
+	}
+
 }

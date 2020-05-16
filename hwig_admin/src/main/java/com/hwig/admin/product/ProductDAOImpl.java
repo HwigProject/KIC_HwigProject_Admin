@@ -196,5 +196,10 @@ public class ProductDAOImpl implements ProductDAO{
 	public List<ProductRandDTO> rprolist(int category_p_id) throws Exception{
 		return sql.selectList(namespace + ".mainrandlist", category_p_id);
 	}
+
+	@Override
+	public int changeStock(ProductStockVO productStockVo) {
+		return sql.update(namespace + ".changeStock", productStockVo);
+	}
 	
 }

@@ -35,9 +35,12 @@ public class SellerController {
 
 	@Resource(name = "sellerAttachPath")
 	private String sellerAttachPath;
-
+	
 	@Autowired
 	private SellerService sellerService;
+	
+	@Autowired
+	private HttpSession session;
 
 	private static final Logger logger = LoggerFactory.getLogger(SellerController.class);
 
@@ -65,7 +68,7 @@ public class SellerController {
 
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modifyPagePOST(SellerModifyDTO sellerModifyDto, MultipartFile attach_img,
-			@ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr, HttpSession session) {
+			@ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr) {
 		logger.info(sellerModifyDto.toString());
 
 		if (attach_img != null && !attach_img.getOriginalFilename().equals("")) {
@@ -198,6 +201,7 @@ public class SellerController {
 
 	@RequestMapping(value = "/account", method = RequestMethod.GET)
 	public void accountPage() {
+
 	}
 
 	@RequestMapping(value = "/changePw", method = RequestMethod.POST)
@@ -216,6 +220,15 @@ public class SellerController {
 		}
 
 		return "redirect:/seller/account";
+	}
+	
+	/*
+	 * 재고관리
+	 */
+	@RequestMapping(value = "/prdList", method = RequestMethod.GET)
+	public void prdListPage(Model model) {
+		logger.info(sellerService.stockPrdList((String)session.getAttribute("user_id")).toString());
+		model.addAttribute("list", sellerService.stockPrdList((String)session.getAttribute("user_id")));
 	}
 
 }

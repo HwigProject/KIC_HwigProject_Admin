@@ -82,7 +82,6 @@
                                 </span>판매자 정보</a>
                         </li>
                         </c:if>
-                        <li class="divider"></li>
                         <li>
                             <a href="#" id="logoutBtn">
                                 <span class="icon"><i class="fa fa-sign-out"></i>
@@ -157,16 +156,30 @@
 						</c:if>
                         </ul>
                     </li>
-                    <li class="nav-dropdown">
-                        <a href="#" title="Tables">
-                            <i class="fa  fa-fw fa-shopping-cart"></i> 주문관리
-                        </a>
-                        <ul class="nav-sub">
-                            <li>
-                                <a href="/order/list" title="Data Tables">주문 내역</a>
-                            </li>
-                        </ul>
-                    </li>
+                    <c:if test="${sessionScope.user_type eq 'admin'}">
+	                    <li class="nav-dropdown">
+	                        <a href="#" title="Tables">
+	                            <i class="fa  fa-fw fa-shopping-cart"></i> 주문관리
+	                        </a>
+	                        <ul class="nav-sub">
+	                            <li>
+	                                <a href="/order/list" title="Data Tables">주문 내역</a>
+	                            </li>
+	                        </ul>
+	                    </li>
+                    </c:if>
+                    <c:if test="${sessionScope.user_type eq 'seller'}">
+	                    <li class="nav-dropdown">
+	                        <a href="#" title="Tables">
+	                            <i class="fa  fa-fw fa-shopping-cart"></i> 재고관리
+	                        </a>
+	                        <ul class="nav-sub">
+	                            <li>
+	                                <a href="/seller/prdList" title="Data Tables">재고 내역</a>
+	                            </li>
+	                        </ul>
+	                    </li>
+                    </c:if>
                     <c:if test="${sessionScope.user_type eq 'admin'}">
                     <li class="nav-dropdown">
                         <a href="#" title="Tables">
