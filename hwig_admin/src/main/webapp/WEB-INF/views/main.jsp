@@ -231,54 +231,50 @@
 	                                    <i class="fa fa-times"></i>
 	                                </div>
 	                            </div>
-		                            <c:forEach var="review_list" items="${review_list}">
-					                    <div class="panel" style="display:flex;">
-					                          <div class="panel-body col-md-4">
-					                              <header>
-					                                  <p class="pull-right">${review_list.review_regdate}</p>
-					                              </header>
-					                              <div class="row view-mail-header">
-					                                 <div class="col-md-8 ">
-					                                     <strong id="review_1">[${review_list.prd_name}] ${review_list.review_subject}</strong>
-					                                 </div>
-					                              </div>
-					                              <hr style="border: 0.5px solid #d3d3d3;">
-					                              <div class="row">
-					                                  <div class="col-md-12">
-					                                      <div class="panel view-mail-body">
-					                                          <div class="panel-body" style="height:450px;">
-					                                              ${review_list.review_content}
-					                                          </div>
-						                                  </div>
-						                              </div>
-						                          </div>
-						                      </div>
-						                  </div>
-						           </c:forEach>
-						           <div class="panel" style="display:flex;" id="review_2">
-					                        <hr style="border: 0.5px solid #d3d3d3;">
-					                        <div class="row col-md-12">
-					                             <div class="col-md-12">
-					                                  <div class="panel view-mail-body">
-					                                       <div class="panel-body" style="height:200px; text-align:center;">
-					                                           <strong>작성된 후기가 없습니다.</strong>
-					                                       </div>
-						                              </div>
-						                         </div>
+	                        </div>
+		                    <c:forEach var="review_list" items="${review_list}">
+					        	<div class="panel col-md-12" id="review_1">
+					            	<ul class="row panel-body col-md-12" style="list-style:none;" id="accordion_ul">
+										<li class="col-md-12" id="accordion_li">
+											<a href="#" class="col-md-12">[${review_list.prd_name}]&nbsp;&nbsp;${review_list.review_subject}<span style="float:right;">${review_list.review_regdate}</span></a>
+												<div class="col-md-12 view-mail-body" style="border-top: 1px solid #d3d3d3; margin-top:10px;">
+											    	<p style="height:150px;"><br>${review_list.review_content}</p>
+											    </div>
+										</li>
+									</ul>
+								</div>
+				            </c:forEach>
+						    <div class="panel" style="display:flex;" id="review_2">
+					        	<hr style="border: 0.5px solid #d3d3d3;">
+					            	<div class="row col-md-12">
+					                	<div class="col-md-12">
+					                    	<div class="panel view-mail-body">
+					                        	<div class="panel-body" style="height:200px; text-align:center;">
+					                            	<strong>작성된 후기가 없습니다.</strong>
+					                            </div>
 						                    </div>
-						               </div>
-						           </div>		
-				               </div>
-				            </div>
+						                </div>
+						            </div>
+						        </div>
+						    </div>		
+				        </div>
 		            </section>
 		        </c:if>
         	</section>
         	<!--main content end-->
-
 <%@ include file="/WEB-INF/views/include/footnav.jsp" %>
 <script>
 $(function(){
-	 
+	  $("p").hide();
+	   $("#accordion_ul > #accordion_li:first-child a").next().children().show();
+	  $("#accordion_ul #accordion_li a").click(function(){
+	    $(this).next().children().slideToggle(300);
+	    // $(this).next().slideDown(300);
+	    $("#accordion_ul #accordion_li a").not(this).next().children().slideUp(300);
+	    return false;
+	  });
+	  $("#accordion_ul #accordion_li a").eq(0).trigger("click");
+
 	if($('#review_1').val() != null){
 		$('#review_2').hide();
 	} else {
