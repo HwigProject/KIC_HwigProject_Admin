@@ -47,8 +47,13 @@ public class SellerDAOImpl implements SellerDAO {
 	}
 
 	@Override
-	public List<StockPrdsVO> stockPrdSelect(String sel_id) {
-		return sqlSession.selectList(namespace + ".stockPrds", sel_id);
+	public List<StockPrdsVO> stockPrdSelect(SellerSearchCriteria cri) {
+		return sqlSession.selectList(namespace + ".stockPrds", cri);
+	}
+
+	@Override
+	public int stockPrdCount(SellerSearchCriteria cri) {
+		return sqlSession.selectOne(namespace + ".stockPrdsCount", cri);
 	}
 
 }

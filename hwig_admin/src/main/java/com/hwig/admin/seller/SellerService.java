@@ -18,6 +18,8 @@ public interface SellerService {
 
 	public int pwModify(SellerPwDTO sellerPwDto);
 	
-	public List<StockPrdsVO> stockPrdList(String sel_id);
+	public List<StockPrdsVO> stockPrdList(SellerSearchCriteria cri);
+	
+	public int stockPrdCount(SellerSearchCriteria cri);
 
 }

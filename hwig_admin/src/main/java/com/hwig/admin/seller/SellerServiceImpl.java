@@ -46,8 +46,13 @@ public class SellerServiceImpl implements SellerService {
 	}
 
 	@Override
-	public List<StockPrdsVO> stockPrdList(String sel_id) {
-		return sellerDao.stockPrdSelect(sel_id);
+	public List<StockPrdsVO> stockPrdList(SellerSearchCriteria cri) {
+		return sellerDao.stockPrdSelect(cri);
+	}
+
+	@Override
+	public int stockPrdCount(SellerSearchCriteria cri) {
+		return sellerDao.stockPrdCount(cri);
 	}
 
 }

@@ -31,15 +31,15 @@
 							</div>
 						</div>
 						<div class="panel-body">
-							<%-- <div class="row">
+							<div class="row">
 								<div class="col-xs-7">
 									<div class="dataTables_length" id="example_length">
 										<div class="form-group">
 											<label>검색 
 											<select name="searchType" id="searchType">
 												<option value="" <c:out value="${cri.searchType == null ? 'selected' : ' '}" />>----</option>
-												<option value="orderid" <c:out value="${cri.searchType eq 'orderid' ? 'selected' : ' ' }" />>주문번호</option>
-												<option value="memid" <c:out value="${cri.searchType eq 'memid' ? 'selected' : ' ' }" />>회원아이디</option>
+												<option value="prdid" <c:out value="${cri.searchType eq 'prdid' ? 'selected' : ' ' }" />>상품아이디</option>
+												<option value="prdname" <c:out value="${cri.searchType eq 'prdname' ? 'selected' : ' ' }" />>상품명</option>
 											</select>
 											</label>
 										</div>
@@ -51,7 +51,7 @@
 										<label id="listLabel"><input type="search" class="form-control input-sm" aria-controls="example" id="keyword" value="${cri.keyword}"></label>
 									</div>
 								</div>
-							</div> --%>
+							</div>
 							<div class="table-responsive">
 								<table class="table table-bordered table-striped text-center">
 									<thead>
@@ -87,7 +87,7 @@
 									</tbody>
 								</table>
 							</div>
-							<%-- <div class="col-xs-12">
+							<div class="col-xs-12">
 								<div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
 									<ul class="pagination">
 										<c:if test="${pageMaker.prev}">
@@ -106,7 +106,7 @@
 										</c:if>
 									</ul>
 								</div>
-							</div> --%>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -119,7 +119,7 @@
 <script>
 	$(document).ready(function() {
 		function search(){
-			self.location = "list"
+			self.location = "prdList"
 				+ '${pageMaker.makeQuery(1)}'
 				+ "&searchType="
 				+ $("#searchType option:selected").val()

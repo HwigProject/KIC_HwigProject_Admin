@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hwig.admin.common.PageMaker;
 import com.hwig.admin.common.SearchCriteria;
+import com.hwig.admin.product.ProductService;
 
 @Controller
 @RequestMapping("/seller/*")
@@ -35,10 +36,13 @@ public class SellerController {
 
 	@Resource(name = "sellerAttachPath")
 	private String sellerAttachPath;
-	
+
 	@Autowired
 	private SellerService sellerService;
 	
+	@Autowired
+	private ProductService productService;
+
 	@Autowired
 	private HttpSession session;
 
@@ -221,14 +225,21 @@ public class SellerController {
 
 		return "redirect:/seller/account";
 	}
-	
+
 	/*
 	 * 재고관리
 	 */
 	@RequestMapping(value = "/prdList", method = RequestMethod.GET)
-	public void prdListPage(Model model) {
-		logger.info(sellerService.stockPrdList((String)session.getAttribute("user_id")).toString());
-		model.addAttribute("list", sellerService.stockPrdList((String)session.getAttribute("user_id")));
+	public void prdListPage(@ModelAttribute("cri") SellerSearchCriteria cri, Model model) {
+		cri.setSel_id((String)session.getAttribute("user_id"));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(sellerService.stockPrdCount(cri));
+		model.addAttribute("pageMaker", pageMaker);
+
+		logger.info(sellerService.stockPrdList(cri).toString());
+		model.addAttribute("list", sellerService.stockPrdList(cri));
 	}
 
 }

@@ -18,6 +18,8 @@ public interface SellerDAO {
 
 	public int pwUpdate(SellerPwDTO sellerPwDto);
 	
-	public List<StockPrdsVO> stockPrdSelect(String sel_id);
+	public List<StockPrdsVO> stockPrdSelect(SellerSearchCriteria cri);
+	
+	public int stockPrdCount(SellerSearchCriteria cri);
 
 }
