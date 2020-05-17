@@ -25,7 +25,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hwig.admin.common.PageMaker;
 import com.hwig.admin.common.SearchCriteria;
-import com.hwig.admin.product.ProductService;
 
 @Controller
 @RequestMapping("/seller/*")
@@ -39,9 +38,6 @@ public class SellerController {
 
 	@Autowired
 	private SellerService sellerService;
-	
-	@Autowired
-	private ProductService productService;
 
 	@Autowired
 	private HttpSession session;
