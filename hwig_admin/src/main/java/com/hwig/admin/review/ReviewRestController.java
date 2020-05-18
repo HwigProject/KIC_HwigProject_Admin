@@ -58,8 +58,7 @@ public class ReviewRestController {
 		rvService.review_hit(review_id);
 	}
 
-	@PostMapping(value = "/review_write", headers = ("content-type=multipart/*"))
-
+	@PostMapping(value = "/review_write")
 	public Map<String, Object> review_write(@RequestBody ReviewVO review, MultipartFile file, RedirectAttributes rttr,
 			HttpSession session) throws Exception {
 
@@ -67,35 +66,41 @@ public class ReviewRestController {
 
 		review.setReview_content(review.getReview_content().replace("\r\n", "<br>"));
 
-		
-		if(file.getOriginalFilename() != null && !file.getOriginalFilename().equals("")) { 
-		
-			UUID uid = UUID.randomUUID();
-			String fileName = uid.toString() + "_" + file.getOriginalFilename();
-		
-			FileOutputStream fos = new FileOutputStream(savePath + attachPath + "/" + fileName); InputStream is = file.getInputStream();
-		 
-			int readCount = 0; byte[] buffer = new byte[1024];
-		 
-			while ((readCount = is.read(buffer)) != -1) { fos.write(buffer, 0, readCount); } fos.close();
-		 
-			String path = session.getServletContext().getRealPath("/");
-			System.out.println("path:::"+path);
-		
-			review.setReview_img(attachPath + "/" + fileName); } else {
-			review.setReview_img(attachPath + "/" + "null"); }
-		 
+		if(file!=null) {
+			
+			if(file.getOriginalFilename() != null && !file.getOriginalFilename().equals("")) { 
+				
+				UUID uid = UUID.randomUUID();
+				String fileName = uid.toString() + "_" + file.getOriginalFilename();
+			
+				FileOutputStream fos = new FileOutputStream(savePath + attachPath + "/" + fileName); 
+				InputStream is = file.getInputStream();
+			 
+				int readCount = 0; byte[] buffer = new byte[1024];
+			 
+				while ((readCount = is.read(buffer)) != -1) { fos.write(buffer, 0, readCount); } fos.close();
+			 
+				String path = session.getServletContext().getRealPath("/");
+				System.out.println("path:::"+path);
+			
+				review.setReview_img(attachPath + "/" + fileName); 
+				
+			} else {
+				review.setReview_img(attachPath + "/" + "null"); 
+			}
+		} else {
 			String x = review.getReview_content();
 
 			String[] slang = { "시발", "씨발", "새끼", "병신", "씨1발", "좆", "엠창", "애미", "쓰벌", "ㅗ", "호로", "버러지" };
 
 			for (int i = 0; i < slang.length; i++) {
-			if (x.matches(".*" + slang[i] + ".*")) {
-				review.setReview_content(x.replace(slang[i], "***"));
-				x = review.getReview_content();
+				if (x.matches(".*" + slang[i] + ".*")) {
+					review.setReview_content(x.replace(slang[i], "***"));
+					x = review.getReview_content();
+				}
 			}
 		}
-
+		
 		int result = rvService.review_write(review);
 		oService.orderPrdReview(review.getPrd_id());
 

@@ -221,7 +221,7 @@
             <c:if test="${sessionScope.user_type eq 'seller'}">
 	            <section id="main-content" class="animated fadeInUp">
 	                <div class="row">
-						 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8" style="left:17%;">
 	                        <div class="panel panel-default">
 	                            <div class="panel-heading">
 	                                <h3 class="panel-title">후기 목록</h3>
@@ -238,7 +238,8 @@
 										<li class="col-md-12" id="accordion_li">
 											<a href="#" class="col-md-12">[${review_list.prd_name}]&nbsp;&nbsp;${review_list.review_subject}<span style="float:right;">${review_list.review_regdate}</span></a>
 												<div class="col-md-12 view-mail-body" style="border-top: 1px solid #d3d3d3; margin-top:10px;">
-											    	<p style="height:150px;"><br>${review_list.review_content}</p>
+													<img src="${review_list.review_img}"/>
+											    	<pre style="background-color:white; border:none; height:150px;"><br>${review_list.review_content}</pre>
 											    </div>
 										</li>
 									</ul>

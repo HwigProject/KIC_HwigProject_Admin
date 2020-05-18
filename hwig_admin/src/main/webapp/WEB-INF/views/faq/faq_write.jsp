@@ -147,7 +147,7 @@
                                         <label class="col-sm-3 control-label">본문</label>
                                         
                                         <div class="col-sm-6">
-                                            <textarea style="resize:none; height:500px;" id="faq_content" name="faq_content" class="form-control"></textarea>
+                                            <pre><textarea style="resize:none; height:500px;" id="faq_content" name="faq_content" class="form-control"></textarea></pre>
                                         </div>
                                     </div>
                                     <div class="form-group">

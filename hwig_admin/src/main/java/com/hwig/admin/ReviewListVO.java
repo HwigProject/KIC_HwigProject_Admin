@@ -5,6 +5,7 @@ import java.sql.Date;
 public class ReviewListVO {
 	private String prd_name;
 	private String review_subject;
+	private String review_img;
 	private String review_content;
 	private Date review_regdate;
 	private String sel_id;
@@ -25,6 +26,14 @@ public class ReviewListVO {
 		this.review_subject = review_subject;
 	}
 
+	public String getReview_img() {
+		return review_img;
+	}
+
+	public void setReview_img(String review_img) {
+		this.review_img = review_img;
+	}
+	
 	public String getReview_content() {
 		return review_content;
 	}

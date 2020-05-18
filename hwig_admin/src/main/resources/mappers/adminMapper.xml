@@ -85,7 +85,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 여기부터 판매자 -->
 	<!-- 고객 후기 -->
 	<select id="review_list" resultType="ReviewListVO" parameterType="String">
-		select prd_name, review_subject, review_content, review_regdate
+		select prd_name, review_subject, review_content, review_regdate, review_img
 		from tbl_prd p, tbl_review r
 		<![CDATA[
 		where p.prd_id = r.prd_id and p.sel_id = #{sel_id} and rownum <= 3

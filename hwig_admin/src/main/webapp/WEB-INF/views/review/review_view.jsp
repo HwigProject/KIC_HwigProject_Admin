@@ -27,7 +27,7 @@
 	                                        <div class="panel view-mail-body">
 	                                            <div class="panel-body">
 	                                            	<img src="http://13.209.202.242:8080${review_view.review_img}">
-	                                                <p>${review_view.review_content}</p>
+	                                                <pre style="background-color:white; border:none;">${review_view.review_content}</pre>
 	                                            </div>                              
 	                                        </div>
 	                                    </div>

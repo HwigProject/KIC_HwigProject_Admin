@@ -28,7 +28,7 @@
 	                                    <div class="col-md-12">
 	                                        <div class="panel view-mail-body">
 	                                            <div class="panel-body">
-	                                                <p>${qna_view.qna_content}</p>
+	                                                <pre style="background-color:white; border:none;">${qna_view.qna_content}</pre>
 	                                            </div>                              
 	                                        </div>
 	                                    </div>
