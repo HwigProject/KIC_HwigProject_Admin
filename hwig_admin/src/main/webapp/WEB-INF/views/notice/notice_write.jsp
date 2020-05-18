@@ -26,6 +26,11 @@ function check_upload(){
 	}
 }
 </script>
+<style>
+	.star{
+		color:red;
+	}
+</style>
 </head>
 <body>
 	<%@ include file="../include/headnav.jsp" %>
@@ -46,13 +51,13 @@ function check_upload(){
                             <div class="panel-body">
                                 <form method="post" name="n_uploadForm" class="form-horizontal form-border">         
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">제목</label>
+                                        <label class="col-sm-3 control-label">제목<span class="star">*</span></label>
                                         <div class="col-sm-6">
                                             <input type="text" name="notice_subject" class="form-control" placeholder="제목을 입력하세요. ">
                                         </div>
                                     </div>                                    
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">본문</label>
+                                        <label class="col-sm-3 control-label">본문<span class="star">*</span></label>
                                         <div class="col-sm-6">
                                             <textarea style="height:500px; resize:none;" name="notice_content" class="form-control"></textarea>
                                         </div>

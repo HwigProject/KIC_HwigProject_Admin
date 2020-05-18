@@ -102,7 +102,11 @@
 
 	})
 </script>
-
+<style>
+	.star{
+		color:red;
+	}
+</style>
 </head>
 <body>
 	<%@ include file="../include/headnav.jsp" %>
@@ -124,13 +128,13 @@
                                 <form method="post" name="f_uploadForm" class="form-horizontal form-border">                                
                						<input type="hidden" name="faq_category">
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">제목</label>
+                                        <label class="col-sm-3 control-label">제목<span class="star">*</span></label>
                                         <div class="col-sm-6">
                                             <input type="text" name="faq_subject" class="form-control" placeholder="제목을 입력하세요. ">
                                         </div>
                                     </div>
                                     <div class="form-group">
-	                                    <label class="col-sm-3 control-label">카테고리</label>
+	                                    <label class="col-sm-3 control-label">카테고리<span class="star">*</span></label>
 	                                    <div class="col-sm-6">
 		                                    <select class="form-control" name="category" onchange="select_category(this.form)">
 		                                        <option selected value=0>선택</option>
@@ -144,7 +148,7 @@
 	                                	</div>
        								</div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">본문</label>
+                                        <label class="col-sm-3 control-label">본문<span class="star">*</span></label>
                                         
                                         <div class="col-sm-6">
                                             <pre><textarea style="resize:none; height:500px;" id="faq_content" name="faq_content" class="form-control"></textarea></pre>
