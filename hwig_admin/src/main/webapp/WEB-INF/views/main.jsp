@@ -222,8 +222,7 @@
 	</c:if>
 	<c:if test="${sessionScope.user_type eq 'seller'}">
 		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8"
-				style="left: 17%;">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">후기 목록</h3>
