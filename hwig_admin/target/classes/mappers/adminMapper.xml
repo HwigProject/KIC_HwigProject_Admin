@@ -77,20 +77,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 동그라미 차트 -->
-	<select id="chart_circle" resultType="com.hwig.admin.product.ProductVO">
-		select sum(prd_price) as prd_price, category_id 
-		from tbl_prd group by category_id
+	<select id="chart_circle" resultType="ChartVO">
+		select sum(o.order_paymoney) as order_paymoney, p.category_id as category_id
+		from tbl_order o, tbl_order_b ob, tbl_prd p
+		where o.order_id = ob.order_id and ob.prd_id = p.prd_id
+		group by p.category_id
 	</select>
 	
 	<!-- 여기부터 판매자 -->
 	<!-- 고객 후기 -->
 	<select id="review_list" resultType="ReviewListVO" parameterType="String">
-		select prd_name, review_subject, review_content, review_regdate
+		select prd_name, review_subject, review_content, review_regdate, review_img
 		from tbl_prd p, tbl_review r
 		<![CDATA[
 		where p.prd_id = r.prd_id and p.sel_id = #{sel_id} and rownum <= 3
 		]]>
-		order by review_regdate
+		order by review_regdate desc
 	</select>
 	
 	<select id="sellerPrdsStock" resultType="ProductListVO">

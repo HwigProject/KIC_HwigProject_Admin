@@ -74,8 +74,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>	
 	
 	<insert id="review_write" parameterType="com.hwig.admin.review.ReviewVO">
-		insert into tbl_review(review_id, prd_id, mem_id, review_subject, review_content)
-		values((select nvl(max(review_id)+1,1) from tbl_review), #{prd_id}, #{mem_id}, #{review_subject}, #{review_content})
+		insert into tbl_review(review_id, prd_id, mem_id, review_subject, review_content, review_img)
+		values((select nvl(max(review_id)+1,1) from tbl_review), #{prd_id}, #{mem_id}, #{review_subject}, #{review_content}, #{review_img})
 	</insert>
 	
 	<delete id="reviewDelete">

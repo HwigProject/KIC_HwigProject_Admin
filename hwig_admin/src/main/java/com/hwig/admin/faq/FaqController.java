@@ -45,7 +45,7 @@ public class FaqController {
 	@RequestMapping(value = "/faq_write", method = RequestMethod.POST)
 	public String postQna_write(FaqVO faq, RedirectAttributes rttr) throws Exception{
 		
-		faq.setFaq_content(faq.getFaq_content().replace("\r\n", "<br>"));
+		/* faq.setFaq_content(faq.getFaq_content().replace("\r\n", "<br>")); */
 		
 		int result = fService.faq_write(faq);
 		
