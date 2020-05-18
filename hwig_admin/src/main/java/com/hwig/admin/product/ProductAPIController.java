@@ -88,7 +88,7 @@ public class ProductAPIController {
 		List<ProductSaleDTO> slist = service.sprolist(); //세일
 		List<ProductNewDTO> nlist = service.nprolist(); //신상품
 		List<ProductRandDTO> rlist1 = service.rprolist(1); //랜덤1
-		List<ProductRandDTO> rlist2 = service.rprolist(2); //랜덤2
+		List<ProductRandDTO2> rlist2 = service.rprolist2(2); //랜덤2
 		
 		TotalProductDTO tproduct = new TotalProductDTO();
 		
@@ -96,7 +96,7 @@ public class ProductAPIController {
 		tproduct.setSproduct(slist);
 		tproduct.setNproduct(nlist);
 		tproduct.setRproduct(rlist1);
-		tproduct.setRproduct(rlist2);
+		tproduct.setRproduct2(rlist2);
 		
 		return tproduct;
 	}

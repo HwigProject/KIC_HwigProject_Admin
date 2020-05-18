@@ -190,10 +190,16 @@ public class ProductServiceImpl implements ProductService{
 		return dao.nprolist();
 	}
 	
-	//랜덤 순서대로 나열된 목록
+	//랜덤 순서대로 나열된 목록1
 	@Override
 	public List<ProductRandDTO> rprolist(int category_p_id) throws Exception{
 		return dao.rprolist(category_p_id);
+	}
+	
+	//랜덤 순서대로 나열된 목록2
+	@Override
+	public List<ProductRandDTO2> rprolist2(int category_p_id) throws Exception{
+		return dao.rprolist2(category_p_id);
 	}
 	
 }

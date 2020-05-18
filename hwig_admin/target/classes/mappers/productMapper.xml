@@ -246,20 +246,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 재고 많은 순서대로 나열된 목록 중 상위 4개 -->
 	<select id="mainwhatlist" resultType="com.hwig.admin.product.ProductWhatDTO">
-		select tp.prd_id, tp.category_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
-		from tbl_prd tp where rownum <![CDATA[<]]>=4 order by prd_stock desc
+		select  * from (select tp.prd_id, tp.category_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
+		from tbl_prd tp order by prd_stock desc ) where rownum <![CDATA[<]]>=4
 	</select>
 	
 	<!-- 할인율 순서대로 나열된 목록 중 상위 4개 -->
 	<select id="mainsalelist" resultType="com.hwig.admin.product.ProductSaleDTO">
-		select tp.prd_id, tp.category_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
-		from tbl_prd tp where rownum <![CDATA[<]]>=4 order by prd_sale desc
+		select * from (select tp.prd_id, tp.category_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
+		from tbl_prd tp order by prd_sale desc ) where rownum <![CDATA[<]]>=4
 	</select>
 	
 	<!-- 신상품 순서대로 나열된 목록 중 상위 4개 -->
 	<select id="mainnewlist" resultType="com.hwig.admin.product.ProductNewDTO">
-		select tp.prd_id, tp.category_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
-		from tbl_prd tp where rownum <![CDATA[<]]>=4 order by prd_date desc
+		select * from (select tp.prd_id, tp.category_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
+		from tbl_prd tp order by prd_date desc ) where rownum <![CDATA[<]]>=4
 	</select>
 	
 	<!-- 큰 카테고리 마다 랜덤으로 4개 뽑기 -->

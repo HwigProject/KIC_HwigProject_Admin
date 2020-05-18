@@ -31,6 +31,7 @@
 								<label class="col-sm-3 control-label" for="category_id">카테고리 id</label>
 								<div class="col-sm-6">
 									<select class="form-control" name="category_select" id="category_select">
+										<option value="${modify.category_id}">선택</option>
 										<option value="100">기본채소</option>
 										<option value="101">국산 과일</option>
 										<option value="102">수입 과일</option>
@@ -154,6 +155,7 @@
 								<label class="col-sm-3 control-label" for="prd_wrap">포장타입</label>
 								<div class="col-sm-6">
 									<select class="form-control" name="prd_wrap_select" id="prd_wrap_select">
+										<option value="${modify.prd_wrap}">선택</option>
 										<option value="박스(BOX)">박스(BOX)</option>
 										<option value="스티로폼">스티로폼</option>
 										<option value="비닐">비닐</option>

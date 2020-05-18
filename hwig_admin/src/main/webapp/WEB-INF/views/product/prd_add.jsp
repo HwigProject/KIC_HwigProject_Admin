@@ -110,6 +110,7 @@
 								<label class="col-sm-3 control-label" for="prd_wrap">포장타입</label>
 								<div class="col-sm-6">
 									<select class="form-control" name="prd_wrap_select" id="prd_wrap_select">
+										<option value="0">선택</option>
 										<option value="박스(BOX)">박스(BOX)</option>
 										<option value="스티로폼">스티로폼</option>
 										<option value="비닐">비닐</option>

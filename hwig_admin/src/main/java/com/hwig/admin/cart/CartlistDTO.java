@@ -9,6 +9,8 @@ public class CartlistDTO {
 	private String prd_thumb;
 	private String prd_comment;
 	private int prd_stock;
+	private double prd_sale;
+	private String prd_ea;
 	
 	public int getPrd_id() {
 		return prd_id;
@@ -16,7 +18,6 @@ public class CartlistDTO {
 	public void setPrd_id(int prd_id) {
 		this.prd_id = prd_id;
 	}
-
 	public String getPrd_name() {
 		return prd_name;
 	}
@@ -53,12 +54,23 @@ public class CartlistDTO {
 	public void setPrd_stock(int prd_stock) {
 		this.prd_stock = prd_stock;
 	}
+	public double getPrd_sale() {
+		return prd_sale;
+	}
+	public void setPrd_sale(double prd_sale) {
+		this.prd_sale = prd_sale;
+	}
+	public String getPrd_ea() {
+		return prd_ea;
+	}
+	public void setPrd_ea(String prd_ea) {
+		this.prd_ea = prd_ea;
+	}
 	
 	@Override
 	public String toString() {
 		return "CartlistDTO [prd_id=" + prd_id + ", prd_name=" + prd_name + ", prd_price=" + prd_price
 				+ ", order_count=" + order_count + ", prd_thumb=" + prd_thumb + ", prd_comment=" + prd_comment
-				+ ", prd_stock=" + prd_stock + "]";
+				+ ", prd_stock=" + prd_stock + ", prd_sale=" + prd_sale + ", prd_ea=" + prd_ea + "]";
 	}
-	
 }

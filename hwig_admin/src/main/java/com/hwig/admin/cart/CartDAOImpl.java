@@ -25,6 +25,10 @@ public class CartDAOImpl implements CartDAO{
 		return sql.selectList(namespace + ".cartlist", mem_id);
 	}
 	
+	//장바구니 갯수 수정
+	public void cartUpdate(Map<String, Object> cmap) throws Exception{
+		sql.update(namespace + ".cartupdate", cmap);
+	}
 	//장바구니 등록
 	@Override
 	public int cartInsert(CartVO vo) throws Exception {

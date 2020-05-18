@@ -118,7 +118,7 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <table class="table">
+                                <table class="table text-center">
                                     <thead>
                                         <tr class="warning">
                                             <th>글 번호</th>

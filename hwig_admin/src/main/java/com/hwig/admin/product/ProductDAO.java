@@ -95,6 +95,9 @@ public interface ProductDAO {
 	//신상품 순서대로 나열된 목록
 	public List<ProductNewDTO> nprolist() throws Exception;
 	
-	//랜덤 순서대로 나열된 목록
+	//랜덤 순서대로 나열된 목록1
 	public List<ProductRandDTO> rprolist(int category_p_id) throws Exception;
+	
+	//랜덤 순서대로 나열된 목록2
+	public List<ProductRandDTO2> rprolist2(int category_p_id) throws Exception;
 }
