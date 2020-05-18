@@ -285,7 +285,7 @@ $(function(){
 	  var value = new Array();
 	  var i=0;
 	  <c:forEach var="chart_circle" items="${chart_circle}">
-	  	 value[i] = <c:out value='${chart_circle.prd_price}'/>
+	  	 value[i] = <c:out value='${chart_circle.order_paymoney}'/>
 	  	 i++;
 	  </c:forEach>
 	  
@@ -322,13 +322,19 @@ $(function(){
   	  highlight: "red",
   	  label: "수입과일"
     }
-];
+];		
+    	if(value[0]!=null)
  		data1["value"] = value[0];
- 		data2["value"] = value[1];
- 		data3["value"] = value[2];
- 		data4["value"] = value[3];
- 		data5["value"] = value[4];
- 		data6["value"] = value[5];
+    	if(value[1]!=null)
+    	data2["value"] = value[1];
+    	if(value[2]!=null)
+    	data3["value"] = value[2];
+    	if(value[3]!=null)
+    	data4["value"] = value[3];
+    	if(value[4]!=null)
+    	data5["value"] = value[4];
+    	if(value[5]!=null)
+    	data6["value"] = value[5];
 
  		window.onload = function() {
           var ctx3 = document.getElementById("doughnut-chart-area").getContext("2d");
