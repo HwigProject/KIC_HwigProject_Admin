@@ -221,37 +221,6 @@
 		</section>
 	</c:if>
 	<c:if test="${sessionScope.user_type eq 'seller'}">
-		<div class="panel-body">
-			<table class="table text-center">
-				<thead>
-					<tr class="success">
-						<th style="text-align: center">이름</th>
-						<th style="text-align: center">재고</th>
-						<th style="text-align: center">가격</th>
-						<th style="text-align: center">원산지</th>
-						<th style="text-align: center">등록날짜</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:if test="${fn:length(data) > 0}">
-						<c:forEach var="data" items="${data}">
-							<tr>
-								<td>${data.prd_name}</td>
-								<td>${data.prd_stock}</td>
-								<td>${data.prd_price}</td>
-								<td>${data.prd_from}</td>
-								<td>${data.prd_date}</td>
-							</tr>
-						</c:forEach>
-					</c:if>
-					<c:if test="${fn:length(data) < 1}">
-						<tr>
-							<td colspan="5">재고 부족 상품이 없습니다</td>
-						</tr>
-					</c:if>
-				</tbody>
-			</table>
-		</div>
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-8"
 				style="left: 17%;">
@@ -292,6 +261,37 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="panel-body">
+			<table class="table text-center">
+				<thead>
+					<tr class="success">
+						<th style="text-align: center">이름</th>
+						<th style="text-align: center">재고</th>
+						<th style="text-align: center">가격</th>
+						<th style="text-align: center">원산지</th>
+						<th style="text-align: center">등록날짜</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:if test="${fn:length(data) > 0}">
+						<c:forEach var="data" items="${data}">
+							<tr>
+								<td>${data.prd_name}</td>
+								<td>${data.prd_stock}</td>
+								<td>${data.prd_price}</td>
+								<td>${data.prd_from}</td>
+								<td>${data.prd_date}</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+					<c:if test="${fn:length(data) < 1}">
+						<tr>
+							<td colspan="5">재고 부족 상품이 없습니다</td>
+						</tr>
+					</c:if>
+				</tbody>
+			</table>
 		</div>
 	</c:if>
 </section>
