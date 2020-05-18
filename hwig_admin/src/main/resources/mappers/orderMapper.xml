@@ -191,17 +191,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			A.order_id,
 			B.prd_name,
 			D.order_receiver_addr,
-			A.order_paydate,
+			to_char(A.order_paydate,'YYYY-MM-DD hh24:mi:ss')as order_paydate,
 			A.order_payway,
 			A.order_paymoney
-		from tbl_order A,
+		from
+			tbl_order A,
 			tbl_prd B,
 			tbl_order_b C,
 			tbl_addr D
-		where B.prd_id = C.prd_id
+		where 
+            A.order_id = C.order_id
+			and B.prd_id = C.prd_id
 			and C.order_id = D.order_id
 			and rownum = 1
-			and A.order_id=#{order_id}
+			and A.order_id = #{order_id}
 			<!-- and order_paydate = (select max(order_paydate) from tbl_order where order_id=#{order_id}) -->
 	</select>
 	
