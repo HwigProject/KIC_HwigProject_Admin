@@ -19,6 +19,12 @@ public class CartServiceImpl implements CartService{
 		return dao.cartList(mem_id);
 	}
 	
+	//장바구니 갯수 수정
+
+	public void cartUpdate(Map<String, Object> cmap) throws Exception{
+		dao.cartUpdate(cmap);
+	}
+	
 	//장바구니 등록
 	@Override
 	public int cartInsert(CartVO vo) throws Exception {

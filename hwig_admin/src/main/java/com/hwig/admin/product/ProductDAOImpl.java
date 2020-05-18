@@ -191,7 +191,7 @@ public class ProductDAOImpl implements ProductDAO{
 		return sql.selectList(namespace + ".mainnewlist");
 	}
 	
-	//랜덤 순서대로 나열된 목록
+	//랜덤 순서대로 나열된 목록1
 	@Override
 	public List<ProductRandDTO> rprolist(int category_p_id) throws Exception{
 		return sql.selectList(namespace + ".mainrandlist", category_p_id);
@@ -200,6 +200,12 @@ public class ProductDAOImpl implements ProductDAO{
 	@Override
 	public int changeStock(ProductStockVO productStockVo) {
 		return sql.update(namespace + ".changeStock", productStockVo);
+	}
+	
+	//랜덤 순서대로 나열된 목록2
+	@Override
+	public List<ProductRandDTO2> rprolist2(int category_p_id) throws Exception{
+		return sql.selectList(namespace + ".mainrandlist", category_p_id);
 	}
 	
 }
