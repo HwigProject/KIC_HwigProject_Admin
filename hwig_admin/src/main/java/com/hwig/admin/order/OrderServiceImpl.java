@@ -10,6 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hwig.admin.member.MemberService;
 import com.hwig.admin.member.MemberVO;
+import com.hwig.admin.product.ProductService;
+import com.hwig.admin.product.ProductStockVO;
+import com.hwig.admin.product.ProductVO;
 import com.hwig.admin.seller.SellerVO;
 
 @Service
@@ -20,6 +23,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	private MemberService memberService;
+
+	@Autowired
+	private ProductService productService;
 
 	@Autowired
 	private HttpSession session;
@@ -106,9 +112,12 @@ public class OrderServiceImpl implements OrderService {
 		}
 		orderDao.orderAddrVoInsert(orderAddrVo);
 
-		memberVo.setMem_id(orderRegisterDto.getMem_id());
-		memberVo = memberService.findOne(memberVo.getMem_id());
-		int totalReverse = memberVo.getMem_reverse() + orderRegisterDto.getOrder_reverse();
+		memberVo = memberService.findOne(orderRegisterDto.getMem_id());
+		int totalReverse = (memberVo.getMem_reverse() + orderRegisterDto.getOrder_reverse()) - orderRegisterDto.getOrder_used_reverse();
+		System.out.println(memberVo.getMem_reverse());
+		System.out.println(orderRegisterDto.getOrder_reverse());
+		System.out.println(orderRegisterDto.getOrder_used_reverse());
+		System.out.println(totalReverse);
 		memberVo.setMem_reverse(totalReverse);
 		memberService.changeReverse(memberVo);
 
@@ -130,6 +139,23 @@ public class OrderServiceImpl implements OrderService {
 				memberVo.setMem_grade("silver");
 				memberService.changeGrade(memberVo);
 			}
+		}
+
+		try {
+			for (int i = 0; i < orderRegisterDto.getOrder_prd_ids().size(); i++) {
+				ProductVO productVo = productService.read(orderRegisterDto.getOrder_prd_ids().get(i));
+				System.out.println(productVo.getPrd_stock());
+				System.out.println(orderRegisterDto.getOrder_counts().get(i));
+				int totalStock = (productVo.getPrd_stock() - orderRegisterDto.getOrder_counts().get(i));
+				System.out.println(totalStock);
+				
+				ProductStockVO productStockVo = new ProductStockVO();
+				productStockVo.setPrd_stock(totalStock);
+				productStockVo.setPrd_id(productVo.getPrd_id());
+				productService.changeStock(productStockVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return order_id;

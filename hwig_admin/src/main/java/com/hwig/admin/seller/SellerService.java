@@ -17,5 +17,9 @@ public interface SellerService {
 	public int listAllCount(SearchCriteria cri);
 
 	public int pwModify(SellerPwDTO sellerPwDto);
+	
+	public List<StockPrdsVO> stockPrdList(SellerSearchCriteria cri);
+	
+	public int stockPrdCount(SellerSearchCriteria cri);
 
 }

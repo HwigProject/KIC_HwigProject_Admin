@@ -45,4 +45,14 @@ public class SellerServiceImpl implements SellerService {
 		return sellerDao.pwUpdate(sellerPwDto);
 	}
 
+	@Override
+	public List<StockPrdsVO> stockPrdList(SellerSearchCriteria cri) {
+		return sellerDao.stockPrdSelect(cri);
+	}
+
+	@Override
+	public int stockPrdCount(SellerSearchCriteria cri) {
+		return sellerDao.stockPrdCount(cri);
+	}
+
 }

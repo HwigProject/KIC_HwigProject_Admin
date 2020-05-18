@@ -57,10 +57,8 @@ public interface ProductDAO {
 		
 	//상품 수정
 	public int update(ProductVO vo) throws Exception;
-
 	
 	//front와 통신
-
 	//카테고리 목록 보내기
 	public List<CategoryDTO> category() throws Exception;
 	
@@ -95,6 +93,12 @@ public interface ProductDAO {
 	//신상품 순서대로 나열된 목록
 	public List<ProductNewDTO> nprolist() throws Exception;
 	
-	//랜덤 순서대로 나열된 목록
+	//랜덤 순서대로 나열된 목록1
 	public List<ProductRandDTO> rprolist(int category_p_id) throws Exception;
+	
+	public int changeStock(ProductStockVO productStockVo);
+	
+	//랜덤 순서대로 나열된 목록2
+	public List<ProductRandDTO2> rprolist2(int category_p_id) throws Exception;
+	
 }

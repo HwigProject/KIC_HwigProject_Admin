@@ -5,10 +5,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.hwig.admin.mappers.cartMapper">
 	<!-- 장바구니 목록 가져오기 -->
 	<select id="cartlist" resultType="com.hwig.admin.cart.CartlistDTO">
-		select tp.prd_id, tp.prd_name, tp.prd_price, tc.order_count, tp.prd_thumb, tp.prd_comment, tp.prd_stock
+		select tp.prd_id, tp.prd_name, tp.prd_price, tc.order_count, tp.prd_thumb, tp.prd_comment, tp.prd_stock, tp.prd_sale, tp.prd_ea
 		from tbl_prd tp, tbl_member tm, tbl_cart tc
 		where tp.prd_id = tc.prd_id and tm.mem_id = #{mem_id}
 	</select>
+	
+	<!-- 장바구니에서 갯수 수정 -->
+	<update id="cartupdate">
+		update tbl_cart
+		set order_count = #{order_count}
+		where mem_id = #{mem_id} and prd_id = #{prd_id}
+	</update>
 	
 	<!-- 장바구니 등록 -->
 	<insert id="cartinsert">

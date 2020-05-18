@@ -6,7 +6,8 @@ public class TotalProductDTO {
 	private List<ProductWhatDTO> wproduct; //재고많은순
 	private List<ProductSaleDTO> sproduct; //할인상품
 	private List<ProductNewDTO> nproduct; //신상품
-	private List<ProductRandDTO> rproduct; //md추천 - 랜덤
+	private List<ProductRandDTO> rproduct; //md추천 - 랜덤1
+	private List<ProductRandDTO2> rproduct2; //md추천 - 랜덤2
 	
 	public List<ProductWhatDTO> getWproduct() {
 		return wproduct;
@@ -32,11 +33,16 @@ public class TotalProductDTO {
 	public void setRproduct(List<ProductRandDTO> rproduct) {
 		this.rproduct = rproduct;
 	}
-	
+	public List<ProductRandDTO2> getRproduct2() {
+		return rproduct2;
+	}
+	public void setRproduct2(List<ProductRandDTO2> rproduct2) {
+		this.rproduct2 = rproduct2;
+	}
 	@Override
 	public String toString() {
 		return "TotalProduct [wproduct=" + wproduct + ", sproduct=" + sproduct + ", nproduct=" + nproduct
-				+ ", rproduct=" + rproduct + "]";
+				+ ", rproduct=" + rproduct + ", rproduct2=" + rproduct2 + "]";
 	}
 	
 }

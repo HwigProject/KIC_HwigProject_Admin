@@ -17,7 +17,7 @@
 			<div class="col-md-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h3>상품 수정</h3>
+						<h3>상품 조회</h3>
 						<div class="actions pull-right">
 							<i class="fa fa-expand"></i>
 							<i class="fa fa-chevron-down"></i>

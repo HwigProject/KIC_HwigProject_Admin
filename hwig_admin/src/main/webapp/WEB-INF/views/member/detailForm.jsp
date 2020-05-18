@@ -95,7 +95,6 @@
 													<th class="text-center">상품갯수</th>
 												</tr>
 											</thead>
-
 											<tbody id="prdDataList">
 											</tbody>
 										</table>

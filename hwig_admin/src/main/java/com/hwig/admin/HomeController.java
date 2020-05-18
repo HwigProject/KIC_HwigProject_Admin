@@ -16,7 +16,7 @@ import com.hwig.admin.qna.QnaService;
 public class HomeController {
 
 	@Inject
-	AdminService aService;
+	AdminService adminService;
 
 	@Inject
 	QnaService qService;
@@ -28,25 +28,18 @@ public class HomeController {
 
 	@RequestMapping("/main")
 	public void main(Model model, HttpSession ss) throws Exception {
-		model.addAttribute("qna_count", aService.qna_count());
-		model.addAttribute("reply_count", aService.reply_count());
-		model.addAttribute("member_count", aService.member_count());
-		model.addAttribute("order_paymoney", aService.order_paymoney());
-		model.addAttribute("qna_list", aService.qna_list());
-		model.addAttribute("order_list", aService.order_list());
-		model.addAttribute("prd_list", aService.prd_list());
-		model.addAttribute("chart_circle", aService.chart_circle());
-		
-		//여기부터 판매자 화면
-		model.addAttribute("review_list", aService.review_list((String)ss.getAttribute("user_id")));
-	}
+		model.addAttribute("qna_count", adminService.qna_count());
+		model.addAttribute("reply_count", adminService.reply_count());
+		model.addAttribute("member_count", adminService.member_count());
+		model.addAttribute("order_paymoney", adminService.order_paymoney());
+		model.addAttribute("qna_list", adminService.qna_list());
+		model.addAttribute("order_list", adminService.order_list());
+		model.addAttribute("prd_list", adminService.prd_list());
+		model.addAttribute("chart_circle", adminService.chart_circle());
 
-//	@RequestMapping("/main")
-//	public void main(Model model) {
-//		model.addAttribute("member_count", aService.member_count());
-//
-//		//DecimalFormat formatter = new DecimalFormat("###,###");
-//		model.addAttribute("order_paymoney", aService.order_paymoney());
-//	}
+		// 여기부터 판매자 화면
+		model.addAttribute("review_list", adminService.review_list((String) ss.getAttribute("user_id")));
+		model.addAttribute("data", adminService.sellerPrdsStock((String) ss.getAttribute("user_id")));
+	}
 
 }

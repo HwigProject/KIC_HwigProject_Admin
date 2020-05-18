@@ -94,4 +94,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 		order by review_regdate desc
 	</select>
+	
+	<select id="sellerPrdsStock" resultType="ProductListVO">
+		select
+			prd_name,
+			prd_stock,
+			prd_price,
+			prd_from,
+			to_char(prd_date,'YYYY-MM-DD hh24:mi:ss') as prd_date
+		from
+			tbl_prd
+		where
+			sel_id = #{sel_id}
+			<![CDATA[
+				and prd_stock < 51
+				and rownum < 6
+			]]>
+	</select>
+	
 </mapper>
