@@ -238,8 +238,8 @@
 										<li class="col-md-12" id="accordion_li">
 											<a href="#" class="col-md-12">[${review_list.prd_name}]&nbsp;&nbsp;${review_list.review_subject}<span style="float:right;">${review_list.review_regdate}</span></a>
 												<div class="col-md-12 view-mail-body" style="border-top: 1px solid #d3d3d3; margin-top:10px;">
-													<img src="${review_list.review_img}"/>
-											    	<pre style="background-color:white; border:none; height:150px;"><br>${review_list.review_content}</pre>
+													<img src="${review_list.review_img}" width="350" height="450"/>
+											    	<pre style="background-color:white; border:none;"><br>${review_list.review_content}</pre>
 											    </div>
 										</li>
 									</ul>

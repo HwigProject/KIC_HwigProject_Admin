@@ -13,10 +13,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -58,8 +58,10 @@ public class ReviewRestController {
 		rvService.review_hit(review_id);
 	}
 
-	@PostMapping(value = "/review_write")
-	public Map<String, Object> review_write(@RequestBody ReviewVO review, MultipartFile file, RedirectAttributes rttr,
+	
+	@ResponseBody
+	@RequestMapping(value="/review_write", method=RequestMethod.POST, headers = ("content-type=multipart/*"))
+	public Map<String, Object> review_write(ReviewVO review, @RequestParam(value="img", required=false) MultipartFile file, RedirectAttributes rttr,
 			HttpSession session) throws Exception {
 
 		Map<String, Object> responseRv = new HashMap<String, Object>();

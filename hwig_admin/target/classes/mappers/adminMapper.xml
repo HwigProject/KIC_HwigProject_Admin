@@ -90,6 +90,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[
 		where p.prd_id = r.prd_id and p.sel_id = #{sel_id} and rownum <= 3
 		]]>
-		order by review_regdate
+		order by review_regdate desc
 	</select>
 </mapper>

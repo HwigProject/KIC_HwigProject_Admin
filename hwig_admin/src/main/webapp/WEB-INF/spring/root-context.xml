@@ -51,7 +51,7 @@
 	<!-- uploadpath -->
 	<bean id="savePath" class="java.lang.String">
 		<constructor-arg value="/home/ubuntu/apache-tomcat-8.5.54/webapps"></constructor-arg>
-		<!-- <constructor-arg value="C:/Users/LimJiNa/git/KIC_HwigProject_Admin/hwig_admin/src/main/webapp"></constructor-arg> -->
+		<!-- <constructor-arg value="C:/Users/user/git/KIC_HwigProject_Admin/hwig_admin/src/main/webapp"></constructor-arg> --> 
 	</bean>
 
 	<bean id="sellerAttachPath" class="java.lang.String">
@@ -70,8 +70,8 @@
 	</bean>
    
 	<bean id="ReviewAttachPath" class="java.lang.String">
-		<!-- <constructor-arg value="/docs/images/review"></constructor-arg> -->
-		<constructor-arg value="/resources/attach/event"></constructor-arg>
+		<constructor-arg value="/docs/images/review"></constructor-arg>
+		<!-- <constructor-arg value="/resources/attach/review"></constructor-arg> -->
 	</bean>
 
 </beans>
