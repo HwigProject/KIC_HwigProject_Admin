@@ -45,4 +45,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from tbl_cart where mem_id = #{mem_id}
 	</delete>
 	
+	<!-- 장바구니 전체삭제 -->
+	<delete id="cartAllDelete">
+		delete from tbl_cart
+		where mem_id = #{mem_id}
+	</delete>
+	
 </mapper>

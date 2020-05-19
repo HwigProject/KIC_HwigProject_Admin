@@ -81,4 +81,10 @@ public class CartAPIController {
 //			}
 	}
 	
+	//장바구니 전체삭제
+	@RequestMapping(value="/cartalldelete", method = RequestMethod.GET)
+	public void getCartAllDelete(@RequestParam String mem_id) throws Exception {
+		service.cartAllDelete(mem_id);
+	}
+	
 }

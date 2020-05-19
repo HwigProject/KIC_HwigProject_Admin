@@ -43,4 +43,8 @@ public class CartServiceImpl implements CartService{
 		return dao.cartPrdDelete(order_id);
 	}
 
+	@Override
+	public void cartAllDelete(String mem_id) throws Exception {
+		dao.cartAllDelete(mem_id);
+	}
 }

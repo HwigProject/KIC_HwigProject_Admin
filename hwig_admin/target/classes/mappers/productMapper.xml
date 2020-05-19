@@ -203,7 +203,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 메인 상품 목록 -->
 	<select id="mainlist"
 		resultType="com.hwig.admin.product.ProductListDTO">
-		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg,
+		select tp.prd_id, tp.prd_thumb, tp.prd_img, tp.prd_name, tp.prd_kg,
 		tp.prd_price, tp.prd_comment, tc.category_id, tc.category_p_id
 		from
 		tbl_prd tp inner join tbl_category tc on tp.category_id =
