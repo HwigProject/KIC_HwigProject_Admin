@@ -233,17 +233,17 @@
 						</div>
 					</div>
 				</div>
-				<c:forEach var="review_list" items="${review_list}">
+				<c:forEach var="review_list" items="${review_list}" varStatus="img_index">
 					<div class="panel col-md-12" id="review_1">
 						<ul class="row panel-body col-md-12" style="list-style: none;" id="accordion_ul">
 							<li class="col-md-12" id="accordion_li">
-							<a href="#" class="col-md-12">[${review_list.prd_name}]&nbsp;&nbsp;${review_list.review_subject}<span style="float: right;">${review_list.review_regdate}</span></a>
-								<div class="col-md-12 view-mail-body" style="border-top: 1px solid #d3d3d3; margin-top: 10px;">
-									<img src="${review_list.review_img}" width="350" height="450" />
-									<pre style="background-color: white; border: none;">
-									<br>${review_list.review_content}</pre>
-								</div>
-							</li>
+								<a href="#" class="col-md-12">[${review_list.prd_name}]&nbsp;&nbsp;${review_list.review_subject}<span style="float: right;">${review_list.review_regdate}</span></a>
+                                 <div class="col-md-12 view-mail-body" style="border-top: 1px solid #d3d3d3; margin-top: 10px;">
+                                     <img src="${review_list.review_img}" class="review_img${img_index.count}" width="550" height="450" style="float:left; margin-top:10px;"/>
+                                     <pre style="background-color: white; border: none; float:left;">
+                                     <br>${review_list.review_content}</pre>
+                                 </div>
+                            </li>
 						</ul>
 					</div>
 				</c:forEach>
@@ -298,6 +298,13 @@
 <%@ include file="/WEB-INF/views/include/footnav.jsp"%>
 <script>
 	$(function() {
+
+		for(var i=1; i<4; i++){
+			if($('.review_img'+i).attr('src')==''){
+				   $('.review_img'+i).remove();
+			   }
+		} 
+		
 		$("p").hide();
 		$("#accordion_ul > #accordion_li:first-child a").next().children()
 				.show();
