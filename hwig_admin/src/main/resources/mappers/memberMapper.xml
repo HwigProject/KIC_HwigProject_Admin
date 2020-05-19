@@ -247,11 +247,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    A.order_id = B.order_id
 		    and B.prd_id = C.prd_id
 		    and A.mem_id = #{mem_id}
-		    and B.order_prd_review = 0
-		    <if test="B.order_prd_review == 1">
-				and B.order_prd_review = 1
+		    <if test="order_prd_review == 0">
+				and B.order_prd_review = 0
+				and A.order_status = '배송 완료'
 			</if>
-		    and A.order_status = '배송 완료'
 	</select>
 	
 	<!-- 회원탈퇴 -->

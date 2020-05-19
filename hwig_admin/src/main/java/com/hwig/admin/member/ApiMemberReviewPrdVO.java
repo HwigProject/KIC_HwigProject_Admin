@@ -8,6 +8,7 @@ public class ApiMemberReviewPrdVO {
 	private int order_count;
 	private String prd_thumb;
 	private int prd_id;
+	private int order_prd_review;
 
 	public String getMem_id() {
 		return mem_id;
@@ -57,10 +58,19 @@ public class ApiMemberReviewPrdVO {
 		this.prd_id = prd_id;
 	}
 
+	public int getOrder_prd_review() {
+		return order_prd_review;
+	}
+
+	public void setOrder_prd_review(int order_prd_review) {
+		this.order_prd_review = order_prd_review;
+	}
+
 	@Override
 	public String toString() {
 		return "ApiMemberReviewPrdVO [mem_id=" + mem_id + ", order_paydate=" + order_paydate + ", prd_name=" + prd_name
-				+ ", order_count=" + order_count + ", prd_thumb=" + prd_thumb + ", prd_id=" + prd_id + "]";
+				+ ", order_count=" + order_count + ", prd_thumb=" + prd_thumb + ", prd_id=" + prd_id
+				+ ", order_prd_review=" + order_prd_review + "]";
 	}
 
 }

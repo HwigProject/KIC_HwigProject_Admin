@@ -6,8 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 장바구니 목록 가져오기 -->
 	<select id="cartlist" resultType="com.hwig.admin.cart.CartlistDTO">
 		select tp.prd_id, tp.prd_name, tp.prd_price, tc.order_count, tp.prd_thumb, tp.prd_comment, tp.prd_stock, tp.prd_sale, tp.prd_ea
-		from tbl_prd tp, tbl_member tm, tbl_cart tc
-		where tp.prd_id = tc.prd_id and tm.mem_id = #{mem_id}
+		from tbl_prd tp, tbl_cart tc
+		where tp.prd_id = tc.prd_id and tc.mem_id = #{mem_id}
 	</select>
 	
 	<!-- 장바구니에서 갯수 수정 -->

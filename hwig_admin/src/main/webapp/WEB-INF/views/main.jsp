@@ -262,36 +262,50 @@
 				</div>
 			</div>
 		</div>
-		<div class="panel-body">
-			<table class="table text-center">
-				<thead>
-					<tr class="success">
-						<th style="text-align: center">이름</th>
-						<th style="text-align: center">재고</th>
-						<th style="text-align: center">가격</th>
-						<th style="text-align: center">원산지</th>
-						<th style="text-align: center">등록날짜</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:if test="${fn:length(data) > 0}">
-						<c:forEach var="data" items="${data}">
-							<tr>
-								<td>${data.prd_name}</td>
-								<td>${data.prd_stock}</td>
-								<td>${data.prd_price}</td>
-								<td>${data.prd_from}</td>
-								<td>${data.prd_date}</td>
-							</tr>
-						</c:forEach>
-					</c:if>
-					<c:if test="${fn:length(data) < 1}">
-						<tr>
-							<td colspan="5">재고 부족 상품이 없습니다</td>
-						</tr>
-					</c:if>
-				</tbody>
-			</table>
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">재고 부족 상품입니다(관리자와 상의해주세요)</h3>
+						<div class="actions pull-right">
+							<i class="fa fa-expand"></i>
+							<i class="fa fa-chevron-down"></i>
+							<i class="fa fa-times"></i>
+						</div>
+					</div>
+					<div class="panel-body">
+						<table class="table text-center">
+							<thead>
+								<tr class="success">
+									<th style="text-align: center">이름</th>
+									<th style="text-align: center">재고</th>
+									<th style="text-align: center">가격</th>
+									<th style="text-align: center">원산지</th>
+									<th style="text-align: center">등록날짜</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:if test="${fn:length(data) > 0}">
+									<c:forEach var="data" items="${data}">
+										<tr>
+											<td>${data.prd_name}</td>
+											<td>${data.prd_stock}</td>
+											<td>${data.prd_price}</td>
+											<td>${data.prd_from}</td>
+											<td>${data.prd_date}</td>
+										</tr>
+									</c:forEach>
+								</c:if>
+								<c:if test="${fn:length(data) < 1}">
+									<tr>
+										<td colspan="5">재고 부족 상품이 없습니다</td>
+									</tr>
+								</c:if>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 		</div>
 	</c:if>
 </section>
