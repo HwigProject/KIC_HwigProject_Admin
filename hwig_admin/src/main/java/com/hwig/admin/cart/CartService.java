@@ -17,4 +17,6 @@ public interface CartService {
 	public void cartDelete(Map<String, Object> cmap) throws Exception;
 	
 	public int cartPrdRemove(String order_id);
+	
+	public void cartAllDelete(String mem_id) throws Exception;
 }
