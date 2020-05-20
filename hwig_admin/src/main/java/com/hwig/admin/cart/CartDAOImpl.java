@@ -49,5 +49,10 @@ public class CartDAOImpl implements CartDAO{
 	public int cartPrdDelete(String mem_id) {
 		return sql.delete(namespace + ".cartPrdDelete", mem_id);
 	}
+	
+	@Override
+	public void cartAllDelete(String mem_id) {
+		sql.delete(namespace + ".cartAllDelete", mem_id);
+	}
 
 }

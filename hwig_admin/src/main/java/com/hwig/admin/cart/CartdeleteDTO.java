@@ -1,7 +1,5 @@
 package com.hwig.admin.cart;
 
-import java.util.List;
-
 public class CartdeleteDTO {
 	
 	private int prd_id;

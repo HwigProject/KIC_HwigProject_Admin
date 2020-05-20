@@ -2,6 +2,7 @@ package com.hwig.admin.product;
 
 public class ProductListDTO {
 	private int prd_id;
+	private String prd_thumb;
 	private String prd_img;
 	private String prd_name;
 	private String prd_kg;
@@ -16,6 +17,12 @@ public class ProductListDTO {
 	}
 	public void setPrd_id(int prd_id) {
 		this.prd_id = prd_id;
+	}
+	public String getPrd_thumb() {
+		return prd_thumb;
+	}
+	public void setPrd_thumb(String prd_thumb) {
+		this.prd_thumb = prd_thumb;
 	}
 	public String getPrd_img() {
 		return prd_img;

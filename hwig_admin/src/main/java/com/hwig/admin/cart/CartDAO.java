@@ -18,4 +18,6 @@ public interface CartDAO {
 	
 	//회원탈퇴시 담겨져 있는 상품들 삭제
 	public int cartPrdDelete(String order_id);
+	
+	public void cartAllDelete(String mem_id);
 }
