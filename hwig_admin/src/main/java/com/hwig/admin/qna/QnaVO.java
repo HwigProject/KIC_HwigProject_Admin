@@ -5,10 +5,19 @@ import java.sql.Date;
 public class QnaVO {
 	private int qna_id;
 	private String mem_id;
+	private String reply_id;
 	private String qna_category;
 	private String qna_subject;
 	private String qna_content;
 	private Date qna_regdate;
+
+	public String getReply_id() {
+		return reply_id;
+	}
+
+	public void setReply_id(String reply_id) {
+		this.reply_id = reply_id;
+	}
 
 	public int getQna_id() {
 		return qna_id;
