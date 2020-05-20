@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.hwig.admin.cart.CartService;
 import com.hwig.admin.member.MemberService;
 import com.hwig.admin.member.MemberVO;
 import com.hwig.admin.product.ProductService;
@@ -26,6 +27,9 @@ public class OrderServiceImpl implements OrderService {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private CartService cartService;
 
 	@Autowired
 	private HttpSession session;
@@ -154,6 +158,8 @@ public class OrderServiceImpl implements OrderService {
 				productStockVo.setPrd_id(productVo.getPrd_id());
 				productService.changeStock(productStockVo);
 			}
+			System.out.println(orderRegisterDto.getMem_id());
+			cartService.cartAllDelete(orderRegisterDto.getMem_id());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
