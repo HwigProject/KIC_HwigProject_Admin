@@ -55,7 +55,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 이벤트 사각형 이미지 보내주기 -->
 	<select id="event_square" resultType="EventVO">
 		<![CDATA[
-		select event_id, event_subject, event_content, nvl(event_square_img,'empty')
+		select event_id, event_subject, event_content, nvl(event_square_img,'empty') as event_square_img
 		from (select * from tbl_event order by event_regdate desc)
 		where rownum <= 3
 		]]>
@@ -79,7 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 이벤트 배너 이미지 보내주기 -->
 	<select id="event_banner" resultType="EventVO">
 		<![CDATA[
-		select event_id, nvl(event_banner_img,'empty')
+		select event_id, nvl(event_banner_img,'empty') as event_banner_img
 		from (select * from tbl_event order by event_regdate desc)
 		where rownum <= 4
 		]]>
