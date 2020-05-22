@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">본문 이미지<span class="star">*</span></label>
+                                        <label class="col-sm-3 control-label">본문 이미지</label>
                                         <div class="col-sm-6">
                                         	<input type="file" id="event_content_img" name="file">                                        
 	                                        <div class="select_img1"><img src=""/></div>
@@ -101,7 +101,7 @@
 					            		</div>                                    
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">배너 이미지<span class="star">*</span></label>
+                                        <label class="col-sm-3 control-label">배너 이미지</label>
                                         <div class="col-sm-6">
                                         	<input type="file" id="event_banner_img" name="file">                                        
 	                                        <div class="select_img2"><img src=""/></div>
@@ -119,7 +119,7 @@
 					            		</div>                                  
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">사각 이미지<span class="star">*</span></label>
+                                        <label class="col-sm-3 control-label">사각 이미지</label>
                                         <div class="col-sm-6">
 	                                        <input type="file" id="event_square_img" name="file">
 	                                        <div class="select_img3"><img src=""/></div> 
@@ -137,7 +137,7 @@
 					            		</div>                                    
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">목록 이미지<span class="star">*</span></label>
+                                        <label class="col-sm-3 control-label">목록 이미지</label>
                                         <div class="col-sm-6">
 	                                        <input type="file" id="event_list_img" name="file">
 	                                        <div class="select_img4"><img src=""/></div>
