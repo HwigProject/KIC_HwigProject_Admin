@@ -151,7 +151,7 @@
 	 $(function(){
 		 var qnum = ${pageMaker.totalCount};
 		 console.log(qnum);
-		 for(var i=1; i<qnum; i++){
+		 for(var i=1; i<=qnum; i++){
 			 if($('.rep'+i).text()==''){
 				 $('.answer'+i).remove();
 			 }

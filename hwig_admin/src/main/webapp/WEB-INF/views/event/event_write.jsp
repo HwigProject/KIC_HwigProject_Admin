@@ -9,7 +9,7 @@
 <script>
 	function check_upload(){
 		upForm = document.e_uploadForm;
-		var content = document.getElementById("event_content_img").value;
+/* 		var content = document.getElementById("event_content_img").value;
 		var banner = document.getElementById("event_banner_img").value;
 		var square = document.getElementById("event_square_img").value;
 		var list = document.getElementById("event_list_img").value;
@@ -37,7 +37,7 @@
 		if(!list){
 			alert("목록 이미지를 업로드 하세요.");
 			return false;
-		}
+		} */
 		
 		if(confirm("등록 하시겠습니까?")){
 			upForm.submit();

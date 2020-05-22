@@ -3,6 +3,7 @@ package com.hwig.admin.event;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.UUID;
 
 import javax.annotation.Resource;
@@ -52,7 +53,10 @@ public class EventController {
 	public String postEvent_write(EventVO event, MultipartFile[] file, RedirectAttributes rttr, HttpSession session) throws Exception{
 		
 		int count = 0;
-		
+		System.out.println(file[0].getOriginalFilename());
+		System.out.println(file[1].getOriginalFilename());
+		System.out.println(file[2].getOriginalFilename());
+		System.out.println(file[3].getOriginalFilename());
 		for(MultipartFile files : file)
 		{
 			if(files.getOriginalFilename() != null && !files.getOriginalFilename().equals("")) {
@@ -74,24 +78,24 @@ public class EventController {
 				String path = session.getServletContext().getRealPath("/");
 				System.out.println("■path:::"+path);
 				
-				if(count==0) {
+				if(count==0 && file[0].getOriginalFilename() != null && !file[0].getOriginalFilename().equals("")) {
 					event.setEvent_content_img(attachPath + "/" + fileName);
 					System.out.println("본문 이미지 등록"+event.getEvent_content_img()+" "+count);
 				}
-				else if(count==1) {
+				else if(count==1 && file[1].getOriginalFilename() != null && !file[1].getOriginalFilename().equals("")) {
 					event.setEvent_banner_img(attachPath + "/" + fileName);
 					System.out.println("배너 이미지 등록"+event.getEvent_banner_img()+" "+count);
 				}
-				else if(count==2) {
+				else if(count==2 && file[2].getOriginalFilename() != null && !file[2].getOriginalFilename().equals("")) {
 					event.setEvent_square_img(attachPath + "/" + fileName);
 					System.out.println("사각 이미지 등록"+event.getEvent_square_img()+" "+count);
 				}
-				else if(count==3) {
+				else if(count==3 && file[3].getOriginalFilename() != null && !file[3].getOriginalFilename().equals("")) {
 					event.setEvent_list_img(attachPath + "/" + fileName);
 					System.out.println("리스트 이미지 등록"+event.getEvent_list_img()+" "+count);
 				}
-				count++;
 			}
+			count++;
 		}
 		
 		int result = eService.event_write(event);
@@ -184,19 +188,19 @@ public class EventController {
 					System.out.println("리스트 이미지 수정"+event.getEvent_list_img()+" "+count);
 				}
 			} else {
-				if(count==0) {
+				if(count==0 && file[0].getOriginalFilename() != null && !file[0].getOriginalFilename().equals("")) {
 					event.setEvent_content_img(req.getParameter("event_content_img"));
 					System.out.println("본문 이미지 그대로");
 				}
-				else if(count==1) {
+				else if(count==1 && file[1].getOriginalFilename() != null && !file[1].getOriginalFilename().equals("")) {
 					event.setEvent_banner_img(req.getParameter("event_banner_img"));
 					System.out.println("배너 이미지 수정");
 				}
-				else if(count==2) {
+				else if(count==2 && file[2].getOriginalFilename() != null && !file[2].getOriginalFilename().equals("")) {
 					event.setEvent_square_img(req.getParameter("event_square_img"));
 					System.out.println("사각 이미지 수정");
 				}
-				else if(count==3) {
+				else if(count==3 && file[3].getOriginalFilename() != null && !file[3].getOriginalFilename().equals("")) {
 					event.setEvent_list_img(req.getParameter("event_list_img"));
 					System.out.println("리스트 이미지 수정");
 				}
