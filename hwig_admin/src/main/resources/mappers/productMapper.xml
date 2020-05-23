@@ -192,7 +192,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 카테고리 목록 보내기 (상위카테고리)-->
 	<select id="category" resultType="com.hwig.admin.product.CategoryDTO">
-		select * from tbl_category
+		select * from tbl_category order by category_id asc
 	</select>
 	
 	<!-- 카테고리 목록 선택하여 받아오기 -->
@@ -203,7 +203,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 메인 상품 목록 -->
 	<select id="mainlist"
 		resultType="com.hwig.admin.product.ProductListDTO">
-		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg,
+		select tp.prd_id, tp.prd_thumb, tp.prd_img, tp.prd_name, tp.prd_kg,
 		tp.prd_price, tp.prd_comment, tc.category_id, tc.category_p_id
 		from
 		tbl_prd tp inner join tbl_category tc on tp.category_id =
@@ -219,19 +219,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 신상품 순서대로 나열된 목록 -->
 	<select id="newlist" resultType="com.hwig.admin.product.ProductListDTO">
-		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
+		select tp.prd_id, tp.prd_thumb, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
 		from tbl_prd tp, tbl_category tc where tp.category_id = tc.category_id order by prd_date desc
 	</select>
 	
 	<!-- 상품 검색 -->
 	<select id="prosearch" resultType="com.hwig.admin.product.ProductListDTO">
-		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
+		select tp.prd_id, tp.prd_thumb, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
 		from tbl_prd tp, tbl_category tc where tp.prd_name like '%' || #{keyword} || '%' and tp.category_id = tc.category_id
 	</select>
 	
 	<!-- 판매량 순으로 나열된 목록 -->
 	<select id="bestlist" resultType="com.hwig.admin.product.ProductListDTO">
-		select tt.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
+		select tt.prd_id, tp.prd_thumb, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
 		from(
 			select prd_id, sum(order_count) as order_count from tbl_order_b group by prd_id order by order_count desc) tt, tbl_prd tp, tbl_category tc
 			where tt.prd_id = tp.prd_id and tp.category_id = tc.category_id
@@ -240,7 +240,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 할인율 순으로 나열된 목록 -->
 	<select id="salelist" resultType="com.hwig.admin.product.ProductListDTO">
-		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale 
+		select tp.prd_id, tp.prd_thumb, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale 
 		from tbl_prd tp, tbl_category tc where prd_sale != 0 and tp.category_id = tc.category_id order by prd_sale desc
 	</select>
+	
+	<!-- 재고 많은 순서대로 나열된 목록 중 상위 4개 -->
+	<select id="mainwhatlist" resultType="com.hwig.admin.product.ProductWhatDTO">
+		select  * from (select tp.prd_id, tp.category_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
+		from tbl_prd tp order by prd_stock desc ) where rownum <![CDATA[<]]>=4
+	</select>
+	
+	<!-- 할인율 순서대로 나열된 목록 중 상위 4개 -->
+	<select id="mainsalelist" resultType="com.hwig.admin.product.ProductSaleDTO">
+		select * from (select tp.prd_id, tp.category_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
+		from tbl_prd tp order by prd_sale desc ) where rownum <![CDATA[<]]>=4
+	</select>
+	
+	<!-- 신상품 순서대로 나열된 목록 중 상위 4개 -->
+	<select id="mainnewlist" resultType="com.hwig.admin.product.ProductNewDTO">
+		select * from (select tp.prd_id, tp.category_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
+		from tbl_prd tp order by prd_date desc ) where rownum <![CDATA[<]]>=4
+	</select>
+	
+	<!-- 큰 카테고리 마다 랜덤으로 4개 뽑기 -->
+	<select id="mainrandlist" resultType="com.hwig.admin.product.ProductRandDTO">
+		select * from (select tp.prd_id, tp.category_id, tc.category_p_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
+		from tbl_prd tp, tbl_category tc where tc.category_p_id=#{category_p_id} order by dbms_random.value) where rownum <![CDATA[<]]>=4
+	</select>
+	
+	<update id="changeStock">
+		update tbl_prd set prd_stock = #{prd_stock} where prd_id = #{prd_id}
+	</update>
+	
 </mapper>
