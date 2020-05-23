@@ -219,19 +219,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 신상품 순서대로 나열된 목록 -->
 	<select id="newlist" resultType="com.hwig.admin.product.ProductListDTO">
-		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
+		select tp.prd_id, tp.prd_thumb, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
 		from tbl_prd tp, tbl_category tc where tp.category_id = tc.category_id order by prd_date desc
 	</select>
 	
 	<!-- 상품 검색 -->
 	<select id="prosearch" resultType="com.hwig.admin.product.ProductListDTO">
-		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
+		select tp.prd_id, tp.prd_thumb, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
 		from tbl_prd tp, tbl_category tc where tp.prd_name like '%' || #{keyword} || '%' and tp.category_id = tc.category_id
 	</select>
 	
 	<!-- 판매량 순으로 나열된 목록 -->
 	<select id="bestlist" resultType="com.hwig.admin.product.ProductListDTO">
-		select tt.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
+		select tt.prd_id, tp.prd_thumb, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale
 		from(
 			select prd_id, sum(order_count) as order_count from tbl_order_b group by prd_id order by order_count desc) tt, tbl_prd tp, tbl_category tc
 			where tt.prd_id = tp.prd_id and tp.category_id = tc.category_id
@@ -240,7 +240,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 할인율 순으로 나열된 목록 -->
 	<select id="salelist" resultType="com.hwig.admin.product.ProductListDTO">
-		select tp.prd_id, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale 
+		select tp.prd_id, tp.prd_thumb, tp.prd_img, tp.prd_name, tp.prd_kg, tp.prd_price, tp.prd_comment, tp.category_id, tc.category_p_id, tp.prd_sale 
 		from tbl_prd tp, tbl_category tc where prd_sale != 0 and tp.category_id = tc.category_id order by prd_sale desc
 	</select>
 	
