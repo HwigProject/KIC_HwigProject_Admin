@@ -271,9 +271,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="changeStock">
 		update tbl_prd set prd_stock = #{prd_stock} where prd_id = #{prd_id}
 	</update>
-	
-<<<<<<< HEAD
 </mapper>
-=======
-</mapper>
->>>>>>> branch 'master' of https://github.com/HwigProject/KIC_HwigProject_Admin.git
+
