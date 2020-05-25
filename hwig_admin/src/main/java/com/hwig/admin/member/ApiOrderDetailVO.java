@@ -7,7 +7,8 @@ public class ApiOrderDetailVO {
 	private int prd_id;
 	private String prd_name;
 	private int prd_price;
-	private int prd_count;
+	private String prd_thumb;
+	private int order_count;
 
 	private int order_paymoney;
 	private int prd_sale;
@@ -65,12 +66,20 @@ public class ApiOrderDetailVO {
 		this.prd_price = prd_price;
 	}
 
-	public int getPrd_count() {
-		return prd_count;
+	public String getPrd_thumb() {
+		return prd_thumb;
 	}
 
-	public void setPrd_count(int prd_count) {
-		this.prd_count = prd_count;
+	public void setPrd_thumb(String prd_thumb) {
+		this.prd_thumb = prd_thumb;
+	}
+
+	public int getOrder_count() {
+		return order_count;
+	}
+
+	public void setOrder_count(int order_count) {
+		this.order_count = order_count;
 	}
 
 	public int getOrder_paymoney() {
@@ -172,11 +181,11 @@ public class ApiOrderDetailVO {
 	@Override
 	public String toString() {
 		return "ApiOrderDetailVO [mem_id=" + mem_id + ", order_id=" + order_id + ", prd_id=" + prd_id + ", prd_name="
-				+ prd_name + ", prd_price=" + prd_price + ", prd_count=" + prd_count + ", order_paymoney="
-				+ order_paymoney + ", prd_sale=" + prd_sale + ", order_used_reverse=" + order_used_reverse
-				+ ", order_reverse=" + order_reverse + ", order_payway=" + order_payway + ", order_sender="
-				+ order_sender + ", order_paydate=" + order_paydate + ", order_status=" + order_status
-				+ ", order_receiver=" + order_receiver + ", order_receiver_tel=" + order_receiver_tel
+				+ prd_name + ", prd_price=" + prd_price + ", prd_thumb=" + prd_thumb + ", order_count=" + order_count
+				+ ", order_paymoney=" + order_paymoney + ", prd_sale=" + prd_sale + ", order_used_reverse="
+				+ order_used_reverse + ", order_reverse=" + order_reverse + ", order_payway=" + order_payway
+				+ ", order_sender=" + order_sender + ", order_paydate=" + order_paydate + ", order_status="
+				+ order_status + ", order_receiver=" + order_receiver + ", order_receiver_tel=" + order_receiver_tel
 				+ ", order_receiver_addr=" + order_receiver_addr + ", order_request=" + order_request + "]";
 	}
 

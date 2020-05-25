@@ -63,9 +63,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 고객후기 마이페이지에서 볼 때 -->
 	<select id="rv_mem_list" resultType="com.hwig.admin.review.ReviewVO" parameterType="String">
-		select r.review_id, r.review_subject, r.review_content, r.review_regdate, p.prd_name
+		select r.review_id, r.review_subject, r.review_content, r.review_regdate, p.prd_name, r.review_img
 		from tbl_review r, tbl_prd p
 		where r.prd_id = p.prd_id and mem_id = #{mem_id}
+		order by r.review_regdate
 	</select>
 	
 	<!-- 후기 클릭했을 때 조회수 올려줌 -->

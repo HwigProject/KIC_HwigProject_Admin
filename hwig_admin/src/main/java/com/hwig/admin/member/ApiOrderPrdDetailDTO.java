@@ -5,7 +5,7 @@ public class ApiOrderPrdDetailDTO {
 	private int prd_id;
 	private String prd_name;
 	private int prd_price;
-	private int prd_count;
+	private int order_count;
 	private String prd_thumb;
 
 	public int getPrd_id() {
@@ -32,12 +32,12 @@ public class ApiOrderPrdDetailDTO {
 		this.prd_price = prd_price;
 	}
 
-	public int getPrd_count() {
-		return prd_count;
+	public int getOrder_count() {
+		return order_count;
 	}
 
-	public void setPrd_count(int prd_count) {
-		this.prd_count = prd_count;
+	public void setOrder_count(int order_count) {
+		this.order_count = order_count;
 	}
 
 	public String getPrd_thumb() {
@@ -51,7 +51,7 @@ public class ApiOrderPrdDetailDTO {
 	@Override
 	public String toString() {
 		return "ApiOrderPrdDetailDTO [prd_id=" + prd_id + ", prd_name=" + prd_name + ", prd_price=" + prd_price
-				+ ", prd_count=" + prd_count + ", prd_thumb=" + prd_thumb + "]";
+				+ ", order_count=" + order_count + ", prd_thumb=" + prd_thumb + "]";
 	}
 
 }

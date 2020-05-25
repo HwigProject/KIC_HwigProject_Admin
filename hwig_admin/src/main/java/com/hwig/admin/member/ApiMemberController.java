@@ -164,6 +164,7 @@ public class ApiMemberController {
 			orderDto.setOrder_count(dto.getOrder_count());
 			orderDto.setOrder_id(dto.getOrder_id());
 			orderDto.setOrder_paydate(dto.getOrder_paydate());
+			orderDto.setPrd_thumb(dto.getPrd_thumb());
 			orderDto.setOrder_paymoney(dto.getOrder_paymoney());
 			orderDto.setOrder_status(dto.getOrder_status());
 			orderDto.setPrd_name(dto.getPrd_name());
@@ -188,13 +189,14 @@ public class ApiMemberController {
 		List<ApiOrderPrdDetailDTO> apiOrderPrdDetailDtos = new ArrayList<ApiOrderPrdDetailDTO>();
 		ApiOrderMemDetailDTO apiOrderMemdetailDto = new ApiOrderMemDetailDTO();
 
-		if (result.size() > 1) {
+		if (result.size() > 0) {
 			for (ApiOrderDetailVO dto : result) {
 				ApiOrderPrdDetailDTO detailDto = new ApiOrderPrdDetailDTO();
-				detailDto.setPrd_count(dto.getPrd_count());
+				detailDto.setOrder_count(dto.getOrder_count());
 				detailDto.setPrd_id(dto.getPrd_id());
 				detailDto.setPrd_name(dto.getPrd_name());
 				detailDto.setPrd_price(dto.getPrd_price());
+				detailDto.setPrd_thumb(dto.getPrd_thumb());
 				apiOrderPrdDetailDtos.add(detailDto);
 			}
 

@@ -132,6 +132,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    D.prd_name,
 		    D.prd_price,
 		    B.order_count,
+		    D.prd_thumb,
 		    A.order_paymoney,
 		    D.prd_sale,
 		    A.order_used_reverse,

@@ -27,10 +27,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 문의 목록 -->
 	<select id="qList" resultType="com.hwig.admin.qna.QnaVO">
-		select * from (select row_number() over(order by qna_id desc) as rnum, a.* from tbl_qna a
+		select q.*, r.reply_id as reply_id from (select row_number() over(order by qna_id desc) as rnum, a.* from tbl_qna a) q, tbl_reply r
 		<include  refid="search"></include>
-		)
-		where rnum between #{pageStart} and #{pageEnd}
+		where rnum between #{pageStart} and #{pageEnd} and q.qna_id = r.qna_id(+)
 	</select>
 	
 	<!-- 문의 목록(메인) -->
@@ -71,4 +70,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="qna_id_d" parameterType="com.hwig.admin.qna.QnaVO">
 		update tbl_qna set qna_id = qna_id - 1 where qna_id > #{qna_id}
 	</update>
+	
+	<!-- 답변완료 알림 -->
+	<select id="qna_answer" resultType="QnaVO">
+		select q.qna_id as qna_id, r.reply_id as reply_id from tbl_qna q, tbl_reply r
+		where q.qna_id = r.qna_id
+	</select>
 </mapper>

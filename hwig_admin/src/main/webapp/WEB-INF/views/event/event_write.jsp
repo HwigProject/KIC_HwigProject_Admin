@@ -9,7 +9,7 @@
 <script>
 	function check_upload(){
 		upForm = document.e_uploadForm;
-		var content = document.getElementById("event_content_img").value;
+/* 		var content = document.getElementById("event_content_img").value;
 		var banner = document.getElementById("event_banner_img").value;
 		var square = document.getElementById("event_square_img").value;
 		var list = document.getElementById("event_list_img").value;
@@ -37,7 +37,7 @@
 		if(!list){
 			alert("목록 이미지를 업로드 하세요.");
 			return false;
-		}
+		} */
 		
 		if(confirm("등록 하시겠습니까?")){
 			upForm.submit();
@@ -83,7 +83,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">본문 이미지<span class="star">*</span></label>
+                                        <label class="col-sm-3 control-label">본문 이미지</label>
                                         <div class="col-sm-6">
                                         	<input type="file" id="event_content_img" name="file">                                        
 	                                        <div class="select_img1"><img src=""/></div>
@@ -101,7 +101,7 @@
 					            		</div>                                    
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">배너 이미지<span class="star">*</span></label>
+                                        <label class="col-sm-3 control-label">배너 이미지</label>
                                         <div class="col-sm-6">
                                         	<input type="file" id="event_banner_img" name="file">                                        
 	                                        <div class="select_img2"><img src=""/></div>
@@ -119,7 +119,7 @@
 					            		</div>                                  
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">사각 이미지<span class="star">*</span></label>
+                                        <label class="col-sm-3 control-label">사각 이미지</label>
                                         <div class="col-sm-6">
 	                                        <input type="file" id="event_square_img" name="file">
 	                                        <div class="select_img3"><img src=""/></div> 
@@ -137,7 +137,7 @@
 					            		</div>                                    
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">목록 이미지<span class="star">*</span></label>
+                                        <label class="col-sm-3 control-label">목록 이미지</label>
                                         <div class="col-sm-6">
 	                                        <input type="file" id="event_list_img" name="file">
 	                                        <div class="select_img4"><img src=""/></div>

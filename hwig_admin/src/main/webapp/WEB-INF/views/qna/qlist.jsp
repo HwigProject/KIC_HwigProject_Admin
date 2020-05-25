@@ -97,11 +97,11 @@
 										<tr>
 											<td>${pageMaker.totalCount - ((pageMaker.cri.page - 1) * pageMaker.cri.perPageNum + status.index)}</td>
 											<td>${qList.qna_category}</td>
-											<td><a onclick = "enc('qna_view?qna_id=${qList.qna_id}&qna_category=${qList.qna_category}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}')" href="#">${qList.qna_subject}</a></td>
+											<td><a onclick = "enc('qna_view?qna_id=${qList.qna_id}&qna_category=${qList.qna_category}&page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}')" href="#">${qList.qna_subject}</a><span class="answer${status.count}" style="color:red;">&nbsp;[답변완료]</span></td>
 											<td>${qList.qna_regdate}</td>
-											<td>${qList.mem_id}</td>										
+											<td>${qList.mem_id}</td>
+											<td class="rep${status.count}" style="display:none;">${qList.reply_id}</td>										
 										</tr>
-																
 									</c:forEach>
 								</tbody>
 							</table>
@@ -147,6 +147,17 @@
 	     + encodeURIComponent($('#keyword').val());
 	    });
 	 }); 
+	 
+	 $(function(){
+		 var qnum = ${pageMaker.totalCount};
+		 console.log(qnum);
+		 for(var i=1; i<=qnum; i++){
+			 if($('.rep'+i).text()==''){
+				 $('.answer'+i).remove();
+			 }
+			 
+		 }
+	 })
 	 
 	 function enc(str){
 		 window.location.href = encodeURI(str);
