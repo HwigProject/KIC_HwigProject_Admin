@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Built-By: user
 Build-Jdk: 1.8.0_241
 Created-By: Maven Integration for Eclipse
 
+=======
+Manifest-Version: 1.0
+Built-By: user
+Build-Jdk: 1.8.0_241
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> branch 'hwig_lws' of https://github.com/HwigProject/KIC_HwigProject_Admin.git
