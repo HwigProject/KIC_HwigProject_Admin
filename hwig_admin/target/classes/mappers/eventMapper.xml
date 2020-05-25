@@ -19,8 +19,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 이벤트 조회 -->
 	<select id="event_view" resultType="com.hwig.admin.event.EventVO" parameterType="int">
-		select * from
-		tbl_event where event_id = #{event_id}
+		select event_id, event_subject, event_content, nvl(event_content_img, 'empty') as event_content_img,
+		nvl(event_banner_img, 'empty') as event_banner_img, 
+		nvl(event_square_img, 'empty') as event_square_img, 
+		nvl(event_list_img, 'empty') as event_list_img
+		from tbl_event 
+		where event_id = #{event_id}
 	</select>
 
 	<!-- 이벤트 수정 -->
@@ -51,7 +55,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 이벤트 사각형 이미지 보내주기 -->
 	<select id="event_square" resultType="EventVO">
 		<![CDATA[
-		select event_id, event_subject, event_content, event_square_img
+		select event_id, event_subject, event_content, nvl(event_square_img,'empty') as event_square_img
 		from (select * from tbl_event order by event_regdate desc)
 		where rownum <= 3
 		]]>
@@ -75,7 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 이벤트 배너 이미지 보내주기 -->
 	<select id="event_banner" resultType="EventVO">
 		<![CDATA[
-		select event_id, event_banner_img
+		select event_id, nvl(event_banner_img,'empty') as event_banner_img
 		from (select * from tbl_event order by event_regdate desc)
 		where rownum <= 4
 		]]>

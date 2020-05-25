@@ -67,12 +67,12 @@
 							<div class="row">
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 									<ul>
-										<li><i class="fa fa-circle success-color"></i> 소·돼지</li>
-										<li><i class="fa fa-circle primary-color"></i> 닭·오리</li>
-										<li><i class="fa fa-circle warning-color"></i> 간편조리·양념육</li>
-										<li><i class="fa fa-circle info-color"></i> 기본채소</li>
-										<li><i class="fa fa-circle default-color"></i> 국산과일</li>
-										<li><i class="fa fa-circle default-color" style="color: red"></i> 수입과일</li>
+										<li><i class="fa fa-circle success-color"></i> 기본채소</li>
+										<li><i class="fa fa-circle primary-color"></i> 국산과일</li>
+										<li><i class="fa fa-circle warning-color"></i> 수입과일</li>
+										<li><i class="fa fa-circle info-color"></i> 소·돼지</li>
+										<li><i class="fa fa-circle default-color"></i> 닭·오리</li>
+										<li><i class="fa fa-circle default-color" style="color: red"></i> 간편조리·양념육</li>
 									</ul>
 								</div>
 								<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -350,32 +350,32 @@
 			value : 0,
 			color : "#1ABC9C",
 			highlight : "#1ABC9C",
-			label : "소·돼지"
+			label : "기본채소"
 		}, data2 = {
 			value : 0,
 			color : "#556B8D",
 			highlight : "#556B8D",
-			label : "닭·오리"
+			label : "국산과일"
 		}, data3 = {
 			value : 0,
 			color : "#EDCE8C",
 			highlight : "#EDCE8C",
-			label : "간편조리·양념육"
+			label : "수입과일"
 		}, data4 = {
 			value : 0,
 			color : "#1F7BB6",
 			highlight : "#1F7BB6",
-			label : "기본채소"
+			label : "소·돼지"
 		}, data5 = {
 			value : 0,
 			color : "#CED1D3",
 			highlight : "#CED1D3",
-			label : "국산과일"
+			label : "닭·오리"
 		}, data6 = {
 			value : 0,
 			color : "red",
 			highlight : "red",
-			label : "수입과일"
+			label : "간편조리·양념육"
 		} ];
 		if (value[0] != null)
 			data1["value"] = value[0];

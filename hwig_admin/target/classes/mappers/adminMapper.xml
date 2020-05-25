@@ -82,6 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from tbl_order o, tbl_order_b ob, tbl_prd p
 		where o.order_id = ob.order_id and ob.prd_id = p.prd_id
 		group by p.category_id
+		order by p.category_id
 	</select>
 	
 	<!-- 여기부터 판매자 -->
