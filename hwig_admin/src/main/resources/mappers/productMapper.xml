@@ -265,11 +265,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 큰 카테고리 마다 랜덤으로 4개 뽑기 -->
 	<select id="mainrandlist" resultType="com.hwig.admin.product.ProductRandDTO">
 		select * from (select tp.prd_id, tp.category_id, tc.category_p_id, tp.prd_name, tp.prd_thumb, tp.prd_price, tp.prd_sale
-		from tbl_prd tp, tbl_category tc where tc.category_p_id=#{category_p_id} order by dbms_random.value) where rownum <![CDATA[<]]>=4
+		from tbl_prd tp, tbl_category tc where tc.category_p_id=#{category_p_id} and tc.category_id = tp.category_id order by dbms_random.value) where rownum <![CDATA[<]]>=4
 	</select>
 	
 	<update id="changeStock">
 		update tbl_prd set prd_stock = #{prd_stock} where prd_id = #{prd_id}
 	</update>
+	
 </mapper>
-
